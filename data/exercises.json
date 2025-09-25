@@ -1,0 +1,1330 @@
+{
+  "exercises": [
+    {
+      "id": "WU_MARCH",
+      "name": "Marcha vigorosa / step march",
+      "aliases": [
+        "March in place",
+        "Marcha en el sitio"
+      ],
+      "description": "Marcha en el sitio elevando ligeramente las rodillas, braceando. Útil para elevar la temperatura y activar cadera y core sin impacto.",
+      "cues": [
+        "Postura alta",
+        "Apretar abdomen",
+        "Apoyos silenciosos"
+      ],
+      "equipment": [
+        "colchoneta (opcional)"
+      ],
+      "primary_muscles": [
+        "flexores de cadera",
+        "glúteos",
+        "cuádriceps",
+        "gemelos",
+        "core"
+      ],
+      "secondary_muscles": [
+        "erectores espinales",
+        "deltoides anteriores"
+      ],
+      "tags": [
+        "calentamiento",
+        "bajo impacto",
+        "FAI-friendly",
+        "cardio suave"
+      ],
+      "video": "https://www.youtube.com/watch?v=1Cns_8uS3d8",
+      "images": [
+        "https://musclewiki.com/",
+        "https://exrx.net/Lists/Directory"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "warmup_mobility",
+      "unilateral": false
+    },
+    {
+      "id": "WU_CATCAMEL",
+      "name": "Cat-Camel (movilidad columna)",
+      "aliases": [
+        "Cat-Cow",
+        "Gato-camello"
+      ],
+      "description": "Secuencia de flexión-extensión suave de columna toracolumbar para lubricar articulaciones y activar control motor.",
+      "cues": [
+        "Movimientos lentos",
+        "No forzar rango",
+        "Respirar profundo"
+      ],
+      "equipment": [
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "erectores espinales",
+        "multífidos",
+        "abdominales (control)"
+      ],
+      "secondary_muscles": [
+        "glúteos (ligera activación)"
+      ],
+      "tags": [
+        "movilidad",
+        "calentamiento"
+      ],
+      "video": "https://www.youtube.com/watch?v=kqnua4rHVVA",
+      "images": [
+        "https://exrx.net/Directory#Trunk",
+        "https://musclewiki.com/"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "warmup_mobility",
+      "unilateral": false
+    },
+    {
+      "id": "WU_9090",
+      "name": "90/90 cadera",
+      "aliases": [
+        "Hip 90/90"
+      ],
+      "description": "Trabajo de rotación externa/interna de cadera sentado con ambas rodillas a 90° para mejorar movilidad.",
+      "cues": [
+        "Columna alta",
+        "Sin dolor en ingle",
+        "Respira y relaja"
+      ],
+      "equipment": [
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "rotadores de cadera"
+      ],
+      "secondary_muscles": [
+        "glúteo medio",
+        "piriforme",
+        "aductores"
+      ],
+      "tags": [
+        "movilidad",
+        "FAI-friendly (controlado)"
+      ],
+      "video": "https://www.youtube.com/watch?v=3zG2oH5F2Ug",
+      "images": [
+        "https://musclewiki.com/hips",
+        "https://exrx.net/Articulations/Hip"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "warmup_mobility",
+      "unilateral": false
+    },
+    {
+      "id": "WU_PULLAPART",
+      "name": "Band Pull-Apart",
+      "aliases": [
+        "Apertura con banda"
+      ],
+      "description": "Separación de banda a la altura del pecho para activar deltoides posteriores y escápulas.",
+      "cues": [
+        "Costillas abajo",
+        "Hombros bajos",
+        "Arrastrar escápulas atrás"
+      ],
+      "equipment": [
+        "banda elástica"
+      ],
+      "primary_muscles": [
+        "deltoides posteriores",
+        "romboides",
+        "trapecio medio"
+      ],
+      "secondary_muscles": [
+        "rotadores externos del hombro"
+      ],
+      "tags": [
+        "activación",
+        "salud hombro"
+      ],
+      "video": "https://www.youtube.com/watch?v=smSSXITNpCI",
+      "images": [
+        "https://musclewiki.com/shoulders",
+        "https://exrx.net/Muscles/DeltoidPosterior"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "warmup_mobility",
+      "unilateral": false
+    },
+    {
+      "id": "SQ_BOX_GOBLET",
+      "name": "Sentadilla a caja (goblet)",
+      "aliases": [
+        "Goblet box squat"
+      ],
+      "description": "Sentadilla con mancuerna sujeta al pecho tocando una caja/banco para limitar la profundidad y proteger la cadera.",
+      "cues": [
+        "Pies ligeramente abiertos",
+        "Rodillas siguen la punta del pie",
+        "Tocar caja sin colapsar"
+      ],
+      "equipment": [
+        "mancuerna",
+        "banco/caja"
+      ],
+      "primary_muscles": [
+        "cuádriceps",
+        "glúteos"
+      ],
+      "secondary_muscles": [
+        "isquiotibiales",
+        "erectores espinales",
+        "core"
+      ],
+      "tags": [
+        "fuerza",
+        "FAI-friendly",
+        "bajo impacto"
+      ],
+      "video": null,
+      "images": [
+        "https://musclewiki.com/legs/quads",
+        "https://exrx.net/Muscles/Quadriceps"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "squat_knee_dominant",
+      "unilateral": false
+    },
+    {
+      "id": "PRESS_DB_BENCH",
+      "name": "Press mancuernas en banco",
+      "aliases": [
+        "Dumbbell Bench Press"
+      ],
+      "description": "Empuje horizontal con mancuernas tumbado en banco. Mejora fuerza de pectoral y tríceps.",
+      "cues": [
+        "Escápulas retraídas",
+        "Antebrazos verticales",
+        "Bajar al tórax medio"
+      ],
+      "equipment": [
+        "mancuernas",
+        "banco"
+      ],
+      "primary_muscles": [
+        "pectorales",
+        "tríceps"
+      ],
+      "secondary_muscles": [
+        "deltoides anteriores",
+        "serrato"
+      ],
+      "tags": [
+        "fuerza",
+        "empuje horizontal"
+      ],
+      "video": "https://www.youtube.com/watch?v=VmB1G1K7v94",
+      "images": [
+        "https://musclewiki.com/chest",
+        "https://exrx.net/Muscles/PectoralisSternal"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "horizontal_push",
+      "unilateral": false
+    },
+    {
+      "id": "ROW_DB_BENT",
+      "name": "Remo inclinado con mancuernas",
+      "aliases": [
+        "Bent-over DB Row"
+      ],
+      "description": "Tracción horizontal desde bisagra de cadera con mancuernas para la espalda media.",
+      "cues": [
+        "Columna neutra",
+        "Codos atrás",
+        "Pausa 1 s arriba"
+      ],
+      "equipment": [
+        "mancuernas"
+      ],
+      "primary_muscles": [
+        "dorsal ancho",
+        "romboides",
+        "trapecio medio"
+      ],
+      "secondary_muscles": [
+        "bíceps",
+        "deltoides posteriores",
+        "erectores espinales (isométrico)"
+      ],
+      "tags": [
+        "fuerza",
+        "tracción horizontal"
+      ],
+      "video": "https://www.youtube.com/watch?v=vT2GjY_Umpw",
+      "images": [
+        "https://musclewiki.com/back",
+        "https://exrx.net/Muscles/Back"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "horizontal_pull",
+      "unilateral": false
+    },
+    {
+      "id": "RDL",
+      "name": "Peso muerto rumano",
+      "aliases": [
+        "Romanian Deadlift"
+      ],
+      "description": "Bisagra de cadera con rodillas ligeramente flexionadas, enfatizando isquios y glúteos.",
+      "cues": [
+        "Empuja caderas atrás",
+        "Barra cerca del cuerpo",
+        "Columna neutra"
+      ],
+      "equipment": [
+        "mancuernas",
+        "barra"
+      ],
+      "primary_muscles": [
+        "isquiotibiales",
+        "glúteos"
+      ],
+      "secondary_muscles": [
+        "erectores espinales",
+        "aductores"
+      ],
+      "tags": [
+        "fuerza",
+        "bisagra"
+      ],
+      "video": null,
+      "images": [
+        "https://musclewiki.com/legs/hamstrings",
+        "https://exrx.net/Muscles/Hamstrings"
+      ],
+      "difficulty": "intermediate",
+      "movement_pattern": "hinge",
+      "unilateral": false
+    },
+    {
+      "id": "PRESS_DB_SHOULDER",
+      "name": "Press hombro sentado (mancuernas)",
+      "aliases": [
+        "Seated DB Shoulder Press"
+      ],
+      "description": "Empuje vertical con mancuernas sentado para deltoides anterior y lateral.",
+      "cues": [
+        "Costillas abajo",
+        "Rango cómodo",
+        "Agarre neutro si molesta"
+      ],
+      "equipment": [
+        "mancuernas",
+        "banco"
+      ],
+      "primary_muscles": [
+        "deltoides anteriores y laterales"
+      ],
+      "secondary_muscles": [
+        "tríceps",
+        "trapecio superior"
+      ],
+      "tags": [
+        "fuerza",
+        "empuje vertical"
+      ],
+      "video": "https://www.youtube.com/watch?v=B-aVuyhvLHU",
+      "images": [
+        "https://musclewiki.com/shoulders",
+        "https://exrx.net/Muscles/DeltoidAnterior"
+      ],
+      "difficulty": "intermediate",
+      "movement_pattern": "vertical_push",
+      "unilateral": false
+    },
+    {
+      "id": "PLANK_FRONT",
+      "name": "Plancha frontal",
+      "aliases": [
+        "Front Plank"
+      ],
+      "description": "Isométrico anterior del core con apoyo de antebrazos.",
+      "cues": [
+        "Glúteos apretados",
+        "Costillas abajo",
+        "Cabeza neutra"
+      ],
+      "equipment": [
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "recto abdominal",
+        "transverso"
+      ],
+      "secondary_muscles": [
+        "oblicuos",
+        "glúteos",
+        "erectores espinales"
+      ],
+      "tags": [
+        "core",
+        "isométrico"
+      ],
+      "video": "https://www.youtube.com/watch?v=pSHjTRCQxIw",
+      "images": [
+        "https://musclewiki.com/abdominals",
+        "https://exrx.net/Muscles/RectusAbdominis"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "core_antiextension",
+      "unilateral": false
+    },
+    {
+      "id": "PALLOF",
+      "name": "Pallof press con banda",
+      "aliases": [
+        "Cable/Band Anti-Rotation Press"
+      ],
+      "description": "Antirrotación de core empujando la banda al frente y resistiendo el tirón lateral.",
+      "cues": [
+        "Caderas cuadradas",
+        "No rotar",
+        "Exhala al extender"
+      ],
+      "equipment": [
+        "banda"
+      ],
+      "primary_muscles": [
+        "oblicuos",
+        "transverso"
+      ],
+      "secondary_muscles": [
+        "glúteos (estabilidad)",
+        "erectores espinales"
+      ],
+      "tags": [
+        "core",
+        "antirrotación"
+      ],
+      "video": "https://www.youtube.com/watch?v=Y0e2w0aKOXw",
+      "images": [
+        "https://musclewiki.com/abdominals/obliques",
+        "https://exrx.net/Muscles/Obliques"
+      ],
+      "difficulty": "intermediate",
+      "movement_pattern": "core_antirotation",
+      "unilateral": false
+    },
+    {
+      "id": "INT_STEPUP",
+      "name": "Step-ups (intervalos)",
+      "aliases": [
+        "Subidas al cajón"
+      ],
+      "description": "Subidas alternas a un step/banquito a ritmo variable para trabajo cardiovascular de bajo impacto.",
+      "cues": [
+        "Altura ≤ rodilla",
+        "Apoyo completo del pie",
+        "Impulso desde glúteo"
+      ],
+      "equipment": [
+        "step/banco"
+      ],
+      "primary_muscles": [
+        "glúteos",
+        "cuádriceps"
+      ],
+      "secondary_muscles": [
+        "isquiotibiales",
+        "gemelos",
+        "core"
+      ],
+      "tags": [
+        "cardio",
+        "bajo impacto",
+        "FAI-friendly"
+      ],
+      "video": "https://www.youtube.com/watch?v=dQqApCGd5Ss",
+      "images": [
+        "https://musclewiki.com/legs/quads",
+        "https://exrx.net/Muscles/GluteusMaximus"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "step_up_locomotion",
+      "unilateral": true
+    },
+    {
+      "id": "INT_ROW_BAND",
+      "name": "Remo con banda (intervalos)",
+      "aliases": [
+        "Band Row"
+      ],
+      "description": "Tracción horizontal con banda desde sentado o de pie, apto para intervalos.",
+      "cues": [
+        "Hombros abajo y atrás",
+        "Pausa breve al final",
+        "Controla la vuelta"
+      ],
+      "equipment": [
+        "banda"
+      ],
+      "primary_muscles": [
+        "dorsal",
+        "romboides",
+        "trapecio medio"
+      ],
+      "secondary_muscles": [
+        "bíceps",
+        "deltoides posteriores"
+      ],
+      "tags": [
+        "cardio/strength mix"
+      ],
+      "video": "https://www.youtube.com/watch?v=GZbfZ033f74",
+      "images": [
+        "https://musclewiki.com/back",
+        "https://exrx.net/Muscles/Back"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "horizontal_pull",
+      "unilateral": false
+    },
+    {
+      "id": "PLANK_SIDE",
+      "name": "Plancha lateral",
+      "aliases": [
+        "Side Plank"
+      ],
+      "description": "Isométrico lateral del core para oblicuos y estabilizadores de cadera.",
+      "cues": [
+        "Hombros y caderas alineados",
+        "Empuja el suelo",
+        "Respira tranquilo"
+      ],
+      "equipment": [
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "oblicuos"
+      ],
+      "secondary_muscles": [
+        "glúteo medio",
+        "transverso"
+      ],
+      "tags": [
+        "core",
+        "isométrico"
+      ],
+      "video": "https://www.youtube.com/watch?v=K2VljzCC16g",
+      "images": [
+        "https://musclewiki.com/abdominals/obliques",
+        "https://exrx.net/Muscles/Obliques"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "core_lateral_stability",
+      "unilateral": false
+    },
+    {
+      "id": "BIRD_DOG",
+      "name": "Bird-dog",
+      "aliases": [
+        "Dead bug cuadrupedia (opuesto)"
+      ],
+      "description": "Extensión alterna de brazo y pierna desde cuadrupedia para estabilidad lumbopélvica.",
+      "cues": [
+        "Cadera estable",
+        "No arquear",
+        "Exhala al extender"
+      ],
+      "equipment": [
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "erectores espinales",
+        "glúteos"
+      ],
+      "secondary_muscles": [
+        "oblicuos",
+        "multífidos",
+        "deltoides posteriores"
+      ],
+      "tags": [
+        "core",
+        "estabilidad"
+      ],
+      "video": "https://www.youtube.com/watch?v=vVQj4lDlS4k",
+      "images": [
+        "https://exrx.net/Muscles/Back",
+        "https://musclewiki.com/lower-back"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "other",
+      "unilateral": false
+    },
+    {
+      "id": "STEPUPS",
+      "name": "Step-ups (fuerza)",
+      "aliases": [
+        "Subidas al cajón con carga"
+      ],
+      "description": "Versión de fuerza de step-up, con mancuernas si procede.",
+      "cues": [
+        "Altura ≤ rodilla",
+        "Rodilla sigue la punta del pie",
+        "Control excéntrico"
+      ],
+      "equipment": [
+        "step/banco",
+        "mancuernas (opcional)"
+      ],
+      "primary_muscles": [
+        "glúteos",
+        "cuádriceps"
+      ],
+      "secondary_muscles": [
+        "isquios",
+        "gemelos",
+        "core"
+      ],
+      "tags": [
+        "fuerza",
+        "unilateral",
+        "FAI-friendly"
+      ],
+      "video": "https://www.youtube.com/watch?v=dQqApCGd5Ss",
+      "images": [
+        "https://musclewiki.com/legs/quads",
+        "https://exrx.net/Muscles/GluteusMaximus"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "step_up_locomotion",
+      "unilateral": true
+    },
+    {
+      "id": "HIP_THRUST",
+      "name": "Hip thrust",
+      "aliases": [
+        "Elevación de cadera en banco"
+      ],
+      "description": "Extensión de cadera apoyando la espalda en banco y carga en la cadera.",
+      "cues": [
+        "Barbilla al pecho",
+        "Pies firmes",
+        "Pausa 1 s arriba"
+      ],
+      "equipment": [
+        "banco",
+        "mancuernas o barra"
+      ],
+      "primary_muscles": [
+        "glúteo mayor"
+      ],
+      "secondary_muscles": [
+        "isquiotibiales",
+        "cuádriceps (estabilización)",
+        "core"
+      ],
+      "tags": [
+        "fuerza",
+        "glúteos"
+      ],
+      "video": null,
+      "images": [
+        "https://musclewiki.com/legs/glutes",
+        "https://exrx.net/Muscles/GluteusMaximus"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "other",
+      "unilateral": false
+    },
+    {
+      "id": "ROW_DB_1ARM",
+      "name": "Remo a una mano en banco",
+      "aliases": [
+        "One-arm DB Row"
+      ],
+      "description": "Tracción unilateral con apoyo en banco para descargar zona lumbar.",
+      "cues": [
+        "Hombro lejos de oreja",
+        "Codo hacia cadera",
+        "Pausa arriba"
+      ],
+      "equipment": [
+        "mancuerna",
+        "banco"
+      ],
+      "primary_muscles": [
+        "dorsal",
+        "romboides",
+        "trapecio medio"
+      ],
+      "secondary_muscles": [
+        "bíceps",
+        "deltoides posteriores"
+      ],
+      "tags": [
+        "fuerza",
+        "unilateral",
+        "espalda"
+      ],
+      "video": "https://www.youtube.com/watch?v=pYcpY20QaE8",
+      "images": [
+        "https://musclewiki.com/back",
+        "https://exrx.net/Muscles/Back"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "horizontal_pull",
+      "unilateral": true
+    },
+    {
+      "id": "VERT_PUSH",
+      "name": "Pike push-up en banco / Press inclinado mancuernas",
+      "aliases": [
+        "Pike Press",
+        "Incline DB Press"
+      ],
+      "description": "Empuje con énfasis en hombro (pike) o alternativa de press inclinado.",
+      "cues": [
+        "Rango cómodo",
+        "Codos 45°",
+        "Control cuello"
+      ],
+      "equipment": [
+        "banco",
+        "mancuernas (si inclinado)"
+      ],
+      "primary_muscles": [
+        "deltoides anteriores",
+        "pectoral clavicular (inclinado)"
+      ],
+      "secondary_muscles": [
+        "tríceps",
+        "trapecio superior"
+      ],
+      "tags": [
+        "fuerza",
+        "empuje vertical/inclinado"
+      ],
+      "video": "https://www.youtube.com/watch?v=aWwS0XCg3H8",
+      "images": [
+        "https://musclewiki.com/shoulders",
+        "https://exrx.net/Muscles/DeltoidAnterior"
+      ],
+      "difficulty": "intermediate",
+      "movement_pattern": "vertical_push",
+      "unilateral": false
+    },
+    {
+      "id": "CALF_RAISE",
+      "name": "Elevación de gemelos en escalón (unilateral)",
+      "aliases": [
+        "Single-leg Calf Raise"
+      ],
+      "description": "Elevación del talón desde escalón para trabajar gemelo y sóleo.",
+      "cues": [
+        "Pausa arriba 1 s",
+        "Bajar controlado",
+        "Agarre ligero para equilibrio"
+      ],
+      "equipment": [
+        "mancuerna (opcional)",
+        "escalón"
+      ],
+      "primary_muscles": [
+        "gastrocnemio"
+      ],
+      "secondary_muscles": [
+        "sóleo"
+      ],
+      "tags": [
+        "fuerza",
+        "pantorrilla"
+      ],
+      "video": "https://www.youtube.com/watch?v=-M4-G8p8fmc",
+      "images": [
+        "https://exrx.net/Muscles/Gastrocnemius",
+        "https://musclewiki.com/legs/calves"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "calf_raise",
+      "unilateral": true
+    },
+    {
+      "id": "HOLLOW",
+      "name": "Hollow hold",
+      "aliases": [
+        "Barquito"
+      ],
+      "description": "Isométrico del core en posición de plátano, manteniendo zona lumbar pegada al suelo.",
+      "cues": [
+        "Zona lumbar pegada",
+        "Costillas abajo",
+        "Respira corto"
+      ],
+      "equipment": [
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "recto abdominal",
+        "transverso"
+      ],
+      "secondary_muscles": [
+        "flexores de cadera (estabilización)"
+      ],
+      "tags": [
+        "core",
+        "isométrico"
+      ],
+      "video": "https://www.youtube.com/watch?v=EsnM8eBtazU",
+      "images": [
+        "https://musclewiki.com/abdominals",
+        "https://exrx.net/Muscles/RectusAbdominis"
+      ],
+      "difficulty": "intermediate",
+      "movement_pattern": "core_antiextension",
+      "unilateral": false
+    },
+    {
+      "id": "INT_MARCH_LATERAL",
+      "name": "Marcha vigorosa / pasos laterales sin pivotar",
+      "aliases": [
+        "Lateral Steps"
+      ],
+      "description": "Pasos laterales con marcha activa, evitando pivotajes bruscos para respetar la cadera.",
+      "cues": [
+        "Pies paralelos",
+        "Rodillas blandas",
+        "No pivotar"
+      ],
+      "equipment": [
+        "colchoneta (opcional)"
+      ],
+      "primary_muscles": [
+        "glúteo medio",
+        "aductores (estabilidad)"
+      ],
+      "secondary_muscles": [
+        "cuádriceps",
+        "core"
+      ],
+      "tags": [
+        "cardio suave",
+        "FAI-friendly"
+      ],
+      "video": "https://www.youtube.com/watch?v=1Cns_8uS3d8",
+      "images": [
+        "https://musclewiki.com/hips",
+        "https://exrx.net/Muscles/GluteusMedius"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "locomotion_low_impact",
+      "unilateral": false
+    },
+    {
+      "id": "INT_BOX_SQUAT",
+      "name": "Sentadilla a caja (intervalos)",
+      "aliases": [
+        "Box Squat (tempo variable)"
+      ],
+      "description": "Versión de sentadilla a caja con control de tiempo, usada en circuito de intervalos.",
+      "cues": [
+        "Rango cómodo",
+        "Tocar y subir sin rebote",
+        "Respiración controlada"
+      ],
+      "equipment": [
+        "caja/banco",
+        "mancuernas (opcional)"
+      ],
+      "primary_muscles": [
+        "cuádriceps",
+        "glúteos"
+      ],
+      "secondary_muscles": [
+        "isquios",
+        "core"
+      ],
+      "tags": [
+        "cardio/strength mix",
+        "FAI-friendly"
+      ],
+      "video": null,
+      "images": [
+        "https://musclewiki.com/legs/quads",
+        "https://exrx.net/Muscles/Quadriceps"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "squat_knee_dominant",
+      "unilateral": false
+    },
+    {
+      "id": "INT_FARMER_HOLD",
+      "name": "Farmer hold (isométrico)",
+      "aliases": [
+        "Static Farmer Carry"
+      ],
+      "description": "Sujetar mancuernas pesadas de pie, trabajando agarre, trapecio y core.",
+      "cues": [
+        "Crecimiento axial",
+        "Escápulas abajo",
+        "Glúteos activos"
+      ],
+      "equipment": [
+        "mancuernas"
+      ],
+      "primary_muscles": [
+        "antebrazo (agarre)",
+        "trapecio",
+        "core"
+      ],
+      "secondary_muscles": [
+        "glúteos",
+        "erectores espinales"
+      ],
+      "tags": [
+        "isométrico",
+        "fuerza general"
+      ],
+      "video": null,
+      "images": [
+        "https://musclewiki.com/traps",
+        "https://exrx.net/Muscles/TrapeziusUpper"
+      ],
+      "difficulty": "intermediate",
+      "movement_pattern": "carry_isometric",
+      "unilateral": false
+    },
+    {
+      "id": "HIP_HINGE",
+      "name": "Bisagra de cadera (RDL / good morning con banda)",
+      "aliases": [
+        "Hip Hinge",
+        "Good Morning (band)"
+      ],
+      "description": "Patrón de bisagra para trabajar cadena posterior con control de columna neutra.",
+      "cues": [
+        "Empuja caderas atrás",
+        "Peso en talones",
+        "Cabeza neutra"
+      ],
+      "equipment": [
+        "mancuernas",
+        "banda"
+      ],
+      "primary_muscles": [
+        "isquios",
+        "glúteos"
+      ],
+      "secondary_muscles": [
+        "erectores espinales",
+        "aductores"
+      ],
+      "tags": [
+        "fuerza",
+        "bisagra"
+      ],
+      "video": null,
+      "images": [
+        "https://musclewiki.com/legs/hamstrings",
+        "https://exrx.net/Muscles/Hamstrings"
+      ],
+      "difficulty": "intermediate",
+      "movement_pattern": "hinge",
+      "unilateral": false
+    },
+    {
+      "id": "HOR_PUSH",
+      "name": "Empuje horizontal (press o flexión baja)",
+      "aliases": [
+        "Low Incline Push-up",
+        "DB Bench/Push-up"
+      ],
+      "description": "Variante de empuje horizontal adaptada a material disponible y tolerancia.",
+      "cues": [
+        "Codos ~45°",
+        "Escápulas activas",
+        "Core firme"
+      ],
+      "equipment": [
+        "mancuernas",
+        "banco"
+      ],
+      "primary_muscles": [
+        "pectorales",
+        "tríceps"
+      ],
+      "secondary_muscles": [
+        "deltoides anteriores"
+      ],
+      "tags": [
+        "fuerza",
+        "empuje horizontal"
+      ],
+      "video": null,
+      "images": [
+        "https://musclewiki.com/chest",
+        "https://exrx.net/Muscles/PectoralisSternal"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "horizontal_push",
+      "unilateral": false
+    },
+    {
+      "id": "ROW_ISOPAUSE",
+      "name": "Remo con pausa isométrica",
+      "aliases": [
+        "Bent-over Row (paused)"
+      ],
+      "description": "Remo con detención de 1–2 s en contracción para control escapular.",
+      "cues": [
+        "Pausa sin encoger cuello",
+        "Codos hacia la cadera",
+        "Vuelve controlado"
+      ],
+      "equipment": [
+        "mancuernas"
+      ],
+      "primary_muscles": [
+        "romboides",
+        "trapecio medio",
+        "dorsal"
+      ],
+      "secondary_muscles": [
+        "bíceps",
+        "deltoides posteriores"
+      ],
+      "tags": [
+        "fuerza",
+        "tracción horizontal",
+        "técnica"
+      ],
+      "video": "https://www.youtube.com/watch?v=vT2GjY_Umpw",
+      "images": [
+        "https://musclewiki.com/back",
+        "https://exrx.net/Muscles/Back"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "horizontal_pull",
+      "unilateral": false
+    },
+    {
+      "id": "QUAD_DOM",
+      "name": "Cuádriceps dominante (sentadilla caja o split corto)",
+      "aliases": [
+        "Box Squat / Short Split Squat"
+      ],
+      "description": "Patrón dominante de rodilla con rango limitado para respetar la cadera.",
+      "cues": [
+        "Rango cómodo",
+        "Rodilla sigue punta del pie",
+        "Control excéntrico"
+      ],
+      "equipment": [
+        "mancuernas",
+        "banco/caja"
+      ],
+      "primary_muscles": [
+        "cuádriceps",
+        "glúteos"
+      ],
+      "secondary_muscles": [
+        "isquios",
+        "core"
+      ],
+      "tags": [
+        "fuerza",
+        "FAI-friendly"
+      ],
+      "video": "https://www.youtube.com/watch?v=2C-uNgKwPLE",
+      "images": [
+        "https://musclewiki.com/legs/quads",
+        "https://exrx.net/Muscles/Quadriceps"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "squat_knee_dominant",
+      "unilateral": false
+    },
+    {
+      "id": "PLANK_PULL",
+      "name": "Plancha con arrastre (plank pull-through)",
+      "aliases": [
+        "Renegade pull-through"
+      ],
+      "description": "Plancha con arrastre de mancuerna por debajo del cuerpo para antirrotación.",
+      "cues": [
+        "Caderas niveladas",
+        "Movimiento lento",
+        "No girar tronco"
+      ],
+      "equipment": [
+        "mancuerna",
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "oblicuos",
+        "transverso"
+      ],
+      "secondary_muscles": [
+        "deltoides",
+        "dorsal",
+        "glúteos"
+      ],
+      "tags": [
+        "core",
+        "antirrotación"
+      ],
+      "video": "https://www.youtube.com/watch?v=JTNW85mgKss",
+      "images": [
+        "https://musclewiki.com/abdominals/obliques",
+        "https://exrx.net/Muscles/Obliques"
+      ],
+      "difficulty": "intermediate",
+      "movement_pattern": "core_antirotation",
+      "unilateral": false
+    },
+    {
+      "id": "ST_HIPFLEX",
+      "name": "Estiramiento flexor de cadera (medio arrodillado)",
+      "aliases": [
+        "Half-kneeling hip flexor stretch"
+      ],
+      "description": "Estiramiento de psoas/recto femoral en posición de zancada arrodillada.",
+      "cues": [
+        "Pelvis en retroversión",
+        "Costillas abajo",
+        "Sin forzar"
+      ],
+      "equipment": [
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "psoas",
+        "recto femoral"
+      ],
+      "secondary_muscles": [
+        "cuádriceps (porción)"
+      ],
+      "tags": [
+        "estiramiento",
+        "FAI-friendly suave",
+        "stretch"
+      ],
+      "video": null,
+      "images": [
+        "https://exrx.net/Muscles/Iliopsoas",
+        "https://musclewiki.com/hips"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "stretch_mobility",
+      "unilateral": false
+    },
+    {
+      "id": "ST_OPENBOOK",
+      "name": "Open book torácico",
+      "aliases": [
+        "Apertura torácica lateral"
+      ],
+      "description": "Movilidad de rotación torácica en decúbito lateral.",
+      "cues": [
+        "Caderas apiladas",
+        "Respiración nasal",
+        "Movimiento suave"
+      ],
+      "equipment": [
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "rotadores torácicos"
+      ],
+      "secondary_muscles": [
+        "romboides (deslizamiento)"
+      ],
+      "tags": [
+        "movilidad",
+        "stretch"
+      ],
+      "video": "https://www.youtube.com/watch?v=OW6YHlxY6JI",
+      "images": [
+        "https://exrx.net/Directory#Trunk",
+        "https://musclewiki.com/back"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "stretch_mobility",
+      "unilateral": false
+    },
+    {
+      "id": "ST_HAM",
+      "name": "Estiramiento isquiotibial",
+      "aliases": [
+        "Hamstring stretch"
+      ],
+      "description": "Estiramiento de cadena posterior en posición sentada o tumbada con banda.",
+      "cues": [
+        "Espalda neutra",
+        "No rebotes",
+        "Respira 2–3 ciclos"
+      ],
+      "equipment": [
+        "cinta/banda (opcional)"
+      ],
+      "primary_muscles": [
+        "isquiotibiales"
+      ],
+      "secondary_muscles": [
+        "glúteos (ligero)"
+      ],
+      "tags": [
+        "estiramiento",
+        "stretch"
+      ],
+      "video": null,
+      "images": [
+        "https://exrx.net/Muscles/Hamstrings",
+        "https://musclewiki.com/legs/hamstrings"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "stretch_mobility",
+      "unilateral": false
+    },
+    {
+      "id": "ST_PIRIFORMIS",
+      "name": "Estiramiento piriforme",
+      "aliases": [
+        "Piriformis stretch"
+      ],
+      "description": "Estiramiento del rotador externo profundo, útil para aliviar tensión glútea/ciática funcional.",
+      "cues": [
+        "Suave, sin dolor",
+        "Respiración lenta",
+        "No forzar aducción"
+      ],
+      "equipment": [
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "piriforme"
+      ],
+      "secondary_muscles": [
+        "glúteo medio"
+      ],
+      "tags": [
+        "estiramiento",
+        "stretch"
+      ],
+      "video": null,
+      "images": [
+        "https://musclewiki.com/hips",
+        "https://exrx.net/Muscles/HipExternalRotators"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "stretch_mobility",
+      "unilateral": false
+    },
+    {
+      "id": "ST_ADDUCTOR",
+      "name": "Estiramiento aductores/ingle",
+      "aliases": [
+        "Groin stretch"
+      ],
+      "description": "Estiramiento de la cara interna del muslo (mariposa o zancada lateral).",
+      "cues": [
+        "Espalda alta",
+        "Presión suave",
+        "Respirar 2–3 ciclos"
+      ],
+      "equipment": [
+        "colchoneta"
+      ],
+      "primary_muscles": [
+        "aductores"
+      ],
+      "secondary_muscles": [
+        "rotadores internos de cadera"
+      ],
+      "tags": [
+        "estiramiento",
+        "stretch"
+      ],
+      "video": null,
+      "images": [
+        "https://exrx.net/Muscles/HipAdductors",
+        "https://musclewiki.com/hips/adductors"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "stretch_mobility",
+      "unilateral": false
+    },
+    {
+      "id": "ST_ADD_COPEN_S",
+      "name": "Copenhagen mod. isométrica (suave)",
+      "aliases": [
+        "Copenhagen plank (short lever)"
+      ],
+      "description": "Plancha lateral con apoyo de rodilla superior para fortalecer aductores con baja palanca.",
+      "cues": [
+        "Cadera alta",
+        "Respira",
+        "Tiempo corto y controlado"
+      ],
+      "equipment": [
+        "banco/step"
+      ],
+      "primary_muscles": [
+        "aductores"
+      ],
+      "secondary_muscles": [
+        "oblicuos",
+        "glúteo medio"
+      ],
+      "tags": [
+        "isométrico",
+        "aductores",
+        "rehab-friendly",
+        "stretch"
+      ],
+      "video": "https://www.youtube.com/watch?v=SNQYtW1J6mQ",
+      "images": [
+        "https://exrx.net/Muscles/HipAdductors",
+        "https://musclewiki.com/hips/adductors"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "stretch_mobility",
+      "unilateral": false
+    },
+    {
+      "id": "MOB_HIP_ANKLE",
+      "name": "Movilidad cadera y tobillo (bloque)",
+      "aliases": [
+        "Hip & Ankle Mobility"
+      ],
+      "description": "Bloque de movilidad suave para cadera y tobillo tras el circuito de intervalos.",
+      "cues": [
+        "Movimientos lentos",
+        "Sin dolor",
+        "Respiración nasal"
+      ],
+      "equipment": [
+        "colchoneta",
+        "banda (opcional)"
+      ],
+      "primary_muscles": [
+        "flexores de cadera",
+        "aductores",
+        "plantiflexores"
+      ],
+      "secondary_muscles": [
+        "rotadores de cadera",
+        "dorsiflexores"
+      ],
+      "tags": [
+        "movilidad",
+        "FAI-friendly",
+        "stretch"
+      ],
+      "video": null,
+      "images": [
+        "https://exrx.net/Articulations/Hip",
+        "https://exrx.net/Articulations/Ankle"
+      ],
+      "difficulty": "beginner",
+      "movement_pattern": "stretch_mobility",
+      "unilateral": false
+    }
+  ]
+}

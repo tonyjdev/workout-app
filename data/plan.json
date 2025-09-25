@@ -1,0 +1,2519 @@
+{
+  "weeks": [
+    {
+      "number": 1,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja (goblet)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 2,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": null,
+              "name": "Protocolo A (step-ups + remo banda)",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust (mancuernas o barra)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Pike push-up en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Sentadilla a caja (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja (goblet)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 2,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": null,
+              "name": "Protocolo A (step-ups + remo banda)",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust (mancuernas o barra)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Pike push-up en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Sentadilla a caja (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja (goblet)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 2,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": null,
+              "name": "Protocolo A (step-ups + remo banda)",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust (mancuernas o barra)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Pike push-up en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Sentadilla a caja (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja (goblet)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 2,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": null,
+              "name": "Protocolo A (step-ups + remo banda)",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust (mancuernas o barra)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Pike push-up en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Sentadilla a caja (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja con pausa (goblet)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust con pausa (2s arriba)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Press inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": null,
+              "name": "Protocolo A (step-ups + remo banda)",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Sentadilla a caja (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja con pausa (goblet)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust con pausa (2s arriba)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Press inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": null,
+              "name": "Protocolo A (step-ups + remo banda)",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Sentadilla a caja (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja con pausa (goblet)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust con pausa (2s arriba)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Press inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": null,
+              "name": "Protocolo A (step-ups + remo banda)",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Sentadilla a caja (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja con pausa (goblet)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust con pausa (2s arriba)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Press inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": null,
+              "name": "Protocolo A (step-ups + remo banda)",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Sentadilla a caja (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja con pausa (goblet)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust con pausa (2s arriba)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Press inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 5,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Split squat corto (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja con pausa (goblet)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust con pausa (2s arriba)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Press inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 5,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Split squat corto (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja con pausa (goblet)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust con pausa (2s arriba)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Press inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 5,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Split squat corto (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "days": [
+        {
+          "dayNum": 1,
+          "label": "Lunes",
+          "focus": "Fuerza A (full-body)",
+          "exercises": [
+            {
+              "id": "SQ_BOX_GOBLET",
+              "name": "Sentadilla a caja con pausa (goblet)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_BENCH",
+              "name": "Press mancuernas en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_BENT",
+              "name": "Remo inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "RDL",
+              "name": "Peso muerto rumano (barra larga o mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PRESS_DB_SHOULDER",
+              "name": "Press hombro sentado (mancuernas)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_FRONT",
+              "name": "Plancha frontal",
+              "sets": 3,
+              "type": "time",
+              "seconds": 45
+            },
+            {
+              "id": "PALLOF",
+              "name": "Pallof press con banda",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 2,
+          "label": "Martes",
+          "focus": "Intervalos bajo impacto + core",
+          "exercises": [
+            {
+              "id": "PLANK_SIDE",
+              "name": "Plancha lateral",
+              "sets": 3,
+              "type": "time",
+              "seconds": 35
+            },
+            {
+              "id": "BIRD_DOG",
+              "name": "Bird-dog",
+              "sets": 2,
+              "type": "reps",
+              "reps": 10,
+              "perSide": true
+            }
+          ]
+        },
+        {
+          "dayNum": 3,
+          "label": "Miércoles",
+          "focus": "Fuerza B (posterior y tirón)",
+          "exercises": [
+            {
+              "id": "STEPUPS",
+              "name": "Step-ups (mancuernas opcional)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "HIP_THRUST",
+              "name": "Hip thrust con pausa (2s arriba)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "ROW_DB_1ARM",
+              "name": "Remo a una mano en banco",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": true
+            },
+            {
+              "id": "VERT_PUSH",
+              "name": "Press inclinado con mancuernas",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "CALF_RAISE",
+              "name": "Elevación de gemelos en escalón (mancuerna)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 15,
+              "perSide": false
+            },
+            {
+              "id": "HOLLOW",
+              "name": "Hollow hold",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        },
+        {
+          "dayNum": 4,
+          "label": "Jueves",
+          "focus": "Intervalos bajo impacto + movilidad",
+          "exercises": [
+            {
+              "id": "MOB_HIP_ANKLE",
+              "name": "Movilidad cadera y tobillo",
+              "sets": 1,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            }
+          ]
+        },
+        {
+          "dayNum": 5,
+          "label": "Viernes",
+          "focus": "Fuerza C (algo más intensa)",
+          "exercises": [
+            {
+              "id": "HIP_HINGE",
+              "name": "Peso muerto rumano / good morning con banda",
+              "sets": 5,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "HOR_PUSH",
+              "name": "Empuje horizontal — press o flexión baja",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "ROW_ISOPAUSE",
+              "name": "Remo con pausa isométrica (1–2 s)",
+              "sets": 4,
+              "type": "reps",
+              "reps": 10,
+              "perSide": false
+            },
+            {
+              "id": "QUAD_DOM",
+              "name": "Split squat corto (rango cómodo)",
+              "sets": 3,
+              "type": "reps",
+              "reps": 12,
+              "perSide": false
+            },
+            {
+              "id": "PLANK_PULL",
+              "name": "Plancha con arrastre (plank pull-through)",
+              "sets": 3,
+              "type": "time",
+              "seconds": 30
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "source": "converted_from_unified_v1"
+  }
+}

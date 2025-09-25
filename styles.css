@@ -1,0 +1,109 @@
+:root{
+  --sf-card-radius:.9rem;
+  --bottom-nav-h: 64px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*{ box-sizing:border-box; }
+
+/* Layout base */
+html, body{ height:100%; }
+body{ font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif; }
+
+main#appContent{
+  padding-top:1rem;
+  padding-bottom: calc(var(--bottom-nav-h) + var(--safe-bottom) + 24px);
+  min-height: 100dvh;
+}
+
+#bottomBar{
+  min-height: calc(var(--bottom-nav-h) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+}
+
+/* Bottom nav: botones a igual ancho, icono + texto en columna */
+#bottomNav{
+  display:flex;
+  gap:0;
+}
+#bottomNav .nav-link{
+  flex:1 1 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:.15rem;
+  padding:.35rem .25rem;
+  line-height:1.1;
+  white-space:nowrap;
+  font-size:.95rem;
+  color:inherit;
+  border-radius:0;
+  background:transparent;
+  border:0;
+}
+#bottomNav .nav-link i{ font-size:1.15rem; line-height:1; }
+#bottomNav .nav-link span{ font-size:.75rem; opacity:.9; }
+#bottomNav .nav-link.active{ font-weight:700; }
+
+/* CTAs pegadas abajo por encima del bottom bar */
+.bottom-cta, .bottom-actions{
+  position: sticky;
+  bottom: calc(var(--bottom-nav-h) + var(--safe-bottom) + 8px);
+  z-index: 1030;
+}
+
+/* Botones altos y tamaños cómodos */
+.btn-tall{ padding-top:1rem; padding-bottom:1rem; }
+.btn-lgx{ padding:.9rem 1rem; font-size:1.05rem; border-radius:.8rem; }
+
+/* Semana: 1–4, luego 5–7 */
+.week-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; }
+.week-grid.two-rows{ grid-template-columns:repeat(4,1fr); }
+@media (max-width: 380px){
+  .week-grid{ gap:.4rem; }
+  #bottomNav .nav-link span{ font-size:.7rem; }
+}
+
+/* Hero con foto y lema encima */
+.hero{ position:relative; border-radius:var(--sf-card-radius); overflow:hidden; }
+.hero img{ width:100%; height:clamp(180px, 32vw, 240px); object-fit:cover; display:block; }
+.hero .overlay{ position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.1) 100%); }
+.hero .motto{
+  position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center;
+  padding:1rem; color:#fff; text-align:center; text-shadow:0 2px 8px rgba(0,0,0,.55);
+  font-weight:800; letter-spacing:.2px; font-size:clamp(1.15rem, 3.2vw, 1.6rem);
+}
+
+/* Área de media de ejercicio/descanso con ratio fijo */
+.exercise-media{
+  width:100%; aspect-ratio:16/9; background:#1f1f1f; border-radius:var(--sf-card-radius);
+  display:flex; align-items:center; justify-content:center; color:#adb5bd;
+}
+.exercise-media img{ width:100%; height:100%; object-fit:cover; border-radius:var(--sf-card-radius); }
+
+/* Temporizadores */
+.timer-area{ min-height:3.25rem; display:flex; align-items:center; gap:.5rem; }
+.timer-large, .countdown{ font-variant-numeric:tabular-nums; font-weight:800; }
+.timer-large{ font-size:clamp(2rem,9vw,3rem); }
+.countdown{ font-size:clamp(2.5rem,10vw,4.5rem); }
+
+/* Progreso mini */
+.progress-mini{ height:.5rem; }
+
+/* Tarjetas de estadística */
+.stat-card{ border-radius:var(--sf-card-radius); }
+.stat-card i{ font-size:1.5rem; }
+
+/* Confeti por encima de todo */
+#confettiCanvas{ position:fixed; inset:0; pointer-events:none; z-index:2000; }
+
+/* Detalles */
+.object-fit-cover{ object-fit:cover; }
+.rounded{ border-radius:var(--sf-card-radius)!important; }
+.list-group-item{ padding:.75rem 1rem; }
+.card-body{ padding:1rem 1rem; }
+
+/* Offcanvas legible */
+.offcanvas .offcanvas-body{ line-height:1.45; }
+.offcanvas .offcanvas-title{ font-weight:800; }
