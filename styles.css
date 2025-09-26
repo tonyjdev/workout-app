@@ -1,109 +1,88 @@
+
 :root{
-  --sf-card-radius:.9rem;
-  --bottom-nav-h: 64px;
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --sf-muted: #9aa4b2;
+}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
+.navbar .btn{border-radius:12px}
+#bottomNav .nav-link{display:flex;flex-direction:column;align-items:center;gap:.25rem}
+#bottomNav .nav-link i{font-size:1.2rem}
+.week-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.week-grid.two-rows{grid-template-columns:repeat(1,1fr)}
+.hero{position:relative;border-radius:16px;overflow:hidden}
+.hero img{width:100%;height:160px;object-fit:cover;display:block}
+.hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.6))}
+.hero .motto{position:absolute;left:1rem;bottom:.75rem;font-weight:700;font-size:1.1rem}
+.card.plan-card{border-radius:16px;overflow:hidden}
+.plan-card .card-body{padding:1rem}
+.plan-card .progress{height:.5rem;border-radius:999px}
+.plan-card .meta{color:var(--sf-muted)}
+.btn-tall{padding:.9rem 1rem}
+.progress-mini{height:8px;border-radius:999px}
+.exercise-media{height:180px;background:#111;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.timer-large{font-size:2.2rem;font-weight:800}
+.bottom-cta, .bottom-actions{position:sticky;bottom:80px}
+
+/* Píldora de día */
+.day-pill{user-select:none}
+.day-pill .day-number{font-weight:700;font-size:.9rem;line-height:1}
+.day-pill .day-icon{font-size:1.1rem;opacity:.9}
+
+/* Estados */
+.day-rest .day-icon{color:#f0ad4e;}        /* descanso → ámbar */
+.day-done{background:rgba(25,135,84,.15); border:1px solid rgba(25,135,84,.35);}
+.day-done .day-number{color:#5ad08c;}
+.day-done .day-icon{color:#5ad08c;}
+.day-trophy .day-icon{color:#ffd454;}
+
+
+/* Cards de plan con imagen de fondo */
+.card.plan-card{border-radius:20px; overflow:hidden; border:0;}
+.plan-card.plan-cover{position:relative; color:#fff;}
+.plan-card.plan-cover::before{
+  content:""; position:absolute; inset:0;
+  background-image:var(--cover);
+  background-size:cover; background-position:center;
+  transform:scale(1.02);
+  opacity:.5;                 /* ← solo la imagen al 50% */
+}
+.plan-card.plan-cover::after{
+  content:""; position:absolute; inset:0;
+  /* velo suave para legibilidad */
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.10) 0%, rgba(0,0,0,.30) 45%, rgba(0,0,0,.45) 100%);
+}
+.plan-card.plan-cover .card-body{
+  position:relative; z-index:1;
+  min-height: 200px;          /* ↑ un poco más grandes */
+  display:flex; flex-direction:column; justify-content:center;
+  padding:8rem 1rem 1.1rem 1rem;
 }
 
-*{ box-sizing:border-box; }
-
-/* Layout base */
-html, body{ height:100%; }
-body{ font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif; }
-
-main#appContent{
-  padding-top:1rem;
-  padding-bottom: calc(var(--bottom-nav-h) + var(--safe-bottom) + 24px);
-  min-height: 100dvh;
+/* Sombra de texto de 1px negro para todo el contenido del card */
+.plan-card.plan-cover .card-body,
+.plan-card.plan-cover .card-body *{
+  text-shadow: 0 1px 0 rgba(0,0,0,.95);
 }
 
-#bottomBar{
-  min-height: calc(var(--bottom-nav-h) + var(--safe-bottom));
-  padding-bottom: var(--safe-bottom);
+.progress-mini{height:8px;border-radius:999px}
+.exercise-media{height:180px;background:#111;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.timer-large{font-size:2.2rem;font-weight:800}
+.bottom-cta,.bottom-actions{position:sticky;bottom:80px}
+
+/* pills de días (ya las tienes de la Home) */
+.day-pill .day-number{font-weight:700;font-size:.9rem;line-height:1}
+.day-pill .day-icon{font-size:1.1rem}
+
+.timer-area{margin:1rem 0 1.25rem}
+.timer-large,
+.reps-large{
+  font-size:3rem;
+  font-weight:800;
+  text-align:center;
+  line-height:1;
 }
 
-/* Bottom nav: botones a igual ancho, icono + texto en columna */
-#bottomNav{
-  display:flex;
-  gap:0;
-}
-#bottomNav .nav-link{
-  flex:1 1 0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:.15rem;
-  padding:.35rem .25rem;
-  line-height:1.1;
-  white-space:nowrap;
-  font-size:.95rem;
-  color:inherit;
-  border-radius:0;
-  background:transparent;
-  border:0;
-}
-#bottomNav .nav-link i{ font-size:1.15rem; line-height:1; }
-#bottomNav .nav-link span{ font-size:.75rem; opacity:.9; }
-#bottomNav .nav-link.active{ font-weight:700; }
+.timer-area{margin:1rem 0 1.25rem}
+.timer-large,.reps-large{font-size:3rem;font-weight:800;text-align:center;line-height:1}
 
-/* CTAs pegadas abajo por encima del bottom bar */
-.bottom-cta, .bottom-actions{
-  position: sticky;
-  bottom: calc(var(--bottom-nav-h) + var(--safe-bottom) + 8px);
-  z-index: 1030;
-}
-
-/* Botones altos y tamaños cómodos */
-.btn-tall{ padding-top:1rem; padding-bottom:1rem; }
-.btn-lgx{ padding:.9rem 1rem; font-size:1.05rem; border-radius:.8rem; }
-
-/* Semana: 1–4, luego 5–7 */
-.week-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; }
-.week-grid.two-rows{ grid-template-columns:repeat(4,1fr); }
-@media (max-width: 380px){
-  .week-grid{ gap:.4rem; }
-  #bottomNav .nav-link span{ font-size:.7rem; }
-}
-
-/* Hero con foto y lema encima */
-.hero{ position:relative; border-radius:var(--sf-card-radius); overflow:hidden; }
-.hero img{ width:100%; height:clamp(180px, 32vw, 240px); object-fit:cover; display:block; }
-.hero .overlay{ position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.1) 100%); }
-.hero .motto{
-  position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center;
-  padding:1rem; color:#fff; text-align:center; text-shadow:0 2px 8px rgba(0,0,0,.55);
-  font-weight:800; letter-spacing:.2px; font-size:clamp(1.15rem, 3.2vw, 1.6rem);
-}
-
-/* Área de media de ejercicio/descanso con ratio fijo */
-.exercise-media{
-  width:100%; aspect-ratio:16/9; background:#1f1f1f; border-radius:var(--sf-card-radius);
-  display:flex; align-items:center; justify-content:center; color:#adb5bd;
-}
-.exercise-media img{ width:100%; height:100%; object-fit:cover; border-radius:var(--sf-card-radius); }
-
-/* Temporizadores */
-.timer-area{ min-height:3.25rem; display:flex; align-items:center; gap:.5rem; }
-.timer-large, .countdown{ font-variant-numeric:tabular-nums; font-weight:800; }
-.timer-large{ font-size:clamp(2rem,9vw,3rem); }
-.countdown{ font-size:clamp(2.5rem,10vw,4.5rem); }
-
-/* Progreso mini */
-.progress-mini{ height:.5rem; }
-
-/* Tarjetas de estadística */
-.stat-card{ border-radius:var(--sf-card-radius); }
-.stat-card i{ font-size:1.5rem; }
-
-/* Confeti por encima de todo */
-#confettiCanvas{ position:fixed; inset:0; pointer-events:none; z-index:2000; }
-
-/* Detalles */
-.object-fit-cover{ object-fit:cover; }
-.rounded{ border-radius:var(--sf-card-radius)!important; }
-.list-group-item{ padding:.75rem 1rem; }
-.card-body{ padding:1rem 1rem; }
-
-/* Offcanvas legible */
-.offcanvas .offcanvas-body{ line-height:1.45; }
-.offcanvas .offcanvas-title{ font-weight:800; }
+.plan-card .btn-outline-danger{ --bs-btn-bg: rgba(0,0,0,.25); }
