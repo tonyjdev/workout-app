@@ -203,7 +203,6 @@
     // ---------- Home (improved)
     function viewHome () {
         return `
-      ${renderHero()}
       ${renderWeekMini()}
       ${renderChallenges()}
     `
@@ -237,17 +236,16 @@
     }
 
     // ── Auxiliar: pinta un “pill” de día (para HOME)
-    function homeDayPill (day, dayNumber, completed) {
+    function homeDayPill (day, dayNumber, completed, today1) {
         const base = 'day-pill text-center p-2 rounded bg-body-tertiary'
         const cls = day?.rest ? `${base} day-rest` : (completed ? `${base} day-done` : base)
-        const icon = day?.rest
-            ? '<i class="bi bi-cup-hot"></i>'
-            : (completed ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-circle"></i>')
+        const icon = iconForDay(day, { completed, index1: dayNumber, today1 })
+
         return `
-    <div class="${cls}">
-      <div class="day-number">${dayNumber}</div>
-      <div class="day-icon">${icon}</div>
-    </div>`
+            <div class="${cls}">
+              <div class="day-number">${dayNumber}</div>
+              <div class="day-icon">${icon}</div>
+            </div>`
     }
 
     // Info del plan activo (nombre y data)
@@ -359,13 +357,38 @@
         return { completed, total }
     }
 
+    // --- helpers de semana e iconos ---
+    const WEEK_LEN = 7;
+
+    // Rellena a 7 días; los faltantes se consideran descanso
+        function padWeekTo7(days = []) {
+            const out = (days || []).slice(0, WEEK_LEN);
+            while (out.length < WEEK_LEN) out.push({ rest: true, exercises: [] });
+            return out;
+        }
+
+    // Hoy (1=Lunes ... 7=Domingo)
+        function todayIndex1to7() {
+            const dow0 = new Date().getDay();          // 0=Dom..6=Sab
+            return ((dow0 + 6) % 7) + 1;               // 1=Lun..7=Dom
+        }
+
+    // Icono según reglas
+        function iconForDay(day, { completed, index1, today1 }) {
+            if (day?.rest) return '<i class="bi bi-battery-half"></i>';          // 🔋 descanso
+            if (completed)  return '<i class="bi bi-check-circle-fill"></i>';    // ✔️ completado
+            if (index1 === today1) return '<span aria-hidden="true">🏋️</span>';  // 🏋️ hoy con entreno
+            if (index1 < today1) return '<i class="bi bi-dash-circle"></i>';     // ⛔ pasado sin entrenar
+            return '<i class="bi bi-circle"></i>';                               // ○ futuro sin completar
+        }
+
     // ── Nuevo render: dos filas 1–4 y 5–7 + trofeo
     function renderWeekMini () {
         const planInfo = getActivePlanInfo()
         const { completed, total } = weekCompletionCounts(planInfo.data)
 
         const week = state.plan?.weeks?.[0]?.days || []
-        const first7 = week.slice(0, 7)
+        const first7 = padWeekTo7(week)
 
         // trofeo "lit" si TODOS (incluidos descansos) están hechos
         const allDone = first7.length
@@ -380,26 +403,26 @@
 
         const trophyCls = `day-pill text-center p-2 rounded bg-body-tertiary day-trophy${allDone ? ' lit' : ''}`
         const trophy = `
-    <div class="${trophyCls}">
-      <div class="day-number">&nbsp;</div>
-      <div class="day-icon"><i class="bi bi-trophy"></i></div>
-    </div>`
+            <div class="${trophyCls}">
+              <div class="day-number">&nbsp;</div>
+              <div class="day-icon"><i class="bi bi-trophy"></i></div>
+            </div>`
 
         // cabecera con nombre del plan y "completados/total"
         const header = `
-    <div class="d-flex justify-content-between align-items-center mb-1">
-      <div class="fw-semibold">${planInfo.name}</div>
-      <div class="text-secondary">${completed}/${total}</div>
-    </div>`
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <div class="fw-semibold">${planInfo.name}</div>
+              <div class="text-secondary">${completed}/${total}</div>
+            </div>`
 
         return `
-    <section class="mb-3">
-      ${header}
-      <div class="week-grid">${top}</div>
-      <div class="week-grid mt-2" style="grid-template-columns: repeat(4, 1fr);">
-        ${bottomDays}${trophy}
-      </div>
-    </section>`
+            <section class="mb-3">
+              ${header}
+              <div class="week-grid">${top}</div>
+              <div class="week-grid mt-2" style="grid-template-columns: repeat(4, 1fr);">
+                ${bottomDays}${trophy}
+              </div>
+            </section>`
     }
 
     function renderChallenges () {
@@ -808,22 +831,22 @@
                 const muscles = [...(ex.primary_muscles || []), ...(ex.secondary_muscles || [])].join(', ')
                 const tags = (ex.tags || []).join(' ')
                 const haystack = `${(ex.name || '').toLowerCase()} ${muscles.toLowerCase()} ${tags.toLowerCase()}`
-                const link = ex.video ? `<a href="${ex.video}" class="btn btn-sm btn-outline-light" target="_blank" rel="noopener"><i class="bi bi-youtube me-1"></i>Vídeo</a>` : ''
+                const video = ex.video ? embedVideoHTML(ex.video, ex.name || ex.id) : '';
                 const cues = Array.isArray(ex.cues) && ex.cues.length ? `<ul class="small mb-2">${ex.cues.map(c => `<li>${c}</li>`).join('')}</ul>` : ''
                 return `<div class="accordion-item" data-haystack="${haystack}">
-        <h2 class="accordion-header" id="${headId}">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${colId}" aria-expanded="false" aria-controls="${colId}">
-            ${ex.name || ex.id}
-          </button>
-        </h2>
-        <div id="${colId}" class="accordion-collapse collapse" aria-labelledby="${headId}" data-bs-parent="#${accId}">
-          <div class="accordion-body">
-            ${ex.description ? `<p class="mb-2">${ex.description}</p>` : ''}
-            ${cues}
-            ${link}
-          </div>
-        </div>
-      </div>`
+                    <h2 class="accordion-header" id="${headId}">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${colId}" aria-expanded="false" aria-controls="${colId}">
+                        ${ex.name || ex.id}
+                      </button>
+                    </h2>
+                    <div id="${colId}" class="accordion-collapse collapse" aria-labelledby="${headId}" data-bs-parent="#${accId}">
+                      <div class="accordion-body">
+                        ${ex.description ? `<p class="mb-2">${ex.description}</p>` : ''}
+                        ${cues}
+                        ${video}
+                      </div>
+                    </div>
+                  </div>`
             }).join('')
 
             help.innerHTML = `
@@ -916,25 +939,28 @@
         const weeksHTML = (pdata.weeks || []).map((w, wi) => {
             const { weekPct, totalDays, doneDays } = weekProgress(pdata, wi)
             // grid 1..4 / 5..7 con trofeo
-            const days = (w.days || []).slice(0, 7)
-            const top = days.slice(0, 4).map((d, i) => renderWeekDayPill(wi, i, d)).join('')
-            const bottom = days.slice(4, 7).map((d, i) => renderWeekDayPill(wi, i + 4, d)).join('')
+            const days = padWeekTo7(w.days || [])
+            const today1 = todayIndex1to7()
+
+            const top = days.slice(0, 4).map((d, i) => renderWeekDayPill(wi, i, d, today1)).join('')
+            const bottom = days.slice(4, 7).map((d, i) => renderWeekDayPill(wi, i + 4, d, today1)).join('')
+
             const trophy = `<div class="day-pill text-center p-2 rounded bg-body-tertiary ${weekCompleted(wi) ? 'day-trophy lit' : 'day-trophy'}">
-      <div class="day-number">&nbsp;</div><div class="day-icon"><i class="bi bi-trophy"></i></div></div>`
+                <div class="day-number">&nbsp;</div><div class="day-icon"><i class="bi bi-trophy"></i></div></div>`
 
             return `<div class="card mb-3">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center mb-1">
-          <h5 class="mb-0">Week ${wi + 1}</h5>
-          <div class="fw-semibold">${doneDays}/${totalDays}</div>
-        </div>
-        <div class="progress mb-2 progress-mini"><div class="progress-bar" style="width:${weekPct}%"></div></div>
-        <div class="week-grid">${top}</div>
-        <div class="week-grid mt-2" style="grid-template-columns: repeat(4, 1fr);">
-          ${bottom}${trophy}
-        </div>
-      </div>
-    </div>`
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <h5 class="mb-0">Week ${wi + 1}</h5>
+                  <div class="fw-semibold">${doneDays}/${totalDays}</div>
+                </div>
+                <div class="progress mb-2 progress-mini"><div class="progress-bar" style="width:${weekPct}%"></div></div>
+                <div class="week-grid">${top}</div>
+                <div class="week-grid mt-2" style="grid-template-columns: repeat(4, 1fr);">
+                  ${bottom}${trophy}
+                </div>
+              </div>
+            </div>`
         }).join('')
         const headerMeta = renderPlanMetaHeader()
 
@@ -949,17 +975,18 @@
     </div>`
     }
 
-    function renderWeekDayPill (weekIdx, dayIdx, d) {
+    function renderWeekDayPill (weekIdx, dayIdx, d, today1) {
         const completed = isDayCompleted(weekIdx, dayIdx)
         const base = 'day-pill text-center p-2 rounded bg-body-tertiary'
         const cls = d?.rest ? `${base} day-rest` : (completed ? `${base} day-done` : base)
         const icon = d?.rest ? 'bi-cup-hot' : (completed ? 'bi-check-circle-fill' : 'bi-circle')
+        const iconHTML = iconForDay(d, { completed, index1: dayIdx + 1, today1 })
         const num = dayIdx + 1
         const disabled = completed ? 'disabled' : ''
         return `<button class="${cls} w-100"
             data-action="pick-day" data-week="${weekIdx + 1}" data-day="${dayIdx + 1}" ${disabled}>
             <div class="day-number">${num}</div>
-            <div class="day-icon"><i class="bi ${icon}"></i></div>
+            <div class="day-icon">${iconHTML}</i></div>
           </button>`
     }
 
@@ -1073,17 +1100,20 @@
         const setInfo = `${state.training.currentSet}/${ex.sets || 1}`
         const progressPct = Math.round((completed / total) * 100)
 
+        const exInfo = state.exDict.get(String(stepId(ex))) || null;
+        const videoHtml = exInfo?.video ? embedVideoHTML(exInfo.video, name) : '';
         const topMedia = `<div class="exercise-media mb-3">
-    <img src="${exerciseImageFor(ex, name)}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">
-  </div>`
+          ${videoHtml || `<img src="${exerciseImageFor(ex, name)}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">`}
+        </div>`;
+
 
         const timerBlock = isTimed
             ? `<div class="d-flex align-items-center justify-content-center gap-2">
-         <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
-           <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
-         </button>
-         <div class="timer-large" id="timedLeftNum">${state.training.timedLeft || stepTime(ex)}</div>
-       </div>`
+                 <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
+                   <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
+                 </button>
+                 <div class="timer-large" id="timedLeftNum">${state.training.timedLeft || stepTime(ex)}</div>
+               </div>`
             : `<div class="reps-large">x${stepReps(ex) ?? '—'}</div>`
 
         return `
@@ -1440,6 +1470,43 @@
         return 'https://images.unsplash.com/photo-1526404079164-3c7f7b6a8ee8?q=80&w=1200&auto=format&fit=crop'
     }
 
+    // --- Helpers para incrustar vídeo YouTube ---
+    function youTubeIdFromUrl (url) {
+        try {
+            const u = new URL(url);
+            const host = u.hostname.replace(/^www\./, '');
+            if (host === 'youtu.be') {
+                // https://youtu.be/VIDEOID
+                return u.pathname.slice(1).split('/')[0] || null;
+            }
+            if (host.endsWith('youtube.com')) {
+                // https://www.youtube.com/watch?v=VIDEOID
+                if (u.searchParams.get('v')) return u.searchParams.get('v');
+                // https://www.youtube.com/shorts/VIDEOID
+                const parts = u.pathname.split('/').filter(Boolean);
+                if (parts[0] === 'shorts' && parts[1]) return parts[1];
+            }
+        } catch (_) { /* noop */ }
+        return null;
+    }
+
+    function embedVideoHTML (url, title = 'Vídeo') {
+        const id = youTubeIdFromUrl(url);
+        if (!id) return '';
+        const src = `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
+        return `
+    <div class="ratio ratio-16x9">
+      <iframe
+        src="${src}"
+        title="${title}"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>`;
+    }
+
+
     function statCard (icon, label, value) {
         return `<div class="card p-3 text-center h-100">
             <i class="bi ${icon} mb-1"></i>
@@ -1475,14 +1542,14 @@
                 ex.secondary_muscles?.length ? `<div class="small">Secundarios: <strong>${ex.secondary_muscles.join(', ')}</strong></div>` : ''
             ].join('')
             const cues = Array.isArray(ex.cues) && ex.cues.length ? `<ul class="small mb-2">${ex.cues.map(c => `<li>${c}</li>`).join('')}</ul>` : ''
-            const link = ex.video ? `<a href="${ex.video}" class="btn btn-sm btn-outline-light" target="_blank" rel="noopener"><i class="bi bi-youtube me-1"></i>Vídeo</a>` : ''
+            const video = ex.video ? embedVideoHTML(ex.video, ex.name || ex.id) : '';
             help.innerHTML = `
-      <h5 class="mb-2">${ex.name || exId}</h5>
-      ${muscles}
-      ${ex.description ? `<p class="mb-2">${ex.description}</p>` : ''}
-      ${cues}
-      ${link}
-    `
+              <h5 class="mb-2">${ex.name || exId}</h5>
+              ${muscles}
+              ${ex.description ? `<p class="mb-2">${ex.description}</p>` : ''}
+              ${cues}
+              ${video}
+            `
         }
         const oc = window.bootstrap?.Offcanvas?.getOrCreateInstance?.('#appHelp')
         oc?.show?.()

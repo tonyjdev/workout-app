@@ -144,10 +144,11 @@ body{
   background: linear-gradient(to bottom, rgba(0,0,0,.10) 0%, rgba(0,0,0,.30) 45%, rgba(0,0,0,.45) 100%);
 }
 .plan-card.plan-cover .card-body{
-  position:relative; z-index:1;
-  min-height: 200px;
-  display:flex; flex-direction:column; justify-content:center;
-  padding:8rem 1rem 1.1rem 1rem; /* user-customized */
+    position:relative; z-index:1;
+    max-height: 250px;
+    overflow: hidden;
+    display:flex; flex-direction:column; justify-content:center;
+    padding: 3rem 1rem 1.1rem 1rem; /* user-customized */
 }
 
 /* legibility on images */
