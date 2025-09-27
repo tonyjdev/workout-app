@@ -1,4 +1,14 @@
 {
+  "meta": {
+    "image": "URL de portada",
+    "level": "intermedio",
+    "goal": "pérdida de grasa",
+    "equipment": ["mancuernas","colchoneta"],
+    "muscles": ["pecho","tríceps","core"],
+    "avg_minutes": 25,
+    "doc_links": [{"label":"Guía PDF","url":"https://..."},{"label":"Blog","url":"https://..."}],
+    "description": "Texto largo del objetivo y pautas..."
+  },
   "weeks": [
     {
       "number": 1,
@@ -2512,8 +2522,5 @@
         }
       ]
     }
-  ],
-  "meta": {
-    "source": "converted_from_unified_v1"
-  }
+  ]
 }

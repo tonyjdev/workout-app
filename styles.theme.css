@@ -1,0 +1,48 @@
+
+/* =====================================================
+   StriveFit — Theme definitions (Light & Dark)
+   Exposes CSS variables consumed by styles.base.css
+   Switch via <html data-bs-theme="light|dark">
+   ===================================================== */
+
+/* ---------- Light theme ---------- */
+:root[data-bs-theme="light"]{
+    --sf-bg: #fafafa;
+    --sf-text: #111418;
+    --sf-muted: #6b7280;                 /* slate-500 */
+    --sf-card: #f7f7f8;
+    --sf-elev: #ffffff;
+    --sf-border: rgba(17,20,24,.12);
+    --sf-elev-shadow: 0 1px 3px rgba(0,0,0,.08);
+    --sf-track: rgba(17,20,24,.08);
+    --sf-overlay-top: rgba(255,255,255,.10);
+    --sf-overlay-btm: rgba(0,0,0,.45);
+    --sf-accent: #4cc9f0;
+    --sf-success: #30bf79;               /* greener for light */
+    --sf-warning: #c68b0e;
+    --sf-trophy: #d3a318;
+    --sf-media: #f0f2f5;
+    --sf-nav-active-bg: #111418;   /* fondo oscuro */
+    --sf-nav-active-fg: #ffffff;   /* texto claro */
+}
+
+/* ---------- Dark theme ---------- */
+:root[data-bs-theme="dark"]{
+    --sf-bg: #0b0d12;
+    --sf-text: #e5e7eb;
+    --sf-muted: #9aa4b2;
+    --sf-card: #0f1115;
+    --sf-elev: #131722;
+    --sf-border: rgba(255,255,255,.08);
+    --sf-elev-shadow: 0 1px 3px rgba(0,0,0,.35);
+    --sf-track: rgba(255,255,255,.12);
+    --sf-overlay-top: rgba(0,0,0,.10);
+    --sf-overlay-btm: rgba(0,0,0,.55);
+    --sf-accent: #4cc9f0;
+    --sf-success: #5ad08c;
+    --sf-warning: #f0ad4e;
+    --sf-trophy: #ffd454;
+    --sf-media: #111;
+    --sf-nav-active-bg: #f0f0f0;   /* fondo claro */
+    --sf-nav-active-fg: #111418;   /* texto oscuro */
+}

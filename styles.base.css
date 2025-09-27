@@ -1,0 +1,288 @@
+
+/* =====================================================
+   StriveFit — Base styles (structure & components)
+   Relies on CSS variables defined in styles.theme.css
+   ===================================================== */
+
+/* ---------- Sizing / layout tokens ---------- */
+:root{
+    --nav-h: 90px;          /* bottom navbar height */
+    --ad-h: 60px;           /* ad banner height */
+    --radius-app: 8px;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 12px;
+    --space-cta-offset: 12px;
+}
+
+/* Smooth theme transition (background/text) */
+html, body { transition: background-color .2s ease, color .2s ease; }
+
+/* ---------- Global layout reserves ---------- */
+#bottomBar{ height: var(--nav-h); }
+#appContent{ padding-bottom: calc(var(--nav-h) + var(--ad-h) + 16px); }
+
+/* Sticky CTAs float above ad + nav */
+.bottom-cta, .bottom-actions{
+  position: sticky;
+  bottom: calc(var(--nav-h) + var(--ad-h) + var(--space-cta-offset));
+  z-index: 1032;
+}
+
+/* ---------- Ad banner ---------- */
+.ad-banner{
+  position: fixed; left: 0; right: 0; bottom: var(--nav-h);
+  height: var(--ad-h);
+  z-index: 1031;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--sf-card);
+  border-top: 1px solid var(--sf-border);
+  box-shadow: 0 -2px 8px rgba(0,0,0,.12);
+}
+.ad-banner .bi-badge-ad{ font-size: 1.1rem; opacity: .85; }
+
+/* ---------- Orientation overlay ---------- */
+#orientationOverlay{
+  position: fixed; inset: 0; display: none;
+  background: rgba(0,0,0,.85); color: #fff; z-index: 2000;
+  align-items: center; justify-content: center; text-align: center; padding: 2rem;
+}
+#orientationOverlay .box{ max-width: 420px; }
+#orientationOverlay .emoji{ font-size: 3rem; line-height: 1; margin-bottom: .75rem; }
+
+/* ---------- Typography / base ---------- */
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
+  color: var(--sf-text);
+  background: var(--sf-bg);
+}
+.navbar .btn{ border-radius: var(--radius-sm); }
+
+/* ---------- Bottom nav ---------- */
+#bottomNav .nav-link{ display:flex; flex-direction:column; align-items:center; gap:.25rem; }
+#bottomNav .nav-link i{ font-size:1.2rem; }
+
+/* Ocultar nav (y recuperar espacio) cuando estamos entrenando */
+.nav-hidden #bottomNav { transform: translateY(100%); }
+.nav-hidden #bottomNav .nav-link { pointer-events:none; }
+.nav-hidden #appContent { padding-bottom: calc(var(--ad-h) + 16px); } /* quitamos la reserva del nav */
+
+/* Transición suave opcional */
+#bottomNav { transition: transform .2s ease; }
+
+/* Ya tenías esto para ocultar nav y ajustar padding del contenido */
+.nav-hidden #bottomNav { transform: translateY(100%); }
+.nav-hidden #appContent { padding-bottom: calc(var(--ad-h) + 16px); }
+
+/* ⬇️ Mueve el banner al fondo de la pantalla cuando no hay nav */
+.nav-hidden .ad-banner { bottom: 0; }
+
+/* ⬇️ Ajusta el “pegado” de CTAs sobre el banner (sin nav) */
+.nav-hidden .bottom-cta,
+.nav-hidden .bottom-actions{
+    bottom: calc(var(--ad-h) + var(--space-cta-offset));
+}
+
+
+/* Fila de botones 20% / 80% en cards */
+.btn-split { display:flex; gap:.5rem; }
+.btn-20 { flex: 0 0 20%; }
+.btn-80 { flex: 1 1 80%; }
+
+/* Botón reset más pequeño y con color diferenciado */
+.btn-reset-plan { background: #ffc107; color:#111; border: none; }
+.btn-reset-plan:hover { filter: brightness(.95); }
+
+
+/* ---------- Hero (motto over image) ---------- */
+.hero{ position:relative; border-radius:16px; overflow:hidden; background: var(--sf-media); }
+.hero img{ width:100%; height:160px; object-fit:cover; display:block; }
+.hero .overlay{ position:absolute; inset:0; background: linear-gradient(180deg, var(--sf-overlay-top), var(--sf-overlay-btm)); }
+.hero .motto{ position:absolute; left:1rem; bottom:.75rem; font-weight:700; font-size:1.1rem; text-shadow: 0 1px 0 rgba(0,0,0,.75); }
+
+/* ---------- Week grids ---------- */
+.week-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; }
+.day-pill{ user-select:none; background: var(--sf-card); border: 1px solid var(--sf-border); border-radius: 12px; }
+.day-pill .day-number{ font-weight:700; font-size:.9rem; line-height:1; }
+.day-pill .day-icon{ font-size:1.1rem; opacity:.95; }
+
+/* States */
+.day-rest .day-icon{ color: var(--sf-warning); }
+.day-done{
+  background: color-mix(in srgb, var(--sf-success) 12%, transparent);
+  border-color: color-mix(in srgb, var(--sf-success) 35%, var(--sf-border));
+}
+.day-done .day-number{ color: var(--sf-success); }
+.day-done .day-icon{ color: var(--sf-success); }
+.day-trophy .day-icon{ color: var(--sf-trophy); filter: brightness(.9); }
+.day-trophy.lit .day-icon{
+  filter:none;
+  text-shadow: 0 0 12px color-mix(in srgb, var(--sf-trophy) 65%, transparent),
+               0 0 24px color-mix(in srgb, var(--sf-trophy) 35%, transparent);
+}
+
+/* ---------- Cards ---------- */
+.card{ background: var(--sf-elev); border: 1px solid var(--sf-border); box-shadow: var(--sf-elev-shadow); }
+.list-group-item{ background: var(--sf-elev); color: var(--sf-text); border-color: var(--sf-border); }
+
+.card.plan-card{ border-radius: var(--radius-lg); overflow:hidden; border:0; }
+.plan-card .meta{ color: var(--sf-muted); }
+.plan-card .progress{ height:.55rem; border-radius:999px; background: var(--sf-track); }
+.plan-card .progress .progress-bar{ background: var(--sf-accent); }
+
+/* — Plan cards with cover image — */
+.plan-card.plan-cover{ position:relative; color:#fff; }
+.plan-card.plan-cover::before{
+  content:""; position:absolute; inset:0;
+  background-image:var(--cover);
+  background-size:cover; background-position:center;
+  transform:scale(1.02);
+  opacity:.5; /* only the image at 50% */
+}
+.plan-card.plan-cover::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.10) 0%, rgba(0,0,0,.30) 45%, rgba(0,0,0,.45) 100%);
+}
+.plan-card.plan-cover .card-body{
+  position:relative; z-index:1;
+  min-height: 200px;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:8rem 1rem 1.1rem 1rem; /* user-customized */
+}
+
+/* legibility on images */
+.plan-card.plan-cover .card-body,
+.plan-card.plan-cover .card-body *{ text-shadow: 0 1px 0 rgba(0,0,0,.95); }
+
+.plan-card .btn-outline-danger{ --bs-btn-bg: rgba(0,0,0,.25); }
+
+/* ---------- Progress bars / tiles ---------- */
+.progress-mini{ height:8px; border-radius:999px; background: var(--sf-track); }
+.progress-mini .progress-bar{ background: var(--sf-accent); }
+.progress-thick{
+    position: relative;
+    height: 20px;
+    border-radius: 8px;
+    background: var(--sf-track);
+    overflow: hidden;
+}
+.progress-thick .progress-bar{
+    display:block;               /* ← asegura que se pinta */
+    height:100%;                 /* ← rellena toda la altura */
+    background: var(--sf-accent);
+    transition: width .25s ease; /* suavidad */
+}
+.progress-thick .progress-label{
+    position: absolute; inset: 0;
+    display:flex; align-items:center; justify-content:center;
+    font-size: .75rem; font-weight: 800;
+    color: var(--sf-text);
+    text-shadow: 0 1px 0 rgba(0,0,0,.7);
+    mix-blend-mode: difference; /* texto visible sobre el bar en ambos modos */
+}
+
+.stat-tile{ background: var(--sf-card); border:1px solid var(--sf-border); border-radius:14px; padding:.75rem; text-align:center; }
+.stat-tile .big{ font-size:1.25rem; font-weight:800; }
+
+/* ---------- Exercise media / timer ---------- */
+.exercise-media{
+  height:200px; background: var(--sf-media);
+  border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.timer-area{ margin:1rem 0 1.25rem; }
+.timer-large, .reps-large{ font-size:3rem; font-weight:800; text-align:center; line-height:1; }
+/* Pantallas de ejercicio/descanso: ocupar altura disponible sin tapar CTAs */
+.exercise-screen{
+    min-height: calc(100vh - var(--nav-h) - var(--ad-h) - 16px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* El bloque del cronómetro/reps ocupa el hueco libre y centra el contenido */
+.exercise-screen .timer-area{
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 1.25rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn-tall{ padding:.9rem 1rem; }
+
+/* ---------- Utility tweaks ---------- */
+.navbar .btn{ border-radius:12px; }
+
+/* NAV inferior como segmentos iguales de ancho completo */
+.nav-bottom{
+    height: var(--nav-h);
+    bottom: 0; left: 0; right: 0;
+    z-index: 1030;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  /* 4 opciones */
+    gap: 0;                                  /* sin huecos entre segmentos */
+}
+
+/* Cada nav-link rellena su segmento completo */
+.nav-bottom .nav-link{
+    height: var(--nav-h);
+    border-radius: 0;
+    margin: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: .2rem;
+    background: var(--sf-card);     /* fondo para estado normal */
+    color: var(--sf-text);
+    border: 1px solid var(--sf-border);
+    border-left-width: 0;           /* junta visualmente los segmentos */
+}
+.nav-bottom .nav-link:first-child{ border-left-width: 1px; }
+
+/* Tamaños de icono y texto */
+.nav-bottom .nav-link i{ font-size: 1.1rem; line-height: 1; }
+.nav-bottom .nav-link span{ font-size: .8rem; }
+
+/* Estado activo (invertido por tema) */
+.nav-bottom .nav-link.active{
+    background: var(--sf-nav-active-bg);
+    color: var(--sf-nav-active-fg);
+    border-color: transparent;
+}
+.nav-bottom .nav-link.active i{ color: var(--sf-nav-active-fg); }
+
+/* Estado deshabilitado (por si lo usas en algún momento) */
+.nav-bottom .nav-link:disabled,
+.nav-bottom .nav-link.disabled{
+    opacity: .5; pointer-events: none;
+}
+
+/* El icono del botón de tema hereda un color de alto contraste en ambos modos */
+[data-action="toggle-theme"] i { color: var(--sf-text) !important; }
+
+.card,
+.list-group-item,
+.day-pill,
+.exercise-media,
+.navbar .btn,
+.btn,
+.stat-tile,
+.plan-card { border-radius: var(--radius-app) !important; }
+
+/* Cabecera de día un pelín más compacta (opcional) */
+.training-day .plan-card.plan-cover .card-body{ min-height: 170px; }
+
+.plan-card.plan-cover{ position:relative; background: transparent; } /* no tapes el ::before */
+.plan-card.plan-cover::before{
+    content:""; position:absolute; inset:0;
+    background-image:var(--cover);
+    background-size:cover; background-position:center;
+    transform:scale(1.02);
+    opacity:.5;
+    z-index:0;
+}
+.plan-card.plan-cover::after{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(to bottom, rgba(0,0,0,.10) 0%, rgba(0,0,0,.30) 45%, rgba(0,0,0,.45) 100%);
+    z-index:0;
+}
+.plan-card.plan-cover .card-body{ position:relative; z-index:1; }

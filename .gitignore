@@ -1,0 +1,123 @@
+# --------------------------------------------------------
+# Generic .gitignore for a vanilla JS + Bootstrap web app
+# (supports optional build tools: Vite/Webpack/Parcel/Sass)
+# Includes PWA artifacts, env files, logs, IDE/OS clutter
+# --------------------------------------------------------
+
+### OS / File manager junk
+.DS_Store
+.DS_Store?
+Icon?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.tmp
+*.temp
+
+### Node / package managers (if used)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+### Build outputs
+dist/
+build/
+public/build/
+public/dist/
+.tmp/
+.temp/
+.cache/
+.cache-loader/
+.vite/
+.vite-inspect/
+vite.config.ts.timestamp-*
+vite.svg
+coverage/
+reports/
+*.map
+
+### Bundlers / Tooling
+.parcel-cache/
+parcel-bundle-reports/
+webpack-stats.json
+stats.html
+.eslintcache
+.stylelintcache
+.prettier-cache/
+.postcss-cache/
+.sass-cache/
+.rpt2_cache/
+.turbo/
+.nyc_output/
+.browserslistrc.json
+
+### TypeScript (if used)
+*.tsbuildinfo
+
+### Transpiled / Generated assets
+*.min.*
+*.bundle.*
+*.gz
+*.br
+
+### PWA / Service Worker generated files
+sw.js
+sw*.js
+service-worker.js
+workbox-*.js
+workbox-*.js.map
+workbox-injection*.js
+*.cache.json
+.well-known/assetlinks.json
+
+### Env / Secrets
+.env
+.env.*
+!.env.example
+
+### Images / media pipelines (optional artifacts)
+*.orig.*
+*.bak.*
+
+### IDEs / Editors
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# JetBrains
+.idea/
+*.iml
+out/
+
+# Others
+.history/
+*.sublime-*
+
+### System-specific caches
+__pycache__/
+*.pyc
+
+### Framework/hosting providers
+.vercel/
+.netlify/
+firebase-debug.log
+.firebaserc.local
+functions/node_modules/
+.now/
+.azure/
+
+### Misc
+# Mac zip metadata
+__MACOSX/
+# Local test servers
+*.local.*
