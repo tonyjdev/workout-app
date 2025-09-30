@@ -1,3 +1,4 @@
+
 {
   "meta": {
     "image": "URL de portada",
@@ -24,7 +25,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -32,7 +34,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -40,7 +43,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -48,7 +52,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -56,14 +61,16 @@
               "sets": 2,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -71,7 +78,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -86,14 +94,16 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PLANK_SIDE",
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "main"
             },
             {
               "id": "BIRD_DOG",
@@ -101,7 +111,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -116,7 +127,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -124,7 +136,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -132,7 +145,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -140,7 +154,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -148,14 +163,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -170,7 +187,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             }
           ]
         },
@@ -185,7 +203,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -193,7 +212,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -201,7 +221,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -209,14 +230,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -236,7 +259,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -244,7 +268,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -252,7 +277,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -260,7 +286,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -268,14 +295,16 @@
               "sets": 2,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -283,7 +312,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -298,14 +328,16 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PLANK_SIDE",
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "main"
             },
             {
               "id": "BIRD_DOG",
@@ -313,7 +345,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -328,7 +361,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -336,7 +370,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -344,7 +379,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -352,7 +388,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -360,14 +397,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -382,7 +421,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             }
           ]
         },
@@ -397,7 +437,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -405,7 +446,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -413,7 +455,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -421,14 +464,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -448,7 +493,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -456,7 +502,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -464,7 +511,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -472,7 +520,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -480,14 +529,16 @@
               "sets": 2,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -495,7 +546,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -510,14 +562,16 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PLANK_SIDE",
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "main"
             },
             {
               "id": "BIRD_DOG",
@@ -525,7 +579,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -540,7 +595,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -548,7 +604,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -556,7 +613,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -564,7 +622,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -572,14 +631,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -594,7 +655,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             }
           ]
         },
@@ -609,7 +671,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -617,7 +680,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -625,7 +689,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -633,14 +698,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -660,7 +727,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -668,7 +736,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -676,7 +745,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -684,7 +754,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -692,14 +763,16 @@
               "sets": 2,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -707,7 +780,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -722,14 +796,16 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PLANK_SIDE",
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "main"
             },
             {
               "id": "BIRD_DOG",
@@ -737,7 +813,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -752,7 +829,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -760,7 +838,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -768,7 +847,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -776,7 +856,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -784,14 +865,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -806,7 +889,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             }
           ]
         },
@@ -821,7 +905,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -829,7 +914,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -837,7 +923,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -845,14 +932,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -872,7 +961,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -880,7 +970,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -888,7 +979,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -896,7 +988,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -904,14 +997,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -919,7 +1014,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -933,7 +1029,8 @@
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "warmup"
             },
             {
               "id": "BIRD_DOG",
@@ -941,7 +1038,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -956,7 +1054,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -964,7 +1063,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -972,7 +1072,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -980,7 +1081,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -988,14 +1090,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -1010,7 +1114,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "MOB_HIP_ANKLE",
@@ -1018,7 +1123,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "stretch"
             }
           ]
         },
@@ -1033,7 +1139,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -1041,7 +1148,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -1049,7 +1157,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -1057,14 +1166,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -1084,7 +1195,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -1092,7 +1204,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -1100,7 +1213,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -1108,7 +1222,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -1116,14 +1231,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -1131,7 +1248,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -1145,7 +1263,8 @@
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "warmup"
             },
             {
               "id": "BIRD_DOG",
@@ -1153,7 +1272,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -1168,7 +1288,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -1176,7 +1297,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -1184,7 +1306,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -1192,7 +1315,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -1200,14 +1324,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -1222,7 +1348,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "MOB_HIP_ANKLE",
@@ -1230,7 +1357,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "stretch"
             }
           ]
         },
@@ -1245,7 +1373,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -1253,7 +1382,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -1261,7 +1391,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -1269,14 +1400,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -1296,7 +1429,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -1304,7 +1438,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -1312,7 +1447,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -1320,7 +1456,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -1328,14 +1465,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -1343,7 +1482,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -1357,7 +1497,8 @@
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "warmup"
             },
             {
               "id": "BIRD_DOG",
@@ -1365,7 +1506,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -1380,7 +1522,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -1388,7 +1531,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -1396,7 +1540,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -1404,7 +1549,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -1412,14 +1558,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -1434,7 +1582,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "MOB_HIP_ANKLE",
@@ -1442,7 +1591,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "stretch"
             }
           ]
         },
@@ -1457,7 +1607,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -1465,7 +1616,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -1473,7 +1625,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -1481,14 +1634,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -1508,7 +1663,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -1516,7 +1672,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -1524,7 +1681,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -1532,7 +1690,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -1540,14 +1699,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -1555,7 +1716,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -1569,7 +1731,8 @@
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "warmup"
             },
             {
               "id": "BIRD_DOG",
@@ -1577,7 +1740,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -1592,7 +1756,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -1600,7 +1765,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -1608,7 +1774,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -1616,7 +1783,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -1624,14 +1792,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -1646,7 +1816,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "MOB_HIP_ANKLE",
@@ -1654,7 +1825,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "stretch"
             }
           ]
         },
@@ -1669,7 +1841,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -1677,7 +1850,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -1685,7 +1859,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -1693,14 +1868,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -1720,7 +1897,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -1728,7 +1906,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -1736,7 +1915,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -1744,7 +1924,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -1752,14 +1933,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -1767,7 +1950,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -1781,7 +1965,8 @@
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "warmup"
             },
             {
               "id": "BIRD_DOG",
@@ -1789,7 +1974,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -1804,7 +1990,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -1812,7 +1999,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -1820,7 +2008,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -1828,7 +2017,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -1836,14 +2026,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -1858,7 +2050,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             }
           ]
         },
@@ -1873,7 +2066,8 @@
               "sets": 5,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -1881,7 +2075,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -1889,7 +2084,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -1897,14 +2093,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -1924,7 +2122,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -1932,7 +2131,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -1940,7 +2140,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -1948,7 +2149,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -1956,14 +2158,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -1971,7 +2175,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -1985,7 +2190,8 @@
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "warmup"
             },
             {
               "id": "BIRD_DOG",
@@ -1993,7 +2199,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -2008,7 +2215,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -2016,7 +2224,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -2024,7 +2233,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -2032,7 +2242,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -2040,14 +2251,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -2062,7 +2275,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             }
           ]
         },
@@ -2077,7 +2291,8 @@
               "sets": 5,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -2085,7 +2300,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -2093,7 +2309,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -2101,14 +2318,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -2128,7 +2347,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -2136,7 +2356,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -2144,7 +2365,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -2152,7 +2374,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -2160,14 +2383,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -2175,7 +2400,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -2189,7 +2415,8 @@
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "warmup"
             },
             {
               "id": "BIRD_DOG",
@@ -2197,7 +2424,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -2212,7 +2440,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -2220,7 +2449,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -2228,7 +2458,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -2236,7 +2467,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -2244,14 +2476,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -2266,7 +2500,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             }
           ]
         },
@@ -2281,7 +2516,8 @@
               "sets": 5,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -2289,7 +2525,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -2297,7 +2534,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -2305,14 +2543,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }
@@ -2332,7 +2572,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "PRESS_DB_BENCH",
@@ -2340,7 +2581,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_BENT",
@@ -2348,7 +2590,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "RDL",
@@ -2356,7 +2599,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PRESS_DB_SHOULDER",
@@ -2364,14 +2608,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_FRONT",
               "name": "Plancha frontal",
               "sets": 3,
               "type": "time",
-              "seconds": 45
+              "seconds": 45,
+              "block": "main"
             },
             {
               "id": "PALLOF",
@@ -2379,7 +2625,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -2393,7 +2640,8 @@
               "name": "Plancha lateral",
               "sets": 3,
               "type": "time",
-              "seconds": 35
+              "seconds": 35,
+              "block": "warmup"
             },
             {
               "id": "BIRD_DOG",
@@ -2401,7 +2649,8 @@
               "sets": 2,
               "type": "reps",
               "reps": 10,
-              "perSide": true
+              "perSide": true,
+              "block": "stretch"
             }
           ]
         },
@@ -2416,7 +2665,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "warmup"
             },
             {
               "id": "HIP_THRUST",
@@ -2424,7 +2674,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_DB_1ARM",
@@ -2432,7 +2683,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": true
+              "perSide": true,
+              "block": "main"
             },
             {
               "id": "VERT_PUSH",
@@ -2440,7 +2692,8 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "CALF_RAISE",
@@ -2448,14 +2701,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 15,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "HOLLOW",
               "name": "Hollow hold",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         },
@@ -2470,7 +2725,8 @@
               "sets": 1,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             }
           ]
         },
@@ -2485,7 +2741,8 @@
               "sets": 5,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "warmup"
             },
             {
               "id": "HOR_PUSH",
@@ -2493,7 +2750,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "ROW_ISOPAUSE",
@@ -2501,7 +2759,8 @@
               "sets": 4,
               "type": "reps",
               "reps": 10,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "QUAD_DOM",
@@ -2509,14 +2768,16 @@
               "sets": 3,
               "type": "reps",
               "reps": 12,
-              "perSide": false
+              "perSide": false,
+              "block": "main"
             },
             {
               "id": "PLANK_PULL",
               "name": "Plancha con arrastre (plank pull-through)",
               "sets": 3,
               "type": "time",
-              "seconds": 30
+              "seconds": 30,
+              "block": "stretch"
             }
           ]
         }

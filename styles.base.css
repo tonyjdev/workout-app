@@ -287,3 +287,80 @@ body{
     z-index:0;
 }
 .plan-card.plan-cover .card-body{ position:relative; z-index:1; }
+
+/* ---- Exercise block visuals ---- */
+.ex-item{ border-left: 4px solid transparent; border-radius: 12px; }
+.ex-item.ex-warmup{ background: var(--ex-warmup-bg); border-left-color: var(--ex-warmup-border); }
+.ex-item.ex-main{   background: var(--ex-main-bg);   border-left-color: var(--ex-main-border); }
+.ex-item.ex-stretch{background: var(--ex-stretch-bg);border-left-color: var(--ex-stretch-border); }
+
+/* Badges por bloque (sobre .badge de Bootstrap) */
+.ex-badge{ font-weight: 600; border: 1px solid transparent; }
+.ex-badge-warmup{ color: var(--sf-warning); border-color: var(--ex-warmup-border); background: transparent; }
+.ex-badge-main{   color: var(--sf-accent);  border-color: var(--ex-main-border);   background: transparent; }
+.ex-badge-stretch{color: var(--sf-success); border-color: var(--ex-stretch-border); background: transparent; }
+
+/* --- Secciones por bloque --- */
+.ex-list .ex-section{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--bs-body-bg);
+    border: none;
+    padding: .4rem .75rem;
+    margin-top: .35rem;
+}
+.ex-section .ex-section-dot{
+    display:inline-block; width:.6rem; height:.6rem; border-radius:50%;
+    margin-right:.5rem; vertical-align:middle;
+}
+.ex-sec-warmup .ex-section-dot{ background: var(--bs-warning, #ffc107); }
+.ex-sec-main   .ex-section-dot{ background: var(--bs-primary, #0d6efd); }
+.ex-sec-stretch .ex-section-dot{ background: var(--bs-success, #198754); }
+
+/* --- Ítems por bloque (contraste alto) --- */
+.ex-list .list-group-item.ex-item{
+    position: relative;
+    padding-left: .9rem;
+    border-left: .5rem solid transparent;
+    border-radius: .75rem;
+    margin: .25rem 0;
+    /* que gane a .list-group-item de Bootstrap */
+    background-color: transparent;
+}
+
+.ex-list .list-group-item.ex-item.ex-warmup{
+    background-color: var(--ex-warmup-bg, rgba(255,193,7,.18)) !important;
+    border-left-color: var(--ex-warmup-border, rgba(255,193,7,.85)) !important;
+}
+.ex-list .list-group-item.ex-item.ex-main{
+    background-color: var(--ex-main-bg, rgba(13,110,253,.18)) !important;
+    border-left-color: var(--ex-main-border, rgba(13,110,253,.85)) !important;
+}
+.ex-list .list-group-item.ex-item.ex-stretch{
+    background-color: var(--ex-stretch-bg, rgba(25,135,84,.18)) !important;
+    border-left-color: var(--ex-stretch-border, rgba(25,135,84,.85)) !important;
+}
+
+/* Badge (chip) del bloque */
+.ex-badge{
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: .7rem;
+    border: 1px solid transparent;
+    background: transparent;
+}
+.ex-badge-warmup{ color: var(--bs-warning, #ffc107); border-color: rgba(255,193,7,.5); }
+.ex-badge-main  { color: var(--bs-primary, #0d6efd); border-color: rgba(13,110,253,.5); }
+.ex-badge-stretch{ color: var(--bs-success, #198754); border-color: rgba(25,135,84,.5); }
+
+/* Mejora en dark: un poco más de alpha */
+:root[data-bs-theme="dark"] .ex-list .list-group-item.ex-item.ex-warmup{
+    background-color: var(--ex-warmup-bg-dark, rgba(255,193,7,.22)) !important;
+}
+:root[data-bs-theme="dark"] .ex-list .list-group-item.ex-item.ex-main{
+    background-color: var(--ex-main-bg-dark, rgba(13,110,253,.22)) !important;
+}
+:root[data-bs-theme="dark"] .ex-list .list-group-item.ex-item.ex-stretch{
+    background-color: var(--ex-stretch-bg-dark, rgba(25,135,84,.22)) !important;
+}

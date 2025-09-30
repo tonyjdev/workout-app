@@ -24,6 +24,13 @@
     --sf-media: #f0f2f5;
     --sf-nav-active-bg: #111418;   /* fondo oscuro */
     --sf-nav-active-fg: #ffffff;   /* texto claro */
+    /* Exercise blocks */
+    --ex-warmup-bg: color-mix(in srgb, var(--sf-warning) 10%, transparent);
+    --ex-warmup-border: color-mix(in srgb, var(--sf-warning) 40%, var(--sf-border));
+    --ex-main-bg: color-mix(in srgb, var(--sf-accent) 8%, transparent);
+    --ex-main-border: color-mix(in srgb, var(--sf-accent) 35%, var(--sf-border));
+    --ex-stretch-bg: color-mix(in srgb, var(--sf-success) 10%, transparent);
+    --ex-stretch-border: color-mix(in srgb, var(--sf-success) 40%, var(--sf-border));
 }
 
 /* ---------- Dark theme ---------- */
@@ -45,4 +52,11 @@
     --sf-media: #111;
     --sf-nav-active-bg: #f0f0f0;   /* fondo claro */
     --sf-nav-active-fg: #111418;   /* texto oscuro */
+    /* Exercise blocks */
+    --ex-warmup-bg: color-mix(in srgb, var(--sf-warning) 14%, transparent);
+    --ex-warmup-border: color-mix(in srgb, var(--sf-warning) 45%, var(--sf-border));
+    --ex-main-bg: color-mix(in srgb, var(--sf-accent) 12%, transparent);
+    --ex-main-border: color-mix(in srgb, var(--sf-accent) 40%, var(--sf-border));
+    --ex-stretch-bg: color-mix(in srgb, var(--sf-success) 14%, transparent);
+    --ex-stretch-border: color-mix(in srgb, var(--sf-success) 45%, var(--sf-border));
 }
