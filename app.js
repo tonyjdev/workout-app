@@ -1,4 +1,4 @@
-/* StriveFit – Full App (compact, with improved Home) */
+/* Workout – Full App (compact, with improved Home) */
 (() => {
     const $ = (s, c = document) => c.querySelector(s)
     const $$ = (s, c = document) => Array.from(c.querySelectorAll(s))
@@ -95,7 +95,97 @@
 
     // schema helpers
     const stepId = s => s?.exercise_id ?? s?.id ?? s?.exerciseId ?? s?.code ?? null
-    const stepTime = s => (s?.time ?? s?.seconds ?? null)
+
+    // ==== Estimador de duración ===============================================
+    const ESTIMATE_DEFAULTS = {
+        secondsPerRep: 2,          // aprox. 2s por repetición
+        restPerSet: 45,            // descanso entre series si no se define en step.rest
+        restBetweenExercises: 30   // descanso entre ejercicios si no se define en step.rest_next
+    };
+
+    function stepTime (s) { // robusto a strings "40s", "1:00", etc.
+        if (typeof s?.seconds === 'number') return s.seconds;
+        if (s?.time != null) {
+            const secs = parseSeconds(s.time);
+            if (secs != null) return secs;
+        }
+        return 0;
+    }
+
+    function parseSeconds (val) {
+        if (val == null) return null;
+        if (typeof val === 'number' && Number.isFinite(val)) return Math.round(val);
+        const s = String(val).trim().toLowerCase();
+
+        const mmss = s.match(/^(\d+):(\d{1,2})$/); // 1:00
+        if (mmss) return (+mmss[1] * 60) + (+mmss[2]);
+
+        const mix = s.match(/(?:(\d+)\s*m(?:in)?)\s*(?:(\d+)\s*s)?/); // 1m30s / 2min 15s
+        if (mix && (mix[1] || mix[2])) return (+mix[1] || 0) * 60 + (+mix[2] || 0);
+
+        const unit = s.match(/^(\d+(?:\.\d+)?)(\s*(?:s|sec|secs|m|″|”))?$/); // 40s / 1m / 40″
+        if (unit) {
+            const n = parseFloat(unit[1]); const u = (unit[2] || '').trim();
+            if (!u || u.startsWith('s') || u === '″' || u === '”') return Math.round(n);
+            if (u === 'm') return Math.round(n * 60);
+        }
+        const num = s.match(/^\d+$/);
+        if (num) return parseInt(s, 10);
+        return null;
+    }
+
+    function stepEstimatedSeconds(step){
+        const sets = +step.sets || 1;
+        let work = 0;
+
+        if ((step.type || '').toLowerCase() === 'time') {
+            const perSet = stepTime(step);
+            work = perSet * sets;
+        } else {
+            const repsRaw = (typeof step.reps === 'number') ? step.reps : (parseInt(String(step.reps||'').match(/\d+/)?.[0] || '0', 10));
+            let perSet = repsRaw * ESTIMATE_DEFAULTS.secondsPerRep;
+            if (step.perSide) perSet *= 2;
+            work = perSet * sets;
+        }
+
+        const restBetweenSets = (typeof step.rest === 'number' ? step.rest : ESTIMATE_DEFAULTS.restPerSet) * Math.max(0, sets - 1);
+        return work + restBetweenSets;
+    }
+
+    function estimateDaySeconds(day){
+        const exs = day.exercises || [];
+        let total = 0;
+        for (let i = 0; i < exs.length; i++) {
+            total += stepEstimatedSeconds(exs[i]);
+            if (i < exs.length - 1) {
+                const rn = (typeof exs[i].rest_next === 'number' ? exs[i].rest_next : ESTIMATE_DEFAULTS.restBetweenExercises);
+                total += rn;
+            }
+        }
+        return total;
+    }
+
+    function estimateDaySecondsByBlock(day){
+        const exs = day.exercises || [];
+        const sum = { warmup: 0, main: 0, stretch: 0 };
+
+        for (let i = 0; i < exs.length; i++) {
+            const x = exs[i];
+            const blk = exerciseBlock(x);              // 'warmup' | 'main' | 'stretch'
+            sum[blk] += stepEstimatedSeconds(x);       // tiempo de trabajo + descansos entre series
+
+            // Atribuimos el descanso entre ejercicios al bloque actual
+            if (i < exs.length - 1) {
+                const rn = (typeof x.rest_next === 'number' ? x.rest_next : ESTIMATE_DEFAULTS.restBetweenExercises);
+                sum[blk] += rn;
+            }
+        }
+        return sum;
+    }
+
+
+    function fmtMinutes(sec){ return Math.max(1, Math.round(sec / 60)); }
+
     const stepReps = s => {
         const r = s?.reps
         if (typeof r === 'number') return r
@@ -117,22 +207,47 @@
         return ex?.name || s?.name || (sid != null ? String(sid) : `Ejercicio ${i + 1}`)
     }
 
-    function normalizePlan (pl) {
-        if (!pl || !Array.isArray(pl.weeks)) return defaultPlan()
-        pl.weeks.forEach(w => {
-            w.days = Array.isArray(w.days) ? w.days : []
-            w.days.forEach(d => {
-                d.exercises = Array.isArray(d.exercises) ? d.exercises : []
-                d.exercises = d.exercises.map(x => ({
-                    ...x,
-                    id: x.id ?? x.exercise_id ?? x.exerciseId ?? x.code ?? x.name ?? null,
-                    sets: stepSets(x),
-                    seconds: stepTime(x) ?? (typeof x?.duration === 'number' ? x.duration : null),
-                    reps: stepReps(x)
-                }))
+    function normalizePlan (raw) {
+        // Clon superficial para no mutar el original
+        const plan = { ...raw }
+        const weeks = Array.isArray(raw.weeks) ? raw.weeks : []
+
+        plan.weeks = weeks.map((w, wi) => {
+            const number = w.number != null ? w.number : (wi + 1)
+            const days = Array.isArray(w.days) ? w.days : []
+
+            const normDays = days.map((d) => {
+                // Si viene con bloques, aplanamos; si no, usamos exercises tal cual
+                let exercises = []
+                if (Array.isArray(d.blocks)) {
+                    for (const block of d.blocks) {
+                        const btype = String(block?.type || 'main').toLowerCase()
+                        const items = Array.isArray(block?.items) ? block.items : []
+                        for (const it of items) {
+                            exercises.push(normalizeExerciseItem(it, btype))
+                        }
+                    }
+                } else {
+                    const items = Array.isArray(d.exercises) ? d.exercises : []
+                    for (const it of items) {
+                        exercises.push(normalizeExerciseItem(it, null))
+                    }
+                }
+
+                // Construimos el día normalizado
+                const dayNum = d.dayNum != null ? d.dayNum : d.day || d.number
+                return {
+                    ...d,
+                    dayNum: dayNum,            // mantiene el original o lo infiere
+                    exercises,                 // <- la app espera esto
+                    blocks: undefined          // <- limpiamos bloques para el resto de la app
+                }
             })
+
+            return { number, days: normDays }
         })
-        return pl
+
+        return plan
     }
 
     function buildDict (list) {
@@ -207,12 +322,12 @@
 
     function renderHero () {
         return `<section class="mb-3">
-      <div class="hero">
-        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop" alt="Entrena">
-        <div class="overlay"></div>
-        <div class="motto">${dailyMotto()}</div>
-      </div>
-    </section>`
+          <div class="hero">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop" alt="Entrena">
+            <div class="overlay"></div>
+            <div class="motto">${dailyMotto()}</div>
+          </div>
+        </section>`
     }
 
     // ── Auxiliar: ¿está completado ese día?
@@ -419,15 +534,18 @@
 
     function renderChallenges () {
         const hdr = `<div class="d-flex justify-content-between align-items-center mb-2">
-    <h5 class="mb-0">Challenge</h5>
-    <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addPlanModal"><i class="bi bi-plus-lg"></i></button>
-  </div>`
+            <h5 class="mb-0">Challenge</h5>
+            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addPlanModal"><i class="bi bi-plus-lg"></i></button>
+          </div>`
 
         const user = (state.userPlans || []).map(p => ({ id: p.id, name: p.name, data: p.data }))
         const includeBuiltin = !isBuiltinHidden() || user.length === 0 // si no hay planes, forzamos builtin
 
-        const cards = (includeBuiltin ? [{ id: 'builtin', name: 'Plan por defecto', data: defaultPlan() }] : [])
+        const list = (includeBuiltin ? [{ id: 'builtin', name: 'Plan por defecto', data: defaultPlan() }] : [])
             .concat(user)
+        const ordered = sortPlanInfosActiveFirst(list)
+
+        const cards = ordered
             .map(info => renderPlanCard(info))
             .join('')
 
@@ -465,8 +583,8 @@
         const activateBtn = active
             ? '<span class="badge text-bg-success">Activo</span>'
             : `<button class="btn btn-sm btn-outline-light" data-action="use-plan" data-plan="${info.id}">
-         <i class="bi bi-check2-circle me-1"></i>Activar
-       </button>`
+                 <i class="bi bi-check2-circle me-1"></i>Activar
+               </button>`
 
         const startBtn = active
             ? `<div class="d-grid">
@@ -789,6 +907,7 @@
             render()
         })
 
+        scrollToTopAfterRender()
     }
 
     function renderCatalogOffcanvas () {
@@ -1055,8 +1174,29 @@
               </li>`
         }).join('')
 
+        const estMin = fmtMinutes(estimateDaySeconds(day));
+        const within = (estMin >= 45 && estMin <= 60);
+        const title = within ? 'Estimación de duración' : 'Fuera del objetivo 45–60 min';
+        const badgeCls = within ? 'badge-est ok' : 'badge-est warn';
+        const estBadge = `
+            <div class="d-flex justify-content-end mb-2">
+              <span class="badge ${badgeCls}" title="${title}">≈ ${estMin} min</span>
+            </div>`;
+
+        const byBlk = estimateDaySecondsByBlock(day);
+        const toMin = (s) => Math.max(0, Math.round(s / 60));
+        const parts = [];
+        if (byBlk.warmup)  parts.push(`${blockLabel('warmup')} ${toMin(byBlk.warmup)}′`);
+        if (byBlk.main)    parts.push(`${blockLabel('main')} ${toMin(byBlk.main)}′`);
+        if (byBlk.stretch) parts.push(`${blockLabel('stretch')} ${toMin(byBlk.stretch)}′`);
+        const breakdown = parts.length
+            ? `<div class="est-breakdown small text-secondary">${parts.join(' • ')}</div>`
+            : '';
+
         return headerDay + `
-            <ul class="list-group mb-3">${itemsHTML}</ul>
+            ${estBadge}
+            ${breakdown}
+            <ul class="list-group list-group-flush ex-list mb-3">${itemsHTML}</ul>
             <div class="row g-2 bottom-cta">
               <div class="col-3 d-grid">
                 <button class="btn btn-secondary btn-tall" data-action="back-to-list">
@@ -1180,7 +1320,7 @@
             
                 <div class="d-flex justify-content-between align-items-start mb-2">
                   <div>
-                    <h5 class="mb-1">${showSame ? 'Descanso entre series' : 'Siguiente: ' + nextName}
+                    <h5 class="mb-1">Siguiente: ${nextName}
                       ${nextStep ? `<button class="btn btn-link btn-sm p-0 ms-2" data-action="help-ex" data-exercise-id="${stepId(nextStep)}"><i class="bi bi-info-circle"></i></button>` : ''}
                     </h5>
                     <div class="text-secondary">
@@ -1868,6 +2008,60 @@
         return b === 'warmup' ? 'Calentamiento' : (b === 'stretch' ? 'Estiramiento' : 'Entrenamiento')
     }
 
+    // Fuerza a que el navegador no restaure la posición del scroll en navegación
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    /** Sube al top de la página y, si existe, del contenedor principal */
+    function scrollToTopNow() {
+        // ventana
+        try { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); } catch (_) {}
+        const el = document.querySelector('#appMain, #app, main, .app-content, .container-fluid');
+        if (el) el.scrollTop = 0;
+    }
+
+    /** Sube al top justo DESPUÉS de renderizar el nuevo contenido */
+    function scrollToTopAfterRender() {
+        // doble RAF para asegurar layout aplicado antes de mover el scroll
+        requestAnimationFrame(() => requestAnimationFrame(scrollToTopNow));
+    }
+
+// --- Normalización de un ejercicio suelto (mantiene campos y añade block/seconds)
+    function normalizeExerciseItem (step, fallbackBlock) {
+        const out = { ...step }
+
+        // seconds a partir de 'time' (string)
+        if (out.seconds == null && out.time != null) {
+            const secs = parseSeconds(out.time)
+            if (secs != null) out.seconds = secs
+        }
+
+        // bloque: lo que venga prevalece; si no, inferimos por id o usamos el del bloque padre
+        if (!out.block) {
+            const id = String(out.id || '').toUpperCase()
+            if (id.startsWith('WU_')) out.block = 'warmup'
+            else if (id.startsWith('ST_')) out.block = 'stretch'
+            else out.block = (fallbackBlock || 'main')
+        }
+
+        return out
+    }
+
+    function planKey(p) {
+        // clave robusta para comparar el plan activo con los listados
+        return (p?.meta?.id || p?.meta?.slug || p?.meta?.name || p?.id || '').toString().trim().toLowerCase();
+    }
+
+    function sortPlanInfosActiveFirst(infos){
+        const activeId = state.currentPlanId || 'builtin';
+        return [...(infos || [])].sort((a, b) => {
+            const aIs = a?.id === activeId;
+            const bIs = b?.id === activeId;
+            return aIs === bIs ? 0 : (aIs ? -1 : 1);
+        });
+    }
+
 
 
     // Llama a esto en tu bootstrap (después de render inicial)
@@ -1875,10 +2069,18 @@
 
     // Ejemplo: activar siempre al iniciar (ajústalo a tu lógica real)
     window.addEventListener('load', () => {
-        setAdsEnabled(true)
+        setAdsEnabled(false)
         bootstrap()
     })
 
     // Boot
     // window.addEventListener('load', bootstrap);
+
+    window.addEventListener('hashchange', () => {
+        scrollToTopAfterRender();
+    });
+    window.addEventListener('popstate', () => {
+        scrollToTopAfterRender();
+    });
+
 })();

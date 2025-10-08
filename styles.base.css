@@ -1,6 +1,6 @@
 
 /* =====================================================
-   StriveFit — Base styles (structure & components)
+   Workout — Base styles (structure & components)
    Relies on CSS variables defined in styles.theme.css
    ===================================================== */
 
@@ -194,7 +194,7 @@ body{
 .timer-large, .reps-large{ font-size:3rem; font-weight:800; text-align:center; line-height:1; }
 /* Pantallas de ejercicio/descanso: ocupar altura disponible sin tapar CTAs */
 .exercise-screen{
-    min-height: calc(100vh - var(--nav-h) - var(--ad-h) - 16px);
+    /* min-height: calc(100vh - var(--nav-h) - var(--ad-h) - 16px); */
     display: flex;
     flex-direction: column;
 }
@@ -364,3 +364,56 @@ body{
 :root[data-bs-theme="dark"] .ex-list .list-group-item.ex-item.ex-stretch{
     background-color: var(--ex-stretch-bg-dark, rgba(25,135,84,.22)) !important;
 }
+
+/* ========== Compact layout para vistas con .exercise-screen ========== */
+
+/* Ajuste fino de espacios verticales */
+.exercise-screen { gap: .5rem; }
+
+.exercise-screen .exercise-media{
+    /* limita la altura del bloque de imagen/vídeo para que quepa todo */
+    height: clamp(160px, 28vh, 240px);
+    margin-bottom: .75rem !important;
+}
+.exercise-screen .exercise-media img,
+.exercise-screen .exercise-media iframe{
+    height: 100%;              /* la imagen/iframe rellena el contenedor */
+    object-fit: contain;
+}
+
+/* Cronómetro y reps con menos aire alrededor */
+.exercise-screen .timer-area{
+    margin: .5rem 0 .75rem !important;
+}
+
+/* En este contexto, bajamos los mb-3 a ~12px */
+.exercise-screen .mb-3{ margin-bottom: .75rem !important; }
+
+/* Afinado en pantallas de poca altura */
+@media (max-height: 740px){
+    .exercise-screen .exercise-media{ height: clamp(140px, 24vh, 220px); }
+    .timer-large, .reps-large{ font-size: 2.6rem; }
+    .btn-tall{ padding: .75rem 1rem; }
+}
+
+.badge-est{
+    font-weight: 600;
+    border: 1px solid transparent;
+    background: var(--bs-secondary-bg);
+    color: var(--bs-secondary-color);
+}
+.badge-est.ok{
+    border-color: color-mix(in srgb, var(--bs-success) 50%, transparent);
+}
+.badge-est.warn{
+    border-color: color-mix(in srgb, var(--bs-warning) 60%, transparent);
+    background: color-mix(in srgb, var(--bs-warning) 18%, var(--bs-body-bg));
+    color: var(--bs-emphasis-color);
+}
+
+.est-breakdown{ margin-top: -.15rem; margin-bottom: .5rem; }
+
+/* ---- Card "Plan activo" compacta ---- */
+.plan-card.plan-compact .card-body{ padding: .75rem 1rem; }
+.plan-card.plan-compact h5{ font-size: 1rem; margin: 0; }
+.plan-card.plan-compact .progress{ background: var(--bs-secondary-bg); }

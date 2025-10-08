@@ -1,6 +1,6 @@
 {
-  "name": "StriveFit",
-  "short_name": "StriveFit",
+  "name": "Workout",
+  "short_name": "Workout",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

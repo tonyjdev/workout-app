@@ -3,1328 +3,4192 @@
     {
       "id": "WU_MARCH",
       "name": "Marcha vigorosa / step march",
-      "aliases": [
-        "March in place",
-        "Marcha en el sitio"
-      ],
-      "description": "Marcha en el sitio elevando ligeramente las rodillas, braceando. Útil para elevar la temperatura y activar cadera y core sin impacto.",
-      "cues": [
-        "Postura alta",
-        "Apretar abdomen",
-        "Apoyos silenciosos"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta (opcional)"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "flexores de cadera",
-        "glúteos",
-        "cuádriceps",
-        "gemelos",
-        "core"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "erectores espinales",
-        "deltoides anteriores"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "calentamiento",
-        "bajo impacto",
-        "FAI-friendly",
-        "cardio suave"
-      ],
-      "video": "https://www.youtube.com/watch?v=1Cns_8uS3d8",
-      "images": [
-        "https://musclewiki.com/",
-        "https://exrx.net/Lists/Directory"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "warmup_mobility",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "WU_CATCAMEL",
       "name": "Cat-Camel (movilidad columna)",
-      "aliases": [
-        "Cat-Cow",
-        "Gato-camello"
-      ],
-      "description": "Secuencia de flexión-extensión suave de columna toracolumbar para lubricar articulaciones y activar control motor.",
-      "cues": [
-        "Movimientos lentos",
-        "No forzar rango",
-        "Respirar profundo"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "erectores espinales",
-        "multífidos",
-        "abdominales (control)"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "glúteos (ligera activación)"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "movilidad",
-        "calentamiento"
-      ],
-      "video": "https://www.youtube.com/watch?v=kqnua4rHVVA",
-      "images": [
-        "https://exrx.net/Directory#Trunk",
-        "https://musclewiki.com/"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "warmup_mobility",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "WU_9090",
       "name": "90/90 cadera",
-      "aliases": [
-        "Hip 90/90"
-      ],
-      "description": "Trabajo de rotación externa/interna de cadera sentado con ambas rodillas a 90° para mejorar movilidad.",
-      "cues": [
-        "Columna alta",
-        "Sin dolor en ingle",
-        "Respira y relaja"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "rotadores de cadera"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "glúteo medio",
-        "piriforme",
-        "aductores"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "movilidad",
-        "FAI-friendly (controlado)"
-      ],
-      "video": "https://www.youtube.com/watch?v=3zG2oH5F2Ug",
-      "images": [
-        "https://musclewiki.com/hips",
-        "https://exrx.net/Articulations/Hip"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "warmup_mobility",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "WU_PULLAPART",
       "name": "Band Pull-Apart",
-      "aliases": [
-        "Apertura con banda"
-      ],
-      "description": "Separación de banda a la altura del pecho para activar deltoides posteriores y escápulas.",
-      "cues": [
-        "Costillas abajo",
-        "Hombros bajos",
-        "Arrastrar escápulas atrás"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "banda elástica"
+        "bandas/gomas"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "deltoides posteriores",
-        "romboides",
-        "trapecio medio"
+        "cuerpo completo"
       ],
       "secondary_muscles": [
-        "rotadores externos del hombro"
+        "biceps",
+        "espalda"
       ],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "activación",
-        "salud hombro"
-      ],
-      "video": "https://www.youtube.com/watch?v=smSSXITNpCI",
-      "images": [
-        "https://musclewiki.com/shoulders",
-        "https://exrx.net/Muscles/DeltoidPosterior"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "warmup_mobility",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "SQ_BOX_GOBLET",
       "name": "Sentadilla a caja (goblet)",
-      "aliases": [
-        "Goblet box squat"
-      ],
-      "description": "Sentadilla con mancuerna sujeta al pecho tocando una caja/banco para limitar la profundidad y proteger la cadera.",
-      "cues": [
-        "Pies ligeramente abiertos",
-        "Rodillas siguen la punta del pie",
-        "Tocar caja sin colapsar"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuerna",
-        "banco/caja"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "cuádriceps",
-        "glúteos"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "isquiotibiales",
-        "erectores espinales",
-        "core"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "FAI-friendly",
-        "bajo impacto"
-      ],
-      "video": "https://www.youtube.com/watch?v=42bFodPahBU",
-      "images": [
-        "https://musclewiki.com/legs/quads",
-        "https://exrx.net/Muscles/Quadriceps"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "squat_knee_dominant",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "PRESS_DB_BENCH",
       "name": "Press mancuernas en banco",
-      "aliases": [
-        "Dumbbell Bench Press"
-      ],
-      "description": "Empuje horizontal con mancuernas tumbado en banco. Mejora fuerza de pectoral y tríceps.",
-      "cues": [
-        "Escápulas retraídas",
-        "Antebrazos verticales",
-        "Bajar al tórax medio"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuernas",
         "banco"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "pectorales",
-        "tríceps"
+        "cuerpo completo"
       ],
       "secondary_muscles": [
-        "deltoides anteriores",
-        "serrato"
+        "hombro",
+        "pecho",
+        "triceps"
       ],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "empuje horizontal"
-      ],
-      "video": "https://www.youtube.com/watch?v=VmB1G1K7v94",
-      "images": [
-        "https://musclewiki.com/chest",
-        "https://exrx.net/Muscles/PectoralisSternal"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "horizontal_push",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "ROW_DB_BENT",
       "name": "Remo inclinado con mancuernas",
-      "aliases": [
-        "Bent-over DB Row"
-      ],
-      "description": "Tracción horizontal desde bisagra de cadera con mancuernas para la espalda media.",
-      "cues": [
-        "Columna neutra",
-        "Codos atrás",
-        "Pausa 1 s arriba"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuernas"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "dorsal ancho",
-        "romboides",
-        "trapecio medio"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "bíceps",
-        "deltoides posteriores",
-        "erectores espinales (isométrico)"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "tracción horizontal"
-      ],
-      "video": "https://www.youtube.com/watch?v=vT2GjY_Umpw",
-      "images": [
-        "https://musclewiki.com/back",
-        "https://exrx.net/Muscles/Back"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "horizontal_pull",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "RDL",
       "name": "Peso muerto rumano",
-      "aliases": [
-        "Romanian Deadlift"
-      ],
-      "description": "Bisagra de cadera con rodillas ligeramente flexionadas, enfatizando isquios y glúteos.",
-      "cues": [
-        "Empuja caderas atrás",
-        "Barra cerca del cuerpo",
-        "Columna neutra"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuernas",
-        "barra"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "isquiotibiales",
-        "glúteos"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "erectores espinales",
-        "aductores"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "bisagra"
-      ],
-      "video": "https://www.youtube.com/watch?v=2SHsk9AzdjA",
-      "images": [
-        "https://musclewiki.com/legs/hamstrings",
-        "https://exrx.net/Muscles/Hamstrings"
-      ],
-      "difficulty": "intermediate",
-      "movement_pattern": "hinge",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "PRESS_DB_SHOULDER",
       "name": "Press hombro sentado (mancuernas)",
-      "aliases": [
-        "Seated DB Shoulder Press"
-      ],
-      "description": "Empuje vertical con mancuernas sentado para deltoides anterior y lateral.",
-      "cues": [
-        "Costillas abajo",
-        "Rango cómodo",
-        "Agarre neutro si molesta"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuernas",
-        "banco"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "deltoides anteriores y laterales"
+        "cuerpo completo"
       ],
       "secondary_muscles": [
-        "tríceps",
-        "trapecio superior"
+        "hombro",
+        "pecho",
+        "triceps"
       ],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "empuje vertical"
-      ],
-      "video": "https://www.youtube.com/watch?v=B-aVuyhvLHU",
-      "images": [
-        "https://musclewiki.com/shoulders",
-        "https://exrx.net/Muscles/DeltoidAnterior"
-      ],
-      "difficulty": "intermediate",
-      "movement_pattern": "vertical_push",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "PLANK_FRONT",
       "name": "Plancha frontal",
-      "aliases": [
-        "Front Plank"
-      ],
-      "description": "Isométrico anterior del core con apoyo de antebrazos.",
-      "cues": [
-        "Glúteos apretados",
-        "Costillas abajo",
-        "Cabeza neutra"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "recto abdominal",
-        "transverso"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "oblicuos",
-        "glúteos",
-        "erectores espinales"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "core",
-        "isométrico"
-      ],
-      "video": "https://www.youtube.com/watch?v=Fcbw82ykBvY",
-      "images": [
-        "https://musclewiki.com/abdominals",
-        "https://exrx.net/Muscles/RectusAbdominis"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "core_antiextension",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "PALLOF",
       "name": "Pallof press con banda",
-      "aliases": [
-        "Cable/Band Anti-Rotation Press"
-      ],
-      "description": "Antirrotación de core empujando la banda al frente y resistiendo el tirón lateral.",
-      "cues": [
-        "Caderas cuadradas",
-        "No rotar",
-        "Exhala al extender"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "banda"
+        "bandas/gomas"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "oblicuos",
-        "transverso"
+        "cuerpo completo"
       ],
       "secondary_muscles": [
-        "glúteos (estabilidad)",
-        "erectores espinales"
+        "hombro",
+        "pecho",
+        "triceps"
       ],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "core",
-        "antirrotación"
-      ],
-      "video": "https://www.youtube.com/watch?v=Y0e2w0aKOXw",
-      "images": [
-        "https://musclewiki.com/abdominals/obliques",
-        "https://exrx.net/Muscles/Obliques"
-      ],
-      "difficulty": "intermediate",
-      "movement_pattern": "core_antirotation",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "INT_STEPUP",
       "name": "Step-ups (intervalos)",
-      "aliases": [
-        "Subidas al cajón"
-      ],
-      "description": "Subidas alternas a un step/banquito a ritmo variable para trabajo cardiovascular de bajo impacto.",
-      "cues": [
-        "Altura ≤ rodilla",
-        "Apoyo completo del pie",
-        "Impulso desde glúteo"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "step/banco"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "glúteos",
-        "cuádriceps"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "isquiotibiales",
-        "gemelos",
-        "core"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "cardio",
-        "bajo impacto",
-        "FAI-friendly"
-      ],
-      "video": "https://www.youtube.com/watch?v=dQqApCGd5Ss",
-      "images": [
-        "https://musclewiki.com/legs/quads",
-        "https://exrx.net/Muscles/GluteusMaximus"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "step_up_locomotion",
-      "unilateral": true
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "INT_ROW_BAND",
       "name": "Remo con banda (intervalos)",
-      "aliases": [
-        "Band Row"
-      ],
-      "description": "Tracción horizontal con banda desde sentado o de pie, apto para intervalos.",
-      "cues": [
-        "Hombros abajo y atrás",
-        "Pausa breve al final",
-        "Controla la vuelta"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "banda"
+        "bandas/gomas"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "dorsal",
-        "romboides",
-        "trapecio medio"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "bíceps",
-        "deltoides posteriores"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "cardio/strength mix"
-      ],
-      "video": "https://www.youtube.com/watch?v=GZbfZ033f74",
-      "images": [
-        "https://musclewiki.com/back",
-        "https://exrx.net/Muscles/Back"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "horizontal_pull",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "PLANK_SIDE",
       "name": "Plancha lateral",
-      "aliases": [
-        "Side Plank"
-      ],
-      "description": "Isométrico lateral del core para oblicuos y estabilizadores de cadera.",
-      "cues": [
-        "Hombros y caderas alineados",
-        "Empuja el suelo",
-        "Respira tranquilo"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "oblicuos"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "glúteo medio",
-        "transverso"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "core",
-        "isométrico"
-      ],
-      "video": "https://www.youtube.com/watch?v=K2VljzCC16g",
-      "images": [
-        "https://musclewiki.com/abdominals/obliques",
-        "https://exrx.net/Muscles/Obliques"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "core_lateral_stability",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "BIRD_DOG",
       "name": "Bird-dog",
-      "aliases": [
-        "Dead bug cuadrupedia (opuesto)"
-      ],
-      "description": "Extensión alterna de brazo y pierna desde cuadrupedia para estabilidad lumbopélvica.",
-      "cues": [
-        "Cadera estable",
-        "No arquear",
-        "Exhala al extender"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "erectores espinales",
-        "glúteos"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "oblicuos",
-        "multífidos",
-        "deltoides posteriores"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "core",
-        "estabilidad"
-      ],
-      "video": "https://www.youtube.com/watch?v=vVQj4lDlS4k",
-      "images": [
-        "https://exrx.net/Muscles/Back",
-        "https://musclewiki.com/lower-back"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "other",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "STEPUPS",
       "name": "Step-ups (fuerza)",
-      "aliases": [
-        "Subidas al cajón con carga"
-      ],
-      "description": "Versión de fuerza de step-up, con mancuernas si procede.",
-      "cues": [
-        "Altura ≤ rodilla",
-        "Rodilla sigue la punta del pie",
-        "Control excéntrico"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "step/banco",
-        "mancuernas (opcional)"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "glúteos",
-        "cuádriceps"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "isquios",
-        "gemelos",
-        "core"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "unilateral",
-        "FAI-friendly"
-      ],
-      "video": "https://www.youtube.com/watch?v=dQqApCGd5Ss",
-      "images": [
-        "https://musclewiki.com/legs/quads",
-        "https://exrx.net/Muscles/GluteusMaximus"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "step_up_locomotion",
-      "unilateral": true
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "HIP_THRUST",
       "name": "Hip thrust",
-      "aliases": [
-        "Elevación de cadera en banco"
-      ],
-      "description": "Extensión de cadera apoyando la espalda en banco y carga en la cadera.",
-      "cues": [
-        "Barbilla al pecho",
-        "Pies firmes",
-        "Pausa 1 s arriba"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "banco",
-        "mancuernas o barra"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "glúteo mayor"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "isquiotibiales",
-        "cuádriceps (estabilización)",
-        "core"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "glúteos"
-      ],
-      "video": "https://www.youtube.com/watch?v=S_uZP4UH6J0",
-      "images": [
-        "https://musclewiki.com/legs/glutes",
-        "https://exrx.net/Muscles/GluteusMaximus"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "other",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "ROW_DB_1ARM",
       "name": "Remo a una mano en banco",
-      "aliases": [
-        "One-arm DB Row"
-      ],
-      "description": "Tracción unilateral con apoyo en banco para descargar zona lumbar.",
-      "cues": [
-        "Hombro lejos de oreja",
-        "Codo hacia cadera",
-        "Pausa arriba"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuerna",
         "banco"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "dorsal",
-        "romboides",
-        "trapecio medio"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "bíceps",
-        "deltoides posteriores"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "unilateral",
-        "espalda"
-      ],
-      "video": "https://www.youtube.com/watch?v=pYcpY20QaE8",
-      "images": [
-        "https://musclewiki.com/back",
-        "https://exrx.net/Muscles/Back"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "horizontal_pull",
-      "unilateral": true
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "VERT_PUSH",
       "name": "Pike push-up en banco / Press inclinado mancuernas",
-      "aliases": [
-        "Pike Press",
-        "Incline DB Press"
-      ],
-      "description": "Empuje con énfasis en hombro (pike) o alternativa de press inclinado.",
-      "cues": [
-        "Rango cómodo",
-        "Codos 45°",
-        "Control cuello"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "banco",
-        "mancuernas (si inclinado)"
+        "banco"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "deltoides anteriores",
-        "pectoral clavicular (inclinado)"
+        "hombro",
+        "pecho"
       ],
       "secondary_muscles": [
-        "tríceps",
-        "trapecio superior"
+        "triceps"
       ],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "empuje vertical/inclinado"
-      ],
-      "video": "https://www.youtube.com/watch?v=aWwS0XCg3H8",
-      "images": [
-        "https://musclewiki.com/shoulders",
-        "https://exrx.net/Muscles/DeltoidAnterior"
-      ],
-      "difficulty": "intermediate",
-      "movement_pattern": "vertical_push",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "CALF_RAISE",
       "name": "Elevación de gemelos en escalón (unilateral)",
-      "aliases": [
-        "Single-leg Calf Raise"
-      ],
-      "description": "Elevación del talón desde escalón para trabajar gemelo y sóleo.",
-      "cues": [
-        "Pausa arriba 1 s",
-        "Bajar controlado",
-        "Agarre ligero para equilibrio"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuerna (opcional)",
-        "escalón"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
       "primary_muscles": [
-        "gastrocnemio"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "sóleo"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
+        "compuesto",
         "fuerza",
-        "pantorrilla"
-      ],
-      "video": "https://www.youtube.com/watch?v=-M4-G8p8fmc",
-      "images": [
-        "https://exrx.net/Muscles/Gastrocnemius",
-        "https://musclewiki.com/legs/calves"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "calf_raise",
-      "unilateral": true
+        "unilateral"
+      ]
     },
     {
       "id": "HOLLOW",
       "name": "Hollow hold",
-      "aliases": [
-        "Barquito"
-      ],
-      "description": "Isométrico del core en posición de plátano, manteniendo zona lumbar pegada al suelo.",
-      "cues": [
-        "Zona lumbar pegada",
-        "Costillas abajo",
-        "Respira corto"
-      ],
+      "type": "core",
       "equipment": [
-        "colchoneta"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "recto abdominal",
-        "transverso"
+        "core"
       ],
-      "secondary_muscles": [
-        "flexores de cadera (estabilización)"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "core",
-        "isométrico"
-      ],
-      "video": "https://www.youtube.com/watch?v=EsnM8eBtazU",
-      "images": [
-        "https://musclewiki.com/abdominals",
-        "https://exrx.net/Muscles/RectusAbdominis"
-      ],
-      "difficulty": "intermediate",
-      "movement_pattern": "core_antiextension",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
     },
     {
       "id": "INT_MARCH_LATERAL",
       "name": "Marcha vigorosa / pasos laterales sin pivotar",
-      "aliases": [
-        "Lateral Steps"
-      ],
-      "description": "Pasos laterales con marcha activa, evitando pivotajes bruscos para respetar la cadera.",
-      "cues": [
-        "Pies paralelos",
-        "Rodillas blandas",
-        "No pivotar"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta (opcional)"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "glúteo medio",
-        "aductores (estabilidad)"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "cuádriceps",
-        "core"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "cardio suave",
-        "FAI-friendly"
-      ],
-      "video": "https://www.youtube.com/watch?v=1Cns_8uS3d8",
-      "images": [
-        "https://musclewiki.com/hips",
-        "https://exrx.net/Muscles/GluteusMedius"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "locomotion_low_impact",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "INT_BOX_SQUAT",
       "name": "Sentadilla a caja (intervalos)",
-      "aliases": [
-        "Box Squat (tempo variable)"
-      ],
-      "description": "Versión de sentadilla a caja con control de tiempo, usada en circuito de intervalos.",
-      "cues": [
-        "Rango cómodo",
-        "Tocar y subir sin rebote",
-        "Respiración controlada"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "caja/banco",
-        "mancuernas (opcional)"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "cuádriceps",
-        "glúteos"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "isquios",
-        "core"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "cardio/strength mix",
-        "FAI-friendly"
-      ],
-      "video": "https://www.youtube.com/watch?v=sWKlUCGfX9s",
-      "images": [
-        "https://musclewiki.com/legs/quads",
-        "https://exrx.net/Muscles/Quadriceps"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "squat_knee_dominant",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "INT_FARMER_HOLD",
       "name": "Farmer hold (isométrico)",
-      "aliases": [
-        "Static Farmer Carry"
-      ],
-      "description": "Sujetar mancuernas pesadas de pie, trabajando agarre, trapecio y core.",
-      "cues": [
-        "Crecimiento axial",
-        "Escápulas abajo",
-        "Glúteos activos"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuernas"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "antebrazo (agarre)",
-        "trapecio",
-        "core"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "glúteos",
-        "erectores espinales"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "isométrico",
-        "fuerza general"
-      ],
-      "video": "https://www.youtube.com/watch?v=M3jh-bWx_Io",
-      "images": [
-        "https://musclewiki.com/traps",
-        "https://exrx.net/Muscles/TrapeziusUpper"
-      ],
-      "difficulty": "intermediate",
-      "movement_pattern": "carry_isometric",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "HIP_HINGE",
       "name": "Bisagra de cadera (RDL / good morning con banda)",
-      "aliases": [
-        "Hip Hinge",
-        "Good Morning (band)"
-      ],
-      "description": "Patrón de bisagra para trabajar cadena posterior con control de columna neutra.",
-      "cues": [
-        "Empuja caderas atrás",
-        "Peso en talones",
-        "Cabeza neutra"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuernas",
-        "banda"
+        "bandas/gomas"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "isquios",
-        "glúteos"
+        "isquios"
       ],
-      "secondary_muscles": [
-        "erectores espinales",
-        "aductores"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "bisagra"
-      ],
-      "video": "https://www.youtube.com/watch?v=VLmJFnqwhuY",
-      "images": [
-        "https://musclewiki.com/legs/hamstrings",
-        "https://exrx.net/Muscles/Hamstrings"
-      ],
-      "difficulty": "intermediate",
-      "movement_pattern": "hinge",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "HOR_PUSH",
       "name": "Empuje horizontal (press o flexión baja)",
-      "aliases": [
-        "Low Incline Push-up",
-        "DB Bench/Push-up"
-      ],
-      "description": "Variante de empuje horizontal adaptada a material disponible y tolerancia.",
-      "cues": [
-        "Codos ~45°",
-        "Escápulas activas",
-        "Core firme"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuernas",
-        "banco"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "pectorales",
-        "tríceps"
+        "cuerpo completo"
       ],
       "secondary_muscles": [
-        "deltoides anteriores"
+        "hombro",
+        "pecho",
+        "triceps"
       ],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "empuje horizontal"
-      ],
-      "video": "https://www.youtube.com/watch?v=0JUrOH--Kdk",
-      "images": [
-        "https://musclewiki.com/chest",
-        "https://exrx.net/Muscles/PectoralisSternal"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "horizontal_push",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "ROW_ISOPAUSE",
       "name": "Remo con pausa isométrica",
-      "aliases": [
-        "Bent-over Row (paused)"
-      ],
-      "description": "Remo con detención de 1–2 s en contracción para control escapular.",
-      "cues": [
-        "Pausa sin encoger cuello",
-        "Codos hacia la cadera",
-        "Vuelve controlado"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuernas"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "romboides",
-        "trapecio medio",
-        "dorsal"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "bíceps",
-        "deltoides posteriores"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "fuerza",
-        "tracción horizontal",
-        "técnica"
-      ],
-      "video": "https://www.youtube.com/watch?v=vT2GjY_Umpw",
-      "images": [
-        "https://musclewiki.com/back",
-        "https://exrx.net/Muscles/Back"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "horizontal_pull",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "QUAD_DOM",
       "name": "Cuádriceps dominante (sentadilla caja o split corto)",
-      "aliases": [
-        "Box Squat / Short Split Squat"
-      ],
-      "description": "Patrón dominante de rodilla con rango limitado para respetar la cadera.",
-      "cues": [
-        "Rango cómodo",
-        "Rodilla sigue punta del pie",
-        "Control excéntrico"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "mancuernas",
-        "banco/caja"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
       "primary_muscles": [
-        "cuádriceps",
-        "glúteos"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "isquios",
-        "core"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
+        "compuesto",
         "fuerza",
-        "FAI-friendly"
-      ],
-      "video": "https://www.youtube.com/watch?v=2C-uNgKwPLE",
-      "images": [
-        "https://musclewiki.com/legs/quads",
-        "https://exrx.net/Muscles/Quadriceps"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "squat_knee_dominant",
-      "unilateral": false
+        "unilateral"
+      ]
     },
     {
       "id": "PLANK_PULL",
       "name": "Plancha con arrastre (plank pull-through)",
-      "aliases": [
-        "Renegade pull-through"
-      ],
-      "description": "Plancha con arrastre de mancuerna por debajo del cuerpo para antirrotación.",
-      "cues": [
-        "Caderas niveladas",
-        "Movimiento lento",
-        "No girar tronco"
-      ],
+      "type": "core",
       "equipment": [
-        "mancuerna",
-        "colchoneta"
+        "esterilla"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "oblicuos",
-        "transverso"
+        "core"
       ],
       "secondary_muscles": [
-        "deltoides",
-        "dorsal",
-        "glúteos"
+        "biceps",
+        "espalda",
+        "hombro"
       ],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "core",
-        "antirrotación"
-      ],
-      "video": "https://www.youtube.com/watch?v=JTNW85mgKss",
-      "images": [
-        "https://musclewiki.com/abdominals/obliques",
-        "https://exrx.net/Muscles/Obliques"
-      ],
-      "difficulty": "intermediate",
-      "movement_pattern": "core_antirotation",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
     },
     {
       "id": "ST_HIPFLEX",
       "name": "Estiramiento flexor de cadera (medio arrodillado)",
-      "aliases": [
-        "Half-kneeling hip flexor stretch"
-      ],
-      "description": "Estiramiento de psoas/recto femoral en posición de zancada arrodillada.",
-      "cues": [
-        "Pelvis en retroversión",
-        "Costillas abajo",
-        "Sin forzar"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "psoas",
-        "recto femoral"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "cuádriceps (porción)"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "estiramiento",
-        "FAI-friendly suave",
-        "stretch"
-      ],
-      "video": "https://www.youtube.com/watch?v=Hmec1bQBQOE",
-      "images": [
-        "https://exrx.net/Muscles/Iliopsoas",
-        "https://musclewiki.com/hips"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "stretch_mobility",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "ST_OPENBOOK",
       "name": "Open book torácico",
-      "aliases": [
-        "Apertura torácica lateral"
-      ],
-      "description": "Movilidad de rotación torácica en decúbito lateral.",
-      "cues": [
-        "Caderas apiladas",
-        "Respiración nasal",
-        "Movimiento suave"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "rotadores torácicos"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "romboides (deslizamiento)"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "movilidad",
-        "stretch"
-      ],
-      "video": "https://www.youtube.com/watch?v=OW6YHlxY6JI",
-      "images": [
-        "https://exrx.net/Directory#Trunk",
-        "https://musclewiki.com/back"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "stretch_mobility",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "ST_HAM",
       "name": "Estiramiento isquiotibial",
-      "aliases": [
-        "Hamstring stretch"
-      ],
-      "description": "Estiramiento de cadena posterior en posición sentada o tumbada con banda.",
-      "cues": [
-        "Espalda neutra",
-        "No rebotes",
-        "Respira 2–3 ciclos"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "cinta/banda (opcional)"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "isquiotibiales"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "glúteos (ligero)"
-      ],
-      "tags": [
-        "estiramiento",
-        "stretch"
-      ],
+      "secondary_muscles": [],
       "video": null,
-      "images": [
-        "https://exrx.net/Muscles/Hamstrings",
-        "https://musclewiki.com/legs/hamstrings"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "stretch_mobility",
-      "unilateral": false
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "ST_PIRIFORMIS",
       "name": "Estiramiento piriforme",
-      "aliases": [
-        "Piriformis stretch"
-      ],
-      "description": "Estiramiento del rotador externo profundo, útil para aliviar tensión glútea/ciática funcional.",
-      "cues": [
-        "Suave, sin dolor",
-        "Respiración lenta",
-        "No forzar aducción"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "piriforme"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "glúteo medio"
-      ],
-      "tags": [
-        "estiramiento",
-        "stretch"
-      ],
+      "secondary_muscles": [],
       "video": null,
-      "images": [
-        "https://musclewiki.com/hips",
-        "https://exrx.net/Muscles/HipExternalRotators"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "stretch_mobility",
-      "unilateral": false
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "ST_ADDUCTOR",
       "name": "Estiramiento aductores/ingle",
-      "aliases": [
-        "Groin stretch"
-      ],
-      "description": "Estiramiento de la cara interna del muslo (mariposa o zancada lateral).",
-      "cues": [
-        "Espalda alta",
-        "Presión suave",
-        "Respirar 2–3 ciclos"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "aductores"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "rotadores internos de cadera"
-      ],
-      "tags": [
-        "estiramiento",
-        "stretch"
-      ],
+      "secondary_muscles": [],
       "video": null,
-      "images": [
-        "https://exrx.net/Muscles/HipAdductors",
-        "https://musclewiki.com/hips/adductors"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "stretch_mobility",
-      "unilateral": false
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "ST_ADD_COPEN_S",
       "name": "Copenhagen mod. isométrica (suave)",
-      "aliases": [
-        "Copenhagen plank (short lever)"
-      ],
-      "description": "Plancha lateral con apoyo de rodilla superior para fortalecer aductores con baja palanca.",
-      "cues": [
-        "Cadera alta",
-        "Respira",
-        "Tiempo corto y controlado"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "banco/step"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "aductores"
+        "cuerpo completo"
       ],
-      "secondary_muscles": [
-        "oblicuos",
-        "glúteo medio"
-      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
       "tags": [
-        "isométrico",
-        "aductores",
-        "rehab-friendly",
-        "stretch"
-      ],
-      "video": "https://www.youtube.com/watch?v=SNQYtW1J6mQ",
-      "images": [
-        "https://exrx.net/Muscles/HipAdductors",
-        "https://musclewiki.com/hips/adductors"
-      ],
-      "difficulty": "beginner",
-      "movement_pattern": "stretch_mobility",
-      "unilateral": false
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
     },
     {
       "id": "MOB_HIP_ANKLE",
       "name": "Movilidad cadera y tobillo (bloque)",
-      "aliases": [
-        "Hip & Ankle Mobility"
-      ],
-      "description": "Bloque de movilidad suave para cadera y tobillo tras el circuito de intervalos.",
-      "cues": [
-        "Movimientos lentos",
-        "Sin dolor",
-        "Respiración nasal"
-      ],
+      "type": "fuerza",
       "equipment": [
-        "colchoneta",
-        "banda (opcional)"
+        "sin material"
       ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
       "primary_muscles": [
-        "flexores de cadera",
-        "aductores",
-        "plantiflexores"
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "FROGGY_GLUTE_LIFTS",
+      "name": "Froggy Glute Lifts",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "FLOOR_TRICEP_DIPS",
+      "name": "Floor Tricep Dips",
+      "type": "fuerza",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "FLUTTER_KICKS",
+      "name": "Flutter Kicks",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "FLOOR_Y_RAISES",
+      "name": "Floor Y Raises",
+      "type": "fuerza",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "FLOOR_SLIDES",
+      "name": "Floor Slides",
+      "type": "fuerza",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "FAST_SPIDER_LUNGES",
+      "name": "Fast Spider Lunges",
+      "type": "cardio",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuadriceps",
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "cardio",
+        "compuesto"
+      ]
+    },
+    {
+      "id": "DUMBBELL_SHRUG",
+      "name": "Dumbbell Shrug",
+      "type": "fuerza",
+      "equipment": [
+        "mancuernas"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "DUMBBELL_REAR_DELT_ROW",
+      "name": "Dumbbell Rear Delt Row",
+      "type": "fuerza",
+      "equipment": [
+        "mancuernas"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "espalda"
       ],
       "secondary_muscles": [
-        "rotadores de cadera",
-        "dorsiflexores"
-      ],
-      "tags": [
-        "movilidad",
-        "FAI-friendly",
-        "stretch"
+        "biceps"
       ],
       "video": null,
-      "images": [
-        "https://exrx.net/Articulations/Hip",
-        "https://exrx.net/Articulations/Ankle"
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "ELBOWS_BACK",
+      "name": "Elbows Back",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
       ],
-      "difficulty": "beginner",
-      "movement_pattern": "stretch_mobility",
-      "unilateral": false
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "hombro"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "FIRE_HYDRANT_RIGHT",
+      "name": "Fire Hydrant Right",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "abductores"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "FIRE_HYDRANT_LEFT",
+      "name": "Fire Hydrant Left",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "abductores"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "HEEL_TOUCH",
+      "name": "Heel Touch",
+      "type": "core",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "HYPEREXTENSION",
+      "name": "Hyperextension",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "espalda",
+        "isquios"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "HOVER_PUSH_UP",
+      "name": "Hover Push Up",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "pecho",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "HIP_HINGE_2",
+      "name": "Hip Hinge",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "gluteos",
+        "isquios"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "INCLINE_PUSH_UPS",
+      "name": "Incline Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "banco"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "FROG_PUMP",
+      "name": "Frog Pump",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "GLUTE_KICK_BACK_LEFT",
+      "name": "Glute Kick Back Left",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "GLUTE_KICK_BACK_RIGHT",
+      "name": "Glute Kick Back Right",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "HIGH_STEPPING",
+      "name": "High Stepping",
+      "type": "cardio",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "cardio",
+        "compuesto"
+      ]
+    },
+    {
+      "id": "HINDU_PUSH_UPS",
+      "name": "Hindu Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "INCHWORMS",
+      "name": "Inchworms",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "IN_OUTS",
+      "name": "In & Outs",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "JUMPING_JACKS",
+      "name": "Jumping Jacks",
+      "type": "cardio",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "cardio",
+        "compuesto"
+      ]
+    },
+    {
+      "id": "JUMPING_SQUATS",
+      "name": "Jumping Squats",
+      "type": "cardio",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuadriceps"
+      ],
+      "secondary_muscles": [
+        "gluteos"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "cardio",
+        "compuesto"
+      ]
+    },
+    {
+      "id": "JUMPING_PUSH_UPS",
+      "name": "Jumping Push-Ups",
+      "type": "cardio",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "cardio",
+        "compuesto"
+      ]
+    },
+    {
+      "id": "KNEE_PUSH_UPS",
+      "name": "Knee Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "KNEE_TO_CHEST_STRETCH_LEFT",
+      "name": "Knee to Chest Stretch Left",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "KNEE_TO_CHEST_STRETCH_RIGHT",
+      "name": "Knee to Chest Stretch Right",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "KNEE_PLANK",
+      "name": "Knee Plank",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [
+        "hombro"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "LEG_RAISES",
+      "name": "Leg Raises",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "core"
+      ]
+    },
+    {
+      "id": "LEG_BARBELL_CURL_LEFT",
+      "name": "Leg Barbell Curl Left",
+      "type": "fuerza",
+      "equipment": [
+        "barra de dominadas"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "biceps"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "LEG_BARBELL_CURL_RIGHT",
+      "name": "Leg Barbell Curl Right",
+      "type": "fuerza",
+      "equipment": [
+        "barra de dominadas"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "biceps"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "LEG_IN_OUTS",
+      "name": "Leg In & Outs",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "MOUNTAIN_CLIMBER",
+      "name": "Mountain Climber",
+      "type": "cardio",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "cardio",
+        "compuesto"
+      ]
+    },
+    {
+      "id": "MODIFIED_PUSH_UP_LOW_HOLD",
+      "name": "Modified Push-Up Low Hold",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "LUNGES",
+      "name": "Lunges",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuadriceps",
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "LEANING_STRETCHER_RAISES",
+      "name": "Leaning Stretcher Raises",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "estiramiento"
+      ]
+    },
+    {
+      "id": "LEFT_QUAD_STRETCH_WITH_WALL",
+      "name": "Left Quad Stretch With Wall",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "LYING_BUTTERFLY_STRETCH",
+      "name": "Lying Butterfly Stretch",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "estiramiento"
+      ]
+    },
+    {
+      "id": "LYING_TWIST_STRETCH_LEFT",
+      "name": "Lying Twist Stretch Left",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "LYING_TWIST_STRETCH_RIGHT",
+      "name": "Lying Twist Stretch Right",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "OBLIQUE_CROSSOVER_CRUNCH_LEFT",
+      "name": "Oblique Crossover Crunch Left",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "core",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "OBLIQUE_CROSSOVER_CRUNCH_RIGHT",
+      "name": "Oblique Crossover Crunch Right",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "core",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "OFFSET_PUSH_UPS",
+      "name": "Offset Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "PLANK",
+      "name": "Plank",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [
+        "hombro"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "PUSH_UPS",
+      "name": "Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "MILITARY_PUSH_UPS",
+      "name": "Military Push Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "MILITARY_PRESS",
+      "name": "Military Press",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "hombro"
+      ],
+      "secondary_muscles": [
+        "pecho",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "OBLIQUE_V_UPS_LEFT",
+      "name": "Oblique V-Ups Left",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "core",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "OBLIQUE_V_UPS_RIGHT",
+      "name": "Oblique V-Ups Right",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "core",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "PLANK_HIP_DIPS",
+      "name": "Plank Hip Dips",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "hombro"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "PUSH_UP_HOLD",
+      "name": "Push Up Hold",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "pecho",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "REVERSE_CRUNCHES",
+      "name": "Reverse Crunches",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "RUSSIAN_TWIST",
+      "name": "Russian Twist",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "estiramiento"
+      ]
+    },
+    {
+      "id": "REVERSE_FLUTTER_KICKS",
+      "name": "Reverse Flutter Kicks",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "PUSH_UP_ROTATION",
+      "name": "Push-up & Rotation",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "PLIE_SQUATS",
+      "name": "Plie Squats",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuadriceps"
+      ],
+      "secondary_muscles": [
+        "gluteos"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "PUNCHES",
+      "name": "Punches",
+      "type": "cardio",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "cardio",
+        "compuesto"
+      ]
+    },
+    {
+      "id": "PLANK_LEG_UP",
+      "name": "Plank Leg Up",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [
+        "hombro"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "PRONE_TRICEPS_PUSH_UPS",
+      "name": "Prone Triceps Push Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "hombro"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "PIKE_PUSH_UPS",
+      "name": "Pike Push Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "hombro",
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "REVERSE_CRUNCHES_WITH_LEG_RAISED",
+      "name": "Reverse Crunches With Leg Raised",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "core"
+      ]
+    },
+    {
+      "id": "REVERSE_FLYS",
+      "name": "Reverse Flys",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "SIT_UPS",
+      "name": "Sit-Ups",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "SQUATS",
+      "name": "Squats",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuadriceps"
+      ],
+      "secondary_muscles": [
+        "gluteos"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "SIDE_LUNGES",
+      "name": "Side Lunges",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "cuadriceps",
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "REVERSE_PUSH_UPS",
+      "name": "Reverse Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "espalda",
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "RECLINED_OBLIQUE_TWIST",
+      "name": "Reclined Oblique Twist",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "estiramiento"
+      ]
+    },
+    {
+      "id": "RECLINED_RHOMBOID_SQUEEZES",
+      "name": "Reclined Rhomboid Squeezes",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "espalda"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "RHOMBOID_PULLS",
+      "name": "Rhomboid Pulls",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "espalda"
+      ],
+      "secondary_muscles": [
+        "biceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "REVERSE_SNOW_ANGELS",
+      "name": "Reverse Snow Angels",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "espalda"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "RIGHT_QUAD_STRETCH_WITH_WALL",
+      "name": "Right Quad Stretch With Wall",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_PLANK_RIGHT",
+      "name": "Side Plank Right",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [
+        "hombro"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "core",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SPLIT_SQUAT_RIGHT",
+      "name": "Split Squat Right",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "cuadriceps",
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SPLIT_SQUAT_LEFT",
+      "name": "Split Squat Left",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "cuadriceps",
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_PLANK_LEFT",
+      "name": "Side Plank Left",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [
+        "hombro"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "core",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "STAGGERED_PUSH_UPS",
+      "name": "Staggered Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "SPIDERMAN_PUSH_UPS",
+      "name": "Spiderman Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "SIDE_HOP",
+      "name": "Side Hop",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "gemelos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_ARM_RAISE",
+      "name": "Side Arm Raise",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SHOULDER_STRETCH",
+      "name": "Shoulder Stretch",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "hombro"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "estiramiento"
+      ]
+    },
+    {
+      "id": "SWIMMER_AND_SUPERMAN",
+      "name": "Swimmer and Superman",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "SIDE_LEG_RAISE_LEFT",
+      "name": "Side Leg Raise Left",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "abductores",
+        "core",
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "core",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_LEG_RAISE_RIGHT",
+      "name": "Side Leg Raise Right",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "abductores",
+        "core",
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "core",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_LYING_LEG_LIFT_RIGHT",
+      "name": "Side-lying Leg Lift Right",
+      "type": "fuerza",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SINGLE_RIGHT_LEG_CALF_RAISES",
+      "name": "Single Right Leg Calf Raises",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "gemelos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SINGLE_LEFT_LEG_CALF_RAISES",
+      "name": "Single Left Leg Calf Raises",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "gemelos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_LEG_CIRCLES_LEFT",
+      "name": "Side Leg Circles Left",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "abductores"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_LYING_LEG_LIFT_LEFT",
+      "name": "Side-lying Leg Lift Left",
+      "type": "fuerza",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_LEG_CIRCLES_RIGHT",
+      "name": "Side Leg Circles Right",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "abductores"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_BRIDGES_LEFT",
+      "name": "Side Bridges Left",
+      "type": "fuerza",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_BRIDGES_RIGHT",
+      "name": "Side Bridges Right",
+      "type": "fuerza",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_LYING_FLOOR_STRETCH_LEFT",
+      "name": "Side-lying Floor Stretch Left",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SIDE_LYING_FLOOR_STRETCH_RIGHT",
+      "name": "Side-lying Floor Stretch Right",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SUPINE_PUSH_UP",
+      "name": "Supine Push Up",
+      "type": "fuerza",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "pecho",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "SPINE_LUMBAR_TWIST_STRETCH_RIGHT",
+      "name": "Spine Lumbar Twist Stretch Right",
+      "type": "estiramiento",
+      "equipment": [
+        "barra de dominadas",
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "STANDING_GLUTE_KICKBACKS_LEFT",
+      "name": "Standing Glute Kickbacks Left",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "gluteos",
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "STANDING_GLUTE_KICKBACKS_RIGHT",
+      "name": "Standing Glute Kickbacks Right",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "gluteos",
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SHOULDER_GATORS",
+      "name": "Shoulder Gators",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "hombro"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "STANDING_BICEPS_STRETCH_LEFT",
+      "name": "Standing Biceps Stretch Left",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "STANDING_BICEPS_STRETCH_RIGHT",
+      "name": "Standing Biceps Stretch Right",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SKIPPING_WITHOUT_ROPE",
+      "name": "Skipping Without Rope",
+      "type": "cardio",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "cardio",
+        "compuesto"
+      ]
+    },
+    {
+      "id": "SPINE_LUMBAR_TWIST_STRETCH_LEFT",
+      "name": "Spine Lumbar Twist Stretch Left",
+      "type": "estiramiento",
+      "equipment": [
+        "barra de dominadas",
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SINGLE_LEG_CALF_HOP_LEFT",
+      "name": "Single Leg Calf Hop Left",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "gemelos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SINGLE_LEG_CALF_HOP_RIGHT",
+      "name": "Single Leg Calf Hop Right",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "gemelos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "SUMO_SQUAT_CALF_RAISES_WITH_WALL",
+      "name": "Sumo Squat Calf Raises With Wall",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuadriceps",
+        "gemelos",
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "SUMO_SQUAT",
+      "name": "Sumo Squat",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuadriceps",
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "SIT_UP_TWIST",
+      "name": "Sit-Up Twist",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "estiramiento"
+      ]
+    },
+    {
+      "id": "TRICEPS_DIPS",
+      "name": "Triceps Dips",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "TRICEPS_KICKBACKS",
+      "name": "Triceps Kickbacks",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "TRICEPS_STRETCH_LEFT",
+      "name": "Triceps Stretch Left",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "TRICEPS_STRETCH_RIGHT",
+      "name": "Triceps Stretch Right",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "estiramiento",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "V_UP",
+      "name": "V-Up",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "SPIDERMAN_PLANK",
+      "name": "Spiderman Plank",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [
+        "hombro"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "STARFISH_CRUNCH",
+      "name": "Starfish Crunch",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "STANDING_OBLIQUE_CRUNCHES_LEFT",
+      "name": "Standing Oblique Crunches Left",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "core",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "STANDING_OBLIQUE_CRUNCHES_RIGHT",
+      "name": "Standing Oblique Crunches Right",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "core",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "V_HOLD",
+      "name": "V-Hold",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "WALL_PUSH_UPS",
+      "name": "Wall Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "WIDE_ARM_PUSH_UPS",
+      "name": "Wide Arm Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "WALL_SIT",
+      "name": "Wall Sit",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuadriceps"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "WALL_CALF_RAISES",
+      "name": "Wall Calf Raises",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "gemelos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "WALL_RESISTING_SINGLE_LEG_CALF_RAISE_LEFT",
+      "name": "Wall Resisting Single Leg Calf Raise Left",
+      "type": "fuerza",
+      "equipment": [
+        "bandas/gomas"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "gemelos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "WALL_RESISTING_SINGLE_LEG_CALF_RAISE_RIGHT",
+      "name": "Wall Resisting Single Leg Calf Raise Right",
+      "type": "fuerza",
+      "equipment": [
+        "bandas/gomas"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "gemelos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "WINDSHIELD_WIPERS",
+      "name": "Windshield Wipers",
+      "type": "core",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "ACTIVE_HANG",
+      "name": "Active Hang",
+      "type": "skill",
+      "equipment": [
+        "barra de dominadas"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "espalda"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "skill"
+      ]
+    },
+    {
+      "id": "ARM_CIRCLES_CLOCKWISE",
+      "name": "Arm Circles Clockwise",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "hombro"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "ARM_CIRCLES_COUNTERCLOCKWISE",
+      "name": "Arm Circles Counterclockwise",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "hombro"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "CAT_COW_POSE",
+      "name": "Cat Cow Pose",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "estiramiento"
+      ]
+    },
+    {
+      "id": "HIP_CARS",
+      "name": "Hip CARs",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "HOLLOW_BODY",
+      "name": "Hollow Body",
+      "type": "core",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "CHEST_STRETCH",
+      "name": "Chest Stretch",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "estiramiento"
+      ]
+    },
+    {
+      "id": "CHILDS_POSE",
+      "name": "Child’s Pose",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "estiramiento"
+      ]
+    },
+    {
+      "id": "BENT_OVER_DUMBBELL_ROWS_LEFT",
+      "name": "Bent Over Dumbbell Rows Left",
+      "type": "fuerza",
+      "equipment": [
+        "mancuernas"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "espalda"
+      ],
+      "secondary_muscles": [
+        "biceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "BENT_OVER_DUMBBELL_ROWS_RIGHT",
+      "name": "Bent Over Dumbbell Rows Right",
+      "type": "fuerza",
+      "equipment": [
+        "mancuernas"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "espalda"
+      ],
+      "secondary_muscles": [
+        "biceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "DEAD_BUG",
+      "name": "Dead Bug",
+      "type": "core",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "core"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "core"
+      ]
+    },
+    {
+      "id": "BUTT_BRIDGE",
+      "name": "Butt Bridge",
+      "type": "fuerza",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "DONKEY_KICKS_LEFT",
+      "name": "Donkey Kicks Left",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "DONKEY_KICKS_RIGHT",
+      "name": "Donkey Kicks Right",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": true,
+      "primary_muscles": [
+        "gluteos"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "compuesto",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "ADDUCTOR_STRETCH_IN_STANDING",
+      "name": "Adductor Stretch in Standing",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "aductores"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "estiramiento"
+      ]
+    },
+    {
+      "id": "SCAPULAR_PULL_UPS",
+      "name": "Scapular Pull-Ups",
+      "type": "skill",
+      "equipment": [
+        "barra de dominadas"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "espalda"
+      ],
+      "secondary_muscles": [
+        "biceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "skill"
+      ]
+    },
+    {
+      "id": "DUMBBELL_FRONT_RAISE",
+      "name": "Dumbbell Front Raise",
+      "type": "fuerza",
+      "equipment": [
+        "mancuernas"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": false,
+      "primary_muscles": [
+        "hombro"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "bilateral",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "DUMBBELL_SIDE_LATERAL_RAISE",
+      "name": "Dumbbell Side Lateral Raise",
+      "type": "fuerza",
+      "equipment": [
+        "mancuernas"
+      ],
+      "level": "intermedio",
+      "mechanics": "aislamiento",
+      "unilateral": true,
+      "primary_muscles": [
+        "hombro"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "aislamiento",
+        "fuerza",
+        "unilateral"
+      ]
+    },
+    {
+      "id": "ARM_SCISSORS",
+      "name": "Arm Scissors",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "cuerpo completo"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "BOX_PUSH_UPS",
+      "name": "Box Push-Ups",
+      "type": "fuerza",
+      "equipment": [
+        "banco"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "pecho"
+      ],
+      "secondary_muscles": [
+        "hombro",
+        "triceps"
+      ],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "BACK_ARCHES",
+      "name": "Back Arches",
+      "type": "fuerza",
+      "equipment": [
+        "sin material"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "espalda"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "fuerza"
+      ]
+    },
+    {
+      "id": "COBRA_STRETCH",
+      "name": "Cobra Stretch",
+      "type": "estiramiento",
+      "equipment": [
+        "esterilla"
+      ],
+      "level": "intermedio",
+      "mechanics": "compuesto",
+      "unilateral": false,
+      "primary_muscles": [
+        "movilidad"
+      ],
+      "secondary_muscles": [],
+      "video": null,
+      "instructions": null,
+      "tags": [
+        "bilateral",
+        "compuesto",
+        "estiramiento"
+      ]
     }
   ]
 }
