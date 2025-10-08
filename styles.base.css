@@ -145,10 +145,10 @@ body{
 }
 .plan-card.plan-cover .card-body{
     position:relative; z-index:1;
-    max-height: 250px;
+    max-height: 280px;
     overflow: hidden;
     display:flex; flex-direction:column; justify-content:center;
-    padding: 3rem 1rem 1.1rem 1rem; /* user-customized */
+    padding: 1rem 1rem 1.1rem 1rem; /* user-customized */
 }
 
 /* legibility on images */
@@ -182,7 +182,7 @@ body{
     mix-blend-mode: difference; /* texto visible sobre el bar en ambos modos */
 }
 
-.stat-tile{ background: var(--sf-card); border:1px solid var(--sf-border); border-radius:14px; padding:.75rem; text-align:center; }
+.stat-tile{ background: var(--sf-card); border:1px solid var(--sf-border); border-radius:14px; padding:.75rem; text-align:center; height: 100px; overflow:hidden; }
 .stat-tile .big{ font-size:1.25rem; font-weight:800; }
 
 /* ---------- Exercise media / timer ---------- */
@@ -191,7 +191,7 @@ body{
   border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; overflow:hidden;
 }
 .timer-area{ margin:1rem 0 1.25rem; }
-.timer-large, .reps-large{ font-size:3rem; font-weight:800; text-align:center; line-height:1; }
+.timer-large, .countdown, .reps-large{ font-size:5rem; font-weight:800; text-align:center; line-height:1; }
 /* Pantallas de ejercicio/descanso: ocupar altura disponible sin tapar CTAs */
 .exercise-screen{
     /* min-height: calc(100vh - var(--nav-h) - var(--ad-h) - 16px); */

@@ -109,7 +109,7 @@
             const secs = parseSeconds(s.time);
             if (secs != null) return secs;
         }
-        return 0;
+        return null;
     }
 
     function parseSeconds (val) {
@@ -221,7 +221,7 @@
                 let exercises = []
                 if (Array.isArray(d.blocks)) {
                     for (const block of d.blocks) {
-                        const btype = String(block?.type || 'main').toLowerCase()
+                        const btype = String(block?.block || block?.type || 'main').toLowerCase()
                         const items = Array.isArray(block?.items) ? block.items : []
                         for (const it of items) {
                             exercises.push(normalizeExerciseItem(it, btype))
@@ -347,10 +347,11 @@
         const base = 'day-pill text-center p-2 rounded bg-body-tertiary'
         const cls = day?.rest ? `${base} day-rest` : (completed ? `${base} day-done` : base)
         const icon = iconForDay(day, { completed, index1: dayNumber, today1 })
+        const label = DOW_ABBR[(dayNumber - 1) % 7]
 
         return `
             <div class="${cls}">
-              <div class="day-number">${dayNumber}</div>
+              <div class="day-number">${label}</div>
               <div class="day-icon">${icon}</div>
             </div>`
     }
@@ -371,7 +372,7 @@
     function activePlanMeta () {
         const m = state.plan?.meta || getActivePlanInfo().data?.meta || {}
         return {
-            title: getActivePlanInfo().name || 'Entrenamiento',
+            title: m.title || getActivePlanInfo().name || 'Entrenamiento',
             image: m.image || 'https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=1600&auto=format&fit=crop',
             level: m.level || '—',
             goal: m.goal || '—',
@@ -389,7 +390,7 @@
         const pct = getPlanProgressPct()
 
         return `
-    <div class="card plan-card plan-cover mb-3" style="--cover: url('${m.image}')">
+    <div class="card plan-card plan-cover mb-3" style="--cover: url('${m.image}')" data-label="${m.title}">
       <div class="card-body">
         <h4 class="mb-3">${m.title}</h4>
 
@@ -413,6 +414,7 @@
 
     function renderDayMetaHeader () {
         const info = getActivePlanInfo()
+        const meta = activePlanMeta()
         const { day } = dayContext()
         const ex0 = day?.exercises?.[0] || null
         const firstName = ex0 ? stepDisplayName(ex0, 0) : info.name
@@ -427,26 +429,26 @@
         const exCount = (day?.exercises || []).length
 
         return `
-    <div class="card plan-card plan-cover mb-3" style='${coverStyle}'>
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center mb-1">
-          <h5 class="mb-0">${info.name}</h5>
-          <span class="badge text-bg-secondary">Día ${state.training.currentDay}</span>
-        </div>
-
-        <div class="row row-cols-3 g-2 mt-2">
-          <div class="col"><div class="stat-tile"><div class="big">${minutes}</div><div class="small">min</div></div></div>
-          <div class="col"><div class="stat-tile"><div class="big">${exCount}</div><div class="small">ejercicios</div></div></div>
-          <div class="col"><div class="stat-tile"><div class="big">${state.training.currentWeek}</div><div class="small">semana</div></div></div>
-        </div>
-
-        <div class="d-grid mt-2">
-          <button class="btn btn-light text-dark btn-sm" data-action="show-plan-details">
-            <i class="bi bi-info-circle me-1"></i>Ver detalles del plan
-          </button>
-        </div>
-      </div>
-    </div>`
+            <div class="card plan-card plan-cover mb-3" style='${coverStyle}' data-label="${meta.title}">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <h5 class="mb-0">${meta.title}</h5>
+                  <span class="badge text-bg-secondary">Día ${state.training.currentDay}</span>
+                </div>
+        
+                <div class="row row-cols-3 g-2 mt-2">
+                  <div class="col"><div class="stat-tile"><div class="big">${minutes}</div><div class="small">min</div></div></div>
+                  <div class="col"><div class="stat-tile"><div class="big">${exCount}</div><div class="small">ejercicios</div></div></div>
+                  <div class="col"><div class="stat-tile"><div class="big">${state.training.currentWeek}</div><div class="small">semana</div></div></div>
+                </div>
+        
+                <div class="d-grid mt-2">
+                  <button class="btn btn-light text-dark btn-sm" data-action="show-plan-details">
+                    <i class="bi bi-info-circle me-1"></i>Ver detalles del plan
+                  </button>
+                </div>
+              </div>
+            </div>`
     }
 
     function estimatePlanAvgMinutes () {
@@ -466,6 +468,7 @@
 
     // --- helpers de semana e iconos ---
     const WEEK_LEN = 7;
+    const DOW_ABBR = ['LUN','MAR','MIE','JUE','VIE','SAB','DOM'];
 
     // Rellena a 7 días; los faltantes se consideran descanso
         function padWeekTo7(days = []) {
@@ -493,6 +496,7 @@
     function renderWeekMini () {
         const planInfo = getActivePlanInfo()
         const { completed, total } = weekCompletionCounts(planInfo.data)
+        const m = planInfo.data?.meta || {}
 
         const week = state.plan?.weeks?.[0]?.days || []
         const first7 = padWeekTo7(week)
@@ -518,7 +522,7 @@
         // cabecera con nombre del plan y "completados/total"
         const header = `
             <div class="d-flex justify-content-between align-items-center mb-1">
-              <div class="fw-semibold">${planInfo.name}</div>
+              <div class="fw-semibold">${m.title}</div>
               <div class="text-secondary">${completed}/${total}</div>
             </div>`
 
@@ -574,6 +578,7 @@
         const pct = Math.round((done / totalDays) * 100)
         const active = (state.currentPlanId === info.id)
         const cover = planCoverFor(info)
+        const m = info.data?.meta || {}
 
         const canDelete = info.id === 'builtin' ? (state.userPlans || []).length > 0 : true
         const trashBtn = canDelete
@@ -613,7 +618,7 @@
         return `<div class="card plan-card plan-cover mb-3" style="--cover: url('${cover}')">
       <div class="card-body">
         <div class="d-flex justify-content-between align-items-center">
-          <h5 class="mb-0">${info.name}</h5>
+          <h5 class="mb-0">${m.title || info.name}</h5>
           <div class="d-flex gap-2 align-items-center">
             ${active ? '<span class="badge text-bg-success">Activo</span>' :
             `<button class="btn btn-sm btn-outline-light" data-action="use-plan" data-plan="${info.id}">
@@ -621,7 +626,7 @@
                </button>`}
             ${/* papelera (con modal) */''}
             ${(info.id === 'builtin' ? (state.userPlans || []).length > 0 : true)
-            ? `<button class="btn btn-sm btn-outline-danger" data-action="prompt-delete-plan" data-plan="${info.id}" data-plan-name="${info.name}">
+            ? `<button class="btn btn-sm btn-outline-danger" data-action="prompt-delete-plan" data-plan="${info.id}" data-plan-name="${m.title || info.name}">
                      <i class="bi bi-trash"></i>
                    </button>` : ''}
           </div>
@@ -1073,12 +1078,15 @@
         const completed = isDayCompleted(weekIdx, dayIdx)
         const base = 'day-pill text-center p-2 rounded bg-body-tertiary'
         const cls = d?.rest ? `${base} day-rest` : (completed ? `${base} day-done` : base)
-        const iconHTML = iconForDay(d, { completed, index1: dayIdx + 1, today1 })
-        const num = dayIdx + 1
+        // const iconHTML = iconForDay(d, { completed, index1: dayIdx + 1, today1 })
+        // const num = dayIdx + 1
+        const idx1 = dayIdx + 1
+        const label = DOW_ABBR[(idx1 - 1) % 7]
+        const iconHTML = iconForDay(d, { completed, index1: idx1, today1 })
         const disabled = completed ? 'disabled' : ''
         return `<button class="${cls} w-100"
             data-action="pick-day" data-week="${weekIdx + 1}" data-day="${dayIdx + 1}" ${disabled}>
-            <div class="day-number">${num}</div>
+            <div class="day-number">${label}</div>
             <div class="day-icon">${iconHTML}</div>
           </button>`
     }
@@ -1249,7 +1257,7 @@
         const exInfo = state.exDict.get(String(stepId(ex))) || null;
         const videoHtml = exInfo?.video ? embedVideoHTML(exInfo.video, name) : '';
         const topMedia = `<div class="exercise-media mb-3">
-          ${videoHtml || `<img src="${exerciseImageFor(ex, name)}" class="object-fit-contain w-100 h-100 rounded" alt="${nameWithBadge}">`}
+          ${videoHtml || `<img src="${exerciseImageFor(ex, name)}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">`}
         </div>`;
 
 
@@ -2055,7 +2063,7 @@
 
     function sortPlanInfosActiveFirst(infos){
         const activeId = state.currentPlanId || 'builtin';
-        return [...(infos || [])].sort((a, b) => {
+        return [ ...(infos || []) ].sort((a, b) => {
             const aIs = a?.id === activeId;
             const bIs = b?.id === activeId;
             return aIs === bIs ? 0 : (aIs ? -1 : 1);
