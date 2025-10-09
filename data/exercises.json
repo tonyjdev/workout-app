@@ -1025,14 +1025,16 @@
         "gluteos"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=M_OoFzysWak",
       "instructions": null,
       "tags": [
         "bilateral",
         "cardio",
         "compuesto"
       ],
-      "images": [],
+      "images": [
+        "exercise-fast-spider-lunges.jpeg"
+      ],
       "description": "Fast Spider Lunges es un ejercicio cardiovascular de bajo impacto para elevar la frecuencia cardíaca. Trabaja principalmente glúteos, cuádriceps. Evita pinzamiento en la ingle (FAI): acorta el rango o abre ligeramente la punta de los pies. Mantén columna neutra."
     },
     {
@@ -1249,14 +1251,16 @@
         "isquios"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=VyFDPMOy-eA",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-hip-hinge.jpg"
+      ],
       "description": "Hip Hinge es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente glúteos, isquiosurales. Evita pinzamiento en la ingle (FAI): acorta el rango o abre ligeramente la punta de los pies. Mantén columna neutra."
     },
     {
@@ -1283,7 +1287,9 @@
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-incline-push-ups.webp"
+      ],
       "description": "Incline Push-Ups es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente pecho, tríceps, hombro. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -1372,14 +1378,16 @@
         "cuerpo completo"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=Cmxr9xcNhgU",
       "instructions": null,
       "tags": [
         "bilateral",
         "cardio",
         "compuesto"
       ],
-      "images": [],
+      "images": [
+        "exercise-high-stepping.jpg"
+      ],
       "description": "High Stepping es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente glúteos, cuádriceps. Evita pinzamiento en la ingle (FAI): acorta el rango o abre ligeramente la punta de los pies. Mantén columna neutra."
     },
     {
@@ -1745,14 +1753,16 @@
         "cuerpo completo"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=wQq3ybaLZeA",
       "instructions": null,
       "tags": [
         "bilateral",
         "cardio",
         "compuesto"
       ],
-      "images": [],
+      "images": [
+        "exercise-mountain-climber.jpg"
+      ],
       "description": "Mountain Climber es un ejercicio cardiovascular de bajo impacto para elevar la frecuencia cardíaca. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2018,14 +2028,16 @@
       "secondary_muscles": [
         "hombro"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=Fcbw82ykBvY",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "core"
       ],
-      "images": [],
+      "images": [
+        "exercise-plank.webp"
+      ],
       "description": "Plank es un ejercicio de core orientado a mejorar fuerza y control. Trabaja principalmente core. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2072,14 +2084,16 @@
         "hombro",
         "triceps"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=H8LoGZ-ZN48",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-military-push-up.webp"
+      ],
       "description": "Military Push Ups es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente pecho, tríceps, hombro. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2099,14 +2113,16 @@
         "pecho",
         "triceps"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/shorts/1M6JMpgAtS0",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-military-press.jpg"
+      ],
       "description": "Military Press es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente pecho, tríceps, hombro. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2301,14 +2317,16 @@
         "hombro",
         "triceps"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=miN74vJbE_w",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-push-up-with-rotation.jpg"
+      ],
       "description": "Push-up & Rotation es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente pecho, tríceps, hombro. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2438,7 +2456,9 @@
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-pike-push-ups.jpg"
+      ],
       "description": "Pike Push Ups es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente pecho, tríceps, hombro. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2680,14 +2700,16 @@
         "espalda"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=0qLP2RNKX4A",
       "instructions": null,
       "tags": [
         "aislamiento",
         "bilateral",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-reverse-snow-angel.webp"
+      ],
       "description": "Reverse Snow Angels es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente espalda, hombro, bíceps. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2730,14 +2752,16 @@
       "secondary_muscles": [
         "hombro"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=2W96p2PIoPg",
       "instructions": null,
       "tags": [
         "compuesto",
         "core",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-side-plank.jpg"
+      ],
       "description": "Side Plank Right es un ejercicio de core orientado a mejorar fuerza y control. Trabaja principalmente core. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2806,14 +2830,16 @@
       "secondary_muscles": [
         "hombro"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=2W96p2PIoPg",
       "instructions": null,
       "tags": [
         "compuesto",
         "core",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-side-plank.jpg"
+      ],
       "description": "Side Plank Left es un ejercicio de core orientado a mejorar fuerza y control. Trabaja principalmente core. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -3224,14 +3250,16 @@
         "movilidad"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=DMlSdmsHEeI",
       "instructions": null,
       "tags": [
         "compuesto",
         "estiramiento",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-side-lying-floor-stretch.jpg"
+      ],
       "description": "Side-lying Floor Stretch Left es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -3248,14 +3276,16 @@
         "movilidad"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=DMlSdmsHEeI",
       "instructions": null,
       "tags": [
         "compuesto",
         "estiramiento",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-side-lying-floor-stretch.jpg"
+      ],
       "description": "Side-lying Floor Stretch Right es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -3301,14 +3331,16 @@
         "core"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=ryNlb_0GmAw",
       "instructions": null,
       "tags": [
         "compuesto",
         "estiramiento",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-spine-lumbar-twist.jpg"
+      ],
       "description": "Spine Lumbar Twist Stretch Right es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -3375,14 +3407,16 @@
         "hombro"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=JWp8_LGkTR8",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-shoulder-gators.jpg"
+      ],
       "description": "Shoulder Gators es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -3472,14 +3506,16 @@
         "core"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=ryNlb_0GmAw",
       "instructions": null,
       "tags": [
         "compuesto",
         "estiramiento",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-spine-lumbar-twist.jpg"
+      ],
       "description": "Spine Lumbar Twist Stretch Left es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4035,14 +4071,16 @@
         "espalda"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/shorts/XPcT3capkyk",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "skill"
       ],
-      "images": [],
+      "images": [
+        "exercise-active-hang.jpg"
+      ],
       "description": "Active Hang es un ejercicio técnico para desarrollar control escapular y preparación para calistenia. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4059,14 +4097,16 @@
         "hombro"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=xUkpU5jBpLE",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-arm-circle-clockwise.jpg"
+      ],
       "description": "Arm Circles Clockwise es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4090,7 +4130,9 @@
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-arm-circle-counterclockwise.webp"
+      ],
       "description": "Arm Circles Counterclockwise es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4114,7 +4156,9 @@
         "compuesto",
         "estiramiento"
       ],
-      "images": [],
+      "images": [
+        "exercise-cat-cow.jpeg"
+      ],
       "description": "Cat Cow Pose es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4131,14 +4175,16 @@
         "cuerpo completo"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=KMv7X1yZ7QY",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-hip-cars.jpg"
+      ],
       "description": "Hip CARs es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4155,14 +4201,16 @@
         "core"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=3kC0YkaY6jo",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "core"
       ],
-      "images": [],
+      "images": [
+        "exercise-hollow-body.jpg"
+      ],
       "description": "Hollow Body es un ejercicio de core orientado a mejorar fuerza y control. Trabaja principalmente core. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4179,14 +4227,16 @@
         "pecho"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=NS64IgKUyeY",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "estiramiento"
       ],
-      "images": [],
+      "images": [
+        "exercise-chest-stretch.jpg"
+      ],
       "description": "Chest Stretch es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4203,14 +4253,16 @@
         "movilidad"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=DMwRPGMPB10",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "estiramiento"
       ],
-      "images": [],
+      "images": [
+        "exercise-childs-pose.webp"
+      ],
       "description": "Child’s Pose es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4303,14 +4355,16 @@
         "gluteos"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=9qo48CYN06w",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-butt-bridge.webp"
+      ],
       "description": "Butt Bridge es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente glúteos, isquiosurales. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4401,14 +4455,16 @@
       "secondary_muscles": [
         "biceps"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=pE8PJsWEV7k",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "skill"
       ],
-      "images": [],
+      "images": [
+        "exercise-scapular-pull-ups.jpg"
+      ],
       "description": "Scapular Pull-Ups es un ejercicio técnico para desarrollar control escapular y preparación para calistenia. Trabaja principalmente espalda, hombro, bíceps. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4425,14 +4481,16 @@
         "hombro"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=Qy3pimy-zmo",
       "instructions": null,
       "tags": [
         "aislamiento",
         "bilateral",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-dumbbell-front-raise.png"
+      ],
       "description": "Dumbbell Front Raise es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente hombro. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4449,14 +4507,16 @@
         "hombro"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=XPPfnSEATJA",
       "instructions": null,
       "tags": [
         "aislamiento",
         "fuerza",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-dumbbell-lateral-raise.webp"
+      ],
       "description": "Dumbbell Side Lateral Raise es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente hombro. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4473,14 +4533,16 @@
         "cuerpo completo"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=pFrJQ-MyL10",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-arm-scissors.webp"
+      ],
       "description": "Arm Scissors es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4500,14 +4562,16 @@
         "hombro",
         "triceps"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=dcJVA2sBPqw",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-box-push-ups.jpg"
+      ],
       "description": "Box Push-Ups es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente pecho, tríceps, hombro. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4531,7 +4595,9 @@
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-back-arches.jpg"
+      ],
       "description": "Back Arches es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4548,14 +4614,16 @@
         "movilidad"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=z21McHHOpAg",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "estiramiento"
       ],
-      "images": [],
+      "images": [
+        "exercise-cobra-stretch.webp"
+      ],
       "description": "Cobra Stretch es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     }
   ]

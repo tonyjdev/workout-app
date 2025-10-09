@@ -4,6 +4,9 @@
     const $$ = (s, c = document) => Array.from(c.querySelectorAll(s))
     const JSON_PLAN_URL = './data/plan.json'
     const JSON_EX_DICT_URL = './data/exercises.json'
+    // Ruta base para imágenes de ejercicios (relativas al index.html)
+    const EX_IMG_BASE = 'assets/images/exercises/';
+
 
     const state = {
         view: 'home',
@@ -593,27 +596,27 @@
 
         const startBtn = active
             ? `<div class="d-grid">
-         <button class="btn btn-light text-dark btn-lg" data-action="start-from-card" data-plan="${info.id}">
-           <i class="bi bi-play-fill me-1"></i>Start
-         </button>
-       </div>`
+                 <button class="btn btn-light text-dark btn-lg" data-action="start-from-card" data-plan="${info.id}">
+                   <i class="bi bi-play-fill me-1"></i>Start
+                 </button>
+               </div>`
             : ''
 
         const startRow = `
-    <div class="btn-split mt-2">
-    <button class="btn btn-reset-plan btn-20" title="Reiniciar progreso"
-            data-action="reset-plan" data-plan="${info.id}">
-      <i class="bi bi-arrow-counterclockwise"></i>
-    </button>
-    ${active ? `
-      <button class="btn btn-light text-dark btn-lg btn-80" data-action="start-from-card" data-plan="${info.id}">
-        <i class="bi bi-play-fill me-1"></i>Start
-      </button>` : `
-      <button class="btn btn-outline-light btn-lg btn-80" data-action="use-plan" data-plan="${info.id}">
-        <i class="bi bi-check2-circle me-1"></i>Activar
-      </button>`
-        }
-    </div>`
+            <div class="btn-split mt-2">
+            <button class="btn btn-reset-plan btn-20" title="Reiniciar progreso"
+                    data-action="reset-plan" data-plan="${info.id}">
+              <i class="bi bi-arrow-counterclockwise"></i>
+            </button>
+            ${active ? `
+              <button class="btn btn-light text-dark btn-lg btn-80" data-action="start-from-card" data-plan="${info.id}">
+                <i class="bi bi-play-fill me-1"></i>Start
+              </button>` : `
+              <button class="btn btn-outline-light btn-lg btn-80" data-action="use-plan" data-plan="${info.id}">
+                <i class="bi bi-check2-circle me-1"></i>Activar
+              </button>`
+                }
+            </div>`
 
         return `<div class="card plan-card plan-cover mb-3" style="--cover: url('${cover}')">
       <div class="card-body">
@@ -838,6 +841,10 @@
             stopAllTimersAndVoice()
             completeSet()
         })
+        // Pause / Resume para ejercicios cronometrados y descansos
+        $('[data-action="pause-timer"]')?.addEventListener('click', () => { state.training.timerPaused = true; render() })
+        $('[data-action="resume-timer"]')?.addEventListener('click', () => { state.training.timerPaused = false; render() })
+
         $('[data-action="finish-now"]')?.addEventListener('click', () => {
             stopAllTimersAndVoice()
             completeExercise()
@@ -912,6 +919,41 @@
             render()
         })
 
+        // Parar medios al cerrar cualquier Offcanvas (y Modal por si acaso)
+        document.addEventListener('hidden.bs.offcanvas', (ev) => {
+            const root = ev.target;
+            // <video>: pausa y resetea
+            root.querySelectorAll('video').forEach(v => {
+                try { v.pause(); v.currentTime = 0; } catch {}
+            });
+            // <iframe> (YouTube/Vimeo): intenta API; si no, recarga src para cortar audio
+            root.querySelectorAll('iframe').forEach(f => {
+                try {
+                    // YouTube IFrame API (si el embed tiene enablejsapi=1)
+                    f.contentWindow?.postMessage?.('{"event":"command","func":"stopVideo","args":""}', '*');
+                    f.contentWindow?.postMessage?.('{"method":"pause"}', '*'); // Vimeo fallback
+                } catch {}
+                // Corte duro por si la API no está disponible
+                const src = f.getAttribute('src');
+                if (src) f.setAttribute('src', src);
+            });
+        });
+
+// (Opcional) también para modales si muestras vídeos ahí
+        document.addEventListener('hidden.bs.modal', (ev) => {
+            const root = ev.target;
+            root.querySelectorAll('video').forEach(v => { try { v.pause(); v.currentTime = 0; } catch {} });
+            root.querySelectorAll('iframe').forEach(f => {
+                try {
+                    f.contentWindow?.postMessage?.('{"event":"command","func":"stopVideo","args":""}', '*');
+                    f.contentWindow?.postMessage?.('{"method":"pause"}', '*');
+                } catch {}
+                const src = f.getAttribute('src');
+                if (src) f.setAttribute('src', src);
+            });
+        });
+
+
         scrollToTopAfterRender()
     }
 
@@ -975,22 +1017,65 @@
 
     // uploads
     function uploadPlanFromFile () {
-        const file = $('#planFileInput')?.files?.[0]
+        const fileInput = $('#planFileInput')
+        const file = fileInput?.files?.[0]
         if (!file) return
+
         const reader = new FileReader()
         reader.onload = () => {
             try {
                 const data = JSON.parse(reader.result)
-                if (!data?.weeks) throw new Error('Estructura inválida')
+                if (!data?.weeks) throw new Error('Estructura inválida: falta "weeks"')
+
                 const id = 'user-' + Date.now()
                 const name = file.name.replace(/\.json$/i, '') || ('Plan ' + new Date().toISOString().slice(0, 10))
+
                 state.userPlans.push({ id, name, data })
                 saveUserPlans()
                 render()
-            } catch (e) { alert('No se pudo leer el JSON: ' + e.message) }
+
+                // 1) Limpiar input de fichero
+                if (fileInput) fileInput.value = ''
+
+                // 2) Cerrar modal de carga (si existe)
+                try {
+                    const addModal = window.bootstrap?.Modal?.getOrCreateInstance?.('#addPlanModal')
+                    addModal?.hide()
+                } catch {}
+
+                // 3) Mostrar modal de confirmación (crear si no existe)
+                let ok = document.getElementById('uploadOkModal')
+                if (!ok) {
+                    const wrapper = document.createElement('div')
+                    wrapper.innerHTML = `
+        <div class="modal fade" id="uploadOkModal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Plan cargado</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body"></div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
+              </div>
+            </div>
+          </div>
+        </div>`
+                    document.body.appendChild(wrapper.firstElementChild)
+                    ok = document.getElementById('uploadOkModal')
+                }
+                const body = ok.querySelector('.modal-body')
+                if (body) body.textContent = `El fichero “${name}” se ha cargado correctamente.`
+                window.bootstrap?.Modal?.getOrCreateInstance?.(ok)?.show()
+
+            } catch (e) {
+                alert('No se pudo leer el JSON: ' + e.message)
+            }
         }
         reader.readAsText(file)
     }
+
 
     function usePlan (id) {
         activatePlan(id)
@@ -1254,56 +1339,75 @@
         const completed = ctx.index
         const setInfo = `${state.training.currentSet}/${ex.sets || 1}`
         const progressPct = Math.round((completed / total) * 100)
-        const exInfo = state.exDict.get(String(stepId(ex))) || null;
-        const videoHtml = exInfo?.video ? embedVideoHTML(exInfo.video, name) : '';
-        const topMedia = `<div class="exercise-media mb-3">
-          ${videoHtml || `<img src="${exerciseImageFor(ex, name)}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">`}
-        </div>`;
 
+        // --- ⬇️ CAMBIO AQUÍ: priorizar imagen > vídeo ---
+        const exInfo = state.exDict.get(String(stepId(ex))) || null
+        const imgs = exerciseImages(exInfo) // usa la ruta base EX_IMG_BASE automáticamente
+        let topMedia = ''
+
+        if (imgs.length > 0) {
+            // 1) Si hay imágenes, muestra la primera
+            const src = imgs[0]
+            topMedia = `<div class="exercise-media mb-3">
+      <img src="${src}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">
+    </div>`
+        } else if (exInfo?.video) {
+            // 2) Si no hay imágenes pero sí vídeo, muestra el vídeo
+            topMedia = `<div class="exercise-media mb-3">
+      ${embedVideoHTML(exInfo.video, name)}
+    </div>`
+        } else {
+            // 3) Fallback sin medios propios → imagen de reserva
+            topMedia = `<div class="exercise-media mb-3">
+      <img src="${exerciseImageFor(ex, name)}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">
+    </div>`
+        }
+        // --- ⬆️ FIN DEL CAMBIO ---
+
+        const exInfoDict = state.exDict.get(String(stepId(ex))) || null;
 
         const timerBlock = isTimed
             ? `<div class="d-flex align-items-center justify-content-center gap-2">
-                 <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
-                   <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
-                 </button>
-                 <div class="timer-large" id="timedLeftNum">${state.training.timedLeft || stepTime(ex)}</div>
-               </div>`
+         <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
+           <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
+         </button>
+         <div class="timer-large" id="timedLeftNum">${state.training.timedLeft || stepTime(ex)}</div>
+       </div>`
             : `<div class="reps-large">x${stepReps(ex) ?? '—'}</div>`
 
         return `
-            ${topMedia}
-        
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <div>
-                <h5 class="mb-1">${nameWithBadge}</h5>
-                  <button class="btn btn-link btn-sm p-0 ms-2" data-action="help-ex" data-exercise-id="${stepId(ex)}"><i class="bi bi-info-circle"></i></button>
-                </h5>
-                <div class="text-secondary">Serie ${setInfo}</div>
-              </div>
-              <div class="text-end">
-                <button class="btn btn-outline-secondary btn-sm me-2" data-action="prev-ex"><i class="bi bi-skip-start"></i></button>
-                <button class="btn btn-outline-primary btn-sm" data-action="next-ex"><i class="bi bi-skip-end"></i></button>
-              </div>
-            </div>
-        
-            <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
-            <div class="progress progress-mini mb-3"><div class="progress-bar" style="width:${progressPct}%"></div></div>
-        
-            <div class="timer-area mb-3">${timerBlock}</div>
-        
-            <div class="d-grid gap-2 mb-3">
-              <button class="btn btn-success btn-tall" data-action="complete-set"><i class="bi bi-check2-circle me-1"></i>Completar serie</button>
-            </div>
-        
-            <div class="row g-2 bottom-cta">
-              <div class="col-6 d-grid">
-                <button class="btn btn-outline-secondary btn-tall" data-action="cancel-to-day"><i class="bi bi-x-lg me-1"></i>Cancelar</button>
-              </div>
-              <div class="col-6 d-grid">
-                <button class="btn btn-outline-danger btn-tall" data-action="finish-now"><i class="bi bi-flag-fill me-1"></i>Finalizar</button>
-              </div>
-            </div>`
+    ${topMedia}
+    <div class="d-flex justify-content-between align-items-start mb-2">
+      <div>
+        <h5 class="mb-1">${nameWithBadge}</h5>
+        <button class="btn btn-link btn-sm p-0 ms-2" data-action="help-ex" data-exercise-id="${stepId(ex)}"><i class="bi bi-info-circle"></i></button>
+        <div class="text-secondary">Serie ${setInfo}</div>
+      </div>
+      <div class="text-end">
+        <button class="btn btn-outline-secondary btn-sm me-2" data-action="prev-ex"><i class="bi bi-skip-start"></i></button>
+        <button class="btn btn-outline-primary btn-sm" data-action="next-ex"><i class="bi bi-skip-end"></i></button>
+      </div>
+    </div>
+
+    <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
+    <div class="progress progress-mini mb-3"><div class="progress-bar" style="width:${progressPct}%"></div></div>
+
+    <div class="timer-area mb-3">${timerBlock}</div>
+
+    <div class="d-grid gap-2 mb-3">
+      <button class="btn btn-success btn-tall" data-action="complete-set"><i class="bi bi-check2-circle me-1"></i>Completar serie</button>
+    </div>
+
+    <div class="row g-2 bottom-cta">
+      <div class="col-6 d-grid">
+        <button class="btn btn-outline-secondary btn-tall" data-action="cancel-to-day"><i class="bi bi-x-lg me-1"></i>Cancelar</button>
+      </div>
+      <div class="col-6 d-grid">
+        <button class="btn btn-outline-danger btn-tall" data-action="finish-now"><i class="bi bi-flag-fill me-1"></i>Finalizar</button>
+      </div>
+    </div>`
     }
+
 
     /* ---------- 5) DESCANSO ---------- */
     function viewTrainingRest () {
@@ -1345,7 +1449,14 @@
             <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
             <div class="progress progress-mini mb-3"><div class="progress-bar" style="width:${progressPct}%"></div></div>
         
-            <div class="timer-area mb-3"><div class="countdown display-5 fw-bold text-center" id="restNum">${state.training.restLeft}</div></div>
+            <div class="timer-area mb-3">
+              <div class="d-flex align-items-center justify-content-center gap-2">
+                <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
+                  <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
+                </button>
+                <div class="countdown display-5 fw-bold text-center" id="restNum">${state.training.restLeft}</div>
+              </div>
+            </div>
         
             <div class="d-grid gap-2 mb-3">
               <button class="btn btn-outline-secondary btn-tall" data-action="extend-rest"><i class="bi bi-plus-circle me-1"></i>+10s</button>
@@ -1469,15 +1580,42 @@
     }
 
     function getRestBetweenSets (step) {
-        const cfg = state.settings.restBetweenSets
-        return (typeof cfg === 'number' && cfg >= 0) ? cfg : (step.rest || 20)
+        // 1) Descanso definido en el ejercicio (respeta 0 y formatos tipo "30s", "1:00")
+        if (typeof step?.rest === 'number') return step.rest;
+        if (step?.rest != null) {
+            const secs = parseSeconds(step.rest);
+            if (secs != null) return secs; // incluye 0
+        }
+
+        // 2) Configuración (si está establecida)
+        const cfg = state.settings?.restBetweenSets;
+        if (typeof cfg === 'number' && cfg >= 0) return cfg;
+
+        // 3) Fallback final
+        return 20;
     }
 
     function getRestBetweenExercises (step) {
-        const cfg = state.settings.restBetweenExercises
-        const fb = step.rest_next || step.rest || 30
-        return (typeof cfg === 'number' && cfg >= 0) ? cfg : fb
+        // 1) Prioridad: rest_next (si existe). Si no, rest del ejercicio.
+        if (typeof step?.rest_next === 'number') return step.rest_next;
+        if (step?.rest_next != null) {
+            const s = parseSeconds(step.rest_next);
+            if (s != null) return s; // incluye 0
+        }
+        if (typeof step?.rest === 'number') return step.rest;
+        if (step?.rest != null) {
+            const s = parseSeconds(step.rest);
+            if (s != null) return s; // incluye 0
+        }
+
+        // 2) Configuración (si está establecida)
+        const cfg = state.settings?.restBetweenExercises;
+        if (typeof cfg === 'number' && cfg >= 0) return cfg;
+
+        // 3) Fallback final
+        return 30;
     }
+
 
     function completeSet () {
         const ctx = currentExerciseCtx()
@@ -1488,6 +1626,7 @@
             state.training.substate = 'rest'
             state.training.restReason = 'between-sets'
             state.training.restLeft = getRestBetweenSets(ctx.step)
+            state.training.timerPaused = false
             render()
             speak?.(`Descanso de ${state.training.restLeft} segundos`)
             runRest()
@@ -1504,6 +1643,7 @@
             state.training.substate = 'rest'
             state.training.restReason = 'between-exercises'
             state.training.restLeft = getRestBetweenExercises(ctx.step)
+            state.training.timerPaused = false
             render()
             const nx = stepDisplayName(currentExerciseCtx().day.exercises[ctx.index + 1], ctx.index + 1)
             speak(`Descanso de ${state.training.restLeft} segundos. Próximo ejercicio ${nx}`)
@@ -1533,6 +1673,7 @@
         stopVoice() // corta lo anterior
         clearInterval(timerId)
         timerId = setInterval(() => {
+            if (state.training.timerPaused) return
             state.training.restLeft--
             const node = $('#restNum')
             if (node) node.textContent = state.training.restLeft
@@ -1629,14 +1770,24 @@
             const trimmed = src.trim()
             if (!trimmed) return
             if (requireCheck && !isLikelyImageUrl(trimmed)) return
-            if (seen.has(trimmed)) return
-            seen.add(trimmed)
-            list.push(trimmed)
+
+            // --- RESOLVER DE RUTA: si no es absoluta ni data:, anteponer EX_IMG_BASE ---
+            let resolved = trimmed
+            const isAbsolute = /^(?:[a-z]+:)?\/\//i.test(trimmed) || trimmed.startsWith('/') || trimmed.startsWith('data:')
+            if (!isAbsolute) {
+                resolved = EX_IMG_BASE + trimmed.replace(/^\.?\//, '')
+            }
+            // ---------------------------------------------------------------------------
+
+            if (seen.has(resolved)) return
+            seen.add(resolved)
+            list.push(resolved)
         }
         if (typeof ex.image === 'string') push(ex.image, false)
         if (Array.isArray(ex.images)) ex.images.forEach(src => push(src, true))
         return list
     }
+
     function exerciseImageFor (step, name) {
         const sid = stepId(step)
         const ex = sid != null ? state.exDict.get(String(sid)) : null
