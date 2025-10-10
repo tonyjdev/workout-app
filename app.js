@@ -666,10 +666,76 @@
         $$('#bottomNav .nav-link').forEach(b => b.classList.toggle('active', b.dataset.view === state.view))
         if (state.view === 'home') host.innerHTML = viewHome()
         else if (state.view === 'training') host.innerHTML = viewTraining()
-        else if (state.view === 'progress') host.innerHTML = `<div class="alert alert-secondary">Resumen próximamente.</div>`
+        else if (state.view === 'progress') host.innerHTML = viewReport()
         else if (state.view === 'settings') host.innerHTML = viewSettings()
         console.log('render', state.view)
         bindEvents()
+    }
+
+    function viewReport () {
+        const { minutes, kcal, days } = statsTotalsFromLog()
+        const streak = currentStreak()
+
+        const minsH = Math.floor(minutes / 60)
+        const minsR = minutes % 60
+
+        const series = buildDailySeries(14)
+        const maxMin = Math.max(30, ...series.map(d=>d.minutes))
+        const maxKcal = Math.max(100, ...series.map(d=>d.kcal))
+
+        const minutesBars = renderMiniBars(series.map(x=>x.minutes), maxMin, { suffix: 'm' })
+        const kcalBars    = renderMiniBars(series.map(x=>x.kcal),    maxKcal, { suffix: '' })
+
+        const labels = renderMiniLabels(series.map(x => {
+            const dt = parseYMD(x.date);
+            return ['D','L','M','X','J','V','S'][dt.getDay()];
+        }))
+
+        return `
+    <section class="mb-3">
+      <div class="row row-cols-2 row-cols-md-4 g-2">
+        <div class="col">${statCard('bi-stopwatch', 'Tiempo total', `${minsH}h ${minsR}m`)}</div>
+        <div class="col">${statCard('bi-calendar-check', 'Días entrenados', days)}</div>
+        <div class="col">${statCard('bi-fire', 'Calorías', kcal)}</div>
+        <div class="col">${statCard('bi-lightning', 'Racha', `${streak} d`)}</div>
+      </div>
+    </section>
+
+    <section class="mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="mb-2">Minutos por día (últimos 14 días)</h6>
+          ${minutesBars}
+          ${labels}
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="mb-2">Calorías por día (últimos 14 días)</h6>
+          ${kcalBars}
+          ${labels}
+        </div>
+      </div>
+    </section>
+  `
+    }
+
+    // Mini-barras responsivas sin librerías (CSS grid)
+    function renderMiniBars(values, maxValue, { suffix = '' } = {}) {
+        const bars = values.map(v => {
+            const h = Math.round((v / (maxValue || 1)) * 100)
+            const tip = v ? `<span class="bar-tip">${v}${suffix}</span>` : ''
+            return `<div class="bar" style="height:${h}%">${tip}</div>`
+        }).join('')
+        return `<div class="mini-bars" role="img" aria-label="Gráfico de barras">${bars}</div>`
+    }
+
+    function renderMiniLabels(labels) {
+        const html = labels.map(l => `<div class="lbl">${l}</div>`).join('')
+        return `<div class="mini-labels">${html}</div>`
     }
 
     function viewSettings () {
@@ -718,6 +784,16 @@
           </div>
         </div>
       </div></div>
+      
+      <div class="card mb-3"><div class="card-body">
+        <h5 class="card-title">Exportar/Importar progreso</h5>
+        <input type="file" id="progressFileInput" accept="application/json" class="d-none">
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-primary" id="btnExportProgress">Exportar progreso</button>
+          <button class="btn btn-outline-secondary" id="btnImportProgress">Importar progreso</button>
+        </div>
+    </div></div>
+
 
       <div class="bottom-cta d-grid gap-2">
         <button class="btn btn-primary btn-lg" data-action="save-settings"><i class="bi bi-save me-2"></i>Guardar</button>
@@ -911,7 +987,7 @@
             }
         })
 
-// Confirmar borrado
+        // Confirmar borrado
         $('#confirmDeletePlanBtn')?.addEventListener('click', (ev) => {
             const id = ev.currentTarget.dataset.plan
             deletePlan(id)  // tu función real de borrado (la que ya tenías)
@@ -939,7 +1015,7 @@
             });
         });
 
-// (Opcional) también para modales si muestras vídeos ahí
+        // (Opcional) también para modales si muestras vídeos ahí
         document.addEventListener('hidden.bs.modal', (ev) => {
             const root = ev.target;
             root.querySelectorAll('video').forEach(v => { try { v.pause(); v.currentTime = 0; } catch {} });
@@ -952,6 +1028,10 @@
                 if (src) f.setAttribute('src', src);
             });
         });
+
+        $('#btnExportProgress')?.addEventListener('click', exportProgressJSON)
+        $('#btnImportProgress')?.addEventListener('click', () => $('#progressFileInput')?.click())
+        $('#progressFileInput')?.addEventListener('change', importProgressFromFile)
 
 
         scrollToTopAfterRender()
@@ -1663,6 +1743,18 @@
             state.stats.minutesTrained = (state.stats.minutesTrained || 0) + minutes
             state.stats.kcalBurned = (state.stats.kcalBurned || 0) + Math.round(kcal)
 
+            // NUEVO: añadir entrada al log diario
+            ensureStats()
+            state.stats.trainingLog.push({
+                date: todayYYYYMMDD(),          // ya tienes helper todayYYYYMMDD()
+                minutes: minutes,
+                kcal: Math.round(kcal),
+                planId: pid,
+                week: state.training.currentWeek,
+                day:  state.training.currentDay
+            })
+            saveStats()
+
             // sonido, render...
             play?.(state.audio?.applause)
             render()
@@ -2219,6 +2311,215 @@
             const bIs = b?.id === activeId;
             return aIs === bIs ? 0 : (aIs ? -1 : 1);
         });
+    }
+
+    function downloadBlob (data, filename, type = 'application/json') {
+        try {
+            const blob = new Blob([data], { type });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.rel = 'noopener';
+            // Si el navegador no soporta "download", abrimos en una pestaña (Safari/iOS)
+            const supportsDownload = 'download' in HTMLAnchorElement.prototype;
+
+            if (!supportsDownload) {
+                // fallback: abrir en pestaña. En iOS aparecerá el menú de compartir/guardar.
+                window.open(url, '_blank', 'noopener');
+                // revocar un poco más tarde para dar tiempo a cargar
+                setTimeout(() => URL.revokeObjectURL(url), 4000);
+                return;
+            }
+
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+        } catch (e) {
+            console.error('downloadBlob error:', e);
+            try {
+                // Ultra-fallback: data URL (puede ser pesado para archivos grandes)
+                const base64 = btoa(unescape(encodeURIComponent(String(data))));
+                const href = `data:${type};base64,${base64}`;
+                const a = document.createElement('a');
+                a.href = href;
+                a.download = filename;
+                a.rel = 'noopener';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            } catch (e2) {
+                alert('No se pudo iniciar la descarga del progreso.');
+            }
+        }
+    }
+
+
+    function todayYYYYMMDD () {
+        const d = new Date()
+        const mm = String(d.getMonth() + 1).padStart(2, '0')
+        const dd = String(d.getDate()).padStart(2, '0')
+        return `${d.getFullYear()}-${mm}-${dd}`
+    }
+
+    function exportProgressJSON () {
+        const info = getActivePlanInfo();
+        if (!info) {
+            alert('No hay plan activo.');
+            return;
+        }
+
+        // Días completados (usa tu helper isDayCompleted)
+        const weeks = info.data?.weeks || [];
+        const done = [];
+        for (let w = 0; w < weeks.length; w++) {
+            const days = weeks[w]?.days || [];
+            for (let d = 0; d < days.length; d++) {
+                if (isDayCompleted(w, d)) done.push([w + 1, d + 1]); // base-1 solo por legibilidad
+            }
+        }
+
+        // Posición actual (usa las claves reales del estado)
+        const t = state.training || {};
+        const pos = {
+            currentWeek: t.currentWeek ?? null,
+            currentDay: t.currentDay ?? null,
+            currentExerciseIndex: t.currentExerciseIndex ?? null,
+            currentSet: t.currentSet ?? null,
+            substate: t.substate ?? null
+        };
+
+        const payload = {
+            schema: 'progress.v1',
+            savedAt: new Date().toISOString(),
+            plan: { id: info.id, name: info.name },
+            progress: { doneDays: done, position: pos }
+        };
+
+        const json = JSON.stringify(payload, null, 2);
+        const fname = `progreso_${(info.name || info.id || 'plan')}_${todayYYYYMMDD()}.json`.replace(/\s+/g, '_');
+        downloadBlob(json, fname);
+    }
+
+
+    function importProgressFromFile (ev) {
+        const file = ev?.target?.files?.[0]
+        if (!file) return
+        const reader = new FileReader()
+        reader.onload = () => {
+            try {
+                const data = JSON.parse(reader.result)
+                if (!data || data.schema !== 'progress.v1') throw new Error('Formato de progreso no reconocido')
+
+                const current = getActivePlanInfo()
+                if (!current) throw new Error('No hay plan activo para aplicar el progreso')
+
+                // Aviso si el progreso es de otro plan (se puede aplicar igualmente)
+                if (data.plan?.id && data.plan.id !== current.id) {
+                    console.warn('El progreso proviene de otro plan:', data.plan, ' ≠ ', current)
+                }
+
+                // 1) Restaurar días completados
+                const done = Array.isArray(data.progress?.doneDays) ? data.progress.doneDays : []
+                for (const entry of done) {
+                    const [w1, d1] = entry
+                    if (Number.isInteger(w1) && Number.isInteger(d1)) {
+                        // tus helpers trabajan en base-0
+                        markDayCompletedFor(w1 - 1, d1 - 1)
+                    }
+                }
+
+                // 2) Restaurar posición actual (opcional)
+                const p = data.progress?.position || {}
+                if (p && typeof p === 'object') {
+                    state.training = state.training || {}
+                    if (Number.isInteger(p.currentWeek)) state.training.currentWeek = p.currentWeek
+                    if (Number.isInteger(p.currentDay))  state.training.currentDay  = p.currentDay
+                    if (Number.isInteger(p.index))       state.training.index       = p.index
+                    if (Number.isInteger(p.currentSet))  state.training.currentSet  = p.currentSet
+                    if (typeof p.substate === 'string')  state.training.substate    = p.substate
+                }
+
+                // Persistir y refrescar UI
+                saveUserPlans?.()  // si tu persistencia de progreso va acoplada aquí
+                render()
+
+                // feedback
+                alert('Progreso importado correctamente.')
+            } catch (e) {
+                console.error(e)
+                alert('No se pudo importar el progreso: ' + e.message)
+            } finally {
+                ev.target.value = '' // limpiar input
+            }
+        }
+        reader.readAsText(file)
+    }
+
+// --- Helpers de stats / fechas ---
+    function ensureStats () {
+        if (!state.stats) state.stats = {}
+        if (!Array.isArray(state.stats.trainingLog)) state.stats.trainingLog = []
+        if (typeof state.stats.trainingsDone !== 'number') state.stats.trainingsDone = 0
+        if (typeof state.stats.minutesTrained !== 'number') state.stats.minutesTrained = 0
+        if (typeof state.stats.kcalBurned !== 'number') state.stats.kcalBurned = 0
+        return state.stats
+    }
+    function saveStats () {
+        localStorage.setItem('sf_stats', JSON.stringify(state.stats))
+    }
+    function ymd (d = new Date()) {
+        const mm = String(d.getMonth()+1).padStart(2,'0')
+        const dd = String(d.getDate()).padStart(2,'0')
+        return `${d.getFullYear()}-${mm}-${dd}`
+    }
+    function parseYMD (s) {
+        const [Y,M,D] = (s||'').split('-').map(Number)
+        if (!Y || !M || !D) return null
+        return new Date(Y, M-1, D)
+    }
+    function addDays(date, delta){ const d=new Date(date); d.setDate(d.getDate()+delta); return d }
+
+// Serie diaria (últimos n días) agregada por fecha
+    function buildDailySeries(n = 14) {
+        ensureStats()
+        const today = new Date()
+        const days = []
+        for (let i = n-1; i >= 0; i--) {
+            const d = ymd(addDays(today, -i))
+            days.push({ date: d, minutes: 0, kcal: 0 })
+        }
+        const idxByDate = Object.fromEntries(days.map((x, i) => [x.date, i]))
+        for (const e of state.stats.trainingLog || []) {
+            const i = idxByDate[e.date]
+            if (i != null) {
+                days[i].minutes += Math.max(0, Math.round(e.minutes || 0))
+                days[i].kcal    += Math.max(0, Math.round(e.kcal    || 0))
+            }
+        }
+        return days
+    }
+
+// Racha actual (días consecutivos entrenando hacia atrás desde hoy)
+    function currentStreak () {
+        ensureStats()
+        const set = new Set((state.stats.trainingLog||[]).map(e => e.date))
+        let streak = 0
+        let d = new Date()
+        while (set.has(ymd(d))) { streak++; d = addDays(d, -1) }
+        return streak
+    }
+
+// Totales útiles (recalcula por si acaso)
+    function statsTotalsFromLog () {
+        ensureStats()
+        const log = state.stats.trainingLog || []
+        const minutes = log.reduce((a,b)=>a+(b.minutes||0),0)
+        const kcal    = log.reduce((a,b)=>a+(b.kcal||0),0)
+        const days    = new Set(log.map(e=>e.date)).size
+        return { minutes, kcal, days }
     }
 
 
