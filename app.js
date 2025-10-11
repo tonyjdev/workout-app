@@ -670,6 +670,8 @@
         else if (state.view === 'settings') host.innerHTML = viewSettings()
         console.log('render', state.view)
         bindEvents()
+        updateNavVisibility();
+        updateTopBack();
     }
 
     function viewReport () {
@@ -1033,6 +1035,18 @@
         $('#btnImportProgress')?.addEventListener('click', () => $('#progressFileInput')?.click())
         $('#progressFileInput')?.addEventListener('change', importProgressFromFile)
 
+        $('#navBackBtn')?.addEventListener('click', () => {
+            stopAllTimersAndVoice();
+            if (state.training.substate === 'finished') {
+                state.training = subTrainingInitial();
+                state.view = 'training';
+            } else {
+                state.training.substate = 'day';
+            }
+            render();
+            updateNavVisibility();
+            updateTopBack();
+        });
 
         scrollToTopAfterRender()
     }
@@ -1367,21 +1381,14 @@
             : '';
 
         return headerDay + `
-            ${estBadge}
-            ${breakdown}
-            <ul class="list-group list-group-flush ex-list mb-3">${itemsHTML}</ul>
-            <div class="row g-2 bottom-cta">
-              <div class="col-3 d-grid">
-                <button class="btn btn-secondary btn-tall" data-action="back-to-list">
-                  <i class="bi bi-arrow-left me-1"></i>Back
-                </button>
-              </div>
-              <div class="col-9 d-grid">
-                <button class="btn btn-primary btn-lg btn-tall" data-action="start-training">
-                  <i class="bi bi-play-fill me-1"></i>Start
-                </button>
-              </div>
-            </div>`
+          ${estBadge}
+          ${breakdown}
+          <ul class="list-group list-group-flush ex-list mb-3">${itemsHTML}</ul>
+          <div class="bottom-cta">
+            <button class="btn btn-primary btn-lg w-100 btn-tall" data-action="start-training">
+              <i class="bi bi-play-fill me-1"></i>Start
+            </button>
+          </div>`;
     }
 
     /* ---------- 3) COUNTDOWN INICIAL ---------- */
@@ -1395,16 +1402,13 @@
             <h5 class="mb-1">${exName}</h5>
             <div class="text-secondary mb-3">Comienza en...</div>
             <div class="countdown display-3 fw-bold mb-3 text-center" id="countdownNum">${state.training.countdownLeft}</div>
-        
-            <div class="row g-2 bottom-cta">
-              <div class="col-6 d-grid">
-                <button class="btn btn-outline-secondary btn-tall" data-action="cancel-to-day"><i class="bi bi-x-lg me-1"></i>Cancelar</button>
-              </div>
-              <div class="col-6 d-grid">
-                <button class="btn btn-primary btn-tall" data-action="skip-countdown"><i class="bi bi-fast-forward-fill me-1"></i>Ir al ejercicio</button>
-              </div>
-            </div>`
-        }
+            <div class="bottom-cta">
+              <button class="btn btn-primary btn-tall w-100" data-action="skip-countdown">
+                <i class="bi bi-fast-forward-fill me-1"></i>Ir al ejercicio
+              </button>
+            </div>`;
+    }
+
 
     /* ---------- 4) EJERCICIO EN CURSO ---------- */
     function viewTrainingExercise () {
@@ -1442,7 +1446,6 @@
       <img src="${exerciseImageFor(ex, name)}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">
     </div>`
         }
-        // --- ⬆️ FIN DEL CAMBIO ---
 
         const exInfoDict = state.exDict.get(String(stepId(ex))) || null;
 
@@ -1456,36 +1459,32 @@
             : `<div class="reps-large">x${stepReps(ex) ?? '—'}</div>`
 
         return `
-    ${topMedia}
-    <div class="d-flex justify-content-between align-items-start mb-2">
-      <div>
-        <h5 class="mb-1">${nameWithBadge}</h5>
-        <button class="btn btn-link btn-sm p-0 ms-2" data-action="help-ex" data-exercise-id="${stepId(ex)}"><i class="bi bi-info-circle"></i></button>
-        <div class="text-secondary">Serie ${setInfo}</div>
-      </div>
-      <div class="text-end">
-        <button class="btn btn-outline-secondary btn-sm me-2" data-action="prev-ex"><i class="bi bi-skip-start"></i></button>
-        <button class="btn btn-outline-primary btn-sm" data-action="next-ex"><i class="bi bi-skip-end"></i></button>
-      </div>
-    </div>
+            ${topMedia}
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <h5 class="mb-1">${nameWithBadge}</h5>
+                <button class="btn btn-link btn-sm p-0 ms-2" data-action="help-ex" data-exercise-id="${stepId(ex)}"><i class="bi bi-info-circle"></i></button>
+                <div class="text-secondary">Serie ${setInfo}</div>
+              </div>
+              <div class="text-end">
+                <button class="btn btn-outline-secondary btn-sm me-2" data-action="prev-ex"><i class="bi bi-skip-start"></i></button>
+                <button class="btn btn-outline-primary btn-sm" data-action="next-ex"><i class="bi bi-skip-end"></i></button>
+              </div>
+            </div>
+        
+            <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
+            <div class="progress progress-mini mb-3"><div class="progress-bar" style="width:${progressPct}%"></div></div>
+        
+            <div class="timer-area mb-3">${timerBlock}</div>
 
-    <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
-    <div class="progress progress-mini mb-3"><div class="progress-bar" style="width:${progressPct}%"></div></div>
-
-    <div class="timer-area mb-3">${timerBlock}</div>
-
-    <div class="d-grid gap-2 mb-3">
-      <button class="btn btn-success btn-tall" data-action="complete-set"><i class="bi bi-check2-circle me-1"></i>Completar serie</button>
-    </div>
-
-    <div class="row g-2 bottom-cta">
-      <div class="col-6 d-grid">
-        <button class="btn btn-outline-secondary btn-tall" data-action="cancel-to-day"><i class="bi bi-x-lg me-1"></i>Cancelar</button>
-      </div>
-      <div class="col-6 d-grid">
-        <button class="btn btn-outline-danger btn-tall" data-action="finish-now"><i class="bi bi-flag-fill me-1"></i>Finalizar</button>
-      </div>
-    </div>`
+            <div class="btn-row mb-3">
+              <button class="btn btn-outline-danger btn-tall btn-25" data-action="finish-now">
+                Completar ejercicio
+              </button>
+              <button class="btn btn-success btn-tall btn-75" data-action="complete-set">
+                <i class="bi bi-check2-circle me-1"></i>Completar serie
+              </button>
+            </div>`
     }
 
 
@@ -1538,15 +1537,13 @@
               </div>
             </div>
         
-            <div class="d-grid gap-2 mb-3">
-              <button class="btn btn-outline-secondary btn-tall" data-action="extend-rest"><i class="bi bi-plus-circle me-1"></i>+10s</button>
-              <button class="btn btn-primary btn-tall" data-action="end-rest"><i class="bi bi-skip-forward-fill me-1"></i>Terminar descanso</button>
-            </div>
-        
-            <div class="row g-2 bottom-cta">
-              <div class="col-12 d-grid">
-                <button class="btn btn-outline-danger btn-tall" data-action="cancel-to-day"><i class="bi bi-x-lg me-1"></i>Cancelar y volver</button>
-              </div>
+            <div class="btn-row mb-3">
+              <button class="btn btn-outline-secondary btn-tall btn-25" data-action="extend-rest">
+                <i class="bi bi-plus-circle me-1"></i>+10s
+              </button>
+              <button class="btn btn-primary btn-tall btn-75" data-action="end-rest">
+                <i class="bi bi-skip-forward-fill me-1"></i>Terminar descanso
+              </button>
             </div>`
     }
 
@@ -2196,6 +2193,28 @@
         const activeStates = new Set(['countdown', 'exercise', 'rest', 'finished'])
         const hide = (state.view === 'training' && activeStates.has(state.training?.substate))
         setTrainingNavHidden(hide)
+    }
+
+    function shouldShowTopBack(){
+        return state.view === 'training' && ['countdown','exercise','rest','finished'].includes(state.training?.substate);
+    }
+    function updateTopBack(){
+        const btn = document.getElementById('navBackBtn');
+        if (!btn) return;
+        const show = shouldShowTopBack();
+
+        if (show) {
+            // mostrar y forzar un reflow antes de añadir .show => dispara la transición
+            btn.classList.remove('d-none');
+            btn.classList.remove('show');
+            // fuerza reflow
+            void btn.offsetWidth;
+            btn.classList.add('show');
+        } else {
+            // ocultar con transición suave y, al terminar, sacar del flujo
+            btn.classList.remove('show');
+            setTimeout(() => btn.classList.add('d-none'), 250);
+        }
     }
 
     // Estructura: state.stats.planProgress = { [planId]: { "W-D": true, ... } }

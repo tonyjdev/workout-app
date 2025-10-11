@@ -13,143 +13,152 @@
     <link href="./styles.css?v=1.2" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar navbar-dark bg-dark border-bottom sticky-top">
+<nav class="navbar navbar-dark bg-dark border-bottom sticky-top">
     <div class="container-fluid">
-      <span class="navbar-brand fw-bold">Workout</span>
-      <div class="d-flex gap-2">
-          <button class="btn btn-outline-light btn-sm" data-action="toggle-theme" title="Cambiar tema">
-              <i class="bi bi-moon-stars"></i>
-          </button>
-          <button class="btn btn-outline-light btn-sm" data-action="open-catalog" title="Catálogo de ejercicios">
-          <i class="bi bi-list-ul"></i>
-        </button>
-        <button class="btn btn-outline-light btn-sm" data-bs-toggle="offcanvas" data-bs-target="#appHelp" aria-controls="appHelp" title="Ayuda contextual">
-          <i class="bi bi-question-circle"></i>
-        </button>
-      </div>
+        <div class="d-flex align-items-center">
+            <button id="navBackBtn" class="btn btn-outline-light btn-sm me-2 nav-back d-none" type="button"
+                    aria-label="Volver">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+            <span class="navbar-brand fw-bold mb-0">Workout</span>
+        </div>
+        <div class="d-flex gap-2">
+            <button class="btn btn-outline-light btn-sm" data-action="toggle-theme" title="Cambiar tema">
+                <i class="bi bi-moon-stars"></i>
+            </button>
+            <button class="btn btn-outline-light btn-sm" data-action="open-catalog" title="Catálogo de ejercicios">
+                <i class="bi bi-list-ul"></i>
+            </button>
+            <button class="btn btn-outline-light btn-sm" data-bs-toggle="offcanvas" data-bs-target="#appHelp"
+                    aria-controls="appHelp" title="Ayuda contextual">
+                <i class="bi bi-question-circle"></i>
+            </button>
+        </div>
     </div>
-  </nav>
+</nav>
 
-  <main id="appContent" class="container py-3"></main>
+<main id="appContent" class="container py-3"></main>
 
-  <!-- Banner de publicidad (fijo sobre la barra inferior) -->
-  <div id="adBanner" class="ad-banner" role="region" aria-label="Publicidad">
-      <!-- Aquí insertarás tu script/tag de ads. De momento, un placeholder: -->
-      <a href="#" class="d-inline-block text-decoration-none text-reset small">
-          <div class="d-flex align-items-center gap-2">
-              <i class="bi bi-badge-ad"></i>
-              <span>Tu anuncio aquí · 320×50</span>
-          </div>
-      </a>
-  </div>
+<!-- Banner de publicidad (fijo sobre la barra inferior) -->
+<div id="adBanner" class="ad-banner" role="region" aria-label="Publicidad">
+    <!-- Aquí insertarás tu script/tag de ads. De momento, un placeholder: -->
+    <a href="#" class="d-inline-block text-decoration-none text-reset small">
+        <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-badge-ad"></i>
+            <span>Tu anuncio aquí · 320×50</span>
+        </div>
+    </a>
+</div>
 
-  <!-- NAV INFERIOR: nav-pills + nav-fill -->
-  <nav id="bottomNav" class="nav nav-pills nav-fill nav-bottom fixed-bottom">
-      <button class="nav-link active" data-view="home" type="button">
-          <i class="bi bi-house-fill"></i>
-          <span>Home</span>
-      </button>
-      <button class="nav-link" data-view="training" type="button">
-          <i class="bi bi-lightning-charge"></i>
-          <span>Train</span>
-      </button>
-      <button class="nav-link" data-view="progress" type="button">
-          <i class="bi bi-graph-up"></i>
-          <span>Report</span>
-      </button>
-      <button class="nav-link" data-view="settings" type="button">
-          <i class="bi bi-gear-fill"></i>
-          <span>Settings</span>
-      </button>
-  </nav>
+<!-- NAV INFERIOR: nav-pills + nav-fill -->
+<nav id="bottomNav" class="nav nav-pills nav-fill nav-bottom fixed-bottom">
+    <button class="nav-link active" data-view="home" type="button">
+        <i class="bi bi-house-fill"></i>
+        <span>Home</span>
+    </button>
+    <button class="nav-link" data-view="training" type="button">
+        <i class="bi bi-lightning-charge"></i>
+        <span>Train</span>
+    </button>
+    <button class="nav-link" data-view="progress" type="button">
+        <i class="bi bi-graph-up"></i>
+        <span>Report</span>
+    </button>
+    <button class="nav-link" data-view="settings" type="button">
+        <i class="bi bi-gear-fill"></i>
+        <span>Settings</span>
+    </button>
+</nav>
 
-  <!-- Offcanvas (help & catalog) -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="appHelp" aria-labelledby="appHelpLabel">
+<!-- Offcanvas (help & catalog) -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="appHelp" aria-labelledby="appHelpLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="appHelpLabel">Ayuda</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5 class="offcanvas-title" id="appHelpLabel">Ayuda</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body" id="helpContent">
-      <p class="text-secondary mb-0">Información contextual.</p>
+        <p class="text-secondary mb-0">Información contextual.</p>
     </div>
-  </div>
+</div>
 
-  <!-- Modal: Add Plan -->
-  <div class="modal fade" id="addPlanModal" tabindex="-1" aria-labelledby="addPlanLabel" aria-hidden="true">
+<!-- Modal: Add Plan -->
+<div class="modal fade" id="addPlanModal" tabindex="-1" aria-labelledby="addPlanLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addPlanLabel">Añadir entrenamiento</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPlanLabel">Añadir entrenamiento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary small">Selecciona un archivo <code>.json</code> con el plan. Se guardará para
+                    usarlo más tarde.</p>
+                <div class="input-group">
+                    <input class="form-control" type="file" id="planFileInput" accept="application/json">
+                    <button class="btn btn-primary" data-action="upload-plan"><i class="bi bi-upload me-1"></i> Cargar
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <p class="text-secondary small">Selecciona un archivo <code>.json</code> con el plan. Se guardará para usarlo más tarde.</p>
-          <div class="input-group">
-            <input class="form-control" type="file" id="planFileInput" accept="application/json">
-            <button class="btn btn-primary" data-action="upload-plan"><i class="bi bi-upload me-1"></i> Cargar</button>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <canvas id="confettiCanvas"></canvas>
+<canvas id="confettiCanvas"></canvas>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./app.js?v=2.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./app.js?v=2.0"></script>
 
-  <!--
-  <div id="orientationOverlay" role="dialog" aria-live="assertive" aria-modal="true">
-      <div class="box">
-          <div class="emoji">🔄</div>
-          <h5 class="mb-2">Gira el dispositivo</h5>
-          <p class="text-secondary mb-3">Workout funciona en modo vertical.</p>
-          <button class="btn btn-light btn-sm" id="tryLockBtn">
-              <i class="bi bi-phone"></i> Intentar fijar vertical
-          </button>
-      </div>
-  </div>
-  -->
+<!--
+<div id="orientationOverlay" role="dialog" aria-live="assertive" aria-modal="true">
+    <div class="box">
+        <div class="emoji">🔄</div>
+        <h5 class="mb-2">Gira el dispositivo</h5>
+        <p class="text-secondary mb-3">Workout funciona en modo vertical.</p>
+        <button class="btn btn-light btn-sm" id="tryLockBtn">
+            <i class="bi bi-phone"></i> Intentar fijar vertical
+        </button>
+    </div>
+</div>
+-->
 
-  <!-- Modal: reset progreso del plan -->
-  <div class="modal fade" id="resetPlanModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title">Reiniciar seguimiento</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-              </div>
-              <div class="modal-body">
-                  <p class="mb-0">Vas a reiniciar el progreso de <strong id="resetPlanName">este plan</strong>.
-                      No se borrarán tus mediciones de peso o cintura. ¿Continuar?</p>
-              </div>
-              <div class="modal-footer">
-                  <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <button class="btn btn-warning" id="confirmResetPlanBtn" data-plan="">Reiniciar</button>
-              </div>
-          </div>
-      </div>
-  </div>
+<!-- Modal: reset progreso del plan -->
+<div class="modal fade" id="resetPlanModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reiniciar seguimiento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-0">Vas a reiniciar el progreso de <strong id="resetPlanName">este plan</strong>.
+                    No se borrarán tus mediciones de peso o cintura. ¿Continuar?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="btn btn-warning" id="confirmResetPlanBtn" data-plan="">Reiniciar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <!-- Modal: borrar plan -->
-  <div class="modal fade" id="deletePlanModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title">Borrar entrenamiento</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-              </div>
-              <div class="modal-body">
-                  <p class="mb-0">¿Seguro que quieres borrar <strong id="deletePlanName">este plan</strong>?
-                      No podrás deshacerlo.</p>
-              </div>
-              <div class="modal-footer">
-                  <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <button class="btn btn-danger" id="confirmDeletePlanBtn" data-plan="">Borrar</button>
-              </div>
-          </div>
-      </div>
-  </div>
+<!-- Modal: borrar plan -->
+<div class="modal fade" id="deletePlanModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Borrar entrenamiento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-0">¿Seguro que quieres borrar <strong id="deletePlanName">este plan</strong>?
+                    No podrás deshacerlo.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="btn btn-danger" id="confirmDeletePlanBtn" data-plan="">Borrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -453,3 +453,20 @@ body{
     text-align: center;
     color: var(--sf-muted);
 }
+
+/* Flecha de volver en la navbar: aparece con slide/fade */
+/* Flecha de volver: arranca fuera de pantalla y entra en 250ms */
+.nav-back{
+    opacity: 0;
+    transform: translateX(-140%);   /* fuera de pantalla hacia la izquierda */
+    transition: opacity .25s ease-out, transform .25s ease-out;
+}
+.nav-back.show{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Fila 25%/75% para acciones en ejercicio/descanso */
+.btn-row { display:flex; gap:.5rem; }
+.btn-25 { flex: 0 0 25%; }
+.btn-75 { flex: 1 1 75%; }
