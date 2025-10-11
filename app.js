@@ -1248,7 +1248,7 @@
             ${weeksHTML}
         
             <div class="bottom-cta mt-3">
-              <button class="btn btn-lg btn-primary w-100 btn-tall" data-action="go-today">
+              <button class="btn btn-lg btn-danger w-100 btn-tall" data-action="go-today">
                 <i class="bi bi-lightning-charge me-1"></i>GO
               </button>
             </div>`
@@ -1391,7 +1391,7 @@
           ${breakdown}
           <ul class="list-group list-group-flush ex-list mb-3">${itemsHTML}</ul>
           <div class="bottom-cta">
-            <button class="btn btn-primary btn-lg w-100 btn-tall" data-action="start-training">
+            <button class="btn btn-danger btn-lg w-100 btn-tall" data-action="start-training">
               <i class="bi bi-play-fill me-1"></i>Start
             </button>
           </div>`;
