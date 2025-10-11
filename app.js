@@ -1347,17 +1347,22 @@
             prevBlk = blk
 
             const badge = `<span class="badge ex-badge ex-badge-${blk} ms-2">${blockLabel(blk)}</span>`
+            const active = isActiveDayExerciseByIndex(i);
+            const nowPill = active ? `<span class="ex-now-pill">Ahora</span>` : "";
 
             return `
               ${sectionHeader}
-              <li class="list-group-item ex-item ex-${blk} d-flex justify-content-between align-items-center" data-block="${blk}">
+              <li class="list-group-item ex-item ex-${blk} d-flex justify-content-between align-items-center${active ? ' is-active' : ''}">
                 <div class="ex-left">
-                  <span class="fw-semibold">${i + 1}. ${display}</span>${badge}
-                  ${id != null ? `<button class="btn btn-link btn-sm p-0 ms-2 align-baseline" data-action="help-ex" data-exercise-id="${id}">
-                    <i class="bi bi-info-circle"></i></button>` : ''}
+                  <span class="fw-semibold">${i + 1}. ${display}</span>${badge} ${nowPill}
                   <div class="small text-secondary">${dose} • ${stepSets(x)} serie(s)</div>
                 </div>
-                <i class="bi bi-chevron-right opacity-50"></i>
+            
+                ${id != null
+                            ? `<button class="btn btn-link right-info-btn" data-action="help-ex" data-exercise-id="${id}" aria-label="Info ${display}">
+                       <i class="bi bi-info-circle"></i>
+                     </button>`
+                            : `<span class="opacity-0" style="width:1.6rem"></span>`}
               </li>`
         }).join('')
 
@@ -1430,61 +1435,74 @@
         let topMedia = ''
 
         if (imgs.length > 0) {
-            // 1) Si hay imágenes, muestra la primera
             const src = imgs[0]
-            topMedia = `<div class="exercise-media mb-3">
-      <img src="${src}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">
-    </div>`
+            topMedia = `
+              <div class="ex-hero mb-3">
+                <img src="${src}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">
+                <div class="ex-hero-arrows">
+                  <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
+                  <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
+                </div>
+              </div>`
         } else if (exInfo?.video) {
-            // 2) Si no hay imágenes pero sí vídeo, muestra el vídeo
-            topMedia = `<div class="exercise-media mb-3">
-      ${embedVideoHTML(exInfo.video, name)}
-    </div>`
+            topMedia = `
+              <div class="ex-hero mb-3">
+                ${embedVideoHTML(exInfo.video, name)}
+                <div class="ex-hero-arrows">
+                  <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
+                  <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
+                </div>
+              </div>`
         } else {
-            // 3) Fallback sin medios propios → imagen de reserva
-            topMedia = `<div class="exercise-media mb-3">
-      <img src="${exerciseImageFor(ex, name)}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">
-    </div>`
+            topMedia = `
+              <div class="ex-hero mb-3">
+                <img src="${exerciseImageFor(ex, name)}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">
+                <div class="ex-hero-arrows">
+                  <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
+                  <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
+                </div>
+              </div>`
         }
 
         const exInfoDict = state.exDict.get(String(stepId(ex))) || null;
 
         const timerBlock = isTimed
             ? `<div class="d-flex align-items-center justify-content-center gap-2">
-         <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
-           <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
-         </button>
-         <div class="timer-large" id="timedLeftNum">${state.training.timedLeft || stepTime(ex)}</div>
-       </div>`
+                 <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
+                   <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
+                 </button>
+                 <div class="timer-large" id="timedLeftNum">${state.training.timedLeft || stepTime(ex)}</div>
+               </div>`
             : `<div class="reps-large">x${stepReps(ex) ?? '—'}</div>`
 
         return `
             ${topMedia}
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <div>
-                <h5 class="mb-1">${nameWithBadge}</h5>
-                <button class="btn btn-link btn-sm p-0 ms-2" data-action="help-ex" data-exercise-id="${stepId(ex)}"><i class="bi bi-info-circle"></i></button>
-                <div class="text-secondary">Serie ${setInfo}</div>
+              <div class="d-flex align-items-start justify-content-between mb-2">
+                <div class="pe-2">
+                  <h5 class="mb-1">${nameWithBadge}</h5>
+                  <div class="text-secondary">Serie ${setInfo}</div>
+                </div>
+                <button class="btn btn-link right-info-btn ms-2"
+                        data-action="help-ex"
+                        data-exercise-id="${stepId(ex)}"
+                        aria-label="Info ${name}">
+                  <i class="bi bi-info-circle"></i>
+                </button>
               </div>
-              <div class="text-end">
-                <button class="btn btn-outline-secondary btn-sm me-2" data-action="prev-ex"><i class="bi bi-skip-start"></i></button>
-                <button class="btn btn-outline-primary btn-sm" data-action="next-ex"><i class="bi bi-skip-end"></i></button>
-              </div>
-            </div>
         
-            <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
-            <div class="progress progress-mini mb-3"><div class="progress-bar" style="width:${progressPct}%"></div></div>
+              <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
+              <div class="progress progress-mini mb-3"><div class="progress-bar" style="width:${progressPct}%"></div></div>
         
-            <div class="timer-area mb-3">${timerBlock}</div>
-
-            <div class="btn-row mb-3">
-              <button class="btn btn-outline-danger btn-tall btn-25" data-action="finish-now">
-                Completar ejercicio
-              </button>
-              <button class="btn btn-success btn-tall btn-75" data-action="complete-set">
-                <i class="bi bi-check2-circle me-1"></i>Completar serie
-              </button>
-            </div>`
+              <div class="timer-area mb-3">${timerBlock}</div>
+        
+              <div class="btn-row mb-3">
+                <button class="btn btn-outline-danger btn-tall btn-25" data-action="finish-now">
+                  Completar ejercicio
+                </button>
+                <button class="btn btn-success btn-tall btn-75" data-action="complete-set">
+                  <i class="bi bi-check2-circle me-1"></i>Completar serie
+                </button>
+              </div>`
     }
 
 
@@ -1505,24 +1523,38 @@
 
         return `
             <div class="exercise-screen">
-                <div class="exercise-media mb-3">
+                <div class="ex-hero mb-3">
                   <img src="${image}" class="object-fit-contain w-100 h-100 rounded" alt="${nextName}">
+                  <div class="ex-hero-arrows">
+                    <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior">
+                      <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio">
+                      <i class="bi bi-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
+
             
-                <div class="d-flex justify-content-between align-items-start mb-2">
-                  <div>
-                    <h5 class="mb-1">Siguiente: ${nextName}
-                      ${nextStep ? `<button class="btn btn-link btn-sm p-0 ms-2" data-action="help-ex" data-exercise-id="${stepId(nextStep)}"><i class="bi bi-info-circle"></i></button>` : ''}
-                    </h5>
+                <div class="d-flex align-items-start justify-content-between mb-2">
+                  <div class="pe-2">
+                    <h5 class="mb-1">Siguiente: ${nextName}</h5>
                     <div class="text-secondary">
-                      ${stepTime(nextStep) != null ? `${stepTime(nextStep)}s` : (stepReps(nextStep) ?? '—') + ' reps'} ${sets ? `• ${sets} serie(s)` : ''}
+                      ${stepTime(nextStep) != null ? `${stepTime(nextStep)} s` : (stepReps(nextStep) ?? '—') + ' reps'}
+                      ${sets ? `• ${sets} serie(s)` : ''}
                     </div>
                   </div>
-                  <div class="text-end">
-                    <button class="btn btn-outline-secondary btn-sm me-2" data-action="prev-ex"><i class="bi bi-skip-start"></i></button>
-                    <button class="btn btn-outline-primary btn-sm" data-action="next-ex"><i class="bi bi-skip-end"></i></button>
-                  </div>
+                
+                  ${nextStep ? `
+                    <button class="btn btn-link right-info-btn ms-2"
+                            data-action="help-ex"
+                            data-exercise-id="${stepId(nextStep)}"
+                            aria-label="Info ${nextName}">
+                      <i class="bi bi-info-circle"></i>
+                    </button>
+                  ` : ''}
                 </div>
+
             </div>
         
             <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
@@ -1619,6 +1651,23 @@
         const next = (idx + 1 < total) ? { step: day.exercises[idx + 1] } : null
         return { day, step, index: idx, total, next }
     }
+
+    function isActiveDayExercise(blk, idx){
+        // Si no hay sesión o no estamos en un subestado “de entrenamiento”, no marcamos nada
+        if (!state?.training) return false;
+        const sub = state.training.substate;
+        // subestados en los que tiene sentido marcar el vigente aunque estemos viendo la lista del día
+        const showIn = ['day','countdown','exercise','rest','paused'];
+        if (!showIn.includes(sub)) return false;
+
+        // Usa el contexto actual del ejercicio
+        const ctx = currentExerciseCtx && currentExerciseCtx();
+        if (!ctx) return false;
+
+        // ctx.block y ctx.index son las referencias actuales del ejercicio
+        return ctx.block === blk && ctx.index === idx;
+    }
+
 
     function startExercise () {
         stopVoice() // corta lo anterior
@@ -2238,6 +2287,15 @@
         pp[planId][`${wi + 1}-${di + 1}`] = true
         localStorage.setItem('sf_stats', JSON.stringify(state.stats))
     }
+
+    function isActiveDayExerciseByIndex(idx){
+        if (!state?.training) return false;
+        const sub = state.training.substate;
+        // Estados en los que tiene sentido mostrar el vigente
+        if (!['day','countdown','exercise','rest','finished'].includes(sub)) return false;
+        return state.training.currentExerciseIndex === idx;
+    }
+
 
     // Cambia tus usos de daysCompleted para que llamen a estas helpers por plan actual (si aún no lo hiciste)
 

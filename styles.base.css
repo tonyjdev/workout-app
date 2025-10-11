@@ -322,7 +322,6 @@ body{
 .ex-list .list-group-item.ex-item{
     position: relative;
     padding-left: .9rem;
-    border-left: .5rem solid transparent;
     border-radius: .75rem;
     margin: .25rem 0;
     /* que gane a .list-group-item de Bootstrap */
@@ -470,3 +469,74 @@ body{
 .btn-row { display:flex; gap:.5rem; }
 .btn-25 { flex: 0 0 25%; }
 .btn-75 { flex: 1 1 75%; }
+
+/* Botón de info en el extremo derecho de cada ejercicio */
+.right-info-btn{
+    padding: .25rem;
+    line-height: 1;
+    min-width: 1.6rem;       /* buen área táctil */
+    min-height: 1.6rem;
+}
+.right-info-btn .bi{
+    font-size: 1.35rem;      /* un poco más grande */
+    vertical-align: middle;
+}
+
+/* Item activo (ejercicio vigente) en la lista del día */
+.ex-item.is-active{
+    position: relative;
+}
+.ex-item.is-active::before{
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: #198754;                       /* barra lateral verde */
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+}
+.ex-now-pill{
+    display: inline-block;
+    padding: .15rem .45rem;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 600;
+    background: #198754;
+    color: #fff;
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+
+/* Contenedor de la imagen del ejercicio */
+.ex-hero { position: relative; }
+
+/* Flechas superpuestas arriba a la derecha */
+.ex-hero-arrows{
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    display: flex;
+    gap: .5rem;
+}
+.ex-hero-arrows .btn{
+    padding: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.55);
+    border-color: rgba(255,255,255,.2);
+    backdrop-filter: blur(2px);
+}
+.ex-hero-arrows .btn .bi{ font-size: 1.1rem; }
+
+/* Icono de info más grande y alineado a la derecha (reusa el de la lista) */
+.right-info-btn{
+    padding: .25rem;
+    line-height: 1;
+    min-width: 1.6rem;
+    min-height: 1.6rem;
+}
+.right-info-btn .bi{ font-size: 1.35rem; }
