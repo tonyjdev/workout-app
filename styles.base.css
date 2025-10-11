@@ -197,6 +197,7 @@ body{
     /* min-height: calc(100vh - var(--nav-h) - var(--ad-h) - 16px); */
     display: flex;
     flex-direction: column;
+    height: calc(100vh - var(--nav-h));
 }
 
 /* El bloque del cronómetro/reps ocupa el hueco libre y centra el contenido */
@@ -540,3 +541,80 @@ body{
     min-height: 1.6rem;
 }
 .right-info-btn .bi{ font-size: 1.35rem; }
+
+
+/* === Pantallas de ejercicio/descanso: estructura común === */
+
+/* 1) Media fija ~30% alto */
+.ex-hero{
+    position: relative;
+    height: clamp(160px, 30vh, 240px);
+    background: var(--sf-media);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .75rem; /* mismo spacing que .exercise-media en compact */
+}
+.ex-hero img,
+.ex-hero iframe{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+/* Flechas overlay (ya las tenías) */
+.ex-hero-arrows{
+    position: absolute; top: .5rem; right: .5rem;
+    display:flex; gap:.5rem;
+}
+.ex-hero-arrows .btn{
+    padding:0; width:2.25rem; height:2.25rem; border-radius:999px;
+    display:inline-flex; align-items:center; justify-content:center;
+    background: rgba(0,0,0,.55);
+    border-color: rgba(255,255,255,.2);
+    backdrop-filter: blur(2px);
+}
+.ex-hero-arrows .btn .bi{ font-size:1.1rem; }
+
+/* 2) Franja de nombre (coloreada por bloque) */
+.ex-strip{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    gap:.5rem; padding:.6rem .75rem; border-radius: var(--radius-app);
+    margin-bottom: .25rem;
+}
+.ex-strip h5{ margin:0; }
+.ex-strip .right-info-btn .bi{ font-size:1.35rem; }
+
+/* variantes por bloque (usa mismas vars que la lista del día) */
+.ex-strip-warmup{ background: var(--ex-warmup-bg); border: 1px solid var(--ex-warmup-border); }
+.ex-strip-main  { background: var(--ex-main-bg);   border: 1px solid var(--ex-main-border); }
+.ex-strip-stretch{background: var(--ex-stretch-bg);border: 1px solid var(--ex-stretch-border); }
+
+/* 3) Línea “Serie … / Siguiente …” fuera del bloque nombre */
+.ex-meta-line{ margin: .15rem 0 .4rem; color: var(--sf-muted); }
+
+/* 4) Zona contador flexible (ocupa hueco disponible) */
+.exercise-screen{
+    display:flex; flex-direction:column; gap:.5rem;
+}
+.exercise-screen .timer-area{
+    flex: 1 1 auto; display:flex; align-items:center; justify-content:center;
+}
+
+/* 5) Botones pegados abajo */
+.bottom-actions{ position: sticky; bottom: calc(var(--nav-h) + var(--ad-h) + var(--space-cta-offset)); z-index: 1032; }
+.nav-hidden .bottom-actions{ bottom: calc(var(--ad-h) + var(--space-cta-offset)); }
+
+/* Reutilizamos tu fila 25/75 */
+.btn-row{ display:flex; gap:.5rem; }
+.btn-25 { flex: 0 0 25%; }
+.btn-75 { flex: 1 1 75%; }
+
+/* Usa toda la pantalla menos la barra superior (60px) SOLO en ejercicio/descanso */
+.training-fill #appContent{
+    height: calc(100vh - 60px);
+    padding-bottom: 12px;   /* un poco de aire para los botones inferiores */
+    overflow: auto;
+}

@@ -672,6 +672,7 @@
         bindEvents()
         updateNavVisibility();
         updateTopBack();
+        updateAppContentFill();
     }
 
     function viewReport () {
@@ -1416,167 +1417,169 @@
 
 
     /* ---------- 4) EJERCICIO EN CURSO ---------- */
+    /* ---------- 4) EJERCICIO EN CURSO (estructura unificada) ---------- */
     function viewTrainingExercise () {
-        const ctx = currentExerciseCtx()
-        const ex = ctx.step
-        const isTimed = stepTime(ex) != null
-        const name = stepDisplayName(ex, ctx.index)
-        const blk = exerciseBlock(ex)
-        const nameWithBadge = `${name} <span class="badge ex-badge ex-badge-${blk} align-middle ms-2">${blockLabel(blk)}</span>`
+        const ctx = currentExerciseCtx();
+        const ex  = ctx.step;
+        const isTimed = stepTime(ex) != null;
+        const name = stepDisplayName(ex, ctx.index);
+        const blk  = exerciseBlock(ex);       // 'warmup' | 'main' | 'stretch'
 
-        const total = ctx.total
-        const completed = ctx.index
-        const setInfo = `${state.training.currentSet}/${ex.sets || 1}`
-        const progressPct = Math.round((completed / total) * 100)
+        const total = ctx.total;
+        const completed = ctx.index;
+        const setInfo = `${state.training.currentSet}/${ex.sets || 1}`;
+        const progressPct = Math.round((completed / total) * 100);
 
-        // --- ⬇️ CAMBIO AQUÍ: priorizar imagen > vídeo ---
-        const exInfo = state.exDict.get(String(stepId(ex))) || null
-        const imgs = exerciseImages(exInfo) // usa la ruta base EX_IMG_BASE automáticamente
-        let topMedia = ''
-
-        if (imgs.length > 0) {
-            const src = imgs[0]
+        // MEDIA (prioriza imagen; si no, vídeo; si no, fallback)
+        const exInfo = state.exDict.get(String(stepId(ex))) || null;
+        const imgs = exerciseImages(exInfo);
+        let topMedia = '';
+        if (imgs.length) {
             topMedia = `
-              <div class="ex-hero mb-3">
-                <img src="${src}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">
-                <div class="ex-hero-arrows">
-                  <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
-                  <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
-                </div>
-              </div>`
+      <div class="ex-hero">
+        <img src="${imgs[0]}" alt="${name}">
+        <div class="ex-hero-arrows">
+          <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
+          <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>`;
         } else if (exInfo?.video) {
             topMedia = `
-              <div class="ex-hero mb-3">
-                ${embedVideoHTML(exInfo.video, name)}
-                <div class="ex-hero-arrows">
-                  <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
-                  <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
-                </div>
-              </div>`
+      <div class="ex-hero">
+        ${embedVideoHTML(exInfo.video, name)}
+        <div class="ex-hero-arrows">
+          <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
+          <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>`;
         } else {
             topMedia = `
-              <div class="ex-hero mb-3">
-                <img src="${exerciseImageFor(ex, name)}" class="object-fit-contain w-100 h-100 rounded" alt="${name}">
-                <div class="ex-hero-arrows">
-                  <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
-                  <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
-                </div>
-              </div>`
+      <div class="ex-hero">
+        <img src="${exerciseImageFor(ex, name)}" alt="${name}">
+        <div class="ex-hero-arrows">
+          <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
+          <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>`;
         }
 
-        const exInfoDict = state.exDict.get(String(stepId(ex))) || null;
-
+        // TIMER o REPS
         const timerBlock = isTimed
             ? `<div class="d-flex align-items-center justify-content-center gap-2">
-                 <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
-                   <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
-                 </button>
-                 <div class="timer-large" id="timedLeftNum">${state.training.timedLeft || stepTime(ex)}</div>
-               </div>`
-            : `<div class="reps-large">x${stepReps(ex) ?? '—'}</div>`
+         <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
+           <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
+         </button>
+         <div class="timer-large" id="timedLeftNum">${state.training.timedLeft || stepTime(ex)}</div>
+       </div>`
+            : `<div class="reps-large">x${stepReps(ex) ?? '—'}</div>`;
 
+        // PLANTILLA UNIFICADA
         return `
-            ${topMedia}
-              <div class="d-flex align-items-start justify-content-between mb-2">
-                <div class="pe-2">
-                  <h5 class="mb-1">${nameWithBadge}</h5>
-                  <div class="text-secondary">Serie ${setInfo}</div>
-                </div>
-                <button class="btn btn-link right-info-btn ms-2"
-                        data-action="help-ex"
-                        data-exercise-id="${stepId(ex)}"
-                        aria-label="Info ${name}">
-                  <i class="bi bi-info-circle"></i>
-                </button>
-              </div>
-        
-              <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
-              <div class="progress progress-mini mb-3"><div class="progress-bar" style="width:${progressPct}%"></div></div>
-        
-              <div class="timer-area mb-3">${timerBlock}</div>
-        
-              <div class="btn-row mb-3">
-                <button class="btn btn-outline-danger btn-tall btn-25" data-action="finish-now">
-                  Completar ejercicio
-                </button>
-                <button class="btn btn-success btn-tall btn-75" data-action="complete-set">
-                  <i class="bi bi-check2-circle me-1"></i>Completar serie
-                </button>
-              </div>`
+    <div class="exercise-screen">
+
+      ${topMedia}
+
+      <!-- NOMBRE (franja de color por bloque) -->
+      <div class="ex-strip ex-strip-${blk}">
+        <div class="pe-2"><h5>${name}</h5></div>
+        <button class="btn btn-link right-info-btn ms-2"
+                data-action="help-ex" data-exercise-id="${stepId(ex)}"
+                aria-label="Info ${name}">
+          <i class="bi bi-info-circle"></i>
+        </button>
+      </div>
+
+      <!-- SERIE (fuera del bloque de nombre) -->
+      <div class="ex-meta-line">Serie ${setInfo}</div>
+
+      <!-- PROGRESO DEL DÍA (igual que antes) -->
+      <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
+      <div class="progress progress-mini mb-1"><div class="progress-bar" style="width:${progressPct}%"></div></div>
+
+      <!-- CONTADOR/REPS (zona flexible que ocupa el hueco) -->
+      <div class="timer-area">${timerBlock}</div>
+
+      <!-- BOTONES pegados abajo -->
+      <div class="bottom-actions">
+        <div class="btn-row">
+          <button class="btn btn-outline-danger btn-tall btn-25" data-action="finish-now">Completar ejercicio</button>
+          <button class="btn btn-success btn-tall btn-75" data-action="complete-set"><i class="bi bi-check2-circle me-1"></i>Completar serie</button>
+        </div>
+      </div>
+
+    </div>`;
     }
 
 
     /* ---------- 5) DESCANSO ---------- */
+    /* ---------- 5) DESCANSO (estructura unificada) ---------- */
     function viewTrainingRest () {
-        const ctx = currentExerciseCtx()
-        const reason = state.training.restReason // 'between-sets' | 'between-exercises'
-        const showSame = reason === 'between-sets'
-        const nextStep = showSame ? ctx.step : (ctx.day.exercises[ctx.index + 1] || null)
-        const nextName = nextStep ? stepDisplayName(nextStep, showSame ? ctx.index : ctx.index + 1) : '—'
+        const ctx = currentExerciseCtx();
+        const reason = state.training.restReason; // 'between-sets' | 'between-exercises'
+        const showSame = reason === 'between-sets';
+        const nextStep = showSame ? ctx.step : (ctx.day.exercises[ctx.index + 1] || null);
+        const nextName = nextStep ? stepDisplayName(nextStep, showSame ? ctx.index : ctx.index + 1) : '—';
+        const blk = exerciseBlock(nextStep || ctx.step);
 
-        const total = ctx.total
-        const completed = ctx.index + (showSame ? 0 : 1)
-        const progressPct = Math.round((completed / total) * 100)
-        const sets = stepSets(nextStep)
+        const total = ctx.total;
+        const completed = ctx.index + (showSame ? 0 : 1);
+        const progressPct = Math.round((completed / total) * 100);
+        const sets = stepSets(nextStep);
 
-        const image = exerciseImageFor(nextStep || {}, nextName)
+        const image = exerciseImageFor(nextStep || {}, nextName);
 
         return `
-            <div class="exercise-screen">
-                <div class="ex-hero mb-3">
-                  <img src="${image}" class="object-fit-contain w-100 h-100 rounded" alt="${nextName}">
-                  <div class="ex-hero-arrows">
-                    <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior">
-                      <i class="bi bi-chevron-left"></i>
-                    </button>
-                    <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio">
-                      <i class="bi bi-chevron-right"></i>
-                    </button>
-                  </div>
-                </div>
+    <div class="exercise-screen">
 
-            
-                <div class="d-flex align-items-start justify-content-between mb-2">
-                  <div class="pe-2">
-                    <h5 class="mb-1">Siguiente: ${nextName}</h5>
-                    <div class="text-secondary">
-                      ${stepTime(nextStep) != null ? `${stepTime(nextStep)} s` : (stepReps(nextStep) ?? '—') + ' reps'}
-                      ${sets ? `• ${sets} serie(s)` : ''}
-                    </div>
-                  </div>
-                
-                  ${nextStep ? `
-                    <button class="btn btn-link right-info-btn ms-2"
-                            data-action="help-ex"
-                            data-exercise-id="${stepId(nextStep)}"
-                            aria-label="Info ${nextName}">
-                      <i class="bi bi-info-circle"></i>
-                    </button>
-                  ` : ''}
-                </div>
+      <!-- MEDIA con flechas overlay -->
+      <div class="ex-hero">
+        <img src="${image}" alt="${nextName}">
+        <div class="ex-hero-arrows">
+          <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
+          <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>
 
-            </div>
-        
-            <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
-            <div class="progress progress-mini mb-3"><div class="progress-bar" style="width:${progressPct}%"></div></div>
-        
-            <div class="timer-area mb-3">
-              <div class="d-flex align-items-center justify-content-center gap-2">
-                <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
-                  <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
-                </button>
-                <div class="countdown display-5 fw-bold text-center" id="restNum">${state.training.restLeft}</div>
-              </div>
-            </div>
-        
-            <div class="btn-row mb-3">
-              <button class="btn btn-outline-secondary btn-tall btn-25" data-action="extend-rest">
-                <i class="bi bi-plus-circle me-1"></i>+10s
-              </button>
-              <button class="btn btn-primary btn-tall btn-75" data-action="end-rest">
-                <i class="bi bi-skip-forward-fill me-1"></i>Terminar descanso
-              </button>
-            </div>`
+      <!-- NOMBRE (franja por bloque) -->
+      <div class="ex-strip ex-strip-${blk}">
+        <div class="pe-2"><h5>Siguiente: ${nextName}</h5></div>
+        ${nextStep ? `
+          <button class="btn btn-link right-info-btn ms-2"
+                  data-action="help-ex" data-exercise-id="${stepId(nextStep)}"
+                  aria-label="Info ${nextName}">
+            <i class="bi bi-info-circle"></i>
+          </button>` : ''}
+      </div>
+
+      <!-- LÍNEA DE DOSIS (reps/tiempo y series), FUERA del bloque nombre -->
+      <div class="ex-meta-line">
+        ${stepTime(nextStep) != null ? `${stepTime(nextStep)} s` : (stepReps(nextStep) ?? '—') + ' reps'}
+        ${sets ? `• ${sets} serie(s)` : ''}
+      </div>
+
+      <!-- PROGRESO (igual) -->
+      <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
+      <div class="progress progress-mini mb-1"><div class="progress-bar" style="width:${progressPct}%"></div></div>
+
+      <!-- CONTADOR (zona flexible) -->
+      <div class="timer-area">
+        <div class="d-flex align-items-center justify-content-center gap-2">
+          <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
+            <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
+          </button>
+          <div class="countdown display-5 fw-bold text-center" id="restNum">${state.training.restLeft}</div>
+        </div>
+      </div>
+
+      <!-- BOTONES pegados abajo -->
+      <div class="bottom-actions">
+        <div class="btn-row">
+          <button class="btn btn-outline-secondary btn-tall btn-25" data-action="extend-rest"><i class="bi bi-plus-circle me-1"></i>+10s</button>
+          <button class="btn btn-primary btn-tall btn-75" data-action="end-rest"><i class="bi bi-skip-forward-fill me-1"></i>Terminar descanso</button>
+        </div>
+      </div>
+
+    </div>`;
     }
 
     /* ---------- 6) ENTRENAMIENTO FINALIZADO ---------- */
@@ -2243,6 +2246,13 @@
         const hide = (state.view === 'training' && activeStates.has(state.training?.substate))
         setTrainingNavHidden(hide)
     }
+
+    function updateAppContentFill(){
+        // SOLO en pantallas de ejercicio en curso o descanso
+        const active = (state.view === 'training') && ['exercise','rest'].includes(state.training?.substate);
+        document.documentElement.classList.toggle('training-fill', active);
+    }
+
 
     function shouldShowTopBack(){
         return state.view === 'training' && ['countdown','exercise','rest','finished'].includes(state.training?.substate);
