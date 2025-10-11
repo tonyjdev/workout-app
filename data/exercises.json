@@ -1077,14 +1077,16 @@
       "secondary_muscles": [
         "biceps"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=65gMtswVB1c",
       "instructions": null,
       "tags": [
         "aislamiento",
         "bilateral",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-dumbbell-rear-delt-row.jpg"
+      ],
       "description": "Dumbbell Rear Delt Row es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente espalda, hombro, bíceps. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -1198,14 +1200,16 @@
         "isquios"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=W9y8xq4Ya_E",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-hyperextension.webp"
+      ],
       "description": "Hyperextension es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -1855,14 +1859,16 @@
         "movilidad"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=TfcRyYf7WLg",
       "instructions": null,
       "tags": [
         "compuesto",
         "estiramiento",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-quad-stretch-with-wall.jpg"
+      ],
       "description": "Left Quad Stretch With Wall es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2676,14 +2682,16 @@
       "secondary_muscles": [
         "biceps"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=DEyDbzSudEU",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-romboid-pulls.jpg"
+      ],
       "description": "Rhomboid Pulls es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente espalda, hombro, bíceps. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2726,14 +2734,16 @@
         "movilidad"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=TfcRyYf7WLg",
       "instructions": null,
       "tags": [
         "compuesto",
         "estiramiento",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-quad-stretch-with-wall.jpg"
+      ],
       "description": "Right Quad Stretch With Wall es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2779,14 +2789,16 @@
         "gluteos"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=SFSZVKzqnXA",
       "instructions": null,
       "tags": [
         "compuesto",
         "fuerza",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-split-squat.webp"
+      ],
       "description": "Split Squat Right es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente glúteos, cuádriceps. Evita pinzamiento en la ingle (FAI): acorta el rango o abre ligeramente la punta de los pies. Mantén columna neutra."
     },
     {
@@ -2804,14 +2816,16 @@
         "gluteos"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=SFSZVKzqnXA",
       "instructions": null,
       "tags": [
         "compuesto",
         "fuerza",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-split-squat.webp"
+      ],
       "description": "Split Squat Left es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente glúteos, cuádriceps. Evita pinzamiento en la ingle (FAI): acorta el rango o abre ligeramente la punta de los pies. Mantén columna neutra."
     },
     {
@@ -3358,14 +3372,16 @@
         "triceps"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=pn2EZjEE_ZU",
       "instructions": null,
       "tags": [
         "aislamiento",
         "fuerza",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-standing-glute-kickbacks.jpg"
+      ],
       "description": "Standing Glute Kickbacks Left es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente glúteos, isquiosurales. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -3383,14 +3399,16 @@
         "triceps"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=pn2EZjEE_ZU",
       "instructions": null,
       "tags": [
         "aislamiento",
         "fuerza",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-standing-glute-kickbacks.jpg"
+      ],
       "description": "Standing Glute Kickbacks Right es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente glúteos, isquiosurales. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4281,14 +4299,16 @@
       "secondary_muscles": [
         "biceps"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=6YfpfLvUa5w",
       "instructions": null,
       "tags": [
         "compuesto",
         "fuerza",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-bent-over-dumbbell-rows-left.webp"
+      ],
       "description": "Bent Over Dumbbell Rows Left es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente espalda, hombro, bíceps. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4307,14 +4327,16 @@
       "secondary_muscles": [
         "biceps"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=6YfpfLvUa5w",
       "instructions": null,
       "tags": [
         "compuesto",
         "fuerza",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-bent-over-dumbbell-rows-left.webp"
+      ],
       "description": "Bent Over Dumbbell Rows Right es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente espalda, hombro, bíceps. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4331,14 +4353,16 @@
         "core"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=bXMQkRowNk8",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "core"
       ],
-      "images": [],
+      "images": [
+        "exercise-dead-bug.webp"
+      ],
       "description": "Dead Bug es un ejercicio de core orientado a mejorar fuerza y control. Trabaja principalmente core. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4381,14 +4405,16 @@
         "gluteos"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=4ranVQDqlaU",
       "instructions": null,
       "tags": [
         "compuesto",
         "fuerza",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-donkey-kicks.webp"
+      ],
       "description": "Donkey Kicks Left es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente glúteos, isquiosurales. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4405,14 +4431,16 @@
         "gluteos"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=4ranVQDqlaU",
       "instructions": null,
       "tags": [
         "compuesto",
         "fuerza",
         "unilateral"
       ],
-      "images": [],
+      "images": [
+        "exercise-donkey-kicks.webp"
+      ],
       "description": "Donkey Kicks Right es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente glúteos, isquiosurales. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -4429,14 +4457,16 @@
         "aductores"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=MjFb2MyaNjs",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "estiramiento"
       ],
-      "images": [],
+      "images": [
+        "exercise-adductor-stretch-standing.jpg"
+      ],
       "description": "Adductor Stretch in Standing es un ejercicio de movilidad/estiramiento para mejorar rango sin dolor. Trabaja principalmente cuerpo completo. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
