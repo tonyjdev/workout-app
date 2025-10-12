@@ -812,6 +812,12 @@
                 $$('#bottomNav .nav-link').forEach(b => b.classList.remove('active'))
                 btn.classList.add('active')
 
+                const nextView = btn.dataset.view;
+                if (nextView === 'training') {
+                    // Siempre arrancamos en la lista de semanas
+                    state.training.substate = 'list';
+                }
+
                 // cambiar vista
                 state.view = btn.dataset.view
                 render()
@@ -1036,18 +1042,37 @@
         $('#btnImportProgress')?.addEventListener('click', () => $('#progressFileInput')?.click())
         $('#progressFileInput')?.addEventListener('change', importProgressFromFile)
 
-        $('#navBackBtn')?.addEventListener('click', () => {
-            stopAllTimersAndVoice();
-            if (state.training.substate === 'finished') {
-                state.training = subTrainingInitial();
-                state.view = 'training';
-            } else {
-                state.training.substate = 'day';
-            }
-            render();
-            updateNavVisibility();
-            updateTopBack();
-        });
+        const backBtn = document.getElementById('navBackBtn');
+        if (backBtn) {
+            backBtn.onclick = () => {
+                stopAllTimersAndVoice();
+
+                const sub = state.training?.substate || 'list';
+
+                // Entrenamiento activo → vuelve a Day
+                if (sub === 'countdown' || sub === 'exercise' || sub === 'rest') {
+                    state.training.substate = 'day';
+                }
+                // En Day → vuelve a Weeks
+                else if (sub === 'day') {
+                    state.training.substate = 'list';
+                }
+                // En Finished → resetea a Weeks del plan
+                else if (sub === 'finished') {
+                    state.training = subTrainingInitial();
+                    state.view = 'training';
+                }
+                // Cualquier otro caso → Weeks
+                else {
+                    state.training.substate = 'list';
+                }
+
+                render();
+                updateNavVisibility();
+                updateTopBack();
+                updateAppContentFill?.();
+            };
+        }
 
         scrollToTopAfterRender()
     }
@@ -2255,8 +2280,10 @@
 
 
     function shouldShowTopBack(){
-        return state.view === 'training' && ['countdown','exercise','rest','finished'].includes(state.training?.substate);
+        return state.view === 'training' &&
+            ['day','countdown','exercise','rest','finished'].includes(state.training?.substate);
     }
+
     function updateTopBack(){
         const btn = document.getElementById('navBackBtn');
         if (!btn) return;
