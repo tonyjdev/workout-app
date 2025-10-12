@@ -7,7 +7,7 @@
     // Ruta base para imágenes de ejercicios (relativas al index.html)
     const EX_IMG_BASE = 'assets/images/exercises/';
 
-    const DEFAULT_TTS = { enabled: false, voice: null, rate: 1 };
+    const DEFAULT_TTS = { enabled: false, voice: null, rate: 1, speakSeconds: [3,2,1] };
     const DEFAULT_OPTS = { countdownSeconds: 3, restBetweenSets: 60, restBetweenExercises: 90 };
 
 
@@ -784,29 +784,45 @@
     function viewSettingsVoice(){
         const s = state.tts || {};
         return `
-    <div class="card card-body">
-      <h5 class="mb-3">Opciones de voz (TTS)</h5>
+            <div class="card card-body">
+              <h5 class="mb-3">Opciones de voz (TTS)</h5>
+        
+              <div class="mb-3 form-check">
+                <input class="form-check-input" type="checkbox" id="ttsEnabled" ${s.enabled ? 'checked' : ''}>
+                <label class="form-check-label" for="ttsEnabled">Activar voz</label>
+              </div>
+        
+              <div class="mb-3">
+                <label class="form-label" for="ttsVoice">Voz</label>
+                <select class="form-select" id="ttsVoice">${renderVoiceOptions(s.voice)}</select>
+              </div>
+        
+              <div class="mb-3">
+                <label class="form-label" for="ttsRate">Velocidad</label>
+                <input type="range" min="0.5" max="2" step="0.05" id="ttsRate" class="form-range" value="${s.rate ?? 1}">
+              </div>
+              
+              <div class="mb-3">
+                  <label class="form-label">Segundos a anunciar en cuenta atrás</label>
+                  <div id="ttsSpeakGrid" class="d-flex flex-wrap gap-2">
+                    ${
+                        Array.from({length:10}, (_,i)=>i+1).map(sec => `
+                        <label class="form-check form-check-inline mb-1">
+                          <input class="form-check-input" type="checkbox" value="${sec}"
+                                 ${ (state.tts?.speakSeconds||[]).includes(sec) ? 'checked' : '' }>
+                          <span class="form-check-label">${sec}s</span>
+                        </label>
+                      `).join('')
+                    }
+                  </div>
+                </div>
 
-      <div class="mb-3 form-check">
-        <input class="form-check-input" type="checkbox" id="ttsEnabled" ${s.enabled ? 'checked' : ''}>
-        <label class="form-check-label" for="ttsEnabled">Activar voz</label>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label" for="ttsVoice">Voz</label>
-        <select class="form-select" id="ttsVoice">${renderVoiceOptions(s.voice)}</select>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label" for="ttsRate">Velocidad</label>
-        <input type="range" min="0.5" max="2" step="0.05" id="ttsRate" class="form-range" value="${s.rate ?? 1}">
-      </div>
-
-      <div class="d-grid gap-2">
-        <button class="btn btn-primary" id="btnSaveVoice"><i class="bi bi-save2 me-1"></i>Guardar</button>
-      </div>
-    </div>
-  `;
+        
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary" id="btnSaveVoice"><i class="bi bi-save2 me-1"></i>Guardar</button>
+              </div>
+            </div>
+          `;
     }
 
     function viewSettingsTraining(){
@@ -1151,9 +1167,15 @@
             const enabled = $('#ttsEnabled')?.checked ?? false;
             const voiceValue = $('#ttsVoice')?.value ?? null; // voiceURI o name
             const rate    = parseFloat($('#ttsRate')?.value ?? 1);
-            state.tts = { ...(state.tts||{}), enabled, voice: voiceValue, rate };
+            const speakSeconds = Array
+                .from(document.querySelectorAll('#ttsSpeakGrid input:checked'))
+                .map(i => parseInt(i.value,10))
+                .filter(n => Number.isInteger(n) && n >= 1 && n <= 10)
+                .sort((a,b)=>a-b);
+
+            state.tts = { ...(state.tts||{}), enabled, voice: voiceValue, rate, speakSeconds };
             persistOptions?.();
-            toast?.('Guardado', 'Se han guardado las opciones de voz');
+            toast?.('Guardado', 'Se han guardado las opciones de voz', 'success');
         });
 
 // Guardar ENTRENAMIENTO
@@ -1809,10 +1831,10 @@
             state.training.countdownLeft--
             const n = $('#countdownNum')
             if (n) n.textContent = state.training.countdownLeft
-            if (state.settings.countdownSpokenSeconds?.includes?.(state.training.countdownLeft)) {
-                play(state.audio.beep)
-                speak(String(state.training.countdownLeft))
-            }
+
+            const sec = state.training.countdownLeft;
+            if (state.tts?.enabled && state.tts?.speakSeconds?.includes(sec)) speak(String(sec));
+
             if (state.training.countdownLeft <= 0) {
                 clearInterval(timerId)
                 startExercise()
@@ -1877,10 +1899,9 @@
             state.training.timedLeft--
             const node = $('#timedLeftNum')
             if (node) node.textContent = Math.max(0, state.training.timedLeft)
-            if (state.settings.countdownSpokenSeconds?.includes?.(state.training.timedLeft)) {
-                play(state.audio.beep)
-                speak(String(state.training.timedLeft))
-            }
+
+            const sec = state.training.timedLeft;
+            if (state.tts?.enabled && state.tts?.speakSeconds?.includes(sec)) speak(String(sec));
             if (state.training.timedLeft <= 0) {
                 clearInterval(timerId)
                 completeSet()
@@ -1996,6 +2017,10 @@
         timerId = setInterval(() => {
             if (state.training.timerPaused) return
             state.training.restLeft--
+
+            const sec = state.training.restLeft;
+            if (state.tts?.enabled && state.tts?.speakSeconds?.includes(sec)) speak(String(sec));
+
             const node = $('#restNum')
             if (node) node.textContent = state.training.restLeft
             if (state.training.restLeft <= 0) {
