@@ -6,6 +6,7 @@
     const JSON_EX_DICT_URL = './data/exercises.json'
     // Ruta base para imágenes de ejercicios (relativas al index.html)
     const EX_IMG_BASE = 'assets/images/exercises/';
+    const WHISTLE_SRC = 'assets/whistle.wav';
 
     const DEFAULT_TTS = { enabled: false, voice: null, rate: 1, speakSeconds: [3,2,1] };
     const DEFAULT_OPTS = { countdownSeconds: 3, restBetweenSets: 60, restBetweenExercises: 90 };
@@ -69,7 +70,6 @@
 
     function loadAudio () {
         state.audio.whistle = mkAudio('./assets/whistle.wav', .8)
-        state.audio.beep = mkAudio('./assets/beep.wav', .6)
         state.audio.applause = mkAudio('./assets/applause.wav', .7)
     }
 
@@ -83,8 +83,27 @@
     }
 
     // TTS
+    function isTTSEnabled() {
+        let ttsEnabled = !!(state.tts?.enabled ?? state.settings?.voiceEnabled)
+        console.log("Comprobando TTS: ", ttsEnabled);
+        return ttsEnabled;
+    }
+
+    function playWhistle(){
+        try{
+            state.audio = state.audio || {};
+            if (!state.audio.whistle){
+                state.audio.whistle = new Audio(WHISTLE_SRC);
+                state.audio.whistle.preload = 'auto';
+            }
+            const a = state.audio.whistle;
+            a.currentTime = 0;
+            a.play().catch(()=>{ /* evitar warning si el navegador bloquea */ });
+        }catch{}
+    }
+
     function speak (t) {
-        if (!state.settings?.voiceEnabled) return
+        if (!isTTSEnabled()) return
         if (!('speechSynthesis' in window)) return
         // corta cualquier frase en curso antes de hablar
         window.speechSynthesis.cancel()
@@ -104,6 +123,23 @@
         }
         window.speechSynthesis.speak(u)
     }
+
+    function ttsDoseFor(step){
+        const secs = stepTime(step);
+        if (secs != null) return `${secs} segundos`;
+        const reps = stepReps(step);
+        return (reps != null) ? `${reps} repeticiones` : '';
+    }
+
+    function ttsAnnounceNext(prefixText, step, idx){
+        if (!state?.tts?.enabled) return;
+        const name = stepDisplayName(step, idx);
+        speak(prefixText);
+        speak(`Siguiente ejercicio: ${name}`);
+        const dose = ttsDoseFor(step);
+        if (dose) speak(dose);
+    }
+
 
     // schema helpers
     const stepId = s => s?.exercise_id ?? s?.id ?? s?.exerciseId ?? s?.code ?? null
@@ -977,6 +1013,27 @@
             state.training.countdownLeft = 15
             render()
             updateNavVisibility()
+
+            // Anuncios de inicio de entrenamiento
+            if (isTTSEnabled()) {
+                const ctx  = currentExerciseCtx();
+                const step = ctx.step;
+                const name = stepDisplayName(step, ctx.index);
+
+                let dose = '';
+                if (stepTime(step) != null) {
+                    dose = `${stepTime(step)} segundos`;
+                } else if (stepReps(step) != null) {
+                    dose = `${stepReps(step)} repeticiones`;
+                }
+
+                const msg = dose
+                    ? `Prepárate. ¡Vamos a darlo todo!. Siguiente ejercicio ${name}, ${dose}`
+                    : `Prepárate. ¡Ánimo que tu puedes!. Siguiente ejercicio ${name}`;
+
+                speak(msg);
+            }
+
             runCountdown()
         })
 
@@ -1603,6 +1660,7 @@
     function viewTrainingCountdown () {
         const ctx = currentExerciseCtx()
         const exName = stepDisplayName(ctx.step, ctx.index)
+
         return `
             <div class="ratio ratio-16x9 mb-3 bg-body-tertiary rounded d-flex align-items-center justify-content-center">
               <span class="display-6">Ready to go!</span>
@@ -1714,7 +1772,6 @@
 
 
     /* ---------- 5) DESCANSO ---------- */
-    /* ---------- 5) DESCANSO (estructura unificada) ---------- */
     function viewTrainingRest () {
         const ctx = currentExerciseCtx();
         const reason = state.training.restReason; // 'between-sets' | 'between-exercises'
@@ -1731,57 +1788,57 @@
         const image = exerciseImageFor(nextStep || {}, nextName);
 
         return `
-    <div class="exercise-screen">
-
-      <!-- MEDIA con flechas overlay -->
-      <div class="ex-hero">
-        <img src="${image}" alt="${nextName}">
-        <div class="ex-hero-arrows">
-          <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
-          <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
-        </div>
-      </div>
-
-      <!-- NOMBRE (franja por bloque) -->
-      <div class="ex-strip ex-strip-${blk}">
-        <div class="pe-2"><h5>Siguiente: ${nextName}</h5></div>
-        ${nextStep ? `
-          <button class="btn btn-link right-info-btn ms-2"
-                  data-action="help-ex" data-exercise-id="${stepId(nextStep)}"
-                  aria-label="Info ${nextName}">
-            <i class="bi bi-info-circle"></i>
-          </button>` : ''}
-      </div>
-
-      <!-- LÍNEA DE DOSIS (reps/tiempo y series), FUERA del bloque nombre -->
-      <div class="ex-meta-line">
-        ${stepTime(nextStep) != null ? `${stepTime(nextStep)} s` : (stepReps(nextStep) ?? '—') + ' reps'}
-        ${sets ? `• ${sets} serie(s)` : ''}
-      </div>
-
-      <!-- PROGRESO (igual) -->
-      <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
-      <div class="progress progress-mini mb-1"><div class="progress-bar" style="width:${progressPct}%"></div></div>
-
-      <!-- CONTADOR (zona flexible) -->
-      <div class="timer-area">
-        <div class="d-flex align-items-center justify-content-center gap-2">
-          <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
-            <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
-          </button>
-          <div class="countdown display-5 fw-bold text-center" id="restNum">${state.training.restLeft}</div>
-        </div>
-      </div>
-
-      <!-- BOTONES pegados abajo -->
-      <div class="bottom-actions">
-        <div class="btn-row">
-          <button class="btn btn-outline-secondary btn-tall btn-25" data-action="extend-rest"><i class="bi bi-plus-circle me-1"></i>+10s</button>
-          <button class="btn btn-primary btn-tall btn-75" data-action="end-rest"><i class="bi bi-skip-forward-fill me-1"></i>Terminar descanso</button>
-        </div>
-      </div>
-
-    </div>`;
+            <div class="exercise-screen">
+        
+              <!-- MEDIA con flechas overlay -->
+              <div class="ex-hero">
+                <img src="${image}" alt="${nextName}">
+                <div class="ex-hero-arrows">
+                  <button class="btn btn-dark" data-action="prev-ex" aria-label="Ejercicio anterior"><i class="bi bi-chevron-left"></i></button>
+                  <button class="btn btn-dark" data-action="next-ex" aria-label="Siguiente ejercicio"><i class="bi bi-chevron-right"></i></button>
+                </div>
+              </div>
+        
+              <!-- NOMBRE (franja por bloque) -->
+              <div class="ex-strip ex-strip-${blk}">
+                <div class="pe-2"><h5>Siguiente: ${nextName}</h5></div>
+                ${nextStep ? `
+                  <button class="btn btn-link right-info-btn ms-2"
+                          data-action="help-ex" data-exercise-id="${stepId(nextStep)}"
+                          aria-label="Info ${nextName}">
+                    <i class="bi bi-info-circle"></i>
+                  </button>` : ''}
+              </div>
+        
+              <!-- LÍNEA DE DOSIS (reps/tiempo y series), FUERA del bloque nombre -->
+              <div class="ex-meta-line">
+                ${stepTime(nextStep) != null ? `${stepTime(nextStep)} s` : (stepReps(nextStep) ?? '—') + ' reps'}
+                ${sets ? `• ${sets} serie(s)` : ''}
+              </div>
+        
+              <!-- PROGRESO (igual) -->
+              <div class="small text-secondary mb-1">Completado ${completed}/${total} ejercicios</div>
+              <div class="progress progress-mini mb-1"><div class="progress-bar" style="width:${progressPct}%"></div></div>
+        
+              <!-- CONTADOR (zona flexible) -->
+              <div class="timer-area">
+                <div class="d-flex align-items-center justify-content-center gap-2">
+                  <button class="btn btn-outline-light btn-sm" data-action="${state.training.timerPaused ? 'resume-timer' : 'pause-timer'}">
+                    <i class="bi ${state.training.timerPaused ? 'bi-play-fill' : 'bi-pause-fill'}"></i>
+                  </button>
+                  <div class="countdown display-5 fw-bold text-center" id="restNum">${state.training.restLeft}</div>
+                </div>
+              </div>
+        
+              <!-- BOTONES pegados abajo -->
+              <div class="bottom-actions">
+                <div class="btn-row">
+                  <button class="btn btn-outline-secondary btn-tall btn-25" data-action="extend-rest"><i class="bi bi-plus-circle me-1"></i>+10s</button>
+                  <button class="btn btn-primary btn-tall btn-75" data-action="end-rest"><i class="bi bi-skip-forward-fill me-1"></i>Terminar descanso</button>
+                </div>
+              </div>
+        
+            </div>`;
     }
 
     /* ---------- 6) ENTRENAMIENTO FINALIZADO ---------- */
@@ -1826,7 +1883,6 @@
 
     function runCountdown () {
         clearInterval(timerId)
-        play(state.audio.whistle)
         timerId = setInterval(() => {
             state.training.countdownLeft--
             const n = $('#countdownNum')
@@ -1879,6 +1935,7 @@
         state.training.substate = 'exercise'
         state.training.timerPaused = false
         state.training.restReason = null
+        state.training._halfSpoken = false;
         const ctx = currentExerciseCtx()
         if (state.settings.speakExerciseName) {
             const n = stepDisplayName(ctx.step, ctx.index)
@@ -1888,26 +1945,46 @@
             speak(`Inicia: ${n}${dose ? ', ' + dose : ''}`)
         }
         state.training.timedLeft = stepTime(ctx.step) ?? 0
+        playWhistle()
         render()
         if (stepTime(ctx.step) != null) runTimedSet()
     }
 
     function runTimedSet () {
-        clearInterval(timerId)
-        timerId = setInterval(() => {
-            if (state.training.timerPaused) return
-            state.training.timedLeft--
-            const node = $('#timedLeftNum')
-            if (node) node.textContent = Math.max(0, state.training.timedLeft)
+        clearInterval(timerId);
 
-            const sec = state.training.timedLeft;
-            if (state.tts?.enabled && state.tts?.speakSeconds?.includes(sec)) speak(String(sec));
-            if (state.training.timedLeft <= 0) {
-                clearInterval(timerId)
-                completeSet()
+        // total del ejercicio actual (quedará cerrado en la función del intervalo)
+        const total = stepTime(currentExerciseCtx().step) ?? 0;
+
+        timerId = setInterval(() => {
+            if (state.training.timerPaused) return;
+
+            state.training.timedLeft--;
+            const left = state.training.timedLeft;
+
+            const node = $('#timedLeftNum');
+            if (node) node.textContent = Math.max(0, left);
+
+            // Anuncio de mitad de tiempo (una sola vez)
+            if (state?.tts?.enabled && total && !state.training._halfSpoken) {
+                if (left === Math.floor(total / 2)) {
+                    speak('Vas por la mitad');
+                    state.training._halfSpoken = true;
+                }
             }
-        }, 1000)
+
+            // Anunciar segundos seleccionados (1–10)
+            if (state.tts?.enabled && state.tts?.speakSeconds?.includes(left)) {
+                speak(String(left));
+            }
+
+            if (left <= 0) {
+                clearInterval(timerId);
+                completeSet();
+            }
+        }, 1000);
     }
+
 
     function getRestBetweenSets (step) {
         // 1) Descanso definido en el ejercicio (respeta 0 y formatos tipo "30s", "1:00")
@@ -1958,7 +2035,6 @@
             state.training.restLeft = getRestBetweenSets(ctx.step)
             state.training.timerPaused = false
             render()
-            speak?.(`Descanso de ${state.training.restLeft} segundos`)
             runRest()
             return
         }
@@ -1975,15 +2051,13 @@
             state.training.restLeft = getRestBetweenExercises(ctx.step)
             state.training.timerPaused = false
             render()
-            const nx = stepDisplayName(currentExerciseCtx().day.exercises[ctx.index + 1], ctx.index + 1)
-            speak(`Descanso de ${state.training.restLeft} segundos. Próximo ejercicio ${nx}`)
             runRest()
         } else {
             // Al terminar el último ejercicio del día:
             state.training.substate = 'finished'
             state.training.finishedAt = Date.now()
 
-            // ⬇️ Marca el día como completado para el PLAN ACTUAL
+            // Marca el día como completado para el PLAN ACTUAL
             const pid = getCurrentPlanId()
             markDayCompletedFor(pid, state.training.currentWeek - 1, state.training.currentDay - 1)
 
@@ -2006,7 +2080,7 @@
             saveStats()
 
             // sonido, render...
-            play?.(state.audio?.applause)
+            // play?.(state.audio?.applause)
             render()
         }
     }
@@ -2014,6 +2088,32 @@
     function runRest () {
         stopVoice() // corta lo anterior
         clearInterval(timerId)
+
+        // Decir la frase de descanso aquí
+        try {
+          if (isTTSEnabled()) {
+                const ctx = currentExerciseCtx();
+                const showSame = state.training.restReason === 'between-sets';
+                const nextStep = showSame ? ctx.step : (ctx.day.exercises[ctx.index + 1] || null);
+                const nextName = nextStep ? stepDisplayName(nextStep, showSame ? ctx.index : ctx.index + 1) : '—';
+                // incluir reason en la clave para distinguir descansos distintos en el mismo índice
+                    const restKey = `r-${state.training?.currentWeek}-${state.training?.currentDay}-${ctx.index}-${state.training?.restReason}`;
+                if (state.training._lastRestKey !== restKey) {
+                      let dose = '';
+                      if (nextStep) {
+                            const secs = stepTime(nextStep);
+                            const reps = stepReps(nextStep);
+                            dose = secs != null ? `${secs} segundos` : (reps != null ? `${reps} repeticiones` : '');
+                          }
+                      const msg = nextStep
+                        ? `Tómate un descanso. Siguiente ejercicio ${nextName}${dose ? ', ' + dose : ''}`
+                            : `Tómate un descanso`;
+                      speak(msg);
+                      state.training._lastRestKey = restKey;
+                    }
+              }
+        } catch {}
+
         timerId = setInterval(() => {
             if (state.training.timerPaused) return
             state.training.restLeft--
