@@ -7,6 +7,10 @@
     // Ruta base para imágenes de ejercicios (relativas al index.html)
     const EX_IMG_BASE = 'assets/images/exercises/';
 
+    const DEFAULT_TTS = { enabled: false, voice: null, rate: 1 };
+    const DEFAULT_OPTS = { countdownSeconds: 3, restBetweenSets: 60, restBetweenExercises: 90 };
+
+
 
     const state = {
         view: 'home',
@@ -21,6 +25,9 @@
             restLeft: 0,
             timerPaused: false
         },
+        settingsUI: {
+            substate: 'menu' // 'menu' | 'voice' | 'training' | 'data'
+        },
         plan: null,
         exDict: new Map(),
         stats: JSON.parse(localStorage.getItem('sf_stats') || '{}'),
@@ -29,6 +36,7 @@
         currentPlanId: localStorage.getItem('sf_current_plan') || 'builtin',
         audio: {}
     }
+    ensureSettingsHydrated();
 
     function saveSettings () { localStorage.setItem('sf_settings', JSON.stringify(state.settings)) }
 
@@ -83,6 +91,7 @@
 
         const u = new SpeechSynthesisUtterance(t)
         u.lang = 'es-ES'
+        u.rate = Math.min(2, Math.max(0.5, Number(state.tts?.rate) || 1));
 
         // intenta voz masculina/femenina si existe
         const voices = window.speechSynthesis.getVoices?.() || []
@@ -741,66 +750,116 @@
         return `<div class="mini-labels">${html}</div>`
     }
 
-    function viewSettings () {
-        const s = state.settings = initializeSettings()
-        const seconds = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-        const checks = seconds.map(sec => {
-            const checked = s.countdownSpokenSeconds.includes(sec) ? 'checked' : ''
-            return `<div class="form-check form-check-inline mb-2">
-        <input class="form-check-input" type="checkbox" value="${sec}" id="sec${sec}" ${checked}>
-        <label class="form-check-label" for="sec${sec}">${sec}s</label>
-      </div>`
-        }).join('')
+    function viewSettings(){
+        switch(state.settingsUI?.substate){
+            case 'voice':    return viewSettingsVoice();
+            case 'training': return viewSettingsTraining();
+            case 'data':     return viewSettingsData();
+            default:         return viewSettingsMenu();
+        }
+    }
+
+    function viewSettingsMenu(){
         return `
-      <div class="card mb-3"><div class="card-body">
-        <h5 class="card-title">Voz</h5>
-        <div class="form-check form-switch mb-2">
-          <input class="form-check-input" type="checkbox" id="voiceEnabled" ${s.voiceEnabled ? 'checked' : ''}>
-          <label class="form-check-label" for="voiceEnabled">Activar voz</label>
-        </div>
-        <div class="mb-2">
-          <label class="form-label">Voz</label>
-          <select class="form-select" id="voiceGender">
-            <option value="female" ${s.voiceGender === 'female' ? 'selected' : ''}>Femenina</option>
-            <option value="male" ${s.voiceGender === 'male' ? 'selected' : ''}>Masculina</option>
-          </select>
-        </div>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="checkbox" id="speakExerciseName" ${s.speakExerciseName ? 'checked' : ''}>
-          <label class="form-check-label" for="speakExerciseName">Decir el nombre del ejercicio</label>
-        </div>
-        <div class="mb-2">
-          <label class="form-label">Avisos hablados en cuenta atrás</label><br>${checks}
-        </div>
-      </div></div>
+    <div class="card card-body">
+      <h5 class="mb-3">Configuración</h5>
+      <div class="list-group">
+        <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-action="open-settings-voice">
+          <span><i class="bi bi-soundwave me-2"></i>Opciones de voz (TTS)</span>
+          <i class="bi bi-chevron-right"></i>
+        </button>
+        <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-action="open-settings-training">
+          <span><i class="bi bi-activity me-2"></i>Configuración de entrenamiento</span>
+          <i class="bi bi-chevron-right"></i>
+        </button>
+        <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-action="open-settings-data">
+          <span><i class="bi bi-upload me-2"></i>Exportar/Importar progreso</span>
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  `;
+    }
 
-      <div class="card mb-3"><div class="card-body">
-        <h5 class="card-title">Tiempos de descanso</h5>
-        <div class="row g-3">
-          <div class="col-6">
-            <label class="form-label">Entre series (s)</label>
-            <input type="number" min="0" class="form-control" id="restBetweenSets" value="${s.restBetweenSets ?? ''}">
-          </div>
-          <div class="col-6">
-            <label class="form-label">Entre ejercicios (s)</label>
-            <input type="number" min="0" class="form-control" id="restBetweenExercises" value="${s.restBetweenExercises ?? ''}">
-          </div>
-        </div>
-      </div></div>
-      
-      <div class="card mb-3"><div class="card-body">
-        <h5 class="card-title">Exportar/Importar progreso</h5>
-        <input type="file" id="progressFileInput" accept="application/json" class="d-none">
-        <div class="d-grid gap-2">
-          <button class="btn btn-outline-primary" id="btnExportProgress">Exportar progreso</button>
-          <button class="btn btn-outline-secondary" id="btnImportProgress">Importar progreso</button>
-        </div>
-    </div></div>
+    function viewSettingsVoice(){
+        const s = state.tts || {};
+        return `
+    <div class="card card-body">
+      <h5 class="mb-3">Opciones de voz (TTS)</h5>
 
+      <div class="mb-3 form-check">
+        <input class="form-check-input" type="checkbox" id="ttsEnabled" ${s.enabled ? 'checked' : ''}>
+        <label class="form-check-label" for="ttsEnabled">Activar voz</label>
+      </div>
 
-      <div class="bottom-cta d-grid gap-2">
-        <button class="btn btn-primary btn-lg" data-action="save-settings"><i class="bi bi-save me-2"></i>Guardar</button>
-      </div>`
+      <div class="mb-3">
+        <label class="form-label" for="ttsVoice">Voz</label>
+        <select class="form-select" id="ttsVoice">${renderVoiceOptions(s.voice)}</select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="ttsRate">Velocidad</label>
+        <input type="range" min="0.5" max="2" step="0.05" id="ttsRate" class="form-range" value="${s.rate ?? 1}">
+      </div>
+
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" id="btnSaveVoice"><i class="bi bi-save2 me-1"></i>Guardar</button>
+      </div>
+    </div>
+  `;
+    }
+
+    function viewSettingsTraining(){
+        const o = state.options || {};
+        return `
+            <div class="card card-body">
+              <h5 class="mb-3">Configuración de entrenamiento</h5>
+        
+              <div class="mb-3">
+                <label class="form-label" for="countdownSeconds">Cuenta atrás (s)</label>
+                <input type="number" min="0" id="countdownSeconds" class="form-control" value="${o.countdownSeconds ?? 3}">
+              </div>
+        
+              <div class="mb-3">
+                <label class="form-label" for="restBetweenSets">Descanso entre series (s)</label>
+                <input type="number" min="0" id="restBetweenSets" class="form-control" value="${o.restBetweenSets ?? 60}">
+              </div>
+        
+              <div class="mb-3">
+                <label class="form-label" for="restBetweenExercises">Descanso entre ejercicios (s)</label>
+                <input type="number" min="0" id="restBetweenExercises" class="form-control" value="${o.restBetweenExercises ?? 90}">
+              </div>
+        
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary" id="btnSaveTraining"><i class="bi bi-save2 me-1"></i>Guardar</button>
+              </div>
+            </div>
+          `;
+    }
+
+    function viewSettingsData(){
+        return `
+            <div class="card card-body">
+              <h5 class="mb-3">Exportar/Importar progreso</h5>
+        
+              <div class="d-grid gap-2 mb-3">
+                <button class="btn btn-outline-secondary" id="btnExportProgress">
+                  <i class="bi bi-download me-1"></i>Exportar JSON
+                </button>
+              </div>
+        
+              <div class="mb-3">
+                <label class="form-label" for="importFile">Importar desde JSON</label>
+                <input type="file" id="importFile" class="form-control" accept=".json,application/json">
+              </div>
+        
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary" id="btnImportProgress">
+                  <i class="bi bi-upload me-1"></i>Importar
+                </button>
+              </div>
+            </div>
+          `;
     }
 
     function bindEvents () {
@@ -818,8 +877,13 @@
                     state.training.substate = 'list';
                 }
 
+                // cuando el usuario pulsa el tab "Settings"
+                if (nextView === 'settings') {
+                    state.settingsUI.substate = 'menu';
+                }
+
                 // cambiar vista
-                state.view = btn.dataset.view
+                state.view = nextView
                 render()
             }
         })
@@ -1038,14 +1102,17 @@
             });
         });
 
-        $('#btnExportProgress')?.addEventListener('click', exportProgressJSON)
-        $('#btnImportProgress')?.addEventListener('click', () => $('#progressFileInput')?.click())
-        $('#progressFileInput')?.addEventListener('change', importProgressFromFile)
-
         const backBtn = document.getElementById('navBackBtn');
         if (backBtn) {
             backBtn.onclick = () => {
-                stopAllTimersAndVoice();
+                stopAllTimersAndVoice?.();
+
+                if (state.view === 'settings') {
+                    // Desde cualquier subpantalla -> volver al menú de settings
+                    state.settingsUI.substate = 'menu';
+                    render(); updateNavVisibility(); updateTopBack(); updateAppContentFill?.();
+                    return;
+                }
 
                 const sub = state.training?.substate || 'list';
 
@@ -1073,6 +1140,94 @@
                 updateAppContentFill?.();
             };
         }
+
+        // Abrir subpantallas de settings
+        $('[data-action="open-settings-voice"]')?.addEventListener('click', () => { state.settingsUI.substate='voice'; render(); updateTopBack(); });
+        $('[data-action="open-settings-training"]')?.addEventListener('click', () => { state.settingsUI.substate='training'; render(); updateTopBack(); });
+        $('[data-action="open-settings-data"]')?.addEventListener('click', () => { state.settingsUI.substate='data'; render(); updateTopBack(); });
+
+// Guardar VOZ
+        $('#btnSaveVoice')?.addEventListener('click', () => {
+            const enabled = $('#ttsEnabled')?.checked ?? false;
+            const voiceValue = $('#ttsVoice')?.value ?? null; // voiceURI o name
+            const rate    = parseFloat($('#ttsRate')?.value ?? 1);
+            state.tts = { ...(state.tts||{}), enabled, voice: voiceValue, rate };
+            persistOptions?.();
+            toast?.('Guardado', 'Se han guardado las opciones de voz');
+        });
+
+// Guardar ENTRENAMIENTO
+        $('#btnSaveTraining')?.addEventListener('click', () => {
+            const countdownSeconds   = parseInt($('#countdownSeconds')?.value || '0', 10);
+            const restBetweenSets    = parseInt($('#restBetweenSets')?.value || '0', 10);
+            const restBetweenExercises = parseInt($('#restBetweenExercises')?.value || '0', 10);
+            state.options = { ...(state.options||{}), countdownSeconds, restBetweenSets, restBetweenExercises };
+            persistOptions?.();
+            toast?.('Guardado', 'Se han guardado las opciones de entrenamiento');
+        });
+
+        (function wireVoicesChanged(){
+            if (typeof speechSynthesis === 'undefined') return;
+
+            const refreshVoicesSelect = () => {
+                const sel = document.getElementById('ttsVoice');
+                if (!sel) return; // aún no estamos en la subpantalla de voz
+                sel.innerHTML = renderVoiceOptions(state.tts?.voice);
+            };
+
+            // Llamada inicial (por si ya están disponibles)
+            try { refreshVoicesSelect(); } catch{}
+
+            // Y cuando el navegador notifique cambios de voces:
+            speechSynthesis.onvoiceschanged = refreshVoicesSelect;
+        })();
+
+        // ---- Exportar / Importar progreso (subpantalla Settings > Data) ----
+        (() => {
+            const btnExport = document.getElementById('btnExportProgress');
+            const btnImport = document.getElementById('btnImportProgress');
+            const fileInput = document.getElementById('importFile');
+
+            // Exportar (un solo handler)
+            if (btnExport) {
+                btnExport.onclick = () => {
+                    if (typeof exportProgress === 'function')      exportProgress();
+                    else if (typeof exportProgressJSON === 'function') exportProgressJSON();
+                };
+            }
+
+            // Importar: abre selector
+            if (btnImport) {
+                btnImport.onclick = () => fileInput?.click();
+            }
+
+            // Cuando el usuario elige archivo
+            if (fileInput) {
+                fileInput.onchange = async (ev) => {
+                    try {
+                        if (!ev.target?.files?.length) return;
+
+                        if (typeof importProgressFromFile === 'function') {
+                            const res = importProgressFromFile(ev);
+                            if (res && typeof res.then === 'function') await res;
+                        } else if (typeof importProgress === 'function') {
+                            const res = importProgress(ev.target);
+                            if (res && typeof res.then === 'function') await res;
+                        } else {
+                            throw new Error('No existe función de importación (importProgressFromFile/importProgress)');
+                        }
+
+                        // toast?.('Importado', 'Se ha importado el progreso correctamente');
+                        render();
+                    } catch (err) {
+                        console.error(err);
+                        toast?.('Error', 'No se pudo importar el progreso');
+                    } finally {
+                        ev.target.value = ''; // permite reimportar el mismo archivo
+                    }
+                };
+            }
+        })();
 
         scrollToTopAfterRender()
     }
@@ -2280,8 +2435,10 @@
 
 
     function shouldShowTopBack(){
-        return state.view === 'training' &&
-            ['day','countdown','exercise','rest','finished'].includes(state.training?.substate);
+        const t = state.training?.substate;
+        const isTrainingBack = state.view === 'training' && ['day','countdown','exercise','rest','finished'].includes(t);
+        const isSettingsBack = state.view === 'settings' && state.settingsUI?.substate !== 'menu';
+        return isTrainingBack || isSettingsBack;
     }
 
     function updateTopBack(){
@@ -2519,6 +2676,7 @@
 
 
     function importProgressFromFile (ev) {
+        console.log('Importando progreso desde archivo...', ev);
         const file = ev?.target?.files?.[0]
         if (!file) return
         const reader = new FileReader()
@@ -2541,19 +2699,19 @@
                     const [w1, d1] = entry
                     if (Number.isInteger(w1) && Number.isInteger(d1)) {
                         // tus helpers trabajan en base-0
-                        markDayCompletedFor(w1 - 1, d1 - 1)
+                        markDayCompletedFor(getCurrentPlanId(), w1 - 1, d1 - 1);
                     }
                 }
 
                 // 2) Restaurar posición actual (opcional)
-                const p = data.progress?.position || {}
+                const p = data.progress?.position || {};
                 if (p && typeof p === 'object') {
-                    state.training = state.training || {}
-                    if (Number.isInteger(p.currentWeek)) state.training.currentWeek = p.currentWeek
-                    if (Number.isInteger(p.currentDay))  state.training.currentDay  = p.currentDay
-                    if (Number.isInteger(p.index))       state.training.index       = p.index
-                    if (Number.isInteger(p.currentSet))  state.training.currentSet  = p.currentSet
-                    if (typeof p.substate === 'string')  state.training.substate    = p.substate
+                    state.training = state.training || {};
+                    if (Number.isInteger(p.currentWeek))         state.training.currentWeek = p.currentWeek;
+                    if (Number.isInteger(p.currentDay))          state.training.currentDay  = p.currentDay;
+                    if (Number.isInteger(p.currentExerciseIndex)) state.training.currentExerciseIndex = p.currentExerciseIndex;
+                    if (Number.isInteger(p.currentSet))          state.training.currentSet  = p.currentSet;
+                    if (typeof p.substate === 'string')          state.training.substate    = p.substate;
                 }
 
                 // Persistir y refrescar UI
@@ -2561,10 +2719,10 @@
                 render()
 
                 // feedback
-                alert('Progreso importado correctamente.')
+                toast?.('Importado', 'Progreso importado correctamente.', 'success');
             } catch (e) {
                 console.error(e)
-                alert('No se pudo importar el progreso: ' + e.message)
+                toast?.('Error', 'No se pudo importar el progreso: ' + e.message, 'danger', 3000);
             } finally {
                 ev.target.value = '' // limpiar input
             }
@@ -2635,6 +2793,103 @@
         const days    = new Set(log.map(e=>e.date)).size
         return { minutes, kcal, days }
     }
+
+    function renderVoiceOptions(selectedValue){
+        try{
+            const list = (typeof speechSynthesis !== 'undefined' && speechSynthesis.getVoices)
+                ? speechSynthesis.getVoices()
+                : [];
+
+            if (!list || list.length === 0){
+                // Mostramos un placeholder mientras se disparan las voces
+                return `<option value="">(Cargando voces…)</option>`;
+            }
+
+            // Usaremos voiceURI si existe; si no, name (para persistencia)
+            return list.map(v => {
+                const value = v.voiceURI || v.name;
+                const isSel = selectedValue ? (selectedValue === value || selectedValue === v.name) : v.default;
+                const label = `${v.name} (${v.lang})${v.default ? ' — predeterminada' : ''}`;
+                return `<option value="${value.replace(/"/g,'&quot;')}"`
+                    + (isSel ? ' selected' : '')
+                    + `>${label.replace(/</g,'&lt;')}</option>`;
+            }).join('');
+        }catch(e){
+            return `<option value="">(No hay voces disponibles)</option>`;
+        }
+    }
+
+    /** Sincroniza state.tts y state.options desde state.settings (persistido). */
+    function ensureSettingsHydrated(){
+        const s = state.settings || {};
+        state.tts = { ...DEFAULT_TTS, ...(s.tts || {}), ...(state.tts || {}) };
+        state.options = { ...DEFAULT_OPTS, ...(s.options || {}), ...(state.options || {}) };
+    }
+
+    /** Persiste en localStorage fusionando lo que haya en state.settings con lo editado en UI. */
+    function persistOptions(){
+        const merged = {
+            ...(state.settings || {}),
+            tts: { ...(state.settings?.tts || {}), ...(state.tts || {}) },
+            options: { ...(state.settings?.options || {}), ...(state.options || {}) }
+        };
+        state.settings = merged;
+        try {
+            localStorage.setItem('sf_settings', JSON.stringify(merged));
+        } catch (e) {
+            console.warn('No se pudieron guardar las opciones en localStorage:', e);
+        }
+    }
+
+    // --- Toast helper (Bootstrap 5 con fallback a alert) -----------------------
+    function ensureToastContainer(){
+        if (document.getElementById('sfToasts')) return;
+        const box = document.createElement('div');
+        box.id = 'sfToasts';
+        box.className = 'toast-container p-3';
+        // esquina inferior: puedes cambiar a top-0 start-50 translate-middle-x si prefieres arriba
+        box.style.position = 'fixed';
+        box.style.right = '0';
+        box.style.bottom = '0';
+        box.style.zIndex = '1080';
+        document.body.appendChild(box);
+    }
+
+    function toast(title = 'Info', message = '', variant = 'success', delay = 1800){
+        try{
+            ensureToastContainer();
+            const container = document.getElementById('sfToasts');
+
+            const el = document.createElement('div');
+            el.className = `toast text-bg-${variant}`;
+            el.role = 'status';
+            el.ariaLive = 'polite';
+            el.ariaAtomic = 'true';
+            el.innerHTML = `
+      <div class="toast-header">
+        <strong class="me-auto">${title}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+      </div>
+      ${message ? `<div class="toast-body">${message}</div>` : '' }
+    `;
+            container.appendChild(el);
+
+            const ToastCtor = window.bootstrap?.Toast;
+            if (ToastCtor){
+                const t = new ToastCtor(el, { delay, autohide: true });
+                t.show();
+                el.addEventListener('hidden.bs.toast', () => { try { el.remove(); } catch {} });
+            } else {
+                // Fallback si no está Bootstrap: usar alert y limpiar el nodo
+                setTimeout(() => { try { el.remove(); } catch {} }, Math.max(1000, delay));
+                alert((title || '') + (message ? '\n' + message : ''));
+            }
+        }catch(e){
+            // Último fallback
+            alert((title || 'Hecho') + (message ? '\n' + message : ''));
+        }
+    }
+
 
 
 
