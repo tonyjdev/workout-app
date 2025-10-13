@@ -43,6 +43,28 @@ coverage/
 reports/
 *.map
 
+# Android/Capacitor
+android/.gradle/
+android/.idea/
+android/local.properties
+android/captures/
+android/*/build/
+android/build/
+android/app/build/
+android/app/release/
+android/app/debug/
+
+# Keystores (¡nunca subir!)
+*.jks
+*.keystore
+*.keystore.properties
+
+# Gradle wrapper: SÍ conviene versionarlo (estos no)
+# android/gradle/wrapper/gradle-wrapper.jar  <-- ESTE SÍ se versiona
+# android/gradlew                             <-- ESTE SÍ se versiona
+# android/gradlew.bat                         <-- ESTE SÍ se versiona
+
+
 ### Bundlers / Tooling
 .parcel-cache/
 parcel-bundle-reports/

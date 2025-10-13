@@ -191,7 +191,12 @@ body{
   border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; overflow:hidden;
 }
 .timer-area{ margin:1rem 0 1.25rem; }
-.timer-large, .countdown, .reps-large{ font-size:5rem; font-weight:800; text-align:center; line-height:1; }
+/* Reemplaza la línea actual de tamaño fijo (5rem) por esto */
+.timer-large, .countdown, .reps-large{
+    font-size: clamp(2.4rem, 8.5vw, 4.2rem);
+    font-weight: 800; text-align: center; line-height: 1;
+}
+
 /* Pantallas de ejercicio/descanso: ocupar altura disponible sin tapar CTAs */
 .exercise-screen{
     /* min-height: calc(100vh - var(--nav-h) - var(--ad-h) - 16px); */
@@ -300,6 +305,64 @@ body{
 .ex-badge-warmup{ color: var(--sf-warning); border-color: var(--ex-warmup-border); background: transparent; }
 .ex-badge-main{   color: var(--sf-accent);  border-color: var(--ex-main-border);   background: transparent; }
 .ex-badge-stretch{color: var(--sf-success); border-color: var(--ex-stretch-border); background: transparent; }
+
+/* =====================================================
+   FINISHER — estilos paralelos a warmup/main/stretch
+   (respeta variables y añade fallbacks como en tu base)
+   ===================================================== */
+
+/* 1) Item de lista por bloque (mismo patrón que .ex-item.ex-*) */
+.ex-item.ex-finisher{
+    background: var(--ex-finisher-bg, rgba(142,36,170,.18));
+    border-left-color: var(--ex-finisher-border, rgba(142,36,170,.85));
+}
+
+/* Variante lista (bloque con !important, como tus otros) */
+.ex-list .list-group-item.ex-item.ex-finisher{
+    background-color: var(--ex-finisher-bg, rgba(142,36,170,.18)) !important;
+    border-left-color: var(--ex-finisher-border, rgba(142,36,170,.85)) !important;
+}
+
+/* Estado activo en lista (mantén la misma idea de resalte) */
+.ex-item.ex-finisher.is-active{
+    background-color: color-mix(in srgb, var(--ex-finisher-bg, rgba(142,36,170,.18)) 60%, transparent);
+}
+
+/* 2) Badge del bloque (mismo esquema que .ex-badge-*) */
+.ex-badge-finisher{
+    color: var(--ex-finisher-badge, #6a1b9a);
+    border-color: color-mix(in srgb, var(--ex-finisher-border, rgba(142,36,170,.85)) 50%, transparent);
+    background: transparent;
+}
+
+/* 3) Punto de color en cabecera de sección (mismo patrón .ex-sec-*) */
+.ex-sec-finisher .ex-section-dot{
+    background: var(--ex-finisher-dot, #8e24aa);
+}
+
+/* 4) Tira de nombre en pantallas de ejercicio/descanso (.ex-strip-*) */
+.ex-strip-finisher{
+    background: var(--ex-finisher-bg, rgba(142,36,170,.18));
+    border: 1px solid var(--ex-finisher-border, rgba(142,36,170,.85));
+}
+
+/* 5) Fondo en pantallas de ejercicio/descanso (requiere <div class="exercise-screen ex-finisher">) */
+.exercise-screen.ex-finisher{
+    background: color-mix(in srgb, var(--ex-finisher-bg, rgba(142,36,170,.18)) 55%, var(--bs-body-bg));
+}
+
+/* 6) Pill "Ahora" (si lo utilizas sobre el item activo) */
+.ex-item.ex-finisher .ex-now-pill{
+    background: color-mix(in srgb, var(--ex-finisher-border, rgba(142,36,170,.85)) 20%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ex-finisher-border, rgba(142,36,170,.85)) 35%, transparent);
+    color: var(--ex-finisher-badge, #6a1b9a);
+}
+
+/* 7) Ajustes para dark mode (siguiendo tu pauta de alpha extra) */
+:root[data-bs-theme="dark"] .ex-list .list-group-item.ex-item.ex-finisher{
+    background-color: var(--ex-finisher-bg-dark, rgba(142,36,170,.22)) !important;
+}
+
 
 /* --- Secciones por bloque --- */
 .ex-list .ex-section{
@@ -617,4 +680,11 @@ body{
     height: calc(100vh - 60px);
     padding-bottom: 12px;   /* un poco de aire para los botones inferiores */
     overflow: auto;
+}
+
+/* ===== Tipografía más compacta en la app (WebView) ===== */
+html.native-app { font-size: 93%; }          /* ~7% más pequeño en general */
+
+@media (max-width: 420px), (max-height: 740px) {
+    html.native-app { font-size: 90%; }        /* móviles pequeños/altos: un poco más compacto */
 }

@@ -269,14 +269,16 @@
         "pecho",
         "triceps"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=1CnGtWXfQ8w",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "fuerza"
       ],
-      "images": [],
+      "images": [
+        "exercise-band-chest-press.jpg"
+      ],
       "description": "Pallof press con banda es un ejercicio de fuerza orientado a mejorar fuerza y control. Trabaja principalmente pecho, tríceps, hombro. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -512,14 +514,16 @@
         "core"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=WGwI629aTAY",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "core"
       ],
-      "images": [],
+      "images": [
+        "exercise-hollow-hold.webp"
+      ],
       "description": "Hollow hold es un ejercicio de core orientado a mejorar fuerza y control. Trabaja principalmente core. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -712,14 +716,16 @@
         "espalda",
         "hombro"
       ],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=FthMzTxynSM",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "core"
       ],
-      "images": [],
+      "images": [
+        "exercise-plank pull-through.jpg"
+      ],
       "description": "Plancha con arrastre (plank pull-through) es un ejercicio de core orientado a mejorar fuerza y control. Trabaja principalmente espalda, hombro, bíceps. Mantén columna neutra, respiración controlada y rango cómodo; prioriza técnica sobre velocidad."
     },
     {
@@ -2248,14 +2254,16 @@
         "core"
       ],
       "secondary_muscles": [],
-      "video": null,
+      "video": "https://www.youtube.com/watch?v=UwRfRN5fYRg",
       "instructions": null,
       "tags": [
         "bilateral",
         "compuesto",
         "core"
       ],
-      "images": [],
+      "images": [
+        "exercise-reverse-crunch.webp"
+      ],
       "description": "Reverse Crunches es un ejercicio de core orientado a mejorar fuerza y control. Trabaja principalmente core. Si molesta la zona lumbar, reduce el rango o cambia por una variante anti-extensión (plank/dead bug)."
     },
     {

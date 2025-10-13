@@ -1,3 +1,125 @@
+// Stubs por defecto para el navegador
+let KeepAwake = { keepAwake: async () => {}, allowSleep: async () => {} };
+let StatusBar = { hide: async () => {}, show: async () => {} };
+let App = { addListener: () => ({ remove() {} }) };
+
+// Inicializa plugins solo si estamos en plataforma nativa de Capacitor
+(async () => {
+    try {
+        const isNative = !!(window.Capacitor && typeof window.Capacitor.isNativePlatform === 'function'
+            ? window.Capacitor.isNativePlatform()
+            : window.Capacitor?.getPlatform && window.Capacitor.getPlatform() !== 'web');
+
+        if (isNative) {
+            ({ KeepAwake } = await import('@capacitor-community/keep-awake'));
+            ({ StatusBar } = await import('@capacitor/status-bar'));
+            ({ App } = await import('@capacitor/app'));
+            await StatusBar.hide();
+        }
+    } catch (e) {
+        console.log('Capacitor plugins no inicializados (modo web):', e);
+    }
+})();
+
+// --- Detección de plataforma ---
+const isCapacitorNative = !!(window.Capacitor && (
+    (typeof window.Capacitor.isNativePlatform === 'function' && window.Capacitor.isNativePlatform()) ||
+    (window.Capacitor.getPlatform && window.Capacitor.getPlatform() !== 'web')
+));
+
+let WebTTS = { available: false, voices: [] };
+let NativeTTS = { available: false, speak: null, getLanguages: null };
+
+async function initTTS() {
+    // Intento Web Speech
+    if ('speechSynthesis' in window && typeof window.SpeechSynthesisUtterance !== 'undefined') {
+        WebTTS.available = true;
+        WebTTS.voices = await waitForVoices(1500); // polling corto
+    }
+
+    // Intento nativo si estamos en app
+    if (isCapacitorNative) {
+        try {
+            const { TextToSpeech } = await import('@capacitor-community/text-to-speech');
+            NativeTTS.available = true;
+            NativeTTS.speak = (opts) => TextToSpeech.speak(opts);
+            // Algunos builds exponen getSupportedLanguages(); si no existe, caemos a lista fija útil
+            NativeTTS.getLanguages = TextToSpeech.getSupportedLanguages
+                ? async () => (await TextToSpeech.getSupportedLanguages()).languages
+                : async () => ['es-ES','en-US','fr-FR','de-DE','it-IT','pt-PT'];
+        } catch (e) {
+            console.log('TTS nativo no disponible:', e);
+        }
+    }
+
+    await populateVoiceSelect();
+}
+
+// Al arrancar tu app (en app.js)
+(function markNativeIfNeeded(){
+    const isNative = !!(window.Capacitor && (
+        (typeof window.Capacitor.isNativePlatform === 'function' && window.Capacitor.isNativePlatform()) ||
+        (window.Capacitor.getPlatform && window.Capacitor.getPlatform() !== 'web')
+    ));
+    if (isNative) document.documentElement.classList.add('native-app');
+})();
+
+// Espera hasta que getVoices() devuelva algo o expire
+function waitForVoices(timeoutMs = 1500) {
+    return new Promise(resolve => {
+        const start = performance.now();
+        const check = () => {
+            const voices = window.speechSynthesis.getVoices();
+            if (voices && voices.length) return resolve(voices);
+            if (performance.now() - start > timeoutMs) return resolve([]);
+            setTimeout(check, 100);
+        };
+        // En algunos navegadores, llamar a getVoices una vez “desbloquea” el cargado
+        window.speechSynthesis.getVoices();
+        check();
+    });
+}
+
+// Llena el <select id="voiceSelect"> con voces web o idiomas nativos
+async function populateVoiceSelect() {
+    const sel = document.getElementById('voiceSelect');
+    if (!sel) return;
+
+    sel.innerHTML = ''; // limpia "cargando voces..."
+
+    if (WebTTS.available && WebTTS.voices.length) {
+        // Web: listar voces reales
+        WebTTS.voices
+            .sort((a,b) => (a.lang||'').localeCompare(b.lang||'') || (a.name||'').localeCompare(b.name||''))
+            .forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = JSON.stringify({ type:'web', name: v.name, lang: v.lang });
+                opt.textContent = `${v.name} — ${v.lang}`;
+                sel.appendChild(opt);
+            });
+    } else if (NativeTTS.available) {
+        // App: listar idiomas (Android no da voces JS en WebView)
+        const langs = await NativeTTS.getLanguages();
+        langs.sort().forEach(lang => {
+            const opt = document.createElement('option');
+            opt.value = JSON.stringify({ type:'native', lang });
+            opt.textContent = `Voz del sistema — ${lang}`;
+            sel.appendChild(opt);
+        });
+    } else {
+        // Último recurso: una opción por defecto en web sin soporte
+        const opt = document.createElement('option');
+        opt.value = JSON.stringify({ type:'none' });
+        opt.textContent = 'TTS no disponible';
+        sel.appendChild(opt);
+        sel.disabled = true;
+    }
+}
+
+// Llama a init al arrancar la UI
+initTTS();
+
+
 /* Workout – Full App (compact, with improved Home) */
 (() => {
     const $ = (s, c = document) => c.querySelector(s)
@@ -6,12 +128,14 @@
     const JSON_EX_DICT_URL = './data/exercises.json'
     // Ruta base para imágenes de ejercicios (relativas al index.html)
     const EX_IMG_BASE = 'assets/images/exercises/';
-    const WHISTLE_SRC = 'assets/whistle.wav';
+    const WHISTLE_SRC = 'assets/fx/whistle.wav';
+    const DING_SRC = 'assets/fx/whistle.wav';
+    const APPLAUSE_SRC = 'assets/fx/applause.wav';
 
     const DEFAULT_TTS = { enabled: false, voice: null, rate: 1, speakSeconds: [3,2,1] };
     const DEFAULT_OPTS = { countdownSeconds: 3, restBetweenSets: 60, restBetweenExercises: 90 };
 
-
+    const UI_BLOCK_ORDER = ['warmup', 'main', 'finisher', 'stretch'];
 
     const state = {
         view: 'home',
@@ -37,6 +161,8 @@
         currentPlanId: localStorage.getItem('sf_current_plan') || 'builtin',
         audio: {}
     }
+    let trainingInProgress = false;
+
     ensureSettingsHydrated();
 
     function saveSettings () { localStorage.setItem('sf_settings', JSON.stringify(state.settings)) }
@@ -69,8 +195,9 @@
     }
 
     function loadAudio () {
-        state.audio.whistle = mkAudio('./assets/whistle.wav', .8)
-        state.audio.applause = mkAudio('./assets/applause.wav', .7)
+        state.audio.ding = mkAudio('./assets/fx/ding.wav', .5)
+        state.audio.whistle = mkAudio('./assets/fx/whistle.wav', .8)
+        state.audio.applause = mkAudio('./assets/fx/applause.wav', .8)
     }
 
     function play (a) {
@@ -102,27 +229,210 @@
         }catch{}
     }
 
-    function speak (t) {
-        if (!isTTSEnabled()) return
-        if (!('speechSynthesis' in window)) return
-        // corta cualquier frase en curso antes de hablar
-        window.speechSynthesis.cancel()
-
-        const u = new SpeechSynthesisUtterance(t)
-        u.lang = 'es-ES'
-        u.rate = Math.min(2, Math.max(0.5, Number(state.tts?.rate) || 1));
-
-        // intenta voz masculina/femenina si existe
-        const voices = window.speechSynthesis.getVoices?.() || []
-        if (state.settings.voiceGender === 'male') {
-            const v = voices.find(v => /es/i.test(v.lang) && /male|hombre|mascul/i.test(v.name))
-            if (v) u.voice = v
-        } else {
-            const v = voices.find(v => /es/i.test(v.lang) && /female|mujer|femen/i.test(v.name))
-            if (v) u.voice = v
-        }
-        window.speechSynthesis.speak(u)
+    function playDing(){
+        try{
+            state.audio = state.audio || {};
+            if (!state.audio.ding){
+                state.audio.ding = new Audio(DING_SRC);
+                state.audio.ding.preload = 'auto';
+            }
+            const a = state.audio.ding;
+            a.currentTime = 0;
+            a.play().catch(()=>{ /* evitar warning si el navegador bloquea */ });
+        }catch{}
     }
+
+    function playApplause(){
+        try{
+            state.audio = state.audio || {};
+            if (!state.audio.applause){
+                state.audio.applause = new Audio(APPLAUSE_SRC);
+                state.audio.applause.preload = 'auto';
+            }
+            const a = state.audio.applause;
+            a.currentTime = 0;
+            a.play().catch(()=>{ /* evitar warning si el navegador bloquea */ });
+        }catch{}
+    }
+
+    // --- Confetti (sin librerías) --------------------------------------------
+    function ensureConfettiStyles(){
+        if (document.getElementById('sfConfettiStyles')) return;
+        const css = `
+  @keyframes sf-fall {
+    0%   { transform: translate3d(var(--x,0), -10vh, 0) rotate(var(--r,0)); opacity: 1; }
+    100% { transform: translate3d(calc(var(--x,0) + var(--dx,0)), 110vh, 0) rotate(calc(var(--r,0) + var(--dr,360deg))); opacity: 1; }
+  }
+  .sf-confetti-layer {
+    position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 9999;
+  }
+  .sf-confetti-piece {
+    position: absolute; top: -10vh; left: 0;
+    width: var(--w,8px); height: var(--h,14px);
+    background: var(--c,#f00);
+    border-radius: 2px;
+    animation: sf-fall var(--t, 1200ms) linear forwards;
+    will-change: transform;
+  }`;
+        const st = document.createElement('style');
+        st.id = 'sfConfettiStyles';
+        st.textContent = css;
+        document.head.appendChild(st);
+    }
+
+    function launchConfetti({pieces=160, duration=1600} = {}){
+        ensureConfettiStyles();
+        // Evita múltiples capas a la vez
+        const old = document.getElementById('sfConfettiLayer');
+        if (old) old.remove();
+
+        const layer = document.createElement('div');
+        layer.id = 'sfConfettiLayer';
+        layer.className = 'sf-confetti-layer';
+        document.body.appendChild(layer);
+
+        const colors = ['#ff4757','#ffa502','#fffa65','#2ed573','#1e90ff','#a29bfe','#ff6b81'];
+        const rnd = (a,b)=>Math.random()*(b-a)+a;
+
+        for (let i=0;i<pieces;i++){
+            const el = document.createElement('div');
+            el.className = 'sf-confetti-piece';
+
+            const c = colors[i % colors.length];
+            const x = `${Math.round(rnd(0, 100))}vw`;      // inicio horizontal
+            const dx = `${Math.round(rnd(-20, 20))}vw`;    // deriva horizontal
+            const t = `${Math.round(rnd(900, 1800))}ms`;   // tiempo de caída
+            const w = `${Math.round(rnd(6,10))}px`;
+            const h = `${Math.round(rnd(10,16))}px`;
+            const r = `${Math.round(rnd(-90, 90))}deg`;
+            const dr= `${Math.round(rnd(180, 720))}deg`;
+
+            el.style.setProperty('--c', c);
+            el.style.setProperty('--x', x);
+            el.style.setProperty('--dx', dx);
+            el.style.setProperty('--t', t);
+            el.style.setProperty('--w', w);
+            el.style.setProperty('--h', h);
+            el.style.setProperty('--r', r);
+            el.style.setProperty('--dr', dr);
+
+            // Pequeño delay para que no caigan todos a la vez
+            el.style.animationDelay = `${Math.round(rnd(0, 400))}ms`;
+
+            layer.appendChild(el);
+        }
+
+        // Limpieza
+        setTimeout(() => { try{ layer.remove(); }catch{} }, duration + 800);
+    }
+
+    // Reemplaza tu speak() por esta versión
+    async function speak(t) {
+        if (!isTTSEnabled()) return;
+
+        // ¿Estamos dentro de la app (Capacitor)?
+        const isNative = !!(window.Capacitor && (
+            typeof window.Capacitor.isNativePlatform === 'function'
+                ? window.Capacitor.isNativePlatform()
+                : (window.Capacitor.getPlatform && window.Capacitor.getPlatform() !== 'web')
+        ));
+
+        // Preferencia de idioma / parámetros desde tu estado (con defaults)
+        const lang  = (state.tts && state.tts.lang) || 'es-ES';
+        const rate  = Math.min(2, Math.max(0.5, Number(state.tts?.rate)  || 1));
+        const pitch = Math.min(2, Math.max(0.5, Number(state.tts?.pitch) || 1));
+        const volume = 1.0;
+
+        // Ruta nativa (Capacitor): usa el TTS del sistema
+        if (isNative) {
+            try {
+                const { TextToSpeech } = await import('@capacitor-community/text-to-speech');
+                await TextToSpeech.speak({
+                    text: String(t),
+                    lang,
+                    rate,
+                    pitch,
+                    volume,
+                    // Evita pausar música en algunos dispositivos:
+                    category: 'ambient'
+                });
+                return;
+            } catch (e) {
+                console.log('Fallo TTS nativo, intento Web Speech…', e);
+                // si falla el nativo, continuamos y probamos Web Speech abajo
+            }
+        }
+
+        // Ruta Web Speech (navegador / fallback)
+        if (!('speechSynthesis' in window) || typeof window.SpeechSynthesisUtterance === 'undefined') return;
+
+        // Corta cualquier frase en curso antes de hablar
+        try { window.speechSynthesis.cancel(); } catch {}
+
+        const u = new SpeechSynthesisUtterance(String(t));
+        u.lang  = lang;
+        u.rate  = rate;
+        u.pitch = pitch;
+
+        // Intentar obtener voces (con polling corto porque voiceschanged a veces no salta)
+        const voices = await getVoicesWithPolling(1200);
+
+        // 1) Si tienes un <select id="voiceSelect">, respetarlo:
+        const chosen = getSelectedVoiceChoice(); // {type:'web', name, lang} | null
+        if (chosen && voices.length) {
+            const v = voices.find(v => v.name === chosen.name && v.lang === chosen.lang);
+            if (v) u.voice = v;
+        } else if (voices.length) {
+            // 2) Tu lógica original por género en español
+            if (state.settings?.voiceGender === 'male') {
+                const v = voices.find(v => /es/i.test(v.lang) && /male|hombre|mascul/i.test(v.name));
+                if (v) u.voice = v;
+            } else {
+                const v = voices.find(v => /es/i.test(v.lang) && /female|mujer|femen/i.test(v.name));
+                if (v) u.voice = v;
+            }
+            // 3) Fallback: cualquier voz que coincida con el lang
+            if (!u.voice) {
+                const v = voices.find(v => v.lang === lang) || voices.find(v => /^es/i.test(v.lang));
+                if (v) u.voice = v;
+            }
+        }
+
+        window.speechSynthesis.speak(u);
+    }
+
+// --- Helpers ---
+
+// Polling compacto para getVoices() (por si no dispara voiceschanged)
+    function getVoicesWithPolling(timeoutMs = 1200) {
+        return new Promise(resolve => {
+            if (!('speechSynthesis' in window)) return resolve([]);
+            const start = performance.now();
+            const tick = () => {
+                const list = window.speechSynthesis.getVoices?.() || [];
+                if (list.length) return resolve(list);
+                if (performance.now() - start > timeoutMs) return resolve([]);
+                setTimeout(tick, 100);
+            };
+            // Llamada inicial que a veces “desbloquea” la carga
+            try { window.speechSynthesis.getVoices?.(); } catch {}
+            tick();
+        });
+    }
+
+    // Lee la opción elegida en tu <select id="voiceSelect"> si existe (formato JSON en value)
+    function getSelectedVoiceChoice() {
+        const sel = document.getElementById('voiceSelect');
+        if (!sel || !sel.value) return null;
+        try {
+            const parsed = JSON.parse(sel.value);
+            // esperamos { type:'web', name, lang } en modo web, y { type:'native', lang } en app (que aquí no usamos)
+            return parsed && parsed.type === 'web' ? parsed : null;
+        } catch {
+            return null;
+        }
+    }
+
 
     function ttsDoseFor(step){
         const secs = stepTime(step);
@@ -215,7 +525,7 @@
 
     function estimateDaySecondsByBlock(day){
         const exs = day.exercises || [];
-        const sum = { warmup: 0, main: 0, stretch: 0 };
+        const sum = { warmup: 0, main: 0, finisher: 0, stretch: 0 };
 
         for (let i = 0; i < exs.length; i++) {
             const x = exs[i];
@@ -265,22 +575,40 @@
             const days = Array.isArray(w.days) ? w.days : []
 
             const normDays = days.map((d) => {
-                // Si viene con bloques, aplanamos; si no, usamos exercises tal cual
-                let exercises = []
+                // --- Construcción de ejercicios del día, incluyendo FINISHER y orden deseado ---
+                let exercises = [];
+
+                // 1) Recolecta por bloque
+                const buf = { warmup: [], main: [], stretch: [], finisher: [] };
+
                 if (Array.isArray(d.blocks)) {
                     for (const block of d.blocks) {
-                        const btype = String(block?.block || block?.type || 'main').toLowerCase()
-                        const items = Array.isArray(block?.items) ? block.items : []
+                        const btype = String(block?.block || block?.type || 'main').toLowerCase();
+                        const items = Array.isArray(block?.items) ? block.items : [];
+                        const target =
+                            btype === 'warmup'  ? buf.warmup  :
+                                btype === 'stretch' ? buf.stretch :
+                                    buf.main; // por defecto, todo lo no warmup/stretch va a main
                         for (const it of items) {
-                            exercises.push(normalizeExerciseItem(it, btype))
+                            target.push(normalizeExerciseItem(it, btype));
                         }
                     }
                 } else {
-                    const items = Array.isArray(d.exercises) ? d.exercises : []
+                    const items = Array.isArray(d.exercises) ? d.exercises : [];
                     for (const it of items) {
-                        exercises.push(normalizeExerciseItem(it, null))
+                        buf.main.push(normalizeExerciseItem(it, null));
                     }
                 }
+
+                // 2) Añade el bloque 'finisher' (array aparte en el plan v2)
+                if (Array.isArray(d.finisher) && d.finisher.length) {
+                    for (const it of d.finisher) {
+                        buf.finisher.push(normalizeExerciseItem(it, 'finisher'));
+                    }
+                }
+
+                // 3) Orden final: warmup → main → finisher → stretch (finisher ANTES de estiramiento)
+                exercises = [...buf.warmup, ...buf.main, ...buf.finisher, ...buf.stretch];
 
                 // Construimos el día normalizado
                 const dayNum = d.dayNum != null ? d.dayNum : d.day || d.number
@@ -1637,10 +1965,9 @@
 
         const byBlk = estimateDaySecondsByBlock(day);
         const toMin = (s) => Math.max(0, Math.round(s / 60));
-        const parts = [];
-        if (byBlk.warmup)  parts.push(`${blockLabel('warmup')} ${toMin(byBlk.warmup)}′`);
-        if (byBlk.main)    parts.push(`${blockLabel('main')} ${toMin(byBlk.main)}′`);
-        if (byBlk.stretch) parts.push(`${blockLabel('stretch')} ${toMin(byBlk.stretch)}′`);
+        const parts = UI_BLOCK_ORDER
+            .filter(b => (byBlk[b] || 0) > 0)
+            .map(b => `${blockLabel(b)} ${toMin(byBlk[b])}′`);
         const breakdown = parts.length
             ? `<div class="est-breakdown small text-secondary">${parts.join(' • ')}</div>`
             : '';
@@ -1948,6 +2275,7 @@
         playWhistle()
         render()
         if (stepTime(ctx.step) != null) runTimedSet()
+        updateNavVisibility()
     }
 
     function runTimedSet () {
@@ -2035,6 +2363,7 @@
             state.training.restLeft = getRestBetweenSets(ctx.step)
             state.training.timerPaused = false
             render()
+            updateNavVisibility()
             runRest()
             return
         }
@@ -2056,6 +2385,8 @@
             // Al terminar el último ejercicio del día:
             state.training.substate = 'finished'
             state.training.finishedAt = Date.now()
+
+            updateNavVisibility()
 
             // Marca el día como completado para el PLAN ACTUAL
             const pid = getCurrentPlanId()
@@ -2080,8 +2411,10 @@
             saveStats()
 
             // sonido, render...
-            // play?.(state.audio?.applause)
+            playApplause()
             render()
+            updateNavVisibility()
+            setTimeout(() => launchConfetti({ pieces: 200, duration: 2500 }), 0);
         }
     }
 
@@ -2109,6 +2442,7 @@
                         ? `Tómate un descanso. Siguiente ejercicio ${nextName}${dose ? ', ' + dose : ''}`
                             : `Tómate un descanso`;
                       speak(msg);
+                      playDing();
                       state.training._lastRestKey = restKey;
                     }
               }
@@ -2544,6 +2878,16 @@
         const html = document.documentElement
         if (hidden) html.classList.add('nav-hidden')
         else html.classList.remove('nav-hidden')
+
+        try {
+            if (hidden) {
+                KeepAwake.keepAwake().catch(()=>{});
+                trainingInProgress = true;
+            } else {
+                KeepAwake.allowSleep().catch(()=>{});
+                trainingInProgress = false;
+            }
+        } catch {}
     }
 
     function updateNavVisibility () {
@@ -2638,7 +2982,7 @@
     // --- Bloques: warmup | main | stretch ---------------------------------
     function exerciseBlock (s) {
         const b = (s?.block || '').toLowerCase()
-        if (b === 'warmup' || b === 'main' || b === 'stretch') return b
+        if (b === 'warmup' || b === 'main' || b === 'stretch' || b === 'finisher') return b
 
         // Inferencia para retrocompatibilidad
         const sid = stepId(s)
@@ -2652,7 +2996,21 @@
     }
 
     function blockLabel (b) {
-        return b === 'warmup' ? 'Calentamiento' : (b === 'stretch' ? 'Estiramiento' : 'Entrenamiento')
+        return b === 'warmup'   ? 'Calentamiento'
+             : b === 'stretch'  ? 'Estiramiento'
+             : b === 'finisher' ? 'Finisher'
+             :                    'Entrenamiento';
+    }
+
+    // === [ADD] cerca de exerciseBlock()/blockLabel() ===
+    function blockOrder (b) {
+        switch ((b || '').toLowerCase()) {
+            case 'finisher':  return 0;
+            case 'warmup':    return 1;
+            case 'main':      return 2;
+            case 'stretch':   return 3;
+            default:          return 2; // trata lo desconocido como 'main'
+        }
     }
 
     // Fuerza a que el navegador no restaure la posición del scroll en navegación
@@ -3016,10 +3374,47 @@
     }
 
 
+    // 3) Llama esto cuando el usuario pulse "Start" (o equivalente)
+    async function onTrainingStart() {
+        trainingInProgress = true;
+        try { await KeepAwake.keepAwake(); } catch {}
+    }
 
+    // 4) Llama esto cuando termines o canceles el entreno
+    async function onTrainingEnd() {
+        trainingInProgress = false;
+        try { await KeepAwake.allowSleep(); } catch {}
+    }
+
+    // 5) Si la app pasa a segundo plano, permitir dormir; si vuelve y sigues entrenando, reactivar
+    App.addListener('appStateChange', async ({ isActive }) => {
+        try {
+            if (isActive) {
+                if (trainingInProgress) await KeepAwake.keepAwake();
+            } else {
+                await KeepAwake.allowSleep();
+            }
+        } catch {}
+    });
+
+    // 6) Fallback web por si ejecutas en navegador
+    document.addEventListener('visibilitychange', async () => {
+        try {
+            if (document.hidden) {
+                await KeepAwake.allowSleep();
+            } else if (trainingInProgress) {
+                await KeepAwake.keepAwake();
+            }
+        } catch {}
+    });
+
+    // (Opcional) por si el usuario cierra la vista actual
+    window.addEventListener('beforeunload', () => {
+        KeepAwake.allowSleep().catch(() => {});
+    });
 
     // Llama a esto en tu bootstrap (después de render inicial)
-    // initOrientationGuard();
+    initOrientationGuard();
 
     // Ejemplo: activar siempre al iniciar (ajústalo a tu lógica real)
     window.addEventListener('load', () => {
