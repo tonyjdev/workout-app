@@ -1,9 +1,12 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router';
 
 import { IonicVue } from '@ionic/vue';
 import { useNative } from "./composables/useNative";
+
+import { useExercisesStore } from '@/stores/exercisesStore';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -59,10 +62,13 @@ addIcons({
 
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(createPinia());
 
 const { applyStatusBarDefaults } = useNative();
 router.isReady().then(async () => {
     await applyStatusBarDefaults();
+    const store = useExercisesStore();
+    await store.fetchExercises();
     app.mount('#app');
 });
