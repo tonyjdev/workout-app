@@ -6,7 +6,7 @@
             </ion-toolbar>
         </ion-header>
 
-        <ion-content>
+        <ion-content class="ion-padding" fullscreen>
             <ion-list inset>
                 <ion-item button detail :router-link="{ name: 'settings-about' }">
                     <ion-label>About</ion-label>
