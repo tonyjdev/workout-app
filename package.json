@@ -9,7 +9,11 @@
     "preview": "vite preview",
     "test:e2e": "cypress run",
     "test:unit": "vitest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "sync:android-version": "node scripts/sync-android-version.mjs",
+    "release:patch": "npm version patch && npm run sync:android-version && ionic capacitor sync android",
+    "release:minor": "npm version minor && npm run sync:android-version && ionic capacitor sync android",
+    "release:major": "npm version major && npm run sync:android-version && ionic capacitor sync android"
   },
   "dependencies": {
     "@capacitor-community/keep-awake": "^7.1.0",
