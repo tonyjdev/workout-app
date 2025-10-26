@@ -1,23 +1,37 @@
+<!-- src/views/Tab1Page.vue -->
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Tab 1</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 1</ion-title>
-        </ion-toolbar>
-      </ion-header>
+    <ion-page>
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Nativo</ion-title>
+            </ion-toolbar>
+        </ion-header>
 
-      <ExploreContainer name="Tab 1 page" />
-    </ion-content>
-  </ion-page>
+        <ion-content class="ion-padding" fullscreen>
+            <ion-list>
+                <ion-item>
+                    <ion-label>Keep Awake</ion-label>
+                    <ion-toggle :checked="isAwake" @ionChange="toggleKeepAwake" />
+                </ion-item>
+
+                <ion-item button detail @click="notifyNow">
+                    <ion-label>Notificación local</ion-label>
+                </ion-item>
+            </ion-list>
+
+            <ion-note class="ion-margin-top">
+                En web estos botones no hacen nada (Capacitor corre sólo en nativo).
+            </ion-note>
+        </ion-content>
+    </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+import {
+    IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
+    IonItem, IonLabel, IonToggle, IonList, IonNote
+} from "@ionic/vue";
+import { useNative } from "@/composables/useNative";
+
+const { isAwake, toggleKeepAwake, notifyNow } = useNative();
 </script>

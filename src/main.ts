@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router';
 
 import { IonicVue } from '@ionic/vue';
+import { useNative } from "./composables/useNative";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -34,10 +35,35 @@ import '@ionic/vue/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 
+// main.ts
+import { addIcons } from 'ionicons';
+import {
+  settingsOutline,
+  homeOutline,
+  barbellOutline,
+  statsChartOutline,
+  // añade aquí todos los que uses por "name="
+  triangle, ellipse, square, informationCircleOutline,
+} from 'ionicons/icons';
+
+// Registra las claves con el mismo nombre que usas en <ion-icon name="...">
+addIcons({
+  'settings-outline': settingsOutline,
+  'home-outline': homeOutline,
+  'barbell-outline': barbellOutline,
+  'stats-chart-outline': statsChartOutline,
+  'triangle': triangle,
+  'ellipse': ellipse,
+  'square': square,
+  'information-circle-outline': informationCircleOutline,
+});
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
 
-router.isReady().then(() => {
-  app.mount('#app');
+const { applyStatusBarDefaults } = useNative();
+router.isReady().then(async () => {
+    await applyStatusBarDefaults();
+    app.mount('#app');
 });

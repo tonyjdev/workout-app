@@ -17,6 +17,12 @@
           <ion-icon aria-hidden="true" :icon="square" />
           <ion-label>Tab 3</ion-label>
         </ion-tab-button>
+
+        <ion-tab-button tab="settings" href="/tabs/settings">
+            <ion-icon name="settings-outline" aria-hidden="true" />
+            <ion-label>Ajustes</ion-label>
+        </ion-tab-button>
+
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>

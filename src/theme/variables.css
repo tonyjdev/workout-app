@@ -1,2 +1,17 @@
-/* For information on how to create your own theme, please see:
-http://ionicframework.com/docs/theming/ */
+/* src/theme/variables.css */
+:root {
+    --ion-color-primary: #5b8def;
+    --ion-color-primary-rgb: 91, 141, 239;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #507dd2;
+    --ion-color-primary-tint: #6b99f1;
+}
+
+/* padding seguro sin overlay (no es obligatorio) */
+.ion-padding {
+    padding-top: calc(env(safe-area-inset-top) + 16px);
+    padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
+    padding-left: calc(env(safe-area-inset-left) + 16px);
+    padding-right: calc(env(safe-area-inset-right) + 16px);
+}
