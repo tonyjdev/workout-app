@@ -38,24 +38,23 @@ import './theme/variables.css';
 // main.ts
 import { addIcons } from 'ionicons';
 import {
-  settingsOutline,
   homeOutline,
   barbellOutline,
   statsChartOutline,
-  // añade aquí todos los que uses por "name="
-  triangle, ellipse, square, informationCircleOutline,
+  settingsOutline,
+  informationCircleOutline,
+  trophyOutline,
+  personCircleOutline,
 } from 'ionicons/icons';
 
-// Registra las claves con el mismo nombre que usas en <ion-icon name="...">
 addIcons({
-  'settings-outline': settingsOutline,
   'home-outline': homeOutline,
   'barbell-outline': barbellOutline,
-  'stats-chart-outline': statsChartOutline,
-  'triangle': triangle,
-  'ellipse': ellipse,
-  'square': square,
+  'stats-chart-outline': statsChartOutline, // opcional
+  'settings-outline': settingsOutline,
   'information-circle-outline': informationCircleOutline,
+  'trophy-outline': trophyOutline,
+  'person-circle-outline': personCircleOutline,
 });
 
 const app = createApp(App)

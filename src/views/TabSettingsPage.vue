@@ -12,6 +12,10 @@
                     <ion-label>About</ion-label>
                 </ion-item>
 
+                <ion-item button detail :router-link="{ name: 'settings-lab' }">
+                  <ion-label>Lab (Testing)</ion-label>
+                </ion-item>
+
                 <!-- Aquí irán más apartados de ajustes en el futuro -->
             </ion-list>
         </ion-content>
