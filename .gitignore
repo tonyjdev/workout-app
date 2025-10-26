@@ -1,4 +1,4 @@
-# Specifies intentionally untracked files to ignore when using Git
+# gitignore para proyecto JavaScript/TypeScript/Vue + Java/Gradle
 # http://git-scm.com/docs/gitignore
 
 *~
@@ -16,17 +16,75 @@ $RECYCLE.BIN/
 *.log
 log.txt
 npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
+# IDEs / editors
 /.idea
-/.ionic
-/.sass-cache
-/.sourcemaps
-/.versions
+*.iml
 /.vscode/*
 !/.vscode/extensions.json
-/coverage
-/dist
+/.history
+/.classpath
+/.project
+/.settings/
+
+# Node / frontend
 /node_modules
+/dist
+/.cache
+/.parcel-cache
+/.turbo
+/.vite
+/.vercel
+/.nuxt
+/.output
+
+# Vue / Ionic / Cordova
+/.ionic
 /platforms
 /plugins
 /www
+
+# Coverage / test results
+/coverage
+
+# Build artifacts
+/build
+/out
+/target
+*.tsbuildinfo
+
+# Java / Gradle
+.gradle
+gradle-app.setting
+gradle-wrapper.jar
+/gradle/wrapper/gradle-wrapper.jar
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs & temp
+*.log
+*.tmp
+
+# Environment files
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS files
+.DS_Store
+Thumbs.db
+$RECYCLE.BIN/
+
+# Misc
+/.sourcemaps
+/.versions
+*.bak
+*.swp
+.idea_modules
