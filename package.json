@@ -16,7 +16,8 @@
     "postversion": "echo Version actualizada",
     "release:minor": "npm version minor",
     "release:major": "npm version major",
-    "release:patch": "npm version patch --no-git-tag-version && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\""
+    "release:patch": "npm version patch",
+    "release:patch-no-tag": "npm version patch --no-git-tag-version && git commit -m \"chore(release): v$(node -p \"require('./package.json').version\")\""
   },
   "dependencies": {
     "@capacitor-community/keep-awake": "^7.1.0",
