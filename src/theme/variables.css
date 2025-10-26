@@ -15,3 +15,10 @@
     padding-left: calc(env(safe-area-inset-left) + 16px);
     padding-right: calc(env(safe-area-inset-right) + 16px);
 }
+
+/* Ajuste de offset superior cuando se usa un header global */
+ion-tabs ion-content {
+  /* Ajuste manual: toolbar ~56px en Android/iOS */
+  --offset-top: 56px !important;
+  padding-top: calc(env(safe-area-inset-top) + 56px) !important;
+}

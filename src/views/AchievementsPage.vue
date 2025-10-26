@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-content class="ion-padding" fullscreen>
+    <ion-content class="ion-padding">
       <h2>Logros</h2>
       <p>Estadísticas y logros (estructura de subpantallas próximamente).</p>
     </ion-content>

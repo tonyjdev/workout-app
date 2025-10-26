@@ -9,7 +9,7 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content class="ion-padding" fullscreen>
+    <ion-content class="ion-padding">
       <ion-list inset>
         <ion-item>
           <ion-label>Keep Awake</ion-label>
