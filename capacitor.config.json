@@ -1,10 +1,6 @@
 {
   "appId": "com.tuempresa.webapp",
-  "appName": "WebApp Vue",
+  "appName": "Workout App",
   "webDir": "dist",
-  "bundledWebRuntime": false,
-  "server": {
-    "url": "http://localhost:5173",
-    "cleartext": true
-  }
+  "bundledWebRuntime": false
 }

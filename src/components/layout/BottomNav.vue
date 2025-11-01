@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar bg-light border-top fixed-bottom">
+  <nav class="navbar bg-light border-top fixed-bottom bottomnav-fixed">
     <div class="container-fluid d-flex justify-content-around">
       <RouterLink class="nav-link text-center" to="/" title="Entrenar">
         <i class="bi bi-play-circle fs-5"></i>

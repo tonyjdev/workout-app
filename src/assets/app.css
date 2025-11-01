@@ -1,0 +1,39 @@
+:root{
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Contenido central para no quedar debajo de las barras fijas */
+main {
+  padding-top: calc(56px + var(--safe-top));
+  padding-bottom: calc(64px + var(--safe-bottom));
+  background: #f8f9fa;
+}
+
+/* TopBar (fixed-top) respetando notch */
+.topbar-fixed {
+  height: calc(56px + var(--safe-top));
+  padding-top: var(--safe-top);
+  z-index: 1050;
+}
+
+/* BottomNav (fixed-bottom) respetando barra del sistema */
+.bottomnav-fixed {
+  height: calc(64px + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  z-index: 1050;
+}
+
+/* Offcanvas fullscreen: también respeta safe areas */
+.fullscreen-offcanvas {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh;
+  top: 0 !important;
+  bottom: 0 !important;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+  border: none;
+  border-radius: 0;
+  z-index: 2000; /* encima de Top/Bottom */
+}

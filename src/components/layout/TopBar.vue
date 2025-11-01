@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark bg-dark px-3 py-2 fixed-top">
+  <nav class="navbar navbar-dark bg-dark px-3 py-2 fixed-top topbar-fixed">
     <div class="d-flex align-items-center w-100 justify-content-between">
       <div class="d-flex align-items-center">
         <button
