@@ -1,7 +1,3 @@
-<!-- src/views/partials/CatalogView.vue -->
 <template>
-  <div class="p-3">
-    <h6>Entrenamiento</h6>
-    <p>...</p>
-  </div>
+  <div style="padding:12px;border:1px dashed #888">CHACAFLUSH: La vista se está renderizando... Y OLÉ!!!</div>
 </template>

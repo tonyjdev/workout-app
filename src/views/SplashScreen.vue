@@ -1,32 +1,28 @@
+
 <template>
-  <!-- Solo fade-out al ocultarse -->
-  <transition name="fade">
-    <div v-if="visible" class="splash-screen d-flex flex-column justify-content-between text-center text-white">
-      <div class="flex-fill d-flex flex-column justify-content-center align-items-center">
-        <img src="/logo.png" alt="Workout App" class="logo mb-3" />
-        <h1 class="app-name">Workout App</h1>
-      </div>
-      <div class="pb-5">
-        <div class="spinner-border text-light" role="status">
-          <span class="visually-hidden">Cargando...</span>
-        </div>
+  <div class="splash-screen d-flex flex-column justify-content-between text-center text-white">
+    <div class="flex-fill d-flex flex-column justify-content-center align-items-center">
+      <img src="/logo.png" alt="Workout App" class="logo mb-3" />
+      <h1 class="app-name">Workout App</h1>
+    </div>
+    <div class="pb-5">
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Cargando...</span>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
-const visible = ref(true)
 const router = useRouter()
 
 onMounted(() => {
+  // Simula carga y navega sin transiciones complejas
   setTimeout(() => {
-    visible.value = false
-    // espera el fade-out antes de navegar
-    setTimeout(() => router.replace('/'), 300)
+    router.replace('/training')
   }, 2000)
 })
 </script>
@@ -41,8 +37,4 @@ onMounted(() => {
 
 .logo { width: 120px; height: auto; }
 .app-name { font-size: 1.5rem; font-weight: 600; letter-spacing: 1px; }
-
-/* Solo transiciones de salida (fade-out) */
-.fade-leave-active { transition: opacity 0.3s ease; }
-.fade-leave-to { opacity: 0; }
 </style>
