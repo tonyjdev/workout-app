@@ -37,8 +37,8 @@ const activos = [
     // progress: 20,      // opcional: si lo pasas, respeta este valor
   },
 ]
-function handleStart(id:number){ console.log('start', id) }
-function handleRemove(id:number){ console.log('remove', id) }
+function handleStart(id:number|string){ console.log('start', id) }
+function handleRemove(id:number|string){ console.log('remove', id) }
 
 // ================================
 const disponibles = [
