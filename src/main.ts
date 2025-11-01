@@ -1,69 +1,31 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router';
+import router from './router'
+import { Capacitor } from '@capacitor/core'
+import { StatusBar, Style } from '@capacitor/status-bar'
 
-import { IonicVue } from '@ionic/vue';
-import { useNative } from "./composables/useNative";
 
-/* Core CSS required for Ionic components to work properly */
-import '@ionic/vue/css/core.css';
+// Bootstrap CSS + JS (bundle incluye Popper para tooltips, dropdowns, etc.)
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
-/* Basic CSS for apps built with Ionic */
-import '@ionic/vue/css/normalize.css';
-import '@ionic/vue/css/structure.css';
-import '@ionic/vue/css/typography.css';
+(async () => {
+  const app = createApp(App)
+  app.use(router)
 
-/* Optional CSS utils that can be commented out */
-import '@ionic/vue/css/padding.css';
-import '@ionic/vue/css/float-elements.css';
-import '@ionic/vue/css/text-alignment.css';
-import '@ionic/vue/css/text-transformation.css';
-import '@ionic/vue/css/flex-utils.css';
-import '@ionic/vue/css/display.css';
+  if (Capacitor.isNativePlatform()) {
+    await StatusBar.setOverlaysWebView({ overlay: false }) // ← clave
+    // opcional: tema de la barra
+    await StatusBar.setStyle({ style: Style.Dark })
+  }
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+  await router.isReady()
 
-/* @import '@ionic/vue/css/palettes/dark.always.css'; */
-/* @import '@ionic/vue/css/palettes/dark.class.css'; */
-import '@ionic/vue/css/palettes/dark.system.css';
+  // Si entras por '/', muestra splash antes de montar
+  if (router.currentRoute.value.path === '/') {
+    await router.replace('/splash')
+  }
 
-/* Theme variables */
-import './theme/variables.css';
-
-// main.ts
-import { addIcons } from 'ionicons';
-import {
-  settingsOutline,
-  homeOutline,
-  barbellOutline,
-  statsChartOutline,
-  // añade aquí todos los que uses por "name="
-  triangle, ellipse, square, informationCircleOutline,
-} from 'ionicons/icons';
-
-// Registra las claves con el mismo nombre que usas en <ion-icon name="...">
-addIcons({
-  'settings-outline': settingsOutline,
-  'home-outline': homeOutline,
-  'barbell-outline': barbellOutline,
-  'stats-chart-outline': statsChartOutline,
-  'triangle': triangle,
-  'ellipse': ellipse,
-  'square': square,
-  'information-circle-outline': informationCircleOutline,
-});
-
-const app = createApp(App)
-  .use(IonicVue)
-  .use(router);
-
-const { applyStatusBarDefaults } = useNative();
-router.isReady().then(async () => {
-    await applyStatusBarDefaults();
-    app.mount('#app');
-});
+  app.mount('#app')
+})()

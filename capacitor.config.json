@@ -1,0 +1,6 @@
+{
+  "appId": "com.tuempresa.webapp",
+  "appName": "Workout App",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
