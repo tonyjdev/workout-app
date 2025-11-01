@@ -1,56 +1,19 @@
-// src/router/index.ts
-import { createRouter, createWebHistory } from '@ionic/vue-router';
-import type { RouteRecordRaw } from 'vue-router';
-import TabsPage from '../views/TabsPage.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import SplashScreen from '@/views/SplashScreen.vue'
+import TrainingView from '@/views/TrainingView.vue'
+import StatsView from '@/views/StatsView.vue'
+import AchievementsView from '@/views/AchievementsView.vue'
+import CustomizeView from '@/views/CustomizeView.vue'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    redirect: '/tabs/tab1',
-  },
-  {
-    path: '/tabs/',
-    component: TabsPage,
-    children: [
-      // redirect por defecto dentro de /tabs
-      {
-        path: '',
-        redirect: '/tabs/tab1',
-      },
+const routes = [
+  { path: '/splash', component: SplashScreen, meta: { title: 'Cargando...' } },
+  { path: '/', component: TrainingView, meta: { title: 'Entrenar' } },
+  { path: '/stats', component: StatsView, meta: { title: 'Estadísticas' } },
+  { path: '/achievements', component: AchievementsView, meta: { title: 'Logros' } },
+  { path: '/customize', component: CustomizeView, meta: { title: 'Personalizar' } },
+]
 
-      // Tab 1, 2, 3 (formato plano del starter)
-      {
-        path: 'tab1',
-        component: () => import('@/views/Tab1Page.vue'),
-      },
-      {
-        path: 'tab2',
-        component: () => import('@/views/Tab2Page.vue'),
-      },
-      {
-        path: 'tab3',
-        component: () => import('@/views/Tab3Page.vue'),
-      },
-
-      // ---- NUEVA TAB: Settings (raíz) ----
-      {
-        path: 'settings',
-        name: "settings",
-        component: () => import('@/views/TabSettingsPage.vue'),
-      },
-      // Subpantalla About
-      {
-        path: 'settings/about',
-        name: "settings-about",
-        component: () => import('@/views/SettingsAboutPage.vue'),
-      },
-    ],
-  },
-];
-
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+export default createRouter({
+  history: createWebHistory(),
   routes,
-});
-
-export default router;
+})
