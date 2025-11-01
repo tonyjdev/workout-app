@@ -1,0 +1,10 @@
+{
+  "appId": "com.tonyjdev.workoutapp",
+  "appName": "Workout App (Dev)",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "http://localhost:5173",
+    "cleartext": true
+  }
+}

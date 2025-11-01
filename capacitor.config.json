@@ -1,5 +1,5 @@
 {
-  "appId": "com.tuempresa.webapp",
+  "appId": "com.tonyjdev.workoutapp",
   "appName": "Workout App",
   "webDir": "dist",
   "bundledWebRuntime": false
