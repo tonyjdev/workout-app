@@ -7,14 +7,22 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
+
     "test:e2e": "cypress run",
     "test:unit": "vitest",
     "lint": "eslint .",
+
     "android": "npm run build && npx cap sync android && npx cap open android",
     "sync:android-version": "node scripts/sync-android-version.mjs",
+
     "release:patch": "npm version patch && npm run sync:android-version && npx capacitor sync android",
     "release:minor": "npm version minor && npm run sync:android-version && npx capacitor sync android",
-    "release:major": "npm version major && npm run sync:android-version && npx capacitor sync android"
+    "release:major": "npm version major && npm run sync:android-version && npx capacitor sync android",
+
+    "cap:dev": "node scripts/capacitor-env.cjs dev && cap copy && cap open android",
+    "cap:build": "node scripts/capacitor-env.cjs prod && npm run build && cap copy && cap sync && cap open android",
+    "android:dev": "node scripts/capacitor-env.cjs dev && cap copy && cap open android",
+    "android:build": "node scripts/capacitor-env.cjs prod && npm run build && cap copy && cap sync && cap open android"
   },
   "dependencies": {
     "@capacitor-community/keep-awake": "^7.1.0",

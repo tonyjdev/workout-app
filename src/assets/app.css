@@ -10,6 +10,10 @@ main {
   background: #f8f9fa;
 }
 
+/* opcional, por claridad visual */
+html, body, #app { height: 100%; }
+
+
 /* TopBar (fixed-top) respetando notch */
 .topbar-fixed {
   height: calc(56px + var(--safe-top));
