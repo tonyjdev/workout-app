@@ -81,7 +81,7 @@ const mainStyle = computed(() => {
     />
 
     <main
-      class="flex-fill position-relative overflow-auto px-3" :class="{ 'pt-5': !isSplash }"
+      class="flex-fill position-relative overflow-auto px-3" :class="{ 'pt-5': !isTrainingActive }"
       :style="mainStyle"
     >
       <RouterView v-slot="{ Component }">

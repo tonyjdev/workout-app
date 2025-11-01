@@ -10,7 +10,7 @@
       <h5 id="offcanvasLabel" class="mb-0 flex-fill">{{ title }}</h5>
       <button
         type="button"
-        class="btn btn-dark me-2 d-flex align-items-center justify-content-center"
+        class="btn btn-dark d-flex align-items-center justify-content-center"
         @click="close"
         aria-label="Cerrar"
       >
