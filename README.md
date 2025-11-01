@@ -1,6 +1,6 @@
-# 🏋️ Workout App (Ionic + Vue + Capacitor)
+# 🏋️ Workout App (Vue + Bootstrap + Capacitor)
 
-Aplicación móvil para entrenamientos en casa, desarrollada con **Vue 3**, **Ionic Framework** y **Capacitor**.  
+Aplicación móvil para entrenamientos en casa, desarrollada con **Vue 3**, **Bootstrap 5** y **Capacitor**.
 El proyecto está optimizado para ejecutarse tanto en navegador (modo desarrollo) como en dispositivos Android/iOS mediante Capacitor.
 
 ---
@@ -8,7 +8,7 @@ El proyecto está optimizado para ejecutarse tanto en navegador (modo desarrollo
 ## 📦 Tecnologías principales
 
 - [Vue 3](https://vuejs.org/)
-- [Ionic Framework](https://ionicframework.com/)
+- [Bootstrap 5](https://getbootstrap.com/)
 - [Capacitor](https://capacitorjs.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
@@ -19,88 +19,85 @@ El proyecto está optimizado para ejecutarse tanto en navegador (modo desarrollo
 
 Asegúrate de tener instalado:
 
-- **Node.js** ≥ 20  
-- **npm** ≥ 10  
-- **Ionic CLI**  
-  ```bash
-  npm install -g @ionic/cli
-  ```
-- **Android Studio** (para compilar en Android)  
+- **Node.js** ≥ 20
+- **npm** ≥ 10
+- **Android Studio** (para compilar en Android)
 - *(Opcional macOS)* Xcode (para compilar en iOS)
 
 ---
 
-## 🚀 Creación del proyecto (solo una vez)
-
-```bash
-ionic start workout-app tabs --type=vue
-cd workout-app
-```
-
-> La plantilla `tabs` se usa como base. Puedes sustituirla por `blank` si prefieres un proyecto vacío.
-
----
-
-## 🧑‍💻 Entorno de desarrollo
+## 🚀 Puesta en marcha del proyecto
 
 ### Instalar dependencias
 ```bash
 npm install
 ```
 
-### Ejecutar en navegador
+### Ejecutar en navegador (modo desarrollo)
 ```bash
-ionic serve
+npm run dev
 ```
-> Abre [http://localhost:8100](http://localhost:8100)
-
-### Ejecutar en dispositivo físico (modo live reload)
-```bash
-ionic capacitor run android -l --external
-```
-> Asegúrate de tener el dispositivo conectado por USB y con la depuración habilitada.
+> Abre [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## 🧱 Estructura básica
+## 📱 Compilación con Capacitor
+
+### 1. Compilar la app web
+```bash
+npm run build
+```
+Esto genera la carpeta `dist/`, que contiene la versión lista para empaquetar.
+
+### 2. Sincronizar con Capacitor
+```bash
+npx cap sync android
+```
+
+### 3. Abrir en Android Studio
+```bash
+npx cap open android
+```
+
+> ⚡ Nota: si solo modificas código web (HTML/JS/CSS) y no añades plugins nuevos, puedes usar:
+> ```bash
+> npx cap copy android
+> ```
+
+### 4. Ejecutar directamente desde CLI
+```bash
+npx cap run android
+```
+
+### 5. Modo live reload (opcional)
+Para probar cambios instantáneamente desde tu red local:
+```bash
+npx cap run android -l --external
+```
+Y en `capacitor.config.json` añade:
+```json
+"server": {
+  "url": "http://TU_IP_LOCAL:5173",
+  "cleartext": true
+}
+```
+
+---
+
+## 🧱 Estructura básica del proyecto
 
 ```
 src/
  ├─ assets/          → Imágenes, iconos y recursos estáticos
- ├─ components/      → Componentes reutilizables
- ├─ views/           → Pantallas principales
+ ├─ components/      → Componentes reutilizables (BaseButton, BaseModal, etc.)
+ ├─ views/           → Pantallas principales (Playground, Home, etc.)
  ├─ router/          → Configuración de rutas
- ├─ store/           → Estado global (opcional)
+ ├─ store/           → Estado global (Pinia)
  └─ main.ts          → Punto de entrada principal
 
-capacitor.config.ts  → Configuración Capacitor
-android/             → Proyecto nativo Android
-ios/                 → Proyecto nativo iOS (si se añade)
-```
-
----
-
-## 📱 Capacitor
-
-### Añadir plataformas
-```bash
-ionic capacitor add android
-# (Opcional en macOS)
-ionic capacitor add ios
-```
-
-### Sincronizar cambios
-Cada vez que modifiques dependencias o hagas `npm install`:
-```bash
-ionic build
-ionic capacitor sync
-```
-
-### Abrir el proyecto nativo
-```bash
-ionic capacitor open android
-# o
-ionic capacitor open ios
+capacitor.config.json  → Configuración de Capacitor
+android/               → Proyecto nativo Android
+dist/                  → Build web generado por Vite
 ```
 
 ---
@@ -120,29 +117,31 @@ ionic capacitor open ios
 
 | Acción | Comando |
 |--------|----------|
-| Servir en navegador | `ionic serve` |
-| Compilar versión web | `ionic build` |
-| Sincronizar cambios con nativo | `ionic capacitor sync` |
-| Abrir proyecto Android | `ionic capacitor open android` |
-| Ejecutar con live reload | `ionic capacitor run android -l --external` |
+| Ejecutar en navegador | `npm run dev` |
+| Compilar versión web | `npm run build` |
+| Sincronizar con Capacitor | `npx cap sync android` |
+| Copiar archivos web al proyecto nativo | `npx cap copy android` |
+| Abrir Android Studio | `npx cap open android` |
+| Ejecutar en dispositivo | `npx cap run android` |
+| Modo Live Reload | `npx cap run android -l --external` |
 
 ---
 
-## 🧰 Configuración recomendada para PhpStorm
+## 🧰 Configuración recomendada para PhpStorm / VSCode
 
-1. **Plugins**  
-   - Vue.js  
-   - ESLint  
-   - Prettier  
-   - (Opcional) Tailwind CSS
+1. **Plugins sugeridos**
+  - Vue.js
+  - ESLint
+  - Prettier
+  - (Opcional) Tailwind CSS o Bootstrap 5 snippets
 
-2. **Run Configurations**
-   - *Command:* `ionic`
-   - *Arguments:* `serve`
-   - *Browser:* Chrome (para depuración)
+2. **Configuración de ejecución**
+  - *Command:* `npm`
+  - *Arguments:* `run dev`
+  - *Browser:* Chrome (para depuración)
 
-3. **Depuración**
-   - Usa `chrome://inspect` para inspeccionar la WebView cuando ejecutes la app en Android con live reload.
+3. **Depuración Android**
+  - Usa `chrome://inspect` para inspeccionar la WebView cuando ejecutes la app con live reload.
 
 ---
 
@@ -150,29 +149,30 @@ ionic capacitor open ios
 
 1. Compila la versión final:
    ```bash
-   ionic build
+   npm run build
    ```
-2. Copia los assets al proyecto nativo:
+2. Sincroniza los assets con Capacitor:
    ```bash
-   ionic capacitor sync
+   npx cap sync android
    ```
 3. Abre Android Studio y genera el APK:
    ```bash
-   ionic capacitor open android
+   npx cap open android
    ```
-   - Desde Android Studio: **Build → Build Bundle(s)/APK(s) → Build APK(s)**
+  - En Android Studio: **Build → Build Bundle(s)/APK(s) → Build APK(s)**
 
 ---
 
 ## 🧾 Licencia
 
-Proyecto propiedad de **TonyJDev**.  
+Proyecto propiedad de **TonyJDev**.
 Uso interno y experimental — 2025.
 
 ---
 
 ## 📚 Enlaces de referencia
 
-- [Documentación Ionic + Vue](https://ionicframework.com/docs/vue/overview)
+- [Documentación Vue 3](https://vuejs.org/)
+- [Bootstrap 5](https://getbootstrap.com/)
 - [Documentación Capacitor](https://capacitorjs.com/docs)
-- [Plantillas Ionic CLI](https://ionicframework.com/docs/cli/commands/start)
+- [Guía Vite + Vue](https://vitejs.dev/guide/)

@@ -1,0 +1,10 @@
+{
+  "appId": "com.tuempresa.webapp",
+  "appName": "WebApp Vue",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "http://localhost:5173",
+    "cleartext": true
+  }
+}
