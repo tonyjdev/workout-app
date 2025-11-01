@@ -1,0 +1,103 @@
+<template>
+  <div class="settings-panel">
+    <Transition name="settings-slide" mode="out-in">
+      <div v-if="currentView === 'list'" key="settings-list">
+        <h1 class="h5 mb-3">Configuracion</h1>
+        <div class="list-group">
+          <button
+            v-for="option in options"
+            :key="option.key"
+            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+            type="button"
+            @click="open(option.key)"
+          >
+            <span>{{ option.title }}</span>
+            <span class="text-muted">&rarr;</span>
+          </button>
+        </div>
+      </div>
+      <component
+        v-else
+        :is="activeComponent"
+        :key="currentView"
+        @back="backToList"
+      />
+    </Transition>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed, ref, watch } from 'vue'
+import SettingsVoice from '@/views/settings/SettingsVoice.vue'
+import SettingsSound from '@/views/settings/SettingsSound.vue'
+import SettingsTraining from '@/views/settings/SettingsTraining.vue'
+import SettingsTesting from '@/views/settings/SettingsTesting.vue'
+
+type SettingsChild = 'voice' | 'sound' | 'training' | 'testing'
+type SettingsView = 'list' | SettingsChild
+
+const emit = defineEmits<{
+  (e: 'panel:set-title', title: string): void
+  (e: 'panel:reset-title'): void
+}>()
+
+const options: Array<{ key: SettingsChild; title: string }> = [
+  { key: 'voice', title: 'Opciones de voz (TTS)' },
+  { key: 'sound', title: 'Opciones de sonido' },
+  { key: 'training', title: 'Configuracion de entrenamiento' },
+  { key: 'testing', title: 'Testing' },
+]
+
+const childViews: Record<SettingsChild, { title: string; component: any }> = {
+  voice: { title: 'Opciones de voz (TTS)', component: SettingsVoice },
+  sound: { title: 'Opciones de sonido', component: SettingsSound },
+  training: { title: 'Configuracion de entrenamiento', component: SettingsTraining },
+  testing: { title: 'Testing', component: SettingsTesting },
+}
+
+const currentView = ref<SettingsView>('list')
+
+const activeComponent = computed(() => {
+  if (currentView.value === 'list') {
+    return null
+  }
+  return childViews[currentView.value].component
+})
+
+watch(
+  currentView,
+  (next) => {
+    if (next === 'list') {
+      emit('panel:reset-title')
+    } else {
+      emit('panel:set-title', childViews[next].title)
+    }
+  },
+  { immediate: true },
+)
+
+function open(next: SettingsChild) {
+  currentView.value = next
+}
+
+function backToList() {
+  currentView.value = 'list'
+}
+</script>
+
+<style scoped>
+.settings-panel {
+  min-height: 100%;
+}
+
+.settings-slide-enter-active,
+.settings-slide-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.settings-slide-enter-from,
+.settings-slide-leave-to {
+  opacity: 0;
+}
+</style>
+

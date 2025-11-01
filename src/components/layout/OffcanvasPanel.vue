@@ -18,9 +18,16 @@
       </button>
     </div>
 
-    <!-- Contenido dinámico -->
+    <!-- Contenido dinamico -->
     <div class="offcanvas-body p-3">
-      <component :is="currentComponent" />
+      <component
+        v-if="currentComponent"
+        :is="currentComponent"
+        :key="componentKey"
+        @panel:set-title="handleSetTitle"
+        @panel:reset-title="handleResetTitle"
+        @panel:close="close"
+      />
     </div>
   </div>
 </template>
@@ -33,26 +40,30 @@ import { Offcanvas } from 'bootstrap'
 // vistas parciales
 import CatalogView from '@/views/partials/CatalogView.vue'
 import HelpView from '@/views/partials/HelpView.vue'
-import SettingsView from '@/views/partials/SettingsView.vue'
+import SettingsPanel from '@/views/Settings.vue'
 
 // refs
 const offcanvasEl = ref<HTMLElement | null>(null)
 const instance = ref<Offcanvas | null>(null)
-const title = ref('Catálogo de ejercicios')
+const title = ref('Catalogo de ejercicios')
+const defaultTitle = ref(title.value)
 const currentComponent = ref<any>(null)
+const componentKey = ref(0)
 
 const panels = {
-  catalog: { component: CatalogView, title: 'Catálogo de ejercicios' },
+  catalog: { component: CatalogView, title: 'Catalogo de ejercicios' },
   help: { component: HelpView, title: 'Ayuda' },
-  settings: { component: SettingsView, title: 'Configuración' },
+  settings: { component: SettingsPanel, title: 'Configuracion' },
 } as const
 
 type PanelKey = keyof typeof panels
 
 function open(panel: PanelKey) {
   const data = panels[panel] ?? panels.catalog
+  defaultTitle.value = data.title
   title.value = data.title
   currentComponent.value = data.component
+  componentKey.value += 1
 
   if (!instance.value && offcanvasEl.value) {
     instance.value = new Offcanvas(offcanvasEl.value)
@@ -62,6 +73,14 @@ function open(panel: PanelKey) {
 
 function close() {
   instance.value?.hide()
+}
+
+function handleSetTitle(newTitle: string) {
+  title.value = newTitle
+}
+
+function handleResetTitle() {
+  title.value = defaultTitle.value
 }
 
 defineExpose({ open, close })
@@ -100,3 +119,4 @@ defineExpose({ open, close })
   transition: transform 0.25s ease-in-out;
 }
 </style>
+
