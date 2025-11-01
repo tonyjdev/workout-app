@@ -66,9 +66,8 @@ const disponibles = [
   },
 ]
 
-function onStart(id: string) {
+function onStart(id: string | number) {
   console.log('Empezar/Activar plan:', id)
-  // aquí luego activarás el plan y lo moverás a “activos”
 }
 
 </script>
