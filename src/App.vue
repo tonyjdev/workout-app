@@ -39,11 +39,6 @@ const panelTitle = computed(() => {
     default: return 'Panel'
   }
 })
-// (Opcional) si quieres animar la apertura/cierre cuando cambia la ruta:
-watch(() => isPanelOpen.value, open => {
-  if (open) offcanvasPanel.value?.open?.()
-  else offcanvasPanel.value?.close?.()
-})
 
 function toggleOffcanvas(panel: string) {
   offcanvasPanel.value?.open(panel as 'catalog' | 'help' | 'settings')
