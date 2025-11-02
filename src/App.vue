@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import TopBar from '@/components/layout/TopBar.vue'
 import BottomNav from '@/components/layout/BottomNav.vue'
 import OffcanvasPanel from '@/components/layout/OffcanvasPanel.vue'
 
 const route = useRoute()
+const router = useRouter()
 const isTrainingActive = ref(false)
 
 const pageTitle = computed(() => (route?.meta?.title as string) ?? 'Workout App')
@@ -14,7 +15,36 @@ const showBack = computed(() => !!route?.meta?.back)
 // Oculta TopBar y BottomNav solo en splash
 const isSplash = computed(() => route.path === '/')
 
+// OffCanvas
 const offcanvasPanel = ref<InstanceType<typeof OffcanvasPanel> | null>(null)
+// Abre el offcanvas si la ruta actual tiene componente en la named view 'panel'
+const isPanelOpen = computed({
+  get: () => route.matched.some(r => r.components && 'panel' in r.components),
+  set: (val: boolean) => {
+    // Cerrar manualmente: volvemos atrás si había panel abierto
+    if (!val && route.matched.some(r => r.components && 'panel' in r.components)) {
+      history.state?.back ? history.back() : window.location.assign('#') // o router.push({ name: 'training' })
+    }
+  }
+})
+
+// Título del panel según la ruta
+const panelTitle = computed(() => {
+  switch (route.name) {
+    case 'settings': return 'Configuración'
+    case 'settings-voice': return 'Opciones de voz (TTS)'
+    case 'settings-sound': return 'Opciones de sonido'
+    case 'settings-training': return 'Configuración de entrenamiento'
+    case 'settings-testing': return 'Testing'
+    default: return 'Panel'
+  }
+})
+// (Opcional) si quieres animar la apertura/cierre cuando cambia la ruta:
+watch(() => isPanelOpen.value, open => {
+  if (open) offcanvasPanel.value?.open?.()
+  else offcanvasPanel.value?.close?.()
+})
+
 function toggleOffcanvas(panel: string) {
   offcanvasPanel.value?.open(panel as 'catalog' | 'help' | 'settings')
 }
@@ -68,10 +98,18 @@ const mainStyle = computed(() => {
     minHeight: '100vh',
   } as Record<string,string>
 })
+
+
+console.log(
+  '%c[route] rutas registradas:',
+  'color:#0a0;font-weight:bold',
+  router.getRoutes().map((r: { name: any; path: any }) => ({ name: r.name, path: r.path }))
+)
 </script>
 
 <template>
   <div id="app" class="d-flex flex-column vh-100">
+    <!-- Barra superior -->
     <TopBar
       v-if="!isTrainingActive && !isSplash"
       ref="topBarEl"
@@ -80,24 +118,29 @@ const mainStyle = computed(() => {
       @toggleOffcanvas="toggleOffcanvas"
     />
 
-    <main
-      class="flex-fill position-relative overflow-auto px-3" :class="{ 'pt-5': !isTrainingActive }"
-      :style="mainStyle"
+    <!-- Contenido principal -->
+    <main class="flex-fill position-relative overflow-auto px-3" :class="{ 'pt-5': !isTrainingActive }"
+          :style="mainStyle"
     >
       <RouterView v-slot="{ Component }">
-        <Transition name="fade" mode="out-in">
-          <component
-            :is="Component"
-            :key="route.path"
-            @training:start="isTrainingActive = true"
-            @training:end="isTrainingActive = false"
-          />
-        </Transition>
+        <component :is="Component" :key="route.path" />
       </RouterView>
     </main>
 
-    <BottomNav v-if="!isTrainingActive && !isSplash" ref="bottomNavEl" />
-    <OffcanvasPanel ref="offcanvasPanel" />
+    <!-- Barra inferior -->
+    <BottomNav />
+
+    <!-- Offcanvas: renderiza la named view 'panel' -->
+    <OffcanvasPanel
+      v-model:show="isPanelOpen"
+      :title="panelTitle"
+      ref="offcanvasPanel"
+      size="480px"
+    >
+      <RouterView name="panel" v-slot="{ Component }">
+        <component :is="Component" v-if="Component" />
+      </RouterView>
+    </OffcanvasPanel>
   </div>
 </template>
 

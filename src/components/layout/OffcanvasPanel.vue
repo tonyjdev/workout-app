@@ -5,7 +5,6 @@
     ref="offcanvasEl"
     aria-labelledby="offcanvasLabel"
   >
-    <!-- Barra superior del panel -->
     <div class="offcanvas-header bg-dark text-white py-2 px-3 d-flex align-items-center">
       <h5 id="offcanvasLabel" class="mb-0 flex-fill">{{ title }}</h5>
       <button
@@ -18,7 +17,6 @@
       </button>
     </div>
 
-    <!-- Contenido dinamico -->
     <div class="offcanvas-body p-3">
       <component
         v-if="currentComponent"
@@ -31,7 +29,6 @@
     </div>
   </div>
 </template>
-
 
 <script setup lang="ts">
 import { ref } from 'vue'
@@ -119,4 +116,3 @@ defineExpose({ open, close })
   transition: transform 0.25s ease-in-out;
 }
 </style>
-
