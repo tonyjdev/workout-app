@@ -5,8 +5,17 @@
     ref="offcanvasEl"
     aria-labelledby="offcanvasLabel"
   >
-    <div class="offcanvas-header bg-dark text-white py-2 px-3 d-flex align-items-center">
-      <h5 id="offcanvasLabel" class="mb-0 flex-fill">{{ title }}</h5>
+    <div class="offcanvas-header bg-dark text-white py-2 px-2 d-flex align-items-center gap-2">
+      <button
+        v-if="canGoBack"
+        type="button"
+        class="btn btn-light d-flex align-items-center justify-content-center back-btn"
+        @click="handleBack"
+        aria-label="Volver"
+      >
+        <i class="bi bi-arrow-left-short fs-5"></i>
+      </button>
+      <h5 id="offcanvasLabel" class="h6 mb-0 flex-fill">{{ title }}</h5>
       <button
         type="button"
         class="btn btn-dark d-flex align-items-center justify-content-center"
@@ -24,6 +33,7 @@
         :key="componentKey"
         @panel:set-title="handleSetTitle"
         @panel:reset-title="handleResetTitle"
+        @panel:register-back="handleRegisterBack"
         @panel:close="close"
       />
     </div>
@@ -46,6 +56,8 @@ const title = ref('Catalogo de ejercicios')
 const defaultTitle = ref(title.value)
 const currentComponent = ref<any>(null)
 const componentKey = ref(0)
+const canGoBack = ref(false)
+const backHandler = ref<(() => void) | null>(null)
 
 const panels = {
   catalog: { component: CatalogView, title: 'Catalogo de ejercicios' },
@@ -59,6 +71,7 @@ function open(panel: PanelKey) {
   const data = panels[panel] ?? panels.catalog
   defaultTitle.value = data.title
   title.value = data.title
+  resetBackNavigation()
   currentComponent.value = data.component
   componentKey.value += 1
 
@@ -78,6 +91,20 @@ function handleSetTitle(newTitle: string) {
 
 function handleResetTitle() {
   title.value = defaultTitle.value
+}
+
+function handleRegisterBack(handler: (() => void) | null) {
+  backHandler.value = typeof handler === 'function' ? handler : null
+  canGoBack.value = backHandler.value !== null
+}
+
+function handleBack() {
+  backHandler.value?.()
+}
+
+function resetBackNavigation() {
+  backHandler.value = null
+  canGoBack.value = false
 }
 
 defineExpose({ open, close })
@@ -109,6 +136,12 @@ defineExpose({ open, close })
 .offcanvas-header {
   height: 56px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.25rem;
 }
 
 .fullscreen-offcanvas.offcanvas {

@@ -2,7 +2,6 @@
   <div class="settings-panel">
     <Transition name="settings-slide" mode="out-in">
       <div v-if="currentView === 'list'" key="settings-list">
-        <h1 class="h5 mb-3">Configuracion</h1>
         <div class="list-group">
           <button
             v-for="option in options"
@@ -39,6 +38,7 @@ type SettingsView = 'list' | SettingsChild
 const emit = defineEmits<{
   (e: 'panel:set-title', title: string): void
   (e: 'panel:reset-title'): void
+  (e: 'panel:register-back', handler: (() => void) | null): void
 }>()
 
 const options: Array<{ key: SettingsChild; title: string }> = [
@@ -69,8 +69,10 @@ watch(
   (next) => {
     if (next === 'list') {
       emit('panel:reset-title')
+      emit('panel:register-back', null)
     } else {
       emit('panel:set-title', childViews[next].title)
+      emit('panel:register-back', backToList)
     }
   },
   { immediate: true },
@@ -100,4 +102,3 @@ function backToList() {
   opacity: 0;
 }
 </style>
-
