@@ -188,7 +188,7 @@ El versionado sigue las reglas **SemVer** (`major.minor.patch`) y se gestiona co
 2. Incrementa la versión **en `package.json`** (`npm version patch --no-git-tag-version`).
 3. Ejecuta el hook `version`:
   - Sincroniza versión Android (`versionName` y `versionCode`).
-  - Ejecuta `ionic capacitor sync android`.
+  - Ejecuta `npm capacitor sync android`.
   - Añade los cambios al commit (`git add -A`).
 4. Realiza un **commit automático**:
    ```
@@ -246,7 +246,7 @@ Haz commit o stash antes de lanzar el comando.
 1. Genera la nueva versión con uno de los comandos anteriores.
 2. Abre el proyecto en Android Studio:
    ```bash
-   ionic capacitor open android
+   npm capacitor open android
    ```
 3. En Android Studio:
    **Build → Build Bundle(s)/APK(s) → Build APK(s)**
@@ -268,13 +268,13 @@ Esto sube tanto el commit como el tag (si lo hubiera).
 
 ## ✅ Resumen rápido
 
-| Acción | Comando |
-|--------|----------|
-| Actualizar versión patch | `npm run release:patch` |
-| Actualizar versión minor | `npm run release:minor` |
-| Actualizar versión major | `npm run release:major` |
+| Acción | Comando                        |
+|--------|--------------------------------|
+| Actualizar versión patch | `npm run release:patch`        |
+| Actualizar versión minor | `npm run release:minor`        |
+| Actualizar versión major | `npm run release:major`        |
 | Sincronizar manualmente versión Android | `npm run sync:android-version` |
-| Abrir proyecto Android Studio | `ionic capacitor open android` |
+| Abrir proyecto Android Studio | `npm capacitor open android`   |
 
 ---
 
