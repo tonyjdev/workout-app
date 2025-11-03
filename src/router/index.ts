@@ -30,8 +30,6 @@ const routes = [
 
   // 404
   { path: '/:pathMatch(.*)*', redirect: '/' },
-  // Settings
-  // { path: '/settings', name: 'settings', component: Settings, meta: { title: 'Configuracion' } },
 ]
 
 const router = createRouter({
