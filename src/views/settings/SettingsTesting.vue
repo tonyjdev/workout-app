@@ -1,7 +1,10 @@
 <!-- src/views/settings/SettingsTesting.vue -->
 <template>
   <div class="container py-3">
-    <BackHeader title="Testing" @back="emit('back')" />
+    <header class="mb-3">
+      <h1 class="h5 mb-0">Testing</h1>
+      <p class="text-muted small mb-0">Herramientas para validar el comportamiento en el dispositivo.</p>
+    </header>
 
     <div class="card mb-3">
       <div class="card-body">
@@ -67,7 +70,6 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
-import BackHeader from '@/components/BackHeader.vue'
 
 import {
   getKeepScreenAwakeState,
@@ -75,8 +77,6 @@ import {
   sendTestNotification,
   setKeepScreenAwake
 } from '@/services/deviceTesting'
-
-const emit = defineEmits<{ (e: 'back'): void }>()
 
 const keepAwakeSupported = ref<boolean | null>(null)
 const keepScreenOn = ref(false)
