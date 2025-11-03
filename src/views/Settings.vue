@@ -14,12 +14,17 @@
             <span class="text-muted">&rarr;</span>
           </button>
         </div>
+        <div class="text-center text-muted small mt-3">
+          Version {{ appVersion }}
+        </div>
       </div>
       <component
         v-else
         :is="activeComponent"
         :key="currentView"
         @back="backToList"
+        @panel:set-title="emit('panel:set-title', $event)"
+        @panel:register-back="emit('panel:register-back', $event)"
       />
     </Transition>
   </div>
@@ -27,12 +32,14 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import packageJson from '../../package.json'
+import SettingsGeneral from '@/views/settings/SettingsGeneral.vue'
 import SettingsVoice from '@/views/settings/SettingsVoice.vue'
 import SettingsSound from '@/views/settings/SettingsSound.vue'
 import SettingsTraining from '@/views/settings/SettingsTraining.vue'
 import SettingsTesting from '@/views/settings/SettingsTesting.vue'
 
-type SettingsChild = 'voice' | 'sound' | 'training' | 'testing'
+type SettingsChild = 'general' | 'voice' | 'sound' | 'training' | 'testing'
 type SettingsView = 'list' | SettingsChild
 
 const emit = defineEmits<{
@@ -42,6 +49,7 @@ const emit = defineEmits<{
 }>()
 
 const options: Array<{ key: SettingsChild; title: string }> = [
+  { key: 'general', title: 'Ajustes generales' },
   { key: 'voice', title: 'Opciones de voz (TTS)' },
   { key: 'sound', title: 'Opciones de sonido' },
   { key: 'training', title: 'Configuracion de entrenamiento' },
@@ -49,11 +57,14 @@ const options: Array<{ key: SettingsChild; title: string }> = [
 ]
 
 const childViews: Record<SettingsChild, { title: string; component: any }> = {
+  general: { title: 'Ajustes generales', component: SettingsGeneral },
   voice: { title: 'Opciones de voz (TTS)', component: SettingsVoice },
   sound: { title: 'Opciones de sonido', component: SettingsSound },
   training: { title: 'Configuracion de entrenamiento', component: SettingsTraining },
   testing: { title: 'Testing', component: SettingsTesting },
 }
+
+const appVersion = (packageJson as { version?: string }).version ?? '0.0.0'
 
 const currentView = ref<SettingsView>('list')
 
