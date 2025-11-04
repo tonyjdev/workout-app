@@ -137,8 +137,16 @@ console.log(
     />
 
     <main :class="mainClasses" :style="mainStyle">
-      <RouterView v-slot="{ Component }">
-        <component :is="Component" :key="route.path" />
+      <RouterView v-slot="{ Component, route: activeRoute }">
+        <Transition
+          v-if="hideChrome && Component"
+          name="auth-modal-route"
+          mode="out-in"
+          appear
+        >
+          <component :is="Component" :key="activeRoute.fullPath" />
+        </Transition>
+        <component v-else :is="Component" :key="activeRoute.fullPath" />
       </RouterView>
     </main>
 
@@ -159,18 +167,24 @@ console.log(
 </template>
 
 <style>
-.auth-slide-enter-active,
-.auth-slide-leave-active {
+.auth-modal-route-enter-active,
+.auth-modal-route-leave-active {
+  position: relative;
+}
+
+.auth-modal-route-enter-active .auth-modal,
+.auth-modal-route-leave-active .auth-modal {
   transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
-.auth-slide-enter-from,
-.auth-slide-leave-to {
+.auth-modal-route-enter-from .auth-modal,
+.auth-modal-route-leave-to .auth-modal {
   transform: translateY(35px);
   opacity: 0;
 }
 
-.auth-slide-leave-from {
+.auth-modal-route-leave-from .auth-modal,
+.auth-modal-route-enter-to .auth-modal {
   transform: translateY(0);
   opacity: 1;
 }

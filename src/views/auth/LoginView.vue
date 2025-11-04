@@ -1,80 +1,78 @@
 <template>
   <div class="auth-screen">
-    <Transition name="auth-slide" mode="out-in" appear>
-      <div class="auth-modal" key="login">
-        <div class="auth-modal-inner card shadow-lg border-0">
-          <div class="auth-modal-body card-body p-4">
-            <h1 class="h4 text-center mb-3">Iniciar sesion</h1>
-            <p class="text-muted text-center mb-4">
-              Accede a tu cuenta para continuar con tus entrenamientos.
-            </p>
+    <div class="auth-modal">
+      <div class="auth-modal-inner card shadow-lg border-0">
+        <div class="auth-modal-body card-body p-4">
+          <h1 class="h4 text-center mb-3">Iniciar sesion</h1>
+          <p class="text-muted text-center mb-4">
+            Accede a tu cuenta para continuar con tus entrenamientos.
+          </p>
 
-            <div v-if="feedback" class="alert alert-danger py-2">
-              {{ feedback }}
+          <div v-if="feedback" class="alert alert-danger py-2">
+            {{ feedback }}
+          </div>
+
+          <form autocomplete="on" novalidate @submit.prevent="handleSubmit">
+            <div class="mb-3">
+              <label for="login-email" class="form-label">Correo electronico</label>
+              <input
+                id="login-email"
+                v-model="form.email"
+                type="email"
+                class="form-control"
+                :class="{ 'is-invalid': fieldError('email') }"
+                placeholder="tu-correo@ejemplo.com"
+                required
+                autofocus
+              />
+              <div v-if="fieldError('email')" class="invalid-feedback">
+                {{ fieldError('email') }}
+              </div>
             </div>
 
-            <form autocomplete="on" novalidate @submit.prevent="handleSubmit">
-              <div class="mb-3">
-                <label for="login-email" class="form-label">Correo electronico</label>
-                <input
-                  id="login-email"
-                  v-model="form.email"
-                  type="email"
-                  class="form-control"
-                  :class="{ 'is-invalid': fieldError('email') }"
-                  placeholder="tu-correo@ejemplo.com"
-                  required
-                  autofocus
-                />
-                <div v-if="fieldError('email')" class="invalid-feedback">
-                  {{ fieldError('email') }}
-                </div>
+            <div class="mb-3">
+              <label for="login-password" class="form-label">Contrasena</label>
+              <input
+                id="login-password"
+                v-model="form.password"
+                type="password"
+                class="form-control"
+                :class="{ 'is-invalid': fieldError('password') }"
+                placeholder="********"
+                required
+              />
+              <div v-if="fieldError('password')" class="invalid-feedback">
+                {{ fieldError('password') }}
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="form-check">
+                <input id="login-remember" v-model="form.remember" type="checkbox" class="form-check-input" />
+                <label class="form-check-label" for="login-remember">Mantener sesion iniciada</label>
               </div>
 
-              <div class="mb-3">
-                <label for="login-password" class="form-label">Contrasena</label>
-                <input
-                  id="login-password"
-                  v-model="form.password"
-                  type="password"
-                  class="form-control"
-                  :class="{ 'is-invalid': fieldError('password') }"
-                  placeholder="********"
-                  required
-                />
-                <div v-if="fieldError('password')" class="invalid-feedback">
-                  {{ fieldError('password') }}
-                </div>
-              </div>
+              <RouterLink :to="{ name: 'forgot-password' }" class="small">
+                Olvidaste la contrasena?
+              </RouterLink>
+            </div>
 
-              <div class="d-flex justify-content-between align-items-center mb-4">
-                <div class="form-check">
-                  <input id="login-remember" v-model="form.remember" type="checkbox" class="form-check-input" />
-                  <label class="form-check-label" for="login-remember">Mantener sesion iniciada</label>
-                </div>
-
-                <RouterLink :to="{ name: 'forgot-password' }" class="small">
-                  Olvidaste la contrasena?
-                </RouterLink>
-              </div>
-
-              <div class="d-grid gap-3">
-                <button type="submit" class="btn btn-primary" :disabled="submitting">
-                  <span v-if="submitting" class="spinner-border spinner-border-sm me-2" role="status" />
-                  Entrar
-                </button>
-                <RouterLink :to="{ name: 'register' }" class="btn btn-outline-secondary">
-                  Crear nueva cuenta
-                </RouterLink>
-              </div>
-            </form>
-          </div>
-          <div class="auth-modal-footer text-center py-3">
-            <span class="auth-note small">Protegemos tu informacion usando Laravel Sanctum.</span>
-          </div>
+            <div class="d-grid gap-3">
+              <button type="submit" class="btn btn-primary" :disabled="submitting">
+                <span v-if="submitting" class="spinner-border spinner-border-sm me-2" role="status" />
+                Entrar
+              </button>
+              <RouterLink :to="{ name: 'register' }" class="btn btn-outline-secondary">
+                Crear nueva cuenta
+              </RouterLink>
+            </div>
+          </form>
+        </div>
+        <div class="auth-modal-footer text-center py-3">
+          <span class="auth-note small">Protegemos tu informacion usando Laravel Sanctum.</span>
         </div>
       </div>
-    </Transition>
+    </div>
   </div>
 </template>
 

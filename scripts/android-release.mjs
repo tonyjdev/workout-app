@@ -4,125 +4,101 @@ import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { spawnSync } from 'child_process';
 const isWindows = process.platform === 'win32';
 
-function run(command, args = [], options = {}) {
-  const result = spawnSync(command, args, {
-    stdio: 'inherit',
-    shell: isWindows,
-    ...options,
-  });
-
-  if (result.status !== 0) {
-    const error = new Error(`[android-release] Command failed: ${command} ${args.join(' ')}`.trim());
-    error.exitCode = result.status ?? 1;
-    throw error;
+function run(cmd, args = [], options = {}) {
+  const res = spawnSync(cmd, args, { stdio: 'inherit', shell: isWindows, ...options });
+  if (res.status !== 0) {
+    const e = new Error(`[android-release] Command failed: ${cmd} ${args.join(' ')}`.trim());
+    e.exitCode = res.status ?? 1;
+    throw e;
   }
 }
 
-function runCapture(command, args = [], options = {}) {
-  const result = spawnSync(command, args, {
-    stdio: 'pipe',
-    encoding: 'utf8',
-    shell: isWindows,
-    ...options,
-  });
-  if (typeof result.status === 'number' && result.status !== 0) {
-    throw new Error(result.stderr || `Command ${command} ${args.join(' ')} failed`);
+function runOut(cmd, args = [], options = {}) {
+  const res = spawnSync(cmd, args, { shell: isWindows, encoding: 'utf8', ...options });
+  if (res.status !== 0) {
+    const e = new Error(`[android-release] Command failed: ${cmd} ${args.join(' ')}`.trim());
+    e.exitCode = res.status ?? 1;
+    throw e;
   }
-  return (result.stdout ?? '').trim();
+  return (res.stdout || '').toString().trim();
 }
 
 function ensureCleanGit() {
-  const status = runCapture('git', ['status', '--porcelain']);
+  const status = runOut('git', ['status', '--porcelain']);
   if (status) {
-    console.error('[android-release] Working tree has uncommitted changes. Please commit or stash before running this command.');
-    process.exit(1);
+    throw new Error('[android-release] Repositorio con cambios sin commit. Haz commit o stash antes de continuar.');
   }
 }
 
-function readJson(file, fallback = {}) {
-  if (!existsSync(file)) {
-    return fallback;
-  }
-  try {
-    return JSON.parse(readFileSync(file, 'utf8'));
-  } catch (error) {
-    console.warn(`[android-release] Unable to parse ${file}. Using fallback.`);
-    return fallback;
-  }
+function readJson(path, fallback = {}) {
+  if (!existsSync(path)) return fallback;
+  try { return JSON.parse(readFileSync(path, 'utf8')); }
+  catch { return fallback; }
 }
 
-function writeJson(file, data) {
-  const json = `${JSON.stringify(data, null, 2)}\n`;
-  writeFileSync(file, json, 'utf8');
+function writeJson(path, data) {
+  writeFileSync(path, JSON.stringify(data, null, 2) + '\n', 'utf8');
 }
 
-function composeDisplayVersion(baseVersion, buildNumber) {
-  return buildNumber > 0 ? `${baseVersion}.${buildNumber}` : baseVersion;
-}
-
-function updateEnvVersion(version) {
-  const envPath = '.env';
-  const line = `VITE_APP_VERSION=${version}`;
-  let content = '';
-
-  if (existsSync(envPath)) {
-    content = readFileSync(envPath, 'utf8');
-  }
-
-  if (content.includes('VITE_APP_VERSION=')) {
-    content = content.replace(/VITE_APP_VERSION=.*/g, line);
-  } else {
-    content = `${content.trim() ? `${content.trimEnd()}\n` : ''}${line}\n`;
-  }
-
-  writeFileSync(envPath, content, 'utf8');
-}
-
-function bumpBuildVersion() {
+function getBaseVersion() {
   const pkg = readJson('package.json');
-  const baseVersion = pkg.version;
-  if (!baseVersion) {
-    console.error('[android-release] package.json requires a valid "version".');
-    process.exit(1);
-  }
-
-  const buildInfoPath = 'build-info.json';
-  const buildInfo = readJson(buildInfoPath, { buildNumber: 0 });
-  const previousBuildNumber = parseInt(buildInfo.buildNumber ?? '0', 10) || 0;
-  const nextBuild = previousBuildNumber + 1;
-
-  buildInfo.buildNumber = nextBuild;
-  writeJson(buildInfoPath, buildInfo);
-
-  const displayVersion = composeDisplayVersion(baseVersion, nextBuild);
-  updateEnvVersion(displayVersion);
-
-  console.log(`[android-release] Using version ${displayVersion}`);
-  return { displayVersion, buildNumber: nextBuild, baseVersion, previousBuildNumber };
+  const v = pkg?.version;
+  if (!v) throw new Error('[android-release] package.json no tiene "version".');
+  if (!/^\d+\.\d+\.\d+$/.test(v)) throw new Error(`[android-release] "version" (${v}) no es SemVer base X.Y.Z`);
+  return v;
 }
 
-function commitAndTag(displayVersion) {
-  run('git', ['add', '-A']);
+function bumpBuild(baseVersion) {
+  const infoPath = 'build-info.json';
+  const prev = readJson(infoPath, { base: null, build: 0 });
+  const build = (prev.base === baseVersion) ? (Number(prev.build || 0) + 1) : 1;
+  const info = { base: baseVersion, build };
+  writeJson(infoPath, info);
+  return { build, prevBuild: prev.build || 0 };
+}
 
-  const hasChanges = spawnSync('git', ['diff', '--cached', '--quiet'], {
-    shell: isWindows,
-  });
+function composeDisplayUI(base, build) {
+  return `${base}+${build}`; // UI (SemVer + build metadata)
+}
 
-  if (hasChanges.status === 0) {
-    console.log('[android-release] Nothing to commit.');
-    return false;
+function composeDisplayAndroid(base, build) {
+  return `${base}.${build}`; // Android versionName
+}
+
+function updateEnvVersion(display) {
+  // Actualiza o crea .env con VITE_APP_VERSION
+  const path = '.env';
+  let content = existsSync(path) ? readFileSync(path, 'utf8') : '';
+  if (content.includes('VITE_APP_VERSION=')) {
+    content = content.replace(/^VITE_APP_VERSION=.*$/m, `VITE_APP_VERSION=${display}`);
+  } else {
+    if (content && !content.endsWith('\n')) content += '\n';
+    content += `VITE_APP_VERSION=${display}\n`;
   }
+  writeFileSync(path, content, 'utf8');
+  console.log(`[android-release] VITE_APP_VERSION=${display}`);
+}
 
-  const commitMessage = `chore: android build v${displayVersion}`;
+function commitAndTag(baseVersion, displayVersion) {
+  run('git', ['add', '-A']);
+  const msg = `chore: android build v${displayVersion}`;
   let commitCreated = false;
   try {
-    run('git', ['commit', '-m', commitMessage]);
+    run('git', ['commit', '-m', msg]);
     commitCreated = true;
 
-    const tagName = `v${displayVersion}`;
-    run('git', ['tag', '-a', tagName, '-m', tagName]);
+    // Tag SOLO con la base (vX.Y.Z). Si ya existe, no falla.
+    const tagName = `v${baseVersion}`;
+    const exists = spawnSync('git', ['rev-parse', '--verify', '--quiet', tagName], { shell: isWindows }).status === 0;
+
     run('git', ['push']);
-    run('git', ['push', '--tags']);
+    if (!exists) {
+      run('git', ['tag', '-a', tagName, '-m', tagName]);
+      run('git', ['push', '--tags']);
+      console.log(`[android-release] Creado tag ${tagName}`);
+    } else {
+      console.log(`[android-release] Tag ${tagName} ya existía; no se crea de nuevo.`);
+    }
     return true;
   } catch (error) {
     error.commitCreated = commitCreated;
@@ -130,37 +106,43 @@ function commitAndTag(displayVersion) {
   }
 }
 
-function restoreBuildVersion(baseVersion, previousBuildNumber) {
-  const info = { buildNumber: previousBuildNumber };
-  writeJson('build-info.json', info);
-  const display = composeDisplayVersion(baseVersion, previousBuildNumber);
+function restoreBuildVersion(prevBase, prevBuild) {
+  // Vuelve al build anterior si falló antes de commitear
+  writeJson('build-info.json', { base: prevBase, build: prevBuild });
+  const display = composeDisplay(prevBase, prevBuild || 1);
   updateEnvVersion(display);
-  try {
-    run('npm', ['run', '--silent', 'sync:android-version']);
-  } catch (error) {
-    console.warn('[android-release] Failed to resync Android version during rollback.', error.message ?? error);
-  }
 }
 
 function main() {
   ensureCleanGit();
-  const { displayVersion, baseVersion, previousBuildNumber } = bumpBuildVersion();
+
+const baseVersion = getBaseVersion();
+const { build, prevBuild } = bumpBuild(baseVersion);
+const uiVersion = composeDisplayUI(baseVersion, build);
+const androidVersion = composeDisplayAndroid(baseVersion, build);
+
+updateEnvVersion(uiVersion);
 
   let commitCreated = false;
   try {
+    // sincroniza versiones Android desde base+build
     run('npm', ['run', 'sync:android-version']);
+    // build web
     run('npm', ['run', 'build']);
+    // sync Capacitor
     run('npx', ['cap', 'sync', 'android']);
-    commitCreated = commitAndTag(displayVersion);
+
+    commitCreated = commitAndTag(baseVersion, androidVersion);
   } catch (error) {
     const committed = error?.commitCreated ?? commitCreated;
     if (!committed) {
-      restoreBuildVersion(baseVersion, previousBuildNumber);
+      restoreBuildVersion(baseVersion, prevBuild);
     }
     console.error(error.message ?? error);
     process.exit(error.exitCode ?? 1);
   }
 
+  // Abre Android Studio
   run('npx', ['cap', 'open', 'android']);
 }
 

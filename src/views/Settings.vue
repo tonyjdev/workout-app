@@ -45,9 +45,13 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({
+  name: 'SettingsView',
+})
 import { computed, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import packageJson from '../../package.json'
+import buildInfo from '../../build-info.json'
 import SettingsGeneral from '@/views/settings/SettingsGeneral.vue'
 import SettingsVoice from '@/views/settings/SettingsVoice.vue'
 import SettingsSound from '@/views/settings/SettingsSound.vue'
@@ -85,7 +89,16 @@ const auth = useAuthStore()
 
 const loggingOut = computed(() => auth.pending)
 
-const appVersion = (packageJson as { version?: string }).version ?? '0.0.0'
+const baseVersion = (packageJson as { version?: string }).version ?? '0.0.0'
+const buildNumber = (buildInfo as { buildNumber?: number }).buildNumber ?? 0
+const envVersion = import.meta.env.VITE_APP_VERSION as string | undefined
+
+const appVersion =
+  envVersion && envVersion.trim().length > 0
+    ? envVersion
+    : buildNumber > 0
+      ? `${baseVersion}.${buildNumber}`
+      : baseVersion
 
 const currentView = ref<SettingsView>('list')
 

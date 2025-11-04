@@ -1,57 +1,55 @@
 <template>
   <div class="auth-screen">
-    <Transition name="auth-slide" mode="out-in" appear>
-      <div class="auth-modal" key="forgot">
-        <div class="auth-modal-inner card shadow-lg border-0">
-          <div class="auth-modal-body card-body p-4">
-            <h1 class="h4 text-center mb-3">Recuperar contrasena</h1>
-            <p class="text-muted text-center mb-4">
-              Introduce tu correo electronico y te enviaremos un enlace para restablecer tu contrasena.
-            </p>
+    <div class="auth-modal">
+      <div class="auth-modal-inner card shadow-lg border-0">
+        <div class="auth-modal-body card-body p-4">
+          <h1 class="h4 text-center mb-3">Recuperar contrasena</h1>
+          <p class="text-muted text-center mb-4">
+            Introduce tu correo electronico y te enviaremos un enlace para restablecer tu contrasena.
+          </p>
 
-            <div v-if="statusMessage" class="alert alert-success py-2">
-              {{ statusMessage }}
-            </div>
-            <div v-if="feedback" class="alert alert-danger py-2">
-              {{ feedback }}
-            </div>
-
-            <form autocomplete="on" novalidate @submit.prevent="handleSubmit">
-              <div class="mb-4">
-                <label for="forgot-email" class="form-label">Correo electronico</label>
-                <input
-                  id="forgot-email"
-                  v-model="email"
-                  type="email"
-                  class="form-control"
-                  :class="{ 'is-invalid': fieldError('email') }"
-                  placeholder="tu-correo@ejemplo.com"
-                  required
-                />
-                <div v-if="fieldError('email')" class="invalid-feedback">
-                  {{ fieldError('email') }}
-                </div>
-              </div>
-
-              <div class="d-grid gap-3">
-                <button type="submit" class="btn btn-primary" :disabled="submitting">
-                  <span v-if="submitting" class="spinner-border spinner-border-sm me-2" role="status" />
-                  Enviar enlace
-                </button>
-                <RouterLink :to="{ name: 'login' }" class="btn btn-outline-secondary">
-                  Volver a iniciar sesion
-                </RouterLink>
-              </div>
-            </form>
+          <div v-if="statusMessage" class="alert alert-success py-2">
+            {{ statusMessage }}
           </div>
-          <div class="auth-modal-footer text-center py-3">
-            <span class="auth-note small">
-              Si no recibes el correo revisa tu carpeta de spam o vuelve a intentarlo en unos minutos.
-            </span>
+          <div v-if="feedback" class="alert alert-danger py-2">
+            {{ feedback }}
           </div>
+
+          <form autocomplete="on" novalidate @submit.prevent="handleSubmit">
+            <div class="mb-4">
+              <label for="forgot-email" class="form-label">Correo electronico</label>
+              <input
+                id="forgot-email"
+                v-model="email"
+                type="email"
+                class="form-control"
+                :class="{ 'is-invalid': fieldError('email') }"
+                placeholder="tu-correo@ejemplo.com"
+                required
+              />
+              <div v-if="fieldError('email')" class="invalid-feedback">
+                {{ fieldError('email') }}
+              </div>
+            </div>
+
+            <div class="d-grid gap-3">
+              <button type="submit" class="btn btn-primary" :disabled="submitting">
+                <span v-if="submitting" class="spinner-border spinner-border-sm me-2" role="status" />
+                Enviar enlace
+              </button>
+              <RouterLink :to="{ name: 'login' }" class="btn btn-outline-secondary">
+                Volver a iniciar sesion
+              </RouterLink>
+            </div>
+          </form>
+        </div>
+        <div class="auth-modal-footer text-center py-3">
+          <span class="auth-note small">
+            Si no recibes el correo revisa tu carpeta de spam o vuelve a intentarlo en unos minutos.
+          </span>
         </div>
       </div>
-    </Transition>
+    </div>
   </div>
 </template>
 

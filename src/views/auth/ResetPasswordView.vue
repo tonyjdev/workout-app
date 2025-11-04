@@ -1,88 +1,86 @@
 <template>
   <div class="auth-screen">
-    <Transition name="auth-slide" mode="out-in" appear>
-      <div class="auth-modal" key="reset">
-        <div class="auth-modal-inner card shadow-lg border-0">
-          <div class="auth-modal-body card-body p-4">
-            <h1 class="h4 text-center mb-3">Restablecer contrasena</h1>
+    <div class="auth-modal">
+      <div class="auth-modal-inner card shadow-lg border-0">
+        <div class="auth-modal-body card-body p-4">
+          <h1 class="h4 text-center mb-3">Restablecer contrasena</h1>
 
-            <div v-if="!token" class="alert alert-warning py-2">
-              El enlace de restablecimiento es invalido o ha caducado. Solicita uno nuevo.
+          <div v-if="!token" class="alert alert-warning py-2">
+            El enlace de restablecimiento es invalido o ha caducado. Solicita uno nuevo.
+          </div>
+
+          <div v-if="feedback" :class="['alert', feedbackClass, 'py-2']">
+            {{ feedback }}
+          </div>
+
+          <form autocomplete="off" novalidate @submit.prevent="handleSubmit">
+            <div class="mb-3">
+              <label for="reset-email" class="form-label">Correo electronico</label>
+              <input
+                id="reset-email"
+                v-model="form.email"
+                type="email"
+                class="form-control"
+                :class="{ 'is-invalid': fieldError('email') }"
+                placeholder="tu-correo@ejemplo.com"
+                required
+                :readonly="!!prefilledEmail"
+              />
+              <div v-if="fieldError('email')" class="invalid-feedback">
+                {{ fieldError('email') }}
+              </div>
             </div>
 
-            <div v-if="feedback" :class="['alert', feedbackClass, 'py-2']">
-              {{ feedback }}
+            <div class="mb-3">
+              <label for="reset-password" class="form-label">Nueva contrasena</label>
+              <input
+                id="reset-password"
+                v-model="form.password"
+                type="password"
+                class="form-control"
+                :class="{ 'is-invalid': fieldError('password') }"
+                placeholder="Minimo 8 caracteres"
+                required
+              />
+              <div v-if="fieldError('password')" class="invalid-feedback">
+                {{ fieldError('password') }}
+              </div>
             </div>
 
-            <form autocomplete="off" novalidate @submit.prevent="handleSubmit">
-              <div class="mb-3">
-                <label for="reset-email" class="form-label">Correo electronico</label>
-                <input
-                  id="reset-email"
-                  v-model="form.email"
-                  type="email"
-                  class="form-control"
-                  :class="{ 'is-invalid': fieldError('email') }"
-                  placeholder="tu-correo@ejemplo.com"
-                  required
-                  :readonly="!!prefilledEmail"
-                />
-                <div v-if="fieldError('email')" class="invalid-feedback">
-                  {{ fieldError('email') }}
-                </div>
+            <div class="mb-4">
+              <label for="reset-password-confirmation" class="form-label">Confirmar contrasena</label>
+              <input
+                id="reset-password-confirmation"
+                v-model="form.password_confirmation"
+                type="password"
+                class="form-control"
+                :class="{ 'is-invalid': fieldError('password_confirmation') }"
+                placeholder="Repite la contrasena"
+                required
+              />
+              <div v-if="fieldError('password_confirmation')" class="invalid-feedback">
+                {{ fieldError('password_confirmation') }}
               </div>
+            </div>
 
-              <div class="mb-3">
-                <label for="reset-password" class="form-label">Nueva contrasena</label>
-                <input
-                  id="reset-password"
-                  v-model="form.password"
-                  type="password"
-                  class="form-control"
-                  :class="{ 'is-invalid': fieldError('password') }"
-                  placeholder="Minimo 8 caracteres"
-                  required
-                />
-                <div v-if="fieldError('password')" class="invalid-feedback">
-                  {{ fieldError('password') }}
-                </div>
-              </div>
-
-              <div class="mb-4">
-                <label for="reset-password-confirmation" class="form-label">Confirmar contrasena</label>
-                <input
-                  id="reset-password-confirmation"
-                  v-model="form.password_confirmation"
-                  type="password"
-                  class="form-control"
-                  :class="{ 'is-invalid': fieldError('password_confirmation') }"
-                  placeholder="Repite la contrasena"
-                  required
-                />
-                <div v-if="fieldError('password_confirmation')" class="invalid-feedback">
-                  {{ fieldError('password_confirmation') }}
-                </div>
-              </div>
-
-              <div class="d-grid gap-3">
-                <button type="submit" class="btn btn-primary" :disabled="submitting || !token">
-                  <span v-if="submitting" class="spinner-border spinner-border-sm me-2" role="status" />
-                  Guardar nueva contrasena
-                </button>
-                <RouterLink :to="{ name: 'login' }" class="btn btn-outline-secondary">
-                  Volver al inicio de sesion
-                </RouterLink>
-              </div>
-            </form>
-          </div>
-          <div class="auth-modal-footer text-center py-3">
-            <span class="auth-note small">
-              Manten tu cuenta segura utilizando una contrasena unica y dificil de adivinar.
-            </span>
-          </div>
+            <div class="d-grid gap-3">
+              <button type="submit" class="btn btn-primary" :disabled="submitting || !token">
+                <span v-if="submitting" class="spinner-border spinner-border-sm me-2" role="status" />
+                Guardar nueva contrasena
+              </button>
+              <RouterLink :to="{ name: 'login' }" class="btn btn-outline-secondary">
+                Volver al inicio de sesion
+              </RouterLink>
+            </div>
+          </form>
+        </div>
+        <div class="auth-modal-footer text-center py-3">
+          <span class="auth-note small">
+            Manten tu cuenta segura utilizando una contrasena unica y dificil de adivinar.
+          </span>
         </div>
       </div>
-    </Transition>
+    </div>
   </div>
 </template>
 
