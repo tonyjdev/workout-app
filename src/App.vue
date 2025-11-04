@@ -12,29 +12,32 @@ const isTrainingActive = ref(false)
 const pageTitle = computed(() => (route?.meta?.title as string) ?? 'Workout App')
 const showBack = computed(() => !!route?.meta?.back)
 
-// Oculta TopBar y BottomNav solo en splash
-const isSplash = computed(() => route.path === '/')
+const isSplash = computed(() => route.name === 'splash')
+const hideChrome = computed(() => route.meta?.hideChrome === true)
+const showTopBar = computed(() => !isTrainingActive.value && !isSplash.value && !hideChrome.value)
+const showBottomNav = computed(() => !hideChrome.value && !isSplash.value)
 
 // OffCanvas
 const offcanvasPanel = ref<InstanceType<typeof OffcanvasPanel> | null>(null)
-// Abre el offcanvas si la ruta actual tiene componente en la named view 'panel'
 const isPanelOpen = computed({
   get: () => route.matched.some(r => r.components && 'panel' in r.components),
   set: (val: boolean) => {
-    // Cerrar manualmente: volvemos atrás si había panel abierto
     if (!val && route.matched.some(r => r.components && 'panel' in r.components)) {
-      history.state?.back ? history.back() : window.location.assign('#') // o router.push({ name: 'training' })
+      if (history.state?.back) {
+        history.back()
+      } else {
+        window.location.assign('#')
+      }
     }
-  }
+  },
 })
 
-// Título del panel según la ruta
 const panelTitle = computed(() => {
   switch (route.name) {
-    case 'settings': return 'Configuración'
+    case 'settings': return 'Configuracion'
     case 'settings-voice': return 'Opciones de voz (TTS)'
     case 'settings-sound': return 'Opciones de sonido'
-    case 'settings-training': return 'Configuración de entrenamiento'
+    case 'settings-training': return 'Configuracion de entrenamiento'
     case 'settings-testing': return 'Testing'
     default: return 'Panel'
   }
@@ -44,38 +47,33 @@ function toggleOffcanvas(panel: string) {
   offcanvasPanel.value?.open(panel as 'catalog' | 'help' | 'settings')
 }
 
-/** refs a las barras para medir su alto real */
 const topBarEl = ref<InstanceType<typeof TopBar> | null>(null)
 const bottomNavEl = ref<InstanceType<typeof BottomNav> | null>(null)
-/** padding dinámico en px */
 const padTop = ref(0)
 const padBottom = ref(0)
 
-/** cuando las barras no están ocultas */
-const chromeVisible = computed(() => !isTrainingActive.value)
-
 async function measureChrome() {
-  // si las barras están ocultas, no añadimos padding
-  if (!chromeVisible.value) {
-    padTop.value = 0
-    padBottom.value = 0
-    return
-  }
+  await nextTick()
 
-  await nextTick() // asegura que los nodos existen/renderizados
-
-  // fallback por si aún no existen (valores típicos)
   const DEFAULT_TOP = 56
   const DEFAULT_BOTTOM = 64
 
-  const topHost = (topBarEl.value as any)?.$el as HTMLElement | undefined
-  const bottomHost = (bottomNavEl.value as any)?.$el as HTMLElement | undefined
+  if (showTopBar.value) {
+    const topHost = (topBarEl.value as any)?.$el as HTMLElement | undefined
+    padTop.value = Math.round(topHost?.getBoundingClientRect().height ?? DEFAULT_TOP)
+  } else {
+    padTop.value = 0
+  }
 
-  padTop.value = Math.round(topHost?.getBoundingClientRect().height ?? DEFAULT_TOP)
-  padBottom.value = Math.round(bottomHost?.getBoundingClientRect().height ?? DEFAULT_BOTTOM)
+  if (showBottomNav.value) {
+    const bottomHost = (bottomNavEl.value as any)?.$el as HTMLElement | undefined
+    padBottom.value = Math.round(bottomHost?.getBoundingClientRect().height ?? DEFAULT_BOTTOM)
+  } else {
+    padBottom.value = 0
+  }
 }
-/** recalcula en cambios de visibilidad, resize y cambios de ruta */
-watch([chromeVisible, () => route.fullPath], () => measureChrome())
+
+watch([showTopBar, showBottomNav, () => route.fullPath], () => measureChrome())
 onMounted(() => {
   measureChrome()
   window.addEventListener('resize', measureChrome)
@@ -84,49 +82,70 @@ onUnmounted(() => {
   window.removeEventListener('resize', measureChrome)
 })
 
-/** estilo aplicado al <main> */
-const mainStyle = computed(() => {
-  // añadimos también safe-areas iOS por si acaso
-  return {
-    paddingTop: `calc(${padTop.value}px + env(safe-area-inset-top, 0px))`,
-    paddingBottom: `calc(${padBottom.value}px + env(safe-area-inset-bottom, 0px))`,
-    minHeight: '100vh',
-  } as Record<string,string>
-})
+const mainStyle = computed(() => ({
+  paddingTop: `calc(${padTop.value}px + env(safe-area-inset-top, 0px))`,
+  paddingBottom: `calc(${padBottom.value}px + env(safe-area-inset-bottom, 0px))`,
+  minHeight: '100vh',
+}) as Record<string, string>)
 
+function cleanupOffcanvasBackdrop() {
+  document.body.classList.remove('offcanvas-open')
+  const backdrop = document.querySelector('.offcanvas-backdrop')
+  backdrop?.parentElement?.removeChild(backdrop)
+}
+
+function closeOffcanvas() {
+  if (offcanvasPanel.value) {
+    offcanvasPanel.value.close()
+  }
+  cleanupOffcanvasBackdrop()
+}
+
+watch(
+  hideChrome,
+  value => {
+    if (value) {
+      closeOffcanvas()
+    }
+  },
+  { immediate: true },
+)
+
+const mainClasses = computed(() => ({
+  'flex-fill': true,
+  'position-relative': true,
+  'overflow-auto': true,
+  'px-3': !hideChrome.value,
+  'pt-5': showTopBar.value,
+}))
 
 console.log(
   '%c[route] rutas registradas:',
   'color:#0a0;font-weight:bold',
-  router.getRoutes().map((r: { name: any; path: any }) => ({ name: r.name, path: r.path }))
+  router.getRoutes().map((r: { name: unknown; path: unknown }) => ({ name: r.name, path: r.path })),
 )
 </script>
 
 <template>
   <div id="app" class="d-flex flex-column vh-100">
-    <!-- Barra superior -->
     <TopBar
-      v-if="!isTrainingActive && !isSplash"
+      v-if="showTopBar"
       ref="topBarEl"
       :title="pageTitle"
       :showBack="showBack"
       @toggleOffcanvas="toggleOffcanvas"
     />
 
-    <!-- Contenido principal -->
-    <main class="flex-fill position-relative overflow-auto px-3" :class="{ 'pt-5': !isTrainingActive }"
-          :style="mainStyle"
-    >
+    <main :class="mainClasses" :style="mainStyle">
       <RouterView v-slot="{ Component }">
         <component :is="Component" :key="route.path" />
       </RouterView>
     </main>
 
-    <!-- Barra inferior -->
-    <BottomNav />
+    <BottomNav v-if="showBottomNav" ref="bottomNavEl" />
 
-    <!-- Offcanvas: renderiza la named view 'panel' -->
     <OffcanvasPanel
+      v-if="!hideChrome"
       v-model:show="isPanelOpen"
       :title="panelTitle"
       ref="offcanvasPanel"
@@ -140,7 +159,22 @@ console.log(
 </template>
 
 <style>
-/* Transición suave entre vistas */
+.auth-slide-enter-active,
+.auth-slide-leave-active {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.auth-slide-enter-from,
+.auth-slide-leave-to {
+  transform: translateY(35px);
+  opacity: 0;
+}
+
+.auth-slide-leave-from {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;
