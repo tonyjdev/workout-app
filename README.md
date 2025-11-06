@@ -189,9 +189,10 @@ Estas tablas resumen cada script disponible y su proposito principal.
 | Script | Que hace | Notas |
 |--------|----------|-------|
 | `npm run sync:android-version` | Lee `package.json` y `build-info.json`, calcula `versionName` y `versionCode` y actualiza `android/app/build.gradle(.kts)`. | `versionName` se define como `base.build` y `versionCode` usa `major*1_000_000 + minor*10_000 + patch*100 + build`. |
-| `npm run release:patch` | Ejecuta `npm version patch`, actualiza la version base, crea commit y tag `vX.Y.Z`, luego sincroniza Android y ejecuta `npx capacitor sync android`. | Requiere el repositorio limpio; no incrementa el numero de build. |
-| `npm run release:minor` | Igual que el anterior pero incrementa el segmento `minor`. | Usalo para nuevas funcionalidades compatibles. |
-| `npm run release:major` | Igual que el anterior pero incrementa el segmento `major`. | Usalo cuando haya cambios incompatibles. |
+| `npm run release:patch` | Ejecuta `npm version patch`, reinicia `build-info.json`, sincroniza Android y corre `npx capacitor sync android`. | Requiere el repositorio limpio; genera el tag `vX.Y.Z`. |
+| `npm run release:minor` | Igual que el anterior pero incrementa el segmento `minor`. | Usa cuando agregues funcionalidades compatibles. |
+| `npm run release:major` | Igual que el anterior pero incrementa el segmento `major`. | Usa ante cambios incompatibles. |
+| `npm run reset:build-info` | Actualiza `build-info.json` con la version SemVer actual y reinicia el contador en 0. | Lo invocan automaticamente los scripts `release:*`. |
 | `npm run tag:current` | Crea un tag anotado `vX.Y.Z` segun la version de `package.json`. | No hace push; ejecuta `git push --tags` si necesitas publicarlo. |
 | `npm run android` | Ejecuta `scripts/android-release.mjs`: valida que Git este limpio, incrementa `build-info.json`, actualiza `VITE_APP_VERSION`, sincroniza Android, genera la build web, corre `npx cap sync android`, crea un commit `chore: android build vX.Y.Z`, hace push y abre Android Studio. | Automatiza el build incremental para publicar en Play Store. |
 
@@ -209,7 +210,7 @@ Estas tablas resumen cada script disponible y su proposito principal.
 ## Sincronizacion con Android
 
 - `npm run sync:android-version` localiza `android/app/build.gradle` o `build.gradle.kts` y actualiza `versionName` y `versionCode` si ya existen o los inserta dentro de `defaultConfig`.
-- El archivo `build-info.json` guarda la version base (`base`) y el contador `build`. Si la version base no cambia, `npm run android` incrementa `build`; en caso contrario lo reinicia en 1.
+- El archivo `build-info.json` guarda la version base (`base`) y el contador `build`. `npm run release:*` reinicia el build en 0 cuando cambia la version base. Si la version base no cambia, `npm run android` incrementa `build`; en caso contrario lo reinicia en 1.
 - `npm run android` genera `versionName = <version-base>.<build>` y `versionCode = major*1_000_000 + minor*10_000 + patch*100 + build` y deja constancia en `.env` mediante `VITE_APP_VERSION`.
 
 ---
@@ -244,6 +245,7 @@ Estas tablas resumen cada script disponible y su proposito principal.
 |--------|---------|
 | Incrementar la version base (patch/minor/major) | `npm run release:<tipo>` |
 | Crear un tag anotado para la version actual | `npm run tag:current` |
+| Reiniciar el contador de build tras cambiar SemVer | `npm run reset:build-info` |
 | Sincronizar manualmente versionName/versionCode | `npm run sync:android-version` |
 | Generar un build Android con numero incremental | `npm run android` |
 | Abrir Android Studio apuntando al servidor local | `npm run cap:dev` |

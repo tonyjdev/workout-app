@@ -14,12 +14,13 @@
 - `npm run android:dev`: configura variables de entorno en modo `dev`, sincroniza los recursos web con el proyecto nativo y abre Android Studio con la build lista para instalar en dispositivos de prueba.
 
 ## 4. Versionado semantico
-- `npm run release:patch`: incrementa la version de `package.json` en el tercer digito, sincroniza la version Android y ejecuta `cap sync`.
-- `npm run release:minor`: incrementa la version en el segundo digito, sincroniza Android y sincroniza Capacitor.
-- `npm run release:major`: incrementa el primer digito de version y alinea la configuracion de Android.
+- `npm run release:patch`: incrementa la version de `package.json` en el tercer digito, reinicia `build-info.json`, sincroniza la version Android y ejecuta `cap sync`.
+- `npm run release:minor`: incrementa la version en el segundo digito, reinicia `build-info.json`, sincroniza Android y sincroniza Capacitor.
+- `npm run release:major`: incrementa el primer digito de version, reinicia `build-info.json` y alinea la configuracion de Android.
 - `npm run tag:current`: genera el tag anotado `vX.Y.Z` segun la version actual si aun no existe.
+- `npm run reset:build-info`: fuerza la base actual en `build-info.json` y deja el contador en 0 (lo ejecutan automaticamente los scripts `release:*`).
 
-> Revisa el changelog y confirma el commit generado por `release:*`. Si solo necesitas etiquetar la version actual sin cambiar la base, ejecuta `npm run tag:current` antes de continuar.
+> Revisa el changelog y confirma el commit generado por `release:*`. Si solo necesitas etiquetar la version actual sin cambiar la base, ejecuta `npm run tag:current` antes de continuar; si editaste `package.json` manualmente, corre `npm run reset:build-info` para alinear el contador antes de generar builds.
 
 ## 5. Generar y subir build para Android
 - `npm run android`: automatiza el ciclo de version de build (`build-info.json`), actualiza `.env`, sincroniza Capacitor, hace commit y tag, y abre Android Studio para generar y subir el artefacto a la Play Console.
