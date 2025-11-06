@@ -192,6 +192,7 @@ Estas tablas resumen cada script disponible y su proposito principal.
 | `npm run release:patch` | Ejecuta `npm version patch`, actualiza la version base, crea commit y tag `vX.Y.Z`, luego sincroniza Android y ejecuta `npx capacitor sync android`. | Requiere el repositorio limpio; no incrementa el numero de build. |
 | `npm run release:minor` | Igual que el anterior pero incrementa el segmento `minor`. | Usalo para nuevas funcionalidades compatibles. |
 | `npm run release:major` | Igual que el anterior pero incrementa el segmento `major`. | Usalo cuando haya cambios incompatibles. |
+| `npm run tag:current` | Crea un tag anotado `vX.Y.Z` segun la version de `package.json`. | No hace push; ejecuta `git push --tags` si necesitas publicarlo. |
 | `npm run android` | Ejecuta `scripts/android-release.mjs`: valida que Git este limpio, incrementa `build-info.json`, actualiza `VITE_APP_VERSION`, sincroniza Android, genera la build web, corre `npx cap sync android`, crea un commit `chore: android build vX.Y.Z`, hace push y abre Android Studio. | Automatiza el build incremental para publicar en Play Store. |
 
 ### Configuracion de entorno Android
@@ -232,6 +233,7 @@ Estas tablas resumen cada script disponible y su proposito principal.
 ## Subir cambios a Git
 
 - Los comandos `npm run release:*` crean automaticamente un commit `vX.Y.Z` y el tag correspondiente.
+- `npm run tag:current` genera el tag anotado `vX.Y.Z` segun la version actual si aun no existe.
 - `npm run android` empaqueta los cambios, crea un commit `chore: android build vX.Y.Z` y ejecuta `git push` junto con `git push --tags`. Revisa `git status` por si necesitas repetir el comando tras algun fallo.
 
 ---
@@ -241,6 +243,7 @@ Estas tablas resumen cada script disponible y su proposito principal.
 | Accion | Comando |
 |--------|---------|
 | Incrementar la version base (patch/minor/major) | `npm run release:<tipo>` |
+| Crear un tag anotado para la version actual | `npm run tag:current` |
 | Sincronizar manualmente versionName/versionCode | `npm run sync:android-version` |
 | Generar un build Android con numero incremental | `npm run android` |
 | Abrir Android Studio apuntando al servidor local | `npm run cap:dev` |

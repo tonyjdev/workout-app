@@ -1,5 +1,5 @@
 <template>
-  <section class="available-list" role="list">
+  <section class="px-3 available-list" role="list">
     <article
       v-for="w in itemsComputed"
       :key="w.id"

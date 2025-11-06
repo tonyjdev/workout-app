@@ -54,7 +54,7 @@ function bumpBuild(baseVersion) {
   const build = (prev.base === baseVersion) ? (Number(prev.build || 0) + 1) : 1;
   const info = { base: baseVersion, build };
   writeJson(infoPath, info);
-  return { build, prevBuild: prev.build || 0 };
+  return { build, prevBuild: Number(prev.build || 0), prevBase: prev.base };
 }
 
 function composeDisplayUI(base, build) {
@@ -109,7 +109,7 @@ function commitAndTag(baseVersion, displayVersion) {
 function restoreBuildVersion(prevBase, prevBuild) {
   // Vuelve al build anterior si falló antes de commitear
   writeJson('build-info.json', { base: prevBase, build: prevBuild });
-  const display = composeDisplay(prevBase, prevBuild || 1);
+  const display = composeDisplayUI(prevBase, prevBuild || 1);
   updateEnvVersion(display);
 }
 
@@ -117,7 +117,7 @@ function main() {
   ensureCleanGit();
 
 const baseVersion = getBaseVersion();
-const { build, prevBuild } = bumpBuild(baseVersion);
+const { build, prevBuild, prevBase } = bumpBuild(baseVersion);
 const uiVersion = composeDisplayUI(baseVersion, build);
 const androidVersion = composeDisplayAndroid(baseVersion, build);
 
@@ -136,7 +136,7 @@ updateEnvVersion(uiVersion);
   } catch (error) {
     const committed = error?.commitCreated ?? commitCreated;
     if (!committed) {
-      restoreBuildVersion(baseVersion, prevBuild);
+      restoreBuildVersion(prevBase ?? baseVersion, prevBuild);
     }
     console.error(error.message ?? error);
     process.exit(error.exitCode ?? 1);

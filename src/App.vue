@@ -115,7 +115,6 @@ const mainClasses = computed(() => ({
   'flex-fill': true,
   'position-relative': true,
   'overflow-auto': true,
-  'px-3': !hideChrome.value,
   'pt-5': showTopBar.value,
 }))
 

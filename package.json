@@ -15,6 +15,7 @@
     "release:patch": "npm version patch && npm run sync:android-version && npx capacitor sync android",
     "release:minor": "npm version minor && npm run sync:android-version && npx capacitor sync android",
     "release:major": "npm version major && npm run sync:android-version && npx capacitor sync android",
+    "tag:current": "node scripts/create-tag.mjs",
     "cap:dev": "node scripts/capacitor-env.cjs dev && cap copy && cap open android",
     "cap:build": "node scripts/capacitor-env.cjs prod && npm run build && cap copy && cap sync && cap open android",
     "android:dev": "node scripts/capacitor-env.cjs dev && cap copy && cap open android",
