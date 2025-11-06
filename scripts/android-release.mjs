@@ -58,7 +58,8 @@ function bumpBuild(baseVersion) {
 }
 
 function composeDisplayUI(base, build) {
-  return `${base}+${build}`; // UI (SemVer + build metadata)
+  const numeric = Number(build) || 0;
+  return numeric > 0 ? `${base}+${numeric}` : base; // UI (SemVer + metadata solo si hay build)
 }
 
 function composeDisplayAndroid(base, build) {
@@ -97,7 +98,7 @@ function commitAndTag(baseVersion, displayVersion) {
       run('git', ['push', '--tags']);
       console.log(`[android-release] Creado tag ${tagName}`);
     } else {
-      console.log(`[android-release] Tag ${tagName} ya existía; no se crea de nuevo.`);
+      console.log(`[android-release] Tag ${tagName} ya existia; no se crea de nuevo.`);
     }
     return true;
   } catch (error) {
@@ -107,9 +108,9 @@ function commitAndTag(baseVersion, displayVersion) {
 }
 
 function restoreBuildVersion(prevBase, prevBuild) {
-  // Vuelve al build anterior si falló antes de commitear
+  // Restaura el estado anterior si el proceso falla antes del commit
   writeJson('build-info.json', { base: prevBase, build: prevBuild });
-  const display = composeDisplayUI(prevBase, prevBuild || 1);
+  const display = composeDisplayUI(prevBase, prevBuild);
   updateEnvVersion(display);
 }
 
