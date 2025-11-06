@@ -89,16 +89,11 @@ const auth = useAuthStore()
 
 const loggingOut = computed(() => auth.pending)
 
-const baseVersion = (packageJson as { version?: string }).version ?? '0.0.0'
-const buildNumber = (buildInfo as { buildNumber?: number }).buildNumber ?? 0
-const envVersion = import.meta.env.VITE_APP_VERSION as string | undefined
-
-const appVersion =
-  envVersion && envVersion.trim().length > 0
-    ? envVersion
-    : buildNumber > 0
-      ? `${baseVersion}.${buildNumber}`
-      : baseVersion
+const info = buildInfo as { base?: string; build?: number | string }
+const pkg = packageJson as { version?: string }
+const baseVersion = info?.base ?? pkg?.version ?? '0.0.0'
+const buildNumber = Number(info?.build ?? 0) || 0
+const appVersion = buildNumber > 0 ? `v${baseVersion}+${buildNumber}` : `v${baseVersion}`
 
 const currentView = ref<SettingsView>('list')
 
