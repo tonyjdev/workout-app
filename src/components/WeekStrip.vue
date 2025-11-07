@@ -1,71 +1,73 @@
 <template>
-  <div class="week-grid">
-    <!-- Fila 1: L-J -->
-    <div class="row g-2 mb-2">
-      <div v-for="d in firstRow" :key="d.key" class="col-3">
-        <button
-          type="button"
-          class="w-100 day-cal btn p-0"
-          :class="colorClass(d)"
-          :title="d.aria"
-          @click="onSelect(d)"
-        >
-          <div class="cal">
-            <div class="cal-head"></div>
-            <div class="cal-rings">
-              <span></span><span></span>
-            </div>
-            <div class="cal-body">
-              <div class="cal-date">{{ d.short }}</div>
-              <i :class="iconClass(d)" class="cal-icon"></i>
-            </div>
+  <section class="px-3 py-3">
+    <div class="week-grid">
+      <!-- Fila 1: L-J -->
+      <div class="row g-2 mb-2">
+        <div v-for="d in firstRow" :key="d.key" class="col-3">
+          <button
+            type="button"
+            class="w-100 day-cal btn p-0"
+            :class="colorClass(d)"
+            :title="d.aria"
+            @click="onSelect(d)"
+          >
+            <div class="cal">
+              <div class="cal-head"></div>
+              <div class="cal-rings">
+                <span></span><span></span>
+              </div>
+              <div class="cal-body">
+                <div class="cal-date">{{ d.short }}</div>
+                <i :class="iconClass(d)" class="cal-icon"></i>
+              </div>
 
-            <!-- aro de HOY -->
-            <div v-if="d.isToday" class="cal-today-ring"></div>
-          </div>
-          <span class="visually-hidden">{{ d.aria }}</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Fila 2: V-D + Trofeo -->
-    <div class="row g-2">
-      <div v-for="d in secondRow" :key="d.key" class="col-3">
-        <button
-          type="button"
-          class="w-100 day-cal btn p-0"
-          :class="colorClass(d)"
-          :title="d.aria"
-          @click="onSelect(d)"
-        >
-          <div class="cal">
-            <div class="cal-head"></div>
-            <div class="cal-rings">
-              <span></span><span></span>
+              <!-- aro de HOY -->
+              <div v-if="d.isToday" class="cal-today-ring"></div>
             </div>
-            <div class="cal-body">
-              <div class="cal-date">{{ d.short }}</div>
-              <i :class="iconClass(d)" class="cal-icon"></i>
-            </div>
-            <div v-if="d.isToday" class="cal-today-ring"></div>
-          </div>
-          <span class="visually-hidden">{{ d.aria }}</span>
-        </button>
+            <span class="visually-hidden">{{ d.aria }}</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Trofeo: ocupa enteramente la “hoja” -->
-      <div class="col-3">
-        <div class="w-100 day-cal btn p-0 c-gray-light">
-          <div class="cal cal-trophy">
-            <div class="cal-body only-icon">
-              <i class="bi bi-trophy-fill cal-icon trophy-icon"></i>
+      <!-- Fila 2: V-D + Trofeo -->
+      <div class="row g-2">
+        <div v-for="d in secondRow" :key="d.key" class="col-3">
+          <button
+            type="button"
+            class="w-100 day-cal btn p-0"
+            :class="colorClass(d)"
+            :title="d.aria"
+            @click="onSelect(d)"
+          >
+            <div class="cal">
+              <div class="cal-head"></div>
+              <div class="cal-rings">
+                <span></span><span></span>
+              </div>
+              <div class="cal-body">
+                <div class="cal-date">{{ d.short }}</div>
+                <i :class="iconClass(d)" class="cal-icon"></i>
+              </div>
+              <div v-if="d.isToday" class="cal-today-ring"></div>
             </div>
+            <span class="visually-hidden">{{ d.aria }}</span>
+          </button>
+        </div>
+
+        <!-- Trofeo: ocupa enteramente la “hoja” -->
+        <div class="col-3">
+          <div class="w-100 day-cal btn p-0 c-gray-light">
+            <div class="cal cal-trophy">
+              <div class="cal-body only-icon">
+                <i class="bi bi-trophy-fill cal-icon trophy-icon"></i>
+              </div>
+            </div>
+            <span class="visually-hidden">Trofeo semanal</span>
           </div>
-          <span class="visually-hidden">Trofeo semanal</span>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">

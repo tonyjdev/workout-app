@@ -73,10 +73,11 @@ function onStart(id: string | number) {
 </script>
 
 <template>
-  <section class="py-3">
-    <h1 class="h5 mb-3">Pantalla de Entrenamiento</h1>
-    <WeekStrip :get-day-status="getDayStatus" :show-legend="true" @select="onSelectDay" />
-  </section>
+  <WeekStrip
+    :get-day-status="getDayStatus"
+    :show-legend="true"
+    @select="onSelectDay"
+  />
 
   <ActiveWorkoutsStrip
     :items="activos"
@@ -84,6 +85,9 @@ function onStart(id: string | number) {
     @remove="handleRemove"
   />
 
-  <AvailableWorkoutsList :items="disponibles" @start="onStart" />
+  <AvailableWorkoutsList
+    :items="disponibles"
+    @start="onStart"
+  />
 
 </template>

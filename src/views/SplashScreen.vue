@@ -16,14 +16,28 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore'
 
 const router = useRouter()
+const auth = useAuthStore()
 
-onMounted(() => {
-  // Simula carga y navega sin transiciones complejas
-  setTimeout(() => {
-    router.replace('/training')
-  }, 2000)
+async function delay(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+onMounted(async () => {
+  const MIN_SPLASH_TIME = 1200
+  const startAt = performance.now()
+
+  await auth.init()
+
+  const elapsed = performance.now() - startAt
+  if (elapsed < MIN_SPLASH_TIME) {
+    await delay(MIN_SPLASH_TIME - elapsed)
+  }
+
+  const nextRoute = auth.isAuthenticated ? { name: 'training' } : { name: 'login' }
+  router.replace(nextRoute)
 })
 </script>
 

@@ -14,6 +14,20 @@
             <span class="text-muted">&rarr;</span>
           </button>
         </div>
+        <button
+          type="button"
+          class="btn btn-outline-danger w-100 mt-3"
+          :disabled="loggingOut"
+          @click="handleLogout"
+        >
+          <span
+            v-if="loggingOut"
+            class="spinner-border spinner-border-sm me-2"
+            role="status"
+            aria-hidden="true"
+          />
+          Cerrar sesion
+        </button>
         <div class="text-center text-muted small mt-3">
           Version {{ appVersion }}
         </div>
@@ -31,13 +45,19 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({
+  name: 'SettingsView',
+})
 import { computed, ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import packageJson from '../../package.json'
+import buildInfo from '../../build-info.json'
 import SettingsGeneral from '@/views/settings/SettingsGeneral.vue'
 import SettingsVoice from '@/views/settings/SettingsVoice.vue'
 import SettingsSound from '@/views/settings/SettingsSound.vue'
 import SettingsTraining from '@/views/settings/SettingsTraining.vue'
 import SettingsTesting from '@/views/settings/SettingsTesting.vue'
+import { useAuthStore } from '@/stores/authStore'
 
 type SettingsChild = 'general' | 'voice' | 'sound' | 'training' | 'testing'
 type SettingsView = 'list' | SettingsChild
@@ -64,7 +84,16 @@ const childViews: Record<SettingsChild, { title: string; component: any }> = {
   testing: { title: 'Testing', component: SettingsTesting },
 }
 
-const appVersion = (packageJson as { version?: string }).version ?? '0.0.0'
+const router = useRouter()
+const auth = useAuthStore()
+
+const loggingOut = computed(() => auth.pending)
+
+const info = buildInfo as { base?: string; build?: number | string }
+const pkg = packageJson as { version?: string }
+const baseVersion = info?.base ?? pkg?.version ?? '0.0.0'
+const buildNumber = Number(info?.build ?? 0) || 0
+const appVersion = buildNumber > 0 ? `v${baseVersion}+${buildNumber}` : `v${baseVersion}`
 
 const currentView = ref<SettingsView>('list')
 
@@ -95,6 +124,14 @@ function open(next: SettingsChild) {
 
 function backToList() {
   currentView.value = 'list'
+}
+
+async function handleLogout() {
+  if (loggingOut.value) {
+    return
+  }
+  await auth.logout()
+  await router.replace({ name: 'login' })
 }
 </script>
 

@@ -1,7 +1,9 @@
 
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
+import { setupAuthGuards } from './router/guards'
 import { Capacitor } from '@capacitor/core'
 import { StatusBar, Style } from '@capacitor/status-bar'
 
@@ -12,7 +14,10 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 (async () => {
   const app = createApp(App)
+  const pinia = createPinia()
+  app.use(pinia)
   app.use(router)
+  setupAuthGuards(router, pinia)
 
   if (Capacitor.isNativePlatform()) {
     await StatusBar.setOverlaysWebView({ overlay: false })
