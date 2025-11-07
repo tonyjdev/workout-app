@@ -196,7 +196,7 @@ export const useAuthStore = defineStore('auth', () => {
     pending.value = true
     try {
       await ensureCsrfCookie()
-      await fetchWithJsonResponse('/auth/logout', { method: 'POST' })
+      await fetchWithJsonResponse('/auth/logout', { method: 'DELETE' })
     } finally {
       updateToken(null)
       user.value = null

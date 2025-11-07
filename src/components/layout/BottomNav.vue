@@ -26,10 +26,6 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
-nav {
-  height: 64px;
-  z-index: 1050;
-}
 .nav-link {
   color: #6c757d;
 }
