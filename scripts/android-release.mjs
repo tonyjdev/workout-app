@@ -2,10 +2,8 @@
 
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { spawnSync } from 'child_process';
-const isWindows = process.platform === 'win32';
-
 function run(cmd, args = [], options = {}) {
-  const res = spawnSync(cmd, args, { stdio: 'inherit', shell: isWindows, ...options });
+  const res = spawnSync(cmd, args, { stdio: 'inherit', shell: false, ...options });
   if (res.status !== 0) {
     const e = new Error(`[android-release] Command failed: ${cmd} ${args.join(' ')}`.trim());
     e.exitCode = res.status ?? 1;
@@ -14,7 +12,7 @@ function run(cmd, args = [], options = {}) {
 }
 
 function runOut(cmd, args = [], options = {}) {
-  const res = spawnSync(cmd, args, { shell: isWindows, encoding: 'utf8', ...options });
+  const res = spawnSync(cmd, args, { shell: false, encoding: 'utf8', ...options });
   if (res.status !== 0) {
     const e = new Error(`[android-release] Command failed: ${cmd} ${args.join(' ')}`.trim());
     e.exitCode = res.status ?? 1;
@@ -90,7 +88,7 @@ function commitAndTag(baseVersion, displayVersion) {
 
     // Tag SOLO con la base (vX.Y.Z). Si ya existe, no falla.
     const tagName = `v${baseVersion}`;
-    const exists = spawnSync('git', ['rev-parse', '--verify', '--quiet', tagName], { shell: isWindows }).status === 0;
+    const exists = spawnSync('git', ['rev-parse', '--verify', '--quiet', tagName], { shell: false }).status === 0;
 
     run('git', ['push']);
     if (!exists) {

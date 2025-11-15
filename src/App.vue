@@ -82,9 +82,16 @@ onUnmounted(() => {
   window.removeEventListener('resize', measureChrome)
 })
 
+const SAFE_TOP = 'var(--safe-top, env(safe-area-inset-top, 0px))'
+const SAFE_BOTTOM = 'var(--safe-bottom, env(safe-area-inset-bottom, 0px))'
+
 const mainStyle = computed(() => ({
-  paddingTop: `calc(${padTop.value}px + env(safe-area-inset-top, 0px))`,
-  paddingBottom: `calc(${padBottom.value}px + env(safe-area-inset-bottom, 0px))`,
+  paddingTop: showTopBar.value
+    ? `${padTop.value}px`
+    : `calc(${padTop.value}px + ${SAFE_TOP})`,
+  paddingBottom: showBottomNav.value
+    ? `${padBottom.value}px`
+    : `calc(${padBottom.value}px + ${SAFE_BOTTOM})`,
   minHeight: '100vh',
 }) as Record<string, string>)
 
