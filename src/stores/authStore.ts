@@ -1,6 +1,10 @@
+/**
+ * Store de autenticación que centraliza el estado del usuario y las acciones
+ * necesarias para hablar con la API (login, registro y recuperación de contraseñas).
+ */
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
-import { apiFetch, fetchWithJsonResponse, setAuthToken } from '@/services/api'
+import { fetchWithJsonResponse, setAuthToken } from '@/services/api'
 
 type User = {
   id: number
@@ -37,11 +41,13 @@ type AuthResult = {
 
 type PasswordResetResult = AuthResult & { status?: string }
 
+/**
+ * Instancia el store de autenticación y expone el estado, getters y acciones.
+ */
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User>(null)
   const status = ref<'idle' | 'checking' | 'authenticated' | 'guest'>('idle')
   const initialized = ref(false)
-  const csrfFetched = ref(false)
   const pending = ref(false)
   const token = ref<string | null>(null)
 
@@ -53,12 +59,12 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  /**
+   * Mantiene sincronizado el token con el header global, el estado y el almacenamiento local.
+   */
   function updateToken(value: string | null) {
     token.value = value
     setAuthToken(value)
-    if (!value) {
-      csrfFetched.value = false
-    }
     if (typeof window === 'undefined') {
       return
     }
@@ -72,26 +78,9 @@ export const useAuthStore = defineStore('auth', () => {
   const isAuthenticated = computed(() => status.value === 'authenticated')
   const isChecking = computed(() => status.value === 'checking')
 
-  async function ensureCsrfCookie() {
-    if (csrfFetched.value) {
-      return
-    }
-    try {
-      const response = await apiFetch<Response>('/sanctum/csrf-cookie', {
-        method: 'GET',
-        rawResponse: true,
-        skipApiPrefix: true,
-      })
-      if (!response.ok) {
-        throw new Error('CSRF cookie request failed')
-      }
-      csrfFetched.value = true
-    } catch (error) {
-      csrfFetched.value = false
-      throw error
-    }
-  }
-
+  /**
+   * Consulta el endpoint de usuario actual y actualiza el estado del store con la respuesta.
+   */
   async function fetchUser() {
     if (!token.value) {
       user.value = null
@@ -101,6 +90,7 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       const { response, data } = await fetchWithJsonResponse('/api/user', {
         method: 'GET',
+        omitCredentials: true,
       })
       if (response.ok) {
         user.value = (data ?? null) as User
@@ -123,6 +113,9 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  /**
+   * Arranca el store determinando si ya hay sesión válida y evita inicializaciones redundantes.
+   */
   async function init(force = false) {
     if (initialized.value && !force) {
       return
@@ -139,6 +132,9 @@ export const useAuthStore = defineStore('auth', () => {
     initialized.value = true
   }
 
+  /**
+   * Unifica la forma de retornar mensajes de error independientemente del backend.
+   */
   function normalizeError(data: any, fallback: string): AuthResult {
     if (!data) {
       return { success: false, message: fallback }
@@ -152,16 +148,21 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  /**
+   * Envía las credenciales del usuario a la API y gestiona el estado tras iniciar sesión.
+   * Usa autenticación por token, por lo que omite credenciales/cookies en la petición.
+   */
   async function login(payload: CredentialsPayload): Promise<AuthResult> {
     pending.value = true
     try {
-      await ensureCsrfCookie()
+      const deviceName = typeof navigator !== 'undefined' && navigator.userAgent ? navigator.userAgent : 'web'
       const { response, data } = await fetchWithJsonResponse('/auth/login', {
         method: 'POST',
+        omitCredentials: true,
         body: JSON.stringify({
           email: payload.email,
           password: payload.password,
-          remember: payload.remember ?? false,
+          device_name: deviceName,
         }),
       })
       if (response.ok) {
@@ -192,11 +193,13 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  /**
+   * Cierra la sesión actual eliminando el token y notificando al backend.
+   */
   async function logout(): Promise<void> {
     pending.value = true
     try {
-      await ensureCsrfCookie()
-      await fetchWithJsonResponse('/auth/logout', { method: 'DELETE' })
+      await fetchWithJsonResponse('/logout', { method: 'POST', omitCredentials: true })
     } finally {
       updateToken(null)
       user.value = null
@@ -205,12 +208,15 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  /**
+   * Registra un nuevo usuario y, si tiene éxito, carga el estado autenticado en la app.
+   */
   async function register(payload: RegisterPayload): Promise<AuthResult> {
     pending.value = true
     try {
-      await ensureCsrfCookie()
       const { response, data } = await fetchWithJsonResponse('/auth/register', {
         method: 'POST',
+        omitCredentials: true,
         body: JSON.stringify(payload),
       })
       if (response.ok) {
@@ -241,12 +247,15 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  /**
+   * Solicita el correo con instrucciones para restablecer la contraseña del usuario.
+   */
   async function requestPasswordReset(email: string): Promise<PasswordResetResult> {
     pending.value = true
     try {
-      await ensureCsrfCookie()
       const { response, data } = await fetchWithJsonResponse('/auth/forgot-password', {
         method: 'POST',
+        omitCredentials: true,
         body: JSON.stringify({ email }),
       })
       if (response.ok) {
@@ -267,12 +276,15 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  /**
+   * Envía el token de restablecimiento y la nueva contraseña para cerrar el proceso.
+   */
   async function resetPassword(payload: ResetPasswordPayload): Promise<AuthResult> {
     pending.value = true
     try {
-      await ensureCsrfCookie()
       const { response, data } = await fetchWithJsonResponse('/auth/reset-password', {
         method: 'POST',
+        omitCredentials: true,
         body: JSON.stringify(payload),
       })
       if (response.ok) {

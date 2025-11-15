@@ -1,4 +1,7 @@
-// src/services/deviceTesting.ts
+/**
+ * Utilidades para probar capacidades nativas del dispositivo, como mantener
+ * la pantalla encendida o programar notificaciones locales de verificación.
+ */
 import { Capacitor } from '@capacitor/core'
 import { KeepAwake } from '@capacitor-community/keep-awake'
 import { LocalNotifications } from '@capacitor/local-notifications'
@@ -22,6 +25,9 @@ let keepAwakeEnabledCache: boolean | null = null
 let notificationPermissionCache: PermissionState | null = null
 let notificationChannelPrepared = false
 
+/**
+ * Comprueba (con caché) si el plugin KeepAwake está soportado en el dispositivo actual.
+ */
 async function detectKeepAwakeSupport(): Promise<boolean> {
   if (keepAwakeSupportedCache !== null) {
     return keepAwakeSupportedCache
@@ -43,6 +49,9 @@ async function detectKeepAwakeSupport(): Promise<boolean> {
   return keepAwakeSupportedCache
 }
 
+/**
+ * Consulta al plugin si la pantalla está siendo mantenida despierta y actualiza la caché.
+ */
 async function refreshKeepAwakeState(): Promise<boolean> {
   if (!(await detectKeepAwakeSupport())) {
     keepAwakeEnabledCache = false
@@ -60,10 +69,16 @@ async function refreshKeepAwakeState(): Promise<boolean> {
   return keepAwakeEnabledCache
 }
 
+/**
+ * Expone una comprobación pública para saber si podemos forzar la pantalla encendida.
+ */
 export async function isKeepScreenAwakeSupported(): Promise<boolean> {
   return detectKeepAwakeSupport()
 }
 
+/**
+ * Devuelve el último estado conocido (o recién consultado) de la pantalla.
+ */
 export async function getKeepScreenAwakeState(): Promise<boolean> {
   if (keepAwakeEnabledCache !== null) {
     return keepAwakeEnabledCache
@@ -72,6 +87,9 @@ export async function getKeepScreenAwakeState(): Promise<boolean> {
   return refreshKeepAwakeState()
 }
 
+/**
+ * Activa o desactiva el modo de pantalla despierta y devuelve el resultado final al usuario.
+ */
 export async function setKeepScreenAwake(enabled: boolean): Promise<KeepScreenAwakeResult> {
   const supported = await detectKeepAwakeSupport()
   if (!supported) {
@@ -109,6 +127,9 @@ export async function setKeepScreenAwake(enabled: boolean): Promise<KeepScreenAw
   }
 }
 
+/**
+ * Gestiona el chequeo y la solicitud de permisos de notificaciones locales.
+ */
 async function ensureNotificationPermission(): Promise<boolean> {
   if (notificationPermissionCache === 'granted') {
     return true
@@ -137,6 +158,9 @@ async function ensureNotificationPermission(): Promise<boolean> {
   return notificationPermissionCache === 'granted'
 }
 
+/**
+ * Crea un canal de notificaciones (solo Android) para las pruebas si aún no existe.
+ */
 async function ensureNotificationChannel(): Promise<void> {
   if (notificationChannelPrepared || Capacitor.getPlatform() !== 'android') {
     notificationChannelPrepared = true
@@ -156,6 +180,9 @@ async function ensureNotificationChannel(): Promise<void> {
   }
 }
 
+/**
+ * Programa una notificación local rápida para que el usuario verifique la configuración del dispositivo.
+ */
 export async function sendTestNotification(
   options: { title?: string; body?: string } = {}
 ): Promise<TestNotificationResult> {
