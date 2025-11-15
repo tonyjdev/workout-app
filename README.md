@@ -163,125 +163,95 @@ dist/                  → Build web generado por Vite
 
 ---
 
-# 🚀 Guía de versionado y publicación
+# Guia de versionado y publicacion
 
-A continuación se explica cómo actualizar la versión de la aplicación, sincronizar la versión en Android y generar los commits/tags correspondientes.
-
----
-
-## 🧩 Flujo general
-
-El versionado sigue las reglas **SemVer** (`major.minor.patch`) y se gestiona con los comandos:
-
-| Tipo de cambio | Comando | Genera tag | Ejemplo resultante |
-|----------------|----------|-------------|---------------------|
-| **Patch** (corrección menor) | `npm run release:patch` | ❌ No | `1.0.0 → 1.0.1` |
-| **Minor** (nueva funcionalidad compatible) | `npm run release:minor` | ✅ Sí | `1.0.1 → 1.1.0` |
-| **Major** (cambios incompatibles) | `npm run release:major` | ✅ Sí | `1.1.0 → 2.0.0` |
+A continuacion se describe el flujo para cambiar la version de la aplicacion, mantener sincronizado el proyecto Android y preparar builds listas para distribuir.
 
 ---
 
-## ⚙️ Qué hace cada comando
+## Scripts definidos en package.json
 
-### `npm run release:patch`
-1. Verifica que el repositorio esté **limpio** (`git status` sin cambios pendientes).
-2. Incrementa la versión **en `package.json`** (`npm version patch --no-git-tag-version`).
-3. Ejecuta el hook `version`:
-  - Sincroniza versión Android (`versionName` y `versionCode`).
-  - Ejecuta `ionic capacitor sync android`.
-  - Añade los cambios al commit (`git add -A`).
-4. Realiza un **commit automático**:
-   ```
-   chore(release): vX.Y.Z
-   ```
+Estas tablas resumen cada script disponible y su proposito principal.
 
-> No se crea tag. Se usa para correcciones o cambios internos menores.
+### Basicos
 
----
+| Script | Que hace | Notas |
+|--------|----------|-------|
+| `npm run dev` | Arranca Vite en modo desarrollo con recarga rapida. | Expone la app en http://localhost:5173. |
+| `npm run build` | Valida los tipos con `vue-tsc` y genera la build de produccion con Vite. | Falla si hay errores de TypeScript. |
+| `npm run preview` | Sirve la carpeta `dist` con Vite para revisar una build local. | Util para comprobar la salida antes de publicarla. |
+| `npm run lint` | Ejecuta ESLint sobre todo el proyecto. | Usa la configuracion definida en `.eslintrc`. |
+| `npm run test:unit` | Ejecuta la suite de Vitest. | Corre en un entorno jsdom. |
+| `npm run test:e2e` | Lanza los tests end-to-end de Cypress. | Necesita los binarios de Cypress instalados. |
 
-### `npm run release:minor` y `npm run release:major`
-1. Verifican que el repositorio esté limpio.
-2. Incrementan la versión (`npm version minor|major`).
-3. Ejecutan el hook `version` (igual que en patch).
-4. **npm crea automáticamente:**
-  - Commit: `vX.Y.Z`
-  - Tag git: `vX.Y.Z`
+### Version y sincronizacion Android
 
-> Usa estos comandos cuando publiques una versión significativa o un cambio de funcionalidad importante.
+| Script | Que hace | Notas |
+|--------|----------|-------|
+| `npm run sync:android-version` | Lee `package.json` y `build-info.json`, calcula `versionName` y `versionCode` y actualiza `android/app/build.gradle(.kts)`. | `versionName` se define como `base.build` y `versionCode` usa `major*1_000_000 + minor*10_000 + patch*100 + build`. |
+| `npm run release:patch` | Ejecuta `npm version patch`, reinicia `build-info.json`, sincroniza Android y corre `npx capacitor sync android`. | Requiere el repositorio limpio; genera el tag `vX.Y.Z`. |
+| `npm run release:minor` | Igual que el anterior pero incrementa el segmento `minor`. | Usa cuando agregues funcionalidades compatibles. |
+| `npm run release:major` | Igual que el anterior pero incrementa el segmento `major`. | Usa ante cambios incompatibles. |
+| `npm run reset:build-info` | Actualiza `build-info.json` con la version SemVer actual y reinicia el contador en 0. | Lo invocan automaticamente los scripts `release:*`. |
+| `npm run tag:current` | Crea un tag anotado `vX.Y.Z` segun la version de `package.json`. | No hace push; ejecuta `git push --tags` si necesitas publicarlo. |
+| `npm run android` | Ejecuta `scripts/android-release.mjs`: valida que Git este limpio, incrementa `build-info.json`, actualiza `VITE_APP_VERSION`, sincroniza Android, genera la build web, corre `npx cap sync android`, crea un commit `chore: android build vX.Y.Z`, hace push y abre Android Studio. | Automatiza el build incremental para publicar en Play Store. |
 
----
+### Configuracion de entorno Android
 
-## 🔢 Sincronización con Android
-
-Durante el proceso:
-- Se actualiza automáticamente el `versionName` y `versionCode` en
-  `android/app/build.gradle` o `build.gradle.kts`.
-- El código de versión (`versionCode`) se calcula como:
-  ```
-  major * 10000 + minor * 100 + patch
-  ```
-  Ejemplo: `1.2.3 → versionCode = 10203`.
+| Script | Que hace | Notas |
+|--------|----------|-------|
+| `npm run cap:dev` | Ajusta `capacitor.config.json` a modo dev (`http://localhost:5173`), copia los assets con `cap copy` y abre Android Studio. | Facilita probar con live reload. |
+| `npm run cap:build` | Configura modo produccion, ejecuta `npm run build`, `cap copy`, `cap sync` y abre Android Studio. | Util para revisar una build nativa sin automatizar versionado. |
+| `npm run android:dev` | Alias de `npm run cap:dev`. | Se mantiene por compatibilidad con flujos anteriores. |
+| `npm run android:build` | Alias de `npm run cap:build`. | Igual que el anterior pero con prefijo Android. |
 
 ---
 
-## 🧼 Requisitos antes de versionar
+## Sincronizacion con Android
 
-- Todos los cambios deben estar **commiteados**:
-  ```bash
-  git add -A && git commit -m "chore: cambios previos"
-  ```
-- No debe haber archivos sin seguimiento ni modificados.
-- Ejecutar los comandos desde la raíz del proyecto.
-
-Si aparece el mensaje:
-```
-✖ Git working directory not clean.
-```
-Haz commit o stash antes de lanzar el comando.
+- `npm run sync:android-version` localiza `android/app/build.gradle` o `build.gradle.kts` y actualiza `versionName` y `versionCode` si ya existen o los inserta dentro de `defaultConfig`.
+- El archivo `build-info.json` guarda la version base (`base`) y el contador `build`. `npm run release:*` reinicia el build en 0 cuando cambia la version base. Si la version base no cambia, `npm run android` incrementa `build`; en caso contrario lo reinicia en 1.
+- `npm run android` genera `versionName = <version-base>.<build>` y `versionCode = major*1_000_000 + minor*10_000 + patch*100 + build` y deja constancia en `.env` mediante `VITE_APP_VERSION`.
 
 ---
 
-## 🏁 Publicación final (Android)
+## Requisitos antes de versionar
 
-1. Genera la nueva versión con uno de los comandos anteriores.
-2. Abre el proyecto en Android Studio:
-   ```bash
-   ionic capacitor open android
-   ```
-3. En Android Studio:
-   **Build → Build Bundle(s)/APK(s) → Build APK(s)**
-   (o genera un **AAB** si lo vas a subir a Play Store).
-4. Prueba la app en un dispositivo real antes de publicar.
+- Asegurate de que el repositorio este sin cambios pendientes; los scripts abortan si `git status` muestra archivos modificados.
+- Configura el remoto `origin` y tus credenciales de Git: `npm run android` realiza `git push` y `git push --tags` automaticamente.
+- Ejecuta los comandos desde la raiz del proyecto con el SDK de Android instalado (Android Studio y herramientas de linea de comandos).
 
 ---
 
-## 🏷️ Subir cambios a Git
+## Publicacion final (Android)
 
-Después de crear una versión:
-```bash
-git push
-git push --tags
-```
-Esto sube tanto el commit como el tag (si lo hubiera).
+1. Ejecuta `npm run release:<tipo>` (`patch`, `minor` o `major`) si necesitas incrementar la version base SemVer.
+2. Lanza `npm run android` para incrementar el numero de build, generar la build web, sincronizar Capacitor y abrir el proyecto en Android Studio.
+3. En Android Studio ve a **Build > Build Bundle(s)/APK(s) > Build APK(s)** (o genera un AAB) y prueba la app en un dispositivo real antes de publicar.
 
 ---
 
-## ✅ Resumen rápido
+## Subir cambios a Git
 
-| Acción | Comando |
-|--------|----------|
-| Actualizar versión patch | `npm run release:patch` |
-| Actualizar versión minor | `npm run release:minor` |
-| Actualizar versión major | `npm run release:major` |
-| Sincronizar manualmente versión Android | `npm run sync:android-version` |
-| Abrir proyecto Android Studio | `ionic capacitor open android` |
+- Los comandos `npm run release:*` crean automaticamente un commit `vX.Y.Z` y el tag correspondiente.
+- `npm run tag:current` genera el tag anotado `vX.Y.Z` segun la version actual si aun no existe.
+- `npm run android` empaqueta los cambios, crea un commit `chore: android build vX.Y.Z` y ejecuta `git push` junto con `git push --tags`. Revisa `git status` por si necesitas repetir el comando tras algun fallo.
 
 ---
 
-> 🧠 Consejo: al mantener este flujo, la versión mostrada en la app y la del `package.json` siempre estarán sincronizadas automáticamente, evitando errores al subir builds a Play Store.
+## Resumen rapido
+
+| Accion | Comando |
+|--------|---------|
+| Incrementar la version base (patch/minor/major) | `npm run release:<tipo>` |
+| Crear un tag anotado para la version actual | `npm run tag:current` |
+| Reiniciar el contador de build tras cambiar SemVer | `npm run reset:build-info` |
+| Sincronizar manualmente versionName/versionCode | `npm run sync:android-version` |
+| Generar un build Android con numero incremental | `npm run android` |
+| Abrir Android Studio apuntando al servidor local | `npm run cap:dev` |
+| Preparar Android Studio con build de produccion | `npm run cap:build` |
 
 ---
-
 ## 🧾 Licencia
 
 Proyecto propiedad de **TonyJDev**.

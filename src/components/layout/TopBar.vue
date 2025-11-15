@@ -13,7 +13,7 @@
       </div>
       <div class="d-flex align-items-center">
         <button class="btn btn-dark me-2" @click="$emit('toggleOffcanvas', 'catalog')">
-          <i class="bi bi-list"></i>
+          <i class="bi bi-file-earmark-text-fill"></i>
         </button>
         <button class="btn btn-dark me-2" @click="$emit('toggleOffcanvas', 'help')">
           <i class="bi bi-question-circle"></i>
@@ -30,9 +30,3 @@
 defineProps<{ title: string, showBack?: boolean }>()
 </script>
 
-<style scoped>
-nav {
-  height: 56px;
-  z-index: 1050;
-}
-</style>
